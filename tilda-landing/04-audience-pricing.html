@@ -145,13 +145,14 @@
   .tg-price-btn:hover { transform: translateY(-2px); }
 
   @media (max-width: 960px) {
-    .tg-audience { grid-template-columns: 1fr; }
+    .tg-audience { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
     .tg-pricing-grid { grid-template-columns: 1fr 1fr; }
     .tg-price-card.featured { transform: none; }
   }
   @media (max-width: 560px) {
-    .tg-pricing-grid { grid-template-columns: 1fr; }
-    .tg-price-wrap { padding: 56px 20px; }
+    .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
+    .tg-price-wrap { padding: 48px 20px 56px; }
+    .tg-audience { margin-bottom: 40px; }
   }
 </style>
 

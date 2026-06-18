@@ -169,8 +169,13 @@
   .tg-feed-stage.work { background: rgba(6,214,160,0.12); color: #059669; }
   .tg-feed-stage.deadline { background: rgba(255,209,102,0.2); color: #b45309; }
   @media (max-width: 900px) {
-    .tg-hero-inner { grid-template-columns: 1fr; }
+    .tg-hero-inner { grid-template-columns: 1fr; gap: 32px; }
     .tg-hero-wrap { padding: 56px 20px 64px; }
+  }
+  @media (max-width: 560px) {
+    .tg-hero-wrap { padding: 48px 20px 56px; }
+    .tg-hero-inner { gap: 28px; }
+    .tg-feed-item { margin-bottom: 12px; }
   }
 </style>
 

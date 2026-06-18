@@ -212,12 +212,48 @@
   .tg-kp-status.done { background: rgba(6,214,160,0.12); color: #059669; }
 
   @media (max-width: 900px) {
-    .tg-pillars { grid-template-columns: 1fr; }
-    .tg-side-panels { grid-template-columns: 1fr; }
-    .tg-kanban { min-width: 680px; }
+    .tg-pillars { grid-template-columns: 1fr; gap: 16px; }
+    .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
+    .tg-funnel-board { padding: 20px; gap: 20px; }
+  }
+  @media (max-width: 768px) {
+    .tg-funnel-kanban-wrap { overflow-x: visible; }
+    .tg-kanban {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      min-width: 0;
+    }
+    .tg-kanban-col {
+      min-height: auto;
+    }
+    .tg-kanban-col:not(:last-child)::after {
+      content: "↓";
+      display: block;
+      text-align: center;
+      color: var(--tg-primary);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 10px 0 6px;
+    }
+    .tg-kanban-head {
+      text-align: left;
+      font-size: 11px;
+    }
+    .tg-kanban-card {
+      font-size: 13px;
+      min-height: auto;
+      padding: 12px;
+    }
+    .tg-kanban-card .tg-card-title { font-size: 13px; }
+    .tg-kanban-card .tg-card-field { font-size: 12px; }
+    .tg-kanban-card.empty { min-height: 40px; }
   }
   @media (max-width: 560px) {
-    .tg-platform-wrap { padding: 56px 20px; }
+    .tg-platform-wrap { padding: 48px 20px 56px; }
+    .tg-pillars { margin-bottom: 28px; gap: 16px; }
+    .tg-platform-header { margin-bottom: 32px; }
   }
 </style>
 

@@ -31,71 +31,10 @@
   }
   .tg-section-sub {
     margin: 0 0 40px;
-    max-width: 100%;
-  }
-  .tg-flow-strip {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 10px 12px;
-    padding: 20px 24px;
-    background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
-    border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 20px;
-    margin-bottom: 40px;
-  }
-  .tg-flow-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-  }
-  .tg-flow-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #1e293b;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(15,23,42,0.04);
-    white-space: nowrap;
-  }
-  .tg-flow-chip.light { background: #f1f5ff; color: #334155; }
-  .tg-flow-chip.accent {
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
-    color: #fff;
-    border: none;
-    box-shadow: 0 8px 20px rgba(28,80,222,0.28);
-    font-weight: 700;
-    padding: 12px 20px;
-  }
-  .tg-flow-chip.outline {
-    background: #fff;
-    color: var(--tg-primary);
-    border-color: rgba(28,80,222,0.22);
-  }
-  .tg-flow-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #fff;
-    border: 1px solid rgba(28,80,222,0.15);
-    color: var(--tg-primary);
-    font-size: 18px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  @media (max-width: 700px) {
-    .tg-flow-strip { padding: 16px; gap: 8px; }
-    .tg-flow-arrow { width: 28px; height: 28px; font-size: 14px; }
-    .tg-flow-chip { font-size: 13px; padding: 8px 12px; }
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--tg-muted);
+    max-width: 720px;
   }
 
   .tg-diagram {
@@ -281,30 +220,17 @@
     .tg-steps-row { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
-    .tg-steps-row { grid-template-columns: 1fr; }
-    .tg-how-wrap { padding: 56px 20px; }
+    .tg-steps-row { grid-template-columns: 1fr; gap: 16px; }
+    .tg-how-wrap { padding: 48px 20px 56px; }
+    .tg-diagram { margin-bottom: 24px; padding: 24px 16px 28px; }
+    .tg-section-sub { margin-bottom: 28px; }
   }
 </style>
 
 <div class="tg-how-wrap" id="how">
   <div class="tg-how-inner">
     <h2 class="tg-section-title">Как это работает</h2>
-    <div class="tg-section-sub">
-      <div class="tg-flow-strip">
-        <div class="tg-flow-group">
-          <span class="tg-flow-chip">Агрегаторы</span>
-          <span class="tg-flow-chip light">Госзакупки</span>
-        </div>
-        <span class="tg-flow-arrow">→</span>
-        <span class="tg-flow-chip accent">iStockLink</span>
-        <span class="tg-flow-arrow">→</span>
-        <div class="tg-flow-group">
-          <span class="tg-flow-chip outline">Единая лента</span>
-          <span class="tg-flow-chip outline">Воронка</span>
-          <span class="tg-flow-chip outline">Задачи</span>
-        </div>
-      </div>
-    </div>
+    <p class="tg-section-sub">Подключите агрегаторы и госзакупки — iStockLink соберёт закупки в одной ленте, проведёт по воронке и поможет довести тендер до контракта.</p>
 
     <div class="tg-diagram">
       <div class="tg-diagram-grid">

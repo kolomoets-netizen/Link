@@ -178,8 +178,13 @@
   .tg-feed-stage.work { background: rgba(6,214,160,0.12); color: #059669; }
   .tg-feed-stage.deadline { background: rgba(255,209,102,0.2); color: #b45309; }
   @media (max-width: 900px) {
-    .tg-hero-inner { grid-template-columns: 1fr; }
+    .tg-hero-inner { grid-template-columns: 1fr; gap: 32px; }
     .tg-hero-wrap { padding: 56px 20px 64px; }
+  }
+  @media (max-width: 560px) {
+    .tg-hero-wrap { padding: 48px 20px 56px; }
+    .tg-hero-inner { gap: 28px; }
+    .tg-feed-item { margin-bottom: 12px; }
   }
 </style>
 
@@ -292,6 +297,11 @@
     object-fit: contain;
     flex-shrink: 0;
   }
+  @media (max-width: 560px) {
+    .tg-logos-wrap { padding: 40px 20px; }
+    .tg-logos-row { gap: 10px 12px; }
+    .tg-logos-title { margin-bottom: 20px; }
+  }
 </style>
 
 <div class="tg-logos-wrap">
@@ -359,71 +369,10 @@
   }
   .tg-section-sub {
     margin: 0 0 40px;
-    max-width: 100%;
-  }
-  .tg-flow-strip {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 10px 12px;
-    padding: 20px 24px;
-    background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
-    border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 20px;
-    margin-bottom: 40px;
-  }
-  .tg-flow-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-  }
-  .tg-flow-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #1e293b;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(15,23,42,0.04);
-    white-space: nowrap;
-  }
-  .tg-flow-chip.light { background: #f1f5ff; color: #334155; }
-  .tg-flow-chip.accent {
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
-    color: #fff;
-    border: none;
-    box-shadow: 0 8px 20px rgba(28,80,222,0.28);
-    font-weight: 700;
-    padding: 12px 20px;
-  }
-  .tg-flow-chip.outline {
-    background: #fff;
-    color: var(--tg-primary);
-    border-color: rgba(28,80,222,0.22);
-  }
-  .tg-flow-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #fff;
-    border: 1px solid rgba(28,80,222,0.15);
-    color: var(--tg-primary);
-    font-size: 18px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  @media (max-width: 700px) {
-    .tg-flow-strip { padding: 16px; gap: 8px; }
-    .tg-flow-arrow { width: 28px; height: 28px; font-size: 14px; }
-    .tg-flow-chip { font-size: 13px; padding: 8px 12px; }
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--tg-muted);
+    max-width: 720px;
   }
 
   .tg-diagram {
@@ -609,30 +558,17 @@
     .tg-steps-row { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
-    .tg-steps-row { grid-template-columns: 1fr; }
-    .tg-how-wrap { padding: 56px 20px; }
+    .tg-steps-row { grid-template-columns: 1fr; gap: 16px; }
+    .tg-how-wrap { padding: 48px 20px 56px; }
+    .tg-diagram { margin-bottom: 24px; padding: 24px 16px 28px; }
+    .tg-section-sub { margin-bottom: 28px; }
   }
 </style>
 
 <div class="tg-how-wrap" id="how">
   <div class="tg-how-inner">
     <h2 class="tg-section-title">Как это работает</h2>
-    <div class="tg-section-sub">
-      <div class="tg-flow-strip">
-        <div class="tg-flow-group">
-          <span class="tg-flow-chip">Агрегаторы</span>
-          <span class="tg-flow-chip light">Госзакупки</span>
-        </div>
-        <span class="tg-flow-arrow">→</span>
-        <span class="tg-flow-chip accent">iStockLink</span>
-        <span class="tg-flow-arrow">→</span>
-        <div class="tg-flow-group">
-          <span class="tg-flow-chip outline">Единая лента</span>
-          <span class="tg-flow-chip outline">Воронка</span>
-          <span class="tg-flow-chip outline">Задачи</span>
-        </div>
-      </div>
-    </div>
+    <p class="tg-section-sub">Подключите агрегаторы и госзакупки — iStockLink соберёт закупки в одной ленте, проведёт по воронке и поможет довести тендер до контракта.</p>
 
     <div class="tg-diagram">
       <div class="tg-diagram-grid">
@@ -963,12 +899,48 @@
   .tg-kp-status.done { background: rgba(6,214,160,0.12); color: #059669; }
 
   @media (max-width: 900px) {
-    .tg-pillars { grid-template-columns: 1fr; }
-    .tg-side-panels { grid-template-columns: 1fr; }
-    .tg-kanban { min-width: 680px; }
+    .tg-pillars { grid-template-columns: 1fr; gap: 16px; }
+    .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
+    .tg-funnel-board { padding: 20px; gap: 20px; }
+  }
+  @media (max-width: 768px) {
+    .tg-funnel-kanban-wrap { overflow-x: visible; }
+    .tg-kanban {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      min-width: 0;
+    }
+    .tg-kanban-col {
+      min-height: auto;
+    }
+    .tg-kanban-col:not(:last-child)::after {
+      content: "↓";
+      display: block;
+      text-align: center;
+      color: var(--tg-primary);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 10px 0 6px;
+    }
+    .tg-kanban-head {
+      text-align: left;
+      font-size: 11px;
+    }
+    .tg-kanban-card {
+      font-size: 13px;
+      min-height: auto;
+      padding: 12px;
+    }
+    .tg-kanban-card .tg-card-title { font-size: 13px; }
+    .tg-kanban-card .tg-card-field { font-size: 12px; }
+    .tg-kanban-card.empty { min-height: 40px; }
   }
   @media (max-width: 560px) {
-    .tg-platform-wrap { padding: 56px 20px; }
+    .tg-platform-wrap { padding: 48px 20px 56px; }
+    .tg-pillars { margin-bottom: 28px; gap: 16px; }
+    .tg-platform-header { margin-bottom: 32px; }
   }
 </style>
 
@@ -1182,7 +1154,11 @@
   .tg-feat-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0; }
 
   @media (max-width: 900px) {
-    .tg-feat-grid { grid-template-columns: 1fr; }
+    .tg-feat-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 560px) {
+    .tg-feat-wrap { padding: 48px 20px 56px; }
+    .tg-feat-header { margin-bottom: 32px; }
   }
 </style>
 
@@ -1391,13 +1367,14 @@
   .tg-price-btn:hover { transform: translateY(-2px); }
 
   @media (max-width: 960px) {
-    .tg-audience { grid-template-columns: 1fr; }
+    .tg-audience { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
     .tg-pricing-grid { grid-template-columns: 1fr 1fr; }
     .tg-price-card.featured { transform: none; }
   }
   @media (max-width: 560px) {
-    .tg-pricing-grid { grid-template-columns: 1fr; }
-    .tg-price-wrap { padding: 56px 20px; }
+    .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
+    .tg-price-wrap { padding: 48px 20px 56px; }
+    .tg-audience { margin-bottom: 40px; }
   }
 </style>
 
@@ -1605,10 +1582,12 @@
   .tg-footer-logo span { font-weight: 700; color: #fff; font-size: 15px; }
 
   @media (max-width: 700px) {
-    .tg-faq-grid { grid-template-columns: 1fr; }
+    .tg-faq-grid { grid-template-columns: 1fr; gap: 12px; }
     .tg-cta-box { padding: 40px 24px; }
     .tg-cta-form { flex-direction: column; }
     .tg-cta-input { min-width: 100%; }
+    .tg-cta-wrap { padding: 48px 20px 0; }
+    .tg-faq { margin-bottom: 48px; }
   }
 </style>
 
@@ -1669,6 +1648,5 @@
   <p style="margin:0 0 8px">© 2026 · Платформа для тендеров и закупок</p>
   <p style="margin:0"><a href="#">Политика конфиденциальности</a> · <a href="#">Документация</a></p>
 </div>
-
 </body>
 </html>
