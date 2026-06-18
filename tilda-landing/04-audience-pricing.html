@@ -1,0 +1,242 @@
+<!-- Tilda block: For whom + Pricing -->
+<style>
+  .tg-price-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 80px 24px;
+  }
+  .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
+  .tg-price-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-audience {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+  .tg-audience-card {
+    border-radius: 18px;
+    padding: 28px 24px;
+    background: linear-gradient(145deg, #f8faff, #fff);
+    border: 1px solid #e8edf5;
+  }
+  .tg-audience-emoji { font-size: 32px; margin-bottom: 12px; }
+  .tg-audience-title { font-size: 16px; font-weight: 700; color: #1e293b; margin: 0 0 8px; }
+  .tg-audience-text { font-size: 14px; line-height: 1.55; color: #64748b; margin: 0; }
+
+  .tg-price-header { text-align: center; margin-bottom: 40px; }
+  .tg-section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
+  }
+  .tg-section-title {
+    margin: 0 0 14px;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800;
+    color: var(--tg-text);
+  }
+  .tg-section-sub {
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--tg-muted);
+    max-width: 560px;
+  }
+
+  .tg-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: stretch;
+  }
+  .tg-price-card {
+    border-radius: 20px;
+    padding: 28px 22px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .tg-price-card.featured {
+    border: 2px solid var(--tg-primary);
+    background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
+    box-shadow: 0 20px 50px rgba(28,80,222,0.15);
+    transform: scale(1.03);
+    z-index: 1;
+  }
+  .tg-price-badge {
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tg-price-name { font-size: 15px; font-weight: 700; color: #64748b; margin: 0 0 8px; }
+  .tg-price-amount {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--tg-text);
+    margin: 0 0 4px;
+    line-height: 1.1;
+  }
+  .tg-price-amount span { font-size: 14px; font-weight: 600; color: #94a3b8; }
+  .tg-price-desc { font-size: 13px; color: #94a3b8; margin: 0 0 20px; min-height: 36px; }
+  .tg-price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    flex: 1;
+  }
+  .tg-price-list li {
+    font-size: 13px;
+    color: #475569;
+    padding: 7px 0 7px 22px;
+    position: relative;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .tg-price-list li:last-child { border-bottom: none; }
+  .tg-price-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--tg-primary);
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .tg-price-list li.off { color: #cbd5e1; }
+  .tg-price-list li.off::before { content: "—"; color: #cbd5e1; }
+  .tg-price-btn {
+    display: block;
+    text-align: center;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform .2s;
+  }
+  .tg-price-btn-primary {
+    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(28,80,222,0.25);
+  }
+  .tg-price-btn-outline {
+    background: #fff;
+    color: var(--tg-primary);
+    border: 1px solid rgba(28,80,222,0.25);
+  }
+  .tg-price-btn:hover { transform: translateY(-2px); }
+
+  @media (max-width: 960px) {
+    .tg-audience { grid-template-columns: 1fr; }
+    .tg-pricing-grid { grid-template-columns: 1fr 1fr; }
+    .tg-price-card.featured { transform: none; }
+  }
+  @media (max-width: 560px) {
+    .tg-pricing-grid { grid-template-columns: 1fr; }
+    .tg-price-wrap { padding: 56px 20px; }
+  }
+</style>
+
+<div class="tg-price-wrap">
+  <div class="tg-price-inner">
+    <div class="tg-audience">
+      <div class="tg-audience-card">
+        <div class="tg-audience-emoji">🏢</div>
+        <h3 class="tg-audience-title">Тендерный отдел</h3>
+        <p class="tg-audience-text">Уже платите за Контур или Seldon — подключите ключ и получите единую ленту без дублей для всей команды.</p>
+      </div>
+      <div class="tg-audience-card">
+        <div class="tg-audience-emoji">🚀</div>
+        <h3 class="tg-audience-title">Малый бизнес</h3>
+        <p class="tg-audience-text">Нет своего агрегатора — начните со встроенного тарифа. Госзакупки и коммерция из коробки.</p>
+      </div>
+      <div class="tg-audience-card">
+        <div class="tg-audience-emoji">⚙️</div>
+        <h3 class="tg-audience-title">Интеграторы и CRM</h3>
+        <p class="tg-audience-text">API и webhook для встраивания чистой ленты закупок в 1С, Битрикс24, amoCRM и собственные системы.</p>
+      </div>
+    </div>
+
+    <div class="tg-price-header">
+      <span class="tg-section-label">Тарифы</span>
+      <h2 class="tg-section-title">Платите за оркестрацию, не за данные дважды</h2>
+      <p class="tg-section-sub">Данные идут по вашей лицензии агрегатора. Мы берём оплату за единую ленту, дедупликацию и рабочий процесс.</p>
+    </div>
+
+    <div class="tg-pricing-grid">
+      <div class="tg-price-card">
+        <p class="tg-price-name">Starter</p>
+        <p class="tg-price-amount">0 ₽</p>
+        <p class="tg-price-desc">Попробовать на госзакупках</p>
+        <ul class="tg-price-list">
+          <li>Встроенный источник (гос)</li>
+          <li>До 3 поисковых шаблонов</li>
+          <li>Email-уведомления</li>
+          <li class="off">BYO-подключения</li>
+          <li class="off">Коммерческие ЭТП</li>
+        </ul>
+        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Начать бесплатно</a>
+      </div>
+
+      <div class="tg-price-card">
+        <p class="tg-price-name">Pro</p>
+        <p class="tg-price-amount">4 900 ₽ <span>/мес</span></p>
+        <p class="tg-price-desc">Без своего агрегатора</p>
+        <ul class="tg-price-list">
+          <li>Гос + коммерция (встроенный)</li>
+          <li>Безлимитные фильтры</li>
+          <li>Дедупликация</li>
+          <li>Telegram-бот</li>
+          <li class="off">BYO-подключения</li>
+        </ul>
+        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать Pro</a>
+      </div>
+
+      <div class="tg-price-card featured">
+        <span class="tg-price-badge">Популярный</span>
+        <p class="tg-price-name">Business</p>
+        <p class="tg-price-amount">2 900 ₽ <span>/мес</span></p>
+        <p class="tg-price-desc">Есть свой агрегатор</p>
+        <ul class="tg-price-list">
+          <li>До 2 BYO-подключений</li>
+          <li>Multi-source дедуп</li>
+          <li>Единая лента и статусы</li>
+          <li>Командный доступ (3 места)</li>
+          <li>Webhook в CRM</li>
+        </ul>
+        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать Business</a>
+      </div>
+
+      <div class="tg-price-card">
+        <p class="tg-price-name">Enterprise</p>
+        <p class="tg-price-amount">от 9 900 ₽ <span>/мес</span></p>
+        <p class="tg-price-desc">Тендерный отдел 5+ человек</p>
+        <ul class="tg-price-list">
+          <li>Безлимит BYO-источников</li>
+          <li>Seldon · Контур · TG · z360</li>
+          <li>SSO, аудит, SLA</li>
+          <li>API для интеграций</li>
+          <li>Персональный менеджер</li>
+        </ul>
+        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Связаться</a>
+      </div>
+    </div>
+  </div>
+</div>

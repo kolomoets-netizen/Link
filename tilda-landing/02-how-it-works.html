@@ -1,0 +1,384 @@
+<!-- Tilda block: How it works -->
+<style>
+  .tg-how-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 80px 24px;
+  }
+  .tg-how-wrap *, .tg-how-wrap *::before, .tg-how-wrap *::after { box-sizing: border-box; }
+  .tg-how-inner { max-width: 1120px; margin: 0 auto; }
+  .tg-section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
+  }
+  .tg-section-title {
+    margin: 0 0 14px;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--tg-text);
+    line-height: 1.15;
+  }
+  .tg-section-sub {
+    margin: 0 0 48px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--tg-muted);
+    max-width: 640px;
+  }
+
+  /* Main diagram */
+  .tg-diagram {
+    background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+    border: 1px solid rgba(28,80,222,0.1);
+    border-radius: 24px;
+    padding: 36px 28px 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .tg-diagram::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(28,80,222,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .tg-diagram-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1.2fr auto 1fr;
+    gap: 16px;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+  }
+  .tg-diagram-col { display: flex; flex-direction: column; gap: 10px; }
+  .tg-diagram-col-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .tg-source-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .tg-source-card:hover {
+    border-color: rgba(28,80,222,0.3);
+    box-shadow: 0 8px 24px rgba(28,80,222,0.08);
+  }
+  .tg-source-card.builtin {
+    border-style: dashed;
+    border-color: rgba(28,80,222,0.35);
+    background: linear-gradient(135deg, rgba(28,80,222,0.04), rgba(28,80,222,0.01));
+  }
+  .tg-source-logo {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #eef3ff, #e0eaff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--tg-primary);
+    flex-shrink: 0;
+  }
+  .tg-source-name { font-size: 13px; font-weight: 700; color: #1e293b; margin: 0; }
+  .tg-source-desc { font-size: 11px; color: #94a3b8; margin: 2px 0 0; }
+  .tg-diagram-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--tg-primary);
+    min-width: 48px;
+  }
+  .tg-diagram-arrow-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, var(--tg-primary), transparent);
+    border-radius: 2px;
+  }
+  .tg-diagram-arrow-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 6px 16px rgba(28,80,222,0.3);
+  }
+  .tg-core-box {
+    background: linear-gradient(145deg, #1c50de 0%, #2a5fe8 50%, #3b6df0 100%);
+    border-radius: 20px;
+    padding: 24px 20px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(28,80,222,0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 220px;
+  }
+  .tg-core-icon {
+    width: 52px; height: 52px;
+    margin: 0 auto 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .tg-core-title { font-size: 16px; font-weight: 800; margin: 0 0 8px; }
+  .tg-core-steps { list-style: none; padding: 0; margin: 0; text-align: left; }
+  .tg-core-steps li {
+    font-size: 12px;
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.92;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .tg-core-steps li:last-child { border-bottom: none; }
+  .tg-core-steps li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+  .tg-output-card {
+    background: #fff;
+    border: 2px solid rgba(28,80,222,0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(15,23,42,0.06);
+  }
+  .tg-output-header {
+    background: linear-gradient(90deg, #1c50de, #3b6df0);
+    color: #fff;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .tg-output-body { padding: 12px; }
+  .tg-output-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    background: #f8faff;
+    font-size: 12px;
+  }
+  .tg-output-row:last-child { margin-bottom: 0; }
+  .tg-output-row .check {
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    background: rgba(6,214,160,0.15);
+    color: #059669;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .tg-output-row .label { flex: 1; color: #334155; font-weight: 500; }
+  .tg-output-row .badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(28,80,222,0.1);
+    color: var(--tg-primary);
+  }
+
+  /* Steps row */
+  .tg-steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .tg-step-card {
+    background: #fff;
+    border: 1px solid #e8edf5;
+    border-radius: 16px;
+    padding: 24px 20px;
+    position: relative;
+  }
+  .tg-step-num {
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1c50de, #4d7aef);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .tg-step-title { font-size: 15px; font-weight: 700; color: #1e293b; margin: 0 0 8px; }
+  .tg-step-text { font-size: 13px; line-height: 1.55; color: #64748b; margin: 0; }
+
+  @media (max-width: 960px) {
+    .tg-diagram-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .tg-diagram-arrow { flex-direction: row; min-width: auto; }
+    .tg-diagram-arrow-line { width: 40px; height: 2px; }
+    .tg-steps-row { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .tg-steps-row { grid-template-columns: 1fr; }
+    .tg-how-wrap { padding: 56px 20px; }
+  }
+</style>
+
+<div class="tg-how-wrap" id="how">
+  <div class="tg-how-inner">
+    <span class="tg-section-label">Как это работает</span>
+    <h2 class="tg-section-title">Два режима — один движок</h2>
+    <p class="tg-section-sub">Пользователь подключает свой агрегатор по API-ключу или использует встроенный источник. Все данные проходят через нормализацию и дедупликацию — на выходе единая лента без повторов.</p>
+
+    <div class="tg-diagram">
+      <div class="tg-diagram-grid">
+        <!-- Sources -->
+        <div class="tg-diagram-col">
+          <div class="tg-diagram-col-title">Источники данных</div>
+          <div class="tg-source-card">
+            <div class="tg-source-logo">КЗ</div>
+            <div>
+              <p class="tg-source-name">Контур.Закупки</p>
+              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+            </div>
+          </div>
+          <div class="tg-source-card">
+            <div class="tg-source-logo">SL</div>
+            <div>
+              <p class="tg-source-name">Seldon</p>
+              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+            </div>
+          </div>
+          <div class="tg-source-card">
+            <div class="tg-source-logo">TG</div>
+            <div>
+              <p class="tg-source-name">ТендерГуру</p>
+              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+            </div>
+          </div>
+          <div class="tg-source-card">
+            <div class="tg-source-logo">Z3</div>
+            <div>
+              <p class="tg-source-name">Закупки360</p>
+              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+            </div>
+          </div>
+          <div class="tg-source-card builtin">
+            <div class="tg-source-logo">GP</div>
+            <div>
+              <p class="tg-source-name">Встроенный источник</p>
+              <p class="tg-source-desc">ГосПлан + коммерция</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="tg-diagram-arrow">
+          <div class="tg-diagram-arrow-line"></div>
+          <div class="tg-diagram-arrow-icon">→</div>
+          <div class="tg-diagram-arrow-line"></div>
+        </div>
+
+        <!-- Core -->
+        <div class="tg-core-box">
+          <div class="tg-core-icon">⚙️</div>
+          <p class="tg-core-title">Ядро платформы</p>
+          <ul class="tg-core-steps">
+            <li>Адаптеры под каждый агрегатор</li>
+            <li>Единая модель тендера</li>
+            <li>Дедуп по реестровому номеру</li>
+            <li>Fuzzy-match для коммерции</li>
+            <li>Версии и история изменений</li>
+          </ul>
+        </div>
+
+        <!-- Arrow -->
+        <div class="tg-diagram-arrow">
+          <div class="tg-diagram-arrow-line"></div>
+          <div class="tg-diagram-arrow-icon">→</div>
+          <div class="tg-diagram-arrow-line"></div>
+        </div>
+
+        <!-- Output -->
+        <div class="tg-diagram-col">
+          <div class="tg-diagram-col-title">Результат для пользователя</div>
+          <div class="tg-output-card">
+            <div class="tg-output-header">📥 Единая лента закупок</div>
+            <div class="tg-output-body">
+              <div class="tg-output-row">
+                <span class="check">✓</span>
+                <span class="label">Медоборудование · 4,2 млн</span>
+                <span class="badge">×3 → 1</span>
+              </div>
+              <div class="tg-output-row">
+                <span class="check">✓</span>
+                <span class="label">IT-лицензии · 890 тыс.</span>
+                <span class="badge">Seldon</span>
+              </div>
+              <div class="tg-output-row">
+                <span class="check">✓</span>
+                <span class="label">Ремонт офиса · коммерция</span>
+                <span class="badge">новый</span>
+              </div>
+            </div>
+          </div>
+          <div class="tg-source-card" style="margin-top:10px">
+            <div class="tg-source-logo">🔔</div>
+            <div>
+              <p class="tg-source-name">Уведомления · задачи · CRM</p>
+              <p class="tg-source-desc">Ваш рабочий процесс</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tg-steps-row">
+      <div class="tg-step-card">
+        <div class="tg-step-num">1</div>
+        <h3 class="tg-step-title">Подключите источник</h3>
+        <p class="tg-step-text">Введите API-ключ своего агрегатора или активируйте встроенный тариф — настройка за 2 минуты.</p>
+      </div>
+      <div class="tg-step-card">
+        <div class="tg-step-num">2</div>
+        <h3 class="tg-step-title">Настройте фильтры</h3>
+        <p class="tg-step-text">Ключевые слова, регионы, ОКПД2, тип закупки — правила применяются ко всем источникам сразу.</p>
+      </div>
+      <div class="tg-step-card">
+        <div class="tg-step-num">3</div>
+        <h3 class="tg-step-title">Получите чистую ленту</h3>
+        <p class="tg-step-text">Сервис объединяет записи по реестровому номеру и убирает дубли между агрегаторами.</p>
+      </div>
+      <div class="tg-step-card">
+        <div class="tg-step-num">4</div>
+        <h3 class="tg-step-title">Работайте в одном окне</h3>
+        <p class="tg-step-text">Избранное, статусы, напоминания и выгрузка — без переключения между кабинетами.</p>
+      </div>
+    </div>
+  </div>
+</div>

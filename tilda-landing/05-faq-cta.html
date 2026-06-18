@@ -1,0 +1,205 @@
+<!-- Tilda block: FAQ + CTA -->
+<style>
+  .tg-cta-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: linear-gradient(180deg, #eef3ff 0%, #f4f7ff 100%);
+    padding: 80px 24px 0;
+  }
+  .tg-cta-wrap *, .tg-cta-wrap *::before, .tg-cta-wrap *::after { box-sizing: border-box; }
+  .tg-cta-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-faq { margin-bottom: 64px; }
+  .tg-faq-header { text-align: center; margin-bottom: 36px; }
+  .tg-section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
+  }
+  .tg-section-title {
+    margin: 0;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 800;
+    color: var(--tg-text);
+  }
+  .tg-faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .tg-faq-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px 24px;
+    border: 1px solid rgba(28,80,222,0.08);
+  }
+  .tg-faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 8px;
+  }
+  .tg-faq-a {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .tg-cta-box {
+    background: linear-gradient(135deg, #1c50de 0%, #2a5fe8 40%, #3b6df0 100%);
+    border-radius: 24px;
+    padding: 56px 48px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+  .tg-cta-box::before {
+    content: "";
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .tg-cta-box::after {
+    content: "";
+    position: absolute;
+    bottom: -60px; left: -40px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .tg-cta-content { position: relative; z-index: 1; }
+  .tg-cta-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  .tg-cta-sub {
+    font-size: 17px;
+    opacity: 0.9;
+    margin: 0 auto 28px;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+  .tg-cta-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .tg-cta-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .tg-cta-submit {
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    background: #fff;
+    color: var(--tg-primary);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s;
+    white-space: nowrap;
+  }
+  .tg-cta-submit:hover { transform: translateY(-2px); }
+  .tg-cta-note {
+    margin-top: 16px;
+    font-size: 13px;
+    opacity: 0.75;
+  }
+
+  .tg-footer {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 64px;
+  }
+  .tg-footer a { color: #94a3b8; text-decoration: none; }
+  .tg-footer a:hover { color: #fff; }
+
+  @media (max-width: 700px) {
+    .tg-faq-grid { grid-template-columns: 1fr; }
+    .tg-cta-box { padding: 40px 24px; }
+    .tg-cta-form { flex-direction: column; }
+    .tg-cta-input { min-width: 100%; }
+  }
+</style>
+
+<div class="tg-cta-wrap">
+  <div class="tg-cta-inner">
+    <div class="tg-faq">
+      <div class="tg-faq-header">
+        <span class="tg-section-label">FAQ</span>
+        <h2 class="tg-section-title">Частые вопросы</h2>
+      </div>
+      <div class="tg-faq-grid">
+        <div class="tg-faq-item">
+          <p class="tg-faq-q">Зачем платить, если у меня уже есть Контур?</p>
+          <p class="tg-faq-a">Вы не платите за данные повторно. Платформа объединяет источники, убирает дубли и даёт единый workflow — то, чего нет ни у одного агрегатора по отдельности.</p>
+        </div>
+        <div class="tg-faq-item">
+          <p class="tg-faq-q">Какие агрегаторы можно подключить?</p>
+          <p class="tg-faq-a">Контур.Закупки, Seldon, ТендерГуру, Закупки360, Saby Trade и другие с REST API. Список расширяется — вы подключаете свой ключ.</p>
+        </div>
+        <div class="tg-faq-item">
+          <p class="tg-faq-q">Что если у меня нет подписки на агрегатор?</p>
+          <p class="tg-faq-a">Используйте встроенный тариф Pro: госзакупки и коммерческие площадки без отдельной подписки на Контур или Seldon.</p>
+        </div>
+        <div class="tg-faq-item">
+          <p class="tg-faq-q">Как работает дедупликация?</p>
+          <p class="tg-faq-a">Госзакупки объединяются по реестровому номеру ЕИС. Коммерческие — по связке заказчик + сумма + дата + нечёткое сравнение названия.</p>
+        </div>
+        <div class="tg-faq-item">
+          <p class="tg-faq-q">Это легально — использовать чужой API?</p>
+          <p class="tg-faq-a">Да. Вы подключаете свой API-ключ по своей лицензии. Мы — интегратор, как CRM-плагин. Данные не перепродаются.</p>
+        </div>
+        <div class="tg-faq-item">
+          <p class="tg-faq-q">Можно подключить несколько агрегаторов?</p>
+          <p class="tg-faq-a">Да, на тарифе Business — до 2 источников, на Enterprise — без ограничений. Именно здесь максимальная ценность дедупликации.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tg-cta-box" id="demo">
+      <div class="tg-cta-content">
+        <h2 class="tg-cta-title">Подключите первый источник за 2 минуты</h2>
+        <p class="tg-cta-sub">Оставьте email — пришлём доступ к демо и инструкцию по подключению вашего агрегатора или встроенного тарифа.</p>
+        <form class="tg-cta-form" action="#" method="post" onsubmit="return false;">
+          <input type="email" class="tg-cta-input" placeholder="work@company.ru" required>
+          <button type="submit" class="tg-cta-submit">Получить демо</button>
+        </form>
+        <p class="tg-cta-note">Бесплатный период 14 дней · Без привязки карты</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tg-footer">
+  <p style="margin:0 0 8px">© 2026 · Платформа агрегации тендеров</p>
+  <p style="margin:0"><a href="#">Политика конфиденциальности</a> · <a href="#">Документация API</a></p>
+</div>
