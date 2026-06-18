@@ -9,14 +9,16 @@
 
 Формат для Telegram: **1200×628 px**.
 
-### 6 SVG-вариантов
+### 6 PNG-превью (готовые)
 
-1. `svg/banner-01-voronka.svg` — «Все тендеры в одной воронке»
-2. `svg/banner-02-svoj-agregator.svg` — «Подключи свой Контур»
-3. `svg/banner-03-do-kontrakta.svg` — «От тендера до контракта»
-4. `svg/banner-04-vstroennyj-poisk.svg` — «Встроенный поиск закупок»
-5. `svg/banner-05-postavshchiki-kp.svg` — «Поставщики и оцифровка КП»
-6. `svg/banner-06-besplatno.svg` — «14 дней бесплатно»
+1. `telegram-banner-1-funnel.png`
+2. `telegram-banner-2-aggregator.png`
+3. `telegram-banner-3-full-cycle.png`
+4. `telegram-banner-4-goszakupki.png`
+5. `telegram-banner-5-postavshchiki.png`
+6. `telegram-banner-6-besplatno.png`
+
+Пересобрать PNG: `python3 tilda-landing/banners/make_banners.py`
 
 ### Как редактировать SVG
 
@@ -64,17 +66,21 @@
 
 ---
 
-### Вариант 4 — Встроенный поиск
+### Вариант 4 — Госзакупки
 
-**Заголовок:** `Поиск закупок без агрегатора`
+**Файл:** `telegram-banner-4-goszakupki.png`
 
-**Текст:** `Нет Контура или Seldon? В iStockLink есть встроенный поиск госзакупок и коммерции. Старт за 2 минуты.`
+**Заголовок:** `Госзакупки в iStockLink`
+
+**Текст:** `Подключите реестр ЕИС — извещения 44-ФЗ и 223-ФЗ в одной ленте рядом с агрегаторами.`
 
 **Кнопка:** `Начать бесплатно`
 
 ---
 
 ### Вариант 5 — Поставщики и КП
+
+**Файл:** `telegram-banner-5-postavshchiki.png`
 
 **Заголовок:** `Сравнивайте КП за минуты`
 
@@ -86,9 +92,11 @@
 
 ### Вариант 6 — Бесплатный период
 
+**Файл:** `telegram-banner-6-besplatno.png`
+
 **Заголовок:** `14 дней бесплатно`
 
-**Текст:** `Попробуйте iStockLink без карты: воронка торгов, уведомления и встроенный поиск закупок.`
+**Текст:** `Попробуйте iStockLink без карты: воронка торгов, уведомления и подключение госзакупок.`
 
 **Кнопка:** `Запросить демо`
 

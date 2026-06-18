@@ -164,13 +164,11 @@
     min-height: 220px;
   }
   .tg-core-icon {
-    width: 52px; height: 52px;
+    width: auto; height: 28px;
     margin: 0 auto 14px;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.15);
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
   }
+  .tg-core-icon img { height: 28px; width: auto; display: block; }
   .tg-core-title { font-size: 16px; font-weight: 800; margin: 0 0 8px; }
   .tg-core-steps { list-style: none; padding: 0; margin: 0; text-align: left; }
   .tg-core-steps li {
@@ -273,13 +271,13 @@
   <div class="tg-how-inner">
     <span class="tg-section-label">Как это работает</span>
     <h2 class="tg-section-title">Два способа подключения — одна платформа</h2>
-    <p class="tg-section-sub">Выберите, откуда iStockLink будет получать закупки. Дальше всё одинаково: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
+    <p class="tg-section-sub">Подключите агрегаторы по ключу или реестр госзакупок — iStockLink соберёт всё в одной ленте, воронке и задачах команды.</p>
 
     <div class="tg-modes">
       <div class="tg-mode-card highlight">
         <div class="tg-mode-num">1</div>
         <h3 class="tg-mode-title">Свой агрегатор</h3>
-        <p class="tg-mode-text">У вас уже есть подписка на Контур, Seldon, ТендерГуру или другой сервис? Подключите ключ доступа — закупки пойдут в iStockLink по вашей лицензии.</p>
+        <p class="tg-mode-text">Уже платите за Контур, Seldon, ТендерГуру или другой сервис? Подключите ключ доступа — закупки пойдут в iStockLink по вашей лицензии.</p>
         <ul class="tg-mode-list">
           <li>Данные по вашей подписке</li>
           <li>Можно подключить несколько сервисов</li>
@@ -288,12 +286,12 @@
       </div>
       <div class="tg-mode-card">
         <div class="tg-mode-num">2</div>
-        <h3 class="tg-mode-title">Встроенный поиск iStockLink</h3>
-        <p class="tg-mode-text">Нет своего агрегатора? Включите встроенный поиск — госзакупки и коммерческие площадки уже внутри платформы, отдельная подписка не нужна.</p>
+        <h3 class="tg-mode-title">Госзакупки</h3>
+        <p class="tg-mode-text">Подключите реестр госзакупок — извещения из ЕИС будут приходить в iStockLink наряду с данными из агрегаторов.</p>
         <ul class="tg-mode-list">
-          <li>Госзакупки и коммерция из коробки</li>
-          <li>Старт за 2 минуты</li>
-          <li>Тарифы «Старт» и «Про»</li>
+          <li>44-ФЗ и 223-ФЗ</li>
+          <li>Фильтры по регионам и ОКПД2</li>
+          <li>Работает вместе с агрегаторами</li>
         </ul>
       </div>
     </div>
@@ -324,10 +322,10 @@
             </div>
           </div>
           <div class="tg-source-card builtin">
-            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/istocklink-icon.png" alt="">
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef3ff;border-radius:8px;width:36px;height:36px;">🏛</div>
             <div>
-              <p class="tg-source-name">Поиск iStockLink</p>
-              <p class="tg-source-desc">встроенный источник</p>
+              <p class="tg-source-name">Госзакупки</p>
+              <p class="tg-source-desc">реестр ЕИС</p>
             </div>
           </div>
         </div>
@@ -339,8 +337,7 @@
         </div>
 
         <div class="tg-core-box">
-          <div class="tg-core-icon">⚙️</div>
-          <p class="tg-core-title">iStockLink</p>
+          <div class="tg-core-icon"><img src="https://kolomoets-netizen.github.io/Link/assets/istocklink-logo-white.svg" alt="iStockLink"></div>
           <ul class="tg-core-steps">
             <li>Сбор закупок из всех источников</li>
             <li>Единый формат карточки тендера</li>
@@ -392,8 +389,8 @@
     <div class="tg-steps-row">
       <div class="tg-step-card">
         <div class="tg-step-num">1</div>
-        <h3 class="tg-step-title">Выберите способ</h3>
-        <p class="tg-step-text">Подключите свой агрегатор по ключу или включите встроенный поиск iStockLink — настройка занимает пару минут.</p>
+        <h3 class="tg-step-title">Подключите источники</h3>
+        <p class="tg-step-text">Добавьте ключ агрегатора и/или госзакупки — настройка занимает пару минут.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">2</div>

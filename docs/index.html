@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iStockLink — от поиска тендера до контракта</title>
-  <meta name="description" content="iStockLink: сбор закупок с агрегаторов, воронка торгов, поставщики и оцифровка КП в одной платформе.">
-  <style>body{margin:0;padding:0;}</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iStockLink</title>
+<style>body{margin:0}</style>
 </head>
 <body>
 <!-- Tilda block: Hero -->
 <style>
   .tg-hero-wrap {
     --tg-primary: #1c50de;
-    --tg-primary-dark: #153fb8;
-    --tg-primary-light: #4d7aef;
-    --tg-bg: #f4f7ff;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -34,42 +30,15 @@
     background: radial-gradient(circle, rgba(28,80,222,0.18) 0%, transparent 70%);
     pointer-events: none;
   }
-  .tg-hero-wrap::after {
-    content: "";
-    position: absolute;
-    bottom: -100px; left: -60px;
-    width: 360px; height: 360px;
-    background: radial-gradient(circle, rgba(28,80,222,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
   .tg-hero-inner {
     max-width: 1120px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1fr 1.05fr;
     gap: 48px;
     align-items: center;
     position: relative;
     z-index: 1;
-  }
-  .tg-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .tg-brand img {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    object-fit: contain;
-  }
-  .tg-brand-name {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--tg-primary);
-    line-height: 1;
   }
   .tg-badge {
     display: inline-flex;
@@ -111,17 +80,11 @@
     color: var(--tg-muted);
     max-width: 540px;
   }
-  .tg-hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
+  .tg-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .tg-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     padding: 14px 24px;
     border-radius: 12px;
     font-size: 15px;
@@ -134,104 +97,86 @@
     color: #fff;
     box-shadow: 0 10px 30px rgba(28,80,222,0.28);
   }
-  .tg-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(28,80,222,0.34); }
+  .tg-btn-primary:hover { transform: translateY(-2px); }
   .tg-btn-secondary {
     background: #fff;
     color: var(--tg-primary);
     border: 1px solid rgba(28,80,222,0.22);
   }
-  .tg-btn-secondary:hover { transform: translateY(-2px); }
-  .tg-hero-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-  .tg-stat strong {
-    display: block;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--tg-text);
-    line-height: 1.2;
-  }
-  .tg-stat span {
-    font-size: 13px;
-    color: var(--tg-muted);
-  }
+
+  /* Illustration */
   .tg-hero-visual {
     background: #fff;
     border-radius: 24px;
     border: 1px solid rgba(28,80,222,0.12);
     box-shadow: 0 24px 60px rgba(15,23,42,0.08);
-    padding: 20px;
-    position: relative;
+    overflow: hidden;
   }
-  .tg-hero-visual-bar {
+  .tg-mock-head {
     display: flex;
-    gap: 6px;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #eef2ff;
-  }
-  .tg-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .tg-dot-r { background: #ff6b6b; }
-  .tg-dot-y { background: #ffd166; }
-  .tg-dot-g { background: #06d6a0; }
-  .tg-flow-mini {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    gap: 8px;
     align-items: center;
-    margin-bottom: 16px;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, #1c50de, #3b6df0);
+    color: #fff;
   }
-  .tg-flow-box {
-    background: linear-gradient(180deg, #f8faff 0%, #f1f5ff 100%);
-    border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 12px;
-    padding: 12px 10px;
-    text-align: center;
+  .tg-mock-head span { font-size: 13px; font-weight: 700; }
+  .tg-mock-dots { display: flex; gap: 5px; }
+  .tg-mock-dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.45); display: block; }
+  .tg-mock-body { padding: 18px; }
+  .tg-mock-label {
     font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin: 0 0 10px;
+  }
+  .tg-source-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .tg-src-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #f1f5ff;
+    border: 1px solid #e2e8f0;
+    font-size: 12px;
     font-weight: 600;
     color: #334155;
-    line-height: 1.3;
   }
-  .tg-flow-box.accent {
-    background: linear-gradient(135deg, #1c50de 0%, #3b6df0 100%);
-    color: #fff;
-    border: none;
-    box-shadow: 0 8px 20px rgba(28,80,222,0.25);
-  }
-  .tg-flow-arrow { color: #94a3b8; font-size: 14px; font-weight: 700; }
-  .tg-tender-list { display: flex; flex-direction: column; gap: 10px; }
-  .tg-tender-item {
+  .tg-src-chip img { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; }
+  .tg-src-chip.arrow { background: #1c50de; color: #fff; border: none; }
+  .tg-feed-item {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     gap: 12px;
     align-items: center;
-    padding: 12px 14px;
-    border-radius: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
     background: #fafbff;
     border: 1px solid #eef2ff;
+    margin-bottom: 10px;
   }
-  .tg-tender-icon {
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(28,80,222,0.12), rgba(28,80,222,0.06));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-  }
-  .tg-tender-title { font-size: 13px; font-weight: 600; color: #1e293b; margin: 0 0 2px; }
-  .tg-tender-meta { font-size: 11px; color: #94a3b8; margin: 0; }
-  .tg-tender-tags { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
-  .tg-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 7px;
-    border-radius: 6px;
-    background: rgba(28,80,222,0.08);
-    color: var(--tg-primary);
+  .tg-feed-item:last-child { margin-bottom: 0; }
+  .tg-feed-item.highlight { border-color: rgba(28,80,222,0.25); background: linear-gradient(90deg, #f8faff, #f1f5ff); }
+  .tg-feed-title { font-size: 14px; font-weight: 700; color: #1e293b; margin: 0 0 4px; }
+  .tg-feed-meta { font-size: 12px; color: #94a3b8; margin: 0; }
+  .tg-feed-stage {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
     white-space: nowrap;
   }
-  .tg-tag.status { background: rgba(6,214,160,0.12); color: #059669; }
+  .tg-feed-stage.new { background: rgba(28,80,222,0.1); color: #1c50de; }
+  .tg-feed-stage.work { background: rgba(6,214,160,0.12); color: #059669; }
+  .tg-feed-stage.deadline { background: rgba(255,209,102,0.2); color: #b45309; }
   @media (max-width: 900px) {
     .tg-hero-inner { grid-template-columns: 1fr; }
     .tg-hero-wrap { padding: 56px 20px 64px; }
@@ -241,69 +186,49 @@
 <div class="tg-hero-wrap">
   <div class="tg-hero-inner">
     <div>
-      <div class="tg-brand">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/istocklink-icon.png" alt="iStockLink">
-        <span class="tg-brand-name">iStockLink</span>
-      </div>
-      <div class="tg-badge"><span class="tg-badge-dot"></span>Закупки · воронка торгов · поставщики · КП</div>
+      <div class="tg-badge"><span class="tg-badge-dot"></span>Платформа для тендеров и закупок</div>
       <h1 class="tg-hero-title">От поиска тендера<br>до <span>контракта</span></h1>
-      <p class="tg-hero-sub">Собирайте закупки с агрегаторов, ведите воронку торгов, управляйте поставщиками и оцифровывайте коммерческие предложения — в одной платформе iStockLink.</p>
+      <p class="tg-hero-sub">Подключайте агрегаторы и госзакупки — все подходящие торги собираются в одной ленте. Ведите воронку, поставщиков и КП в iStockLink.</p>
       <div class="tg-hero-actions">
         <a href="#demo" class="tg-btn tg-btn-primary">Запросить демо</a>
         <a href="#how" class="tg-btn tg-btn-secondary">Как это работает</a>
       </div>
-      <div class="tg-hero-stats">
-        <div class="tg-stat"><strong>Воронка</strong><span>этапы участия в торгах</span></div>
-        <div class="tg-stat"><strong>Поставщики</strong><span>база и субподрядчики</span></div>
-        <div class="tg-stat"><strong>КП</strong><span>оцифровка предложений</span></div>
-      </div>
     </div>
 
     <div class="tg-hero-visual">
-      <div class="tg-hero-visual-bar">
-        <span class="tg-dot tg-dot-r"></span>
-        <span class="tg-dot tg-dot-y"></span>
-        <span class="tg-dot tg-dot-g"></span>
+      <div class="tg-mock-head">
+        <div class="tg-mock-dots"><i></i><i></i><i></i></div>
+        <span>Единая лента закупок</span>
       </div>
-      <div class="tg-flow-mini">
-        <div class="tg-flow-box">Контур</div>
-        <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box accent">iStock<br>Link</div>
-        <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box">Единая<br>лента</div>
-      </div>
-      <div class="tg-tender-list">
-        <div class="tg-tender-item">
-          <div class="tg-tender-icon">📋</div>
-          <div>
-            <p class="tg-tender-title">Поставка медоборудования</p>
-            <p class="tg-tender-meta">НМЦК 4,2 млн ₽ · 44-ФЗ · Москва</p>
-          </div>
-          <div class="tg-tender-tags">
-            <span class="tg-tag">Контур</span>
-            <span class="tg-tag status">в работе</span>
-          </div>
+      <div class="tg-mock-body">
+        <p class="tg-mock-label">Подключённые источники</p>
+        <div class="tg-source-row">
+          <span class="tg-src-chip"><img src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" alt="">Контур</span>
+          <span class="tg-src-chip"><img src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" alt="">Seldon</span>
+          <span class="tg-src-chip">🏛 Госзакупки</span>
+          <span class="tg-src-chip arrow">→ iStockLink</span>
         </div>
-        <div class="tg-tender-item">
-          <div class="tg-tender-icon">🏗️</div>
+        <p class="tg-mock-label">Ваша лента</p>
+        <div class="tg-feed-item highlight">
           <div>
-            <p class="tg-tender-title">Ремонт офисных помещений</p>
-            <p class="tg-tender-meta">Коммерция · СПб · до 28.06</p>
+            <p class="tg-feed-title">Поставка медоборудования</p>
+            <p class="tg-feed-meta">4,2 млн ₽ · 44-ФЗ · Москва · Контур</p>
           </div>
-          <div class="tg-tender-tags">
-            <span class="tg-tag">ТендерГуру</span>
-          </div>
+          <span class="tg-feed-stage work">Анализ</span>
         </div>
-        <div class="tg-tender-item">
-          <div class="tg-tender-icon">💻</div>
+        <div class="tg-feed-item">
           <div>
-            <p class="tg-tender-title">Лицензии ПО для госсектора</p>
-            <p class="tg-tender-meta">НМЦК 890 тыс. ₽ · 223-ФЗ</p>
+            <p class="tg-feed-title">Ремонт офисных помещений</p>
+            <p class="tg-feed-meta">1,1 млн ₽ · коммерция · СПб</p>
           </div>
-          <div class="tg-tender-tags">
-            <span class="tg-tag">Seldon</span>
-            <span class="tg-tag status">новый</span>
+          <span class="tg-feed-stage new">Новый</span>
+        </div>
+        <div class="tg-feed-item">
+          <div>
+            <p class="tg-feed-title">Лицензии ПО для госсектора</p>
+            <p class="tg-feed-meta">890 тыс. ₽ · 223-ФЗ · до 28.06</p>
           </div>
+          <span class="tg-feed-stage deadline">Подача</span>
         </div>
       </div>
     </div>
@@ -567,13 +492,11 @@
     min-height: 220px;
   }
   .tg-core-icon {
-    width: 52px; height: 52px;
+    width: auto; height: 28px;
     margin: 0 auto 14px;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.15);
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
   }
+  .tg-core-icon img { height: 28px; width: auto; display: block; }
   .tg-core-title { font-size: 16px; font-weight: 800; margin: 0 0 8px; }
   .tg-core-steps { list-style: none; padding: 0; margin: 0; text-align: left; }
   .tg-core-steps li {
@@ -676,13 +599,13 @@
   <div class="tg-how-inner">
     <span class="tg-section-label">Как это работает</span>
     <h2 class="tg-section-title">Два способа подключения — одна платформа</h2>
-    <p class="tg-section-sub">Выберите, откуда iStockLink будет получать закупки. Дальше всё одинаково: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
+    <p class="tg-section-sub">Подключите агрегаторы по ключу или реестр госзакупок — iStockLink соберёт всё в одной ленте, воронке и задачах команды.</p>
 
     <div class="tg-modes">
       <div class="tg-mode-card highlight">
         <div class="tg-mode-num">1</div>
         <h3 class="tg-mode-title">Свой агрегатор</h3>
-        <p class="tg-mode-text">У вас уже есть подписка на Контур, Seldon, ТендерГуру или другой сервис? Подключите ключ доступа — закупки пойдут в iStockLink по вашей лицензии.</p>
+        <p class="tg-mode-text">Уже платите за Контур, Seldon, ТендерГуру или другой сервис? Подключите ключ доступа — закупки пойдут в iStockLink по вашей лицензии.</p>
         <ul class="tg-mode-list">
           <li>Данные по вашей подписке</li>
           <li>Можно подключить несколько сервисов</li>
@@ -691,12 +614,12 @@
       </div>
       <div class="tg-mode-card">
         <div class="tg-mode-num">2</div>
-        <h3 class="tg-mode-title">Встроенный поиск iStockLink</h3>
-        <p class="tg-mode-text">Нет своего агрегатора? Включите встроенный поиск — госзакупки и коммерческие площадки уже внутри платформы, отдельная подписка не нужна.</p>
+        <h3 class="tg-mode-title">Госзакупки</h3>
+        <p class="tg-mode-text">Подключите реестр госзакупок — извещения из ЕИС будут приходить в iStockLink наряду с данными из агрегаторов.</p>
         <ul class="tg-mode-list">
-          <li>Госзакупки и коммерция из коробки</li>
-          <li>Старт за 2 минуты</li>
-          <li>Тарифы «Старт» и «Про»</li>
+          <li>44-ФЗ и 223-ФЗ</li>
+          <li>Фильтры по регионам и ОКПД2</li>
+          <li>Работает вместе с агрегаторами</li>
         </ul>
       </div>
     </div>
@@ -727,10 +650,10 @@
             </div>
           </div>
           <div class="tg-source-card builtin">
-            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/istocklink-icon.png" alt="">
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef3ff;border-radius:8px;width:36px;height:36px;">🏛</div>
             <div>
-              <p class="tg-source-name">Поиск iStockLink</p>
-              <p class="tg-source-desc">встроенный источник</p>
+              <p class="tg-source-name">Госзакупки</p>
+              <p class="tg-source-desc">реестр ЕИС</p>
             </div>
           </div>
         </div>
@@ -742,8 +665,7 @@
         </div>
 
         <div class="tg-core-box">
-          <div class="tg-core-icon">⚙️</div>
-          <p class="tg-core-title">iStockLink</p>
+          <div class="tg-core-icon"><img src="https://kolomoets-netizen.github.io/Link/assets/istocklink-logo-white.svg" alt="iStockLink"></div>
           <ul class="tg-core-steps">
             <li>Сбор закупок из всех источников</li>
             <li>Единый формат карточки тендера</li>
@@ -795,8 +717,8 @@
     <div class="tg-steps-row">
       <div class="tg-step-card">
         <div class="tg-step-num">1</div>
-        <h3 class="tg-step-title">Выберите способ</h3>
-        <p class="tg-step-text">Подключите свой агрегатор по ключу или включите встроенный поиск iStockLink — настройка занимает пару минут.</p>
+        <h3 class="tg-step-title">Подключите источники</h3>
+        <p class="tg-step-text">Добавьте ключ агрегатора и/или госзакупки — настройка занимает пару минут.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">2</div>
@@ -905,43 +827,61 @@
   }
   .tg-kanban {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+    align-items: stretch;
   }
   .tg-kanban-col {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 1px solid #e2e8f0;
-    min-height: 140px;
-    padding: 8px 6px;
+    min-height: 168px;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
   }
   .tg-kanban-head {
-    font-size: 9px; font-weight: 700;
+    font-size: 10px; font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
+    letter-spacing: 0.05em;
+    color: #64748b;
     text-align: center;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
     border-bottom: 1px solid #f1f5f9;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .tg-kanban-cards { flex: 1; display: flex; flex-direction: column; gap: 6px; }
   .tg-kanban-card {
     background: linear-gradient(135deg, #f8faff, #f1f5ff);
     border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 8px;
-    padding: 8px 6px;
-    font-size: 9px;
+    border-radius: 10px;
+    padding: 10px 8px;
+    font-size: 10px;
     font-weight: 600;
     color: #334155;
-    margin-bottom: 5px;
-    line-height: 1.3;
+    line-height: 1.35;
+    min-height: 52px;
   }
   .tg-kanban-card.active {
     background: linear-gradient(135deg, #1c50de, #3b6df0);
     color: #fff; border: none;
+    box-shadow: 0 6px 16px rgba(28,80,222,0.22);
   }
-  .tg-kanban-card .price { font-size: 8px; opacity: 0.8; margin-top: 2px; }
+  .tg-kanban-card .price { font-size: 9px; opacity: 0.85; margin-top: 4px; font-weight: 500; }
+  .tg-kanban-card.empty {
+    background: transparent;
+    border: 1px dashed #e2e8f0;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+  }
 
   .tg-side-panels { display: flex; flex-direction: column; gap: 14px; }
   .tg-panel {
@@ -1020,7 +960,7 @@
         <div class="tg-pillar-icon">📥</div>
         <span class="tg-pillar-tag">Сбор</span>
         <h3 class="tg-pillar-title">Агрегаторы</h3>
-        <p class="tg-pillar-text">Подключите свой сервис поиска или встроенный поиск iStockLink. Все закупки — в одной ленте.</p>
+        <p class="tg-pillar-text">Подключите агрегаторы и госзакупки — все торги собираются в одной ленте iStockLink.</p>
         <ul class="tg-pillar-list">
           <li>Контур, Seldon, ТендерГуру</li>
           <li>Фильтры и уведомления</li>
@@ -1057,24 +997,34 @@
         <div class="tg-kanban">
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
-            <div class="tg-kanban-card">Медоборудование<div class="price">4,2 млн</div></div>
-            <div class="tg-kanban-card">Лицензии ПО<div class="price">890 тыс.</div></div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card">Медоборудование<div class="price">4,2 млн ₽</div></div>
+              <div class="tg-kanban-card">Лицензии ПО<div class="price">890 тыс. ₽</div></div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Анализ</div>
-            <div class="tg-kanban-card active">Ремонт офиса<div class="price">1,1 млн</div></div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card active">Ремонт офиса<div class="price">1,1 млн ₽</div></div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подготовка</div>
-            <div class="tg-kanban-card">КП запрошено<div class="price">3 поставщика</div></div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card">КП от 3 поставщиков<div class="price">сбор предложений</div></div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подача</div>
-            <div class="tg-kanban-card">Дедлайн 28.06</div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card">Дедлайн<div class="price">28 июня</div></div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Контракт</div>
-            <div class="tg-kanban-card" style="opacity:.5">—</div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card empty">пусто</div>
+            </div>
           </div>
         </div>
         <p style="font-size:12px;color:#94a3b8;margin:0">Перетаскивайте карточки · назначайте ответственных · ставьте задачи к каждому этапу</p>
@@ -1211,9 +1161,9 @@
         <p class="tg-feat-text">Контур, Seldon, ТендерГуру, Закупки360, Саби — подключите ключ доступа и работайте по своей подписке.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">📦</div>
-        <h3 class="tg-feat-title">Встроенный поиск</h3>
-        <p class="tg-feat-text">Нет подписки на агрегатор? Включите встроенный поиск iStockLink: госзакупки и коммерческие площадки уже внутри.</p>
+        <div class="tg-feat-icon">🏛</div>
+        <h3 class="tg-feat-title">Госзакупки</h3>
+        <p class="tg-feat-text">Подключите реестр ЕИС — извещения по 44-ФЗ и 223-ФЗ приходят в iStockLink рядом с данными агрегаторов.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🔗</div>
@@ -1421,7 +1371,7 @@
       <div class="tg-audience-card">
         <div class="tg-audience-emoji">🚀</div>
         <h3 class="tg-audience-title">Малый бизнес</h3>
-        <p class="tg-audience-text">Нет своего агрегатора — начните со встроенного поиска. Госзакупки и коммерция из коробки.</p>
+        <p class="tg-audience-text">Нет своего агрегатора — подключите его через iStockLink со скидкой или начните с госзакупок.</p>
       </div>
       <div class="tg-audience-card">
         <div class="tg-audience-emoji">⚙️</div>
@@ -1440,9 +1390,9 @@
       <div class="tg-price-card">
         <p class="tg-price-name">Старт</p>
         <p class="tg-price-amount">0 ₽</p>
-        <p class="tg-price-desc">Попробовать на госзакупках</p>
+        <p class="tg-price-desc">Госзакупки и демо</p>
         <ul class="tg-price-list">
-          <li>Встроенный поиск (гос)</li>
+          <li>Подключение госзакупок</li>
           <li>До 3 поисковых шаблонов</li>
           <li>Уведомления на почту</li>
           <li class="off">Свой агрегатор</li>
@@ -1454,13 +1404,13 @@
       <div class="tg-price-card">
         <p class="tg-price-name">Про</p>
         <p class="tg-price-amount">4 900 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Без своего агрегатора</p>
+        <p class="tg-price-desc">Агрегатор со скидкой</p>
         <ul class="tg-price-list">
-          <li>Гос + коммерция (встроенный)</li>
+          <li>Госзакупки + коммерция</li>
+          <li>Подключение агрегатора со скидкой</li>
           <li>Безлимитные фильтры</li>
           <li>Воронка торгов</li>
           <li>Telegram-бот</li>
-          <li class="off">Подключение агрегатора</li>
         </ul>
         <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать Про</a>
       </div>
@@ -1667,7 +1617,7 @@
         </div>
         <div class="tg-faq-item">
           <p class="tg-faq-q">Что если у меня нет подписки на агрегатор?</p>
-          <p class="tg-faq-a">Включите встроенный поиск iStockLink на тарифе «Про»: госзакупки и коммерческие площадки без отдельной подписки на Контур или Seldon.</p>
+          <p class="tg-faq-a">Можно подключить агрегатор через iStockLink со скидкой — мы оформим доступ к Контур, Seldon или другому сервису. Либо начните с подключения госзакупок.</p>
         </div>
         <div class="tg-faq-item">
           <p class="tg-faq-q">Как работает объединение дублей?</p>
@@ -1687,7 +1637,7 @@
     <div class="tg-cta-box" id="demo">
       <div class="tg-cta-content">
         <h2 class="tg-cta-title">Подключите iStockLink за 2 минуты</h2>
-        <p class="tg-cta-sub">Оставьте email — пришлём доступ к демо и инструкцию: свой агрегатор или встроенный поиск.</p>
+        <p class="tg-cta-sub">Оставьте email — пришлём доступ к демо и инструкцию по подключению агрегатора или госзакупок.</p>
         <form class="tg-cta-form" action="#" method="post" onsubmit="return false;">
           <input type="email" class="tg-cta-input" placeholder="work@company.ru" required>
           <button type="submit" class="tg-cta-submit">Получить демо</button>
