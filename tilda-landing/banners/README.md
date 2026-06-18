@@ -29,8 +29,13 @@
 5. Текст — отдельные слои `headline`, `brand-block`, `visual` — можно менять шрифт, размер, формулировки
 6. Экспорт: File → Export → PNG, размер **1200×628**
 
-Пересобрать SVG из скрипта (если меняли шаблон):  
-`python3 tilda-landing/banners/svg/_generate.py`
+Пересобрать SVG: `python3 tilda-landing/banners/svg/generate_rich_banners.py`
+
+Экспорт PNG из SVG (опционально):
+```bash
+pip install cairosvg
+python3 -c "import cairosvg; cairosvg.svg2png(url='banner-01-voronka.svg', write_to='../telegram-banner-1-funnel.png', output_width=1200, output_height=628)"
+```
 
 ---
 

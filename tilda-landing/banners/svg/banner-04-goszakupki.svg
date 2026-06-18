@@ -36,9 +36,9 @@
 <path d="M40,500 C220,420 360,560 560,500 C760,440 940,380 1160,460" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
 </g>
 <g id="brand"><g transform="translate(56,42) scale(1.4)"><path d="M10.9507 5.57031V13.6455H14.4852C13.6015 14.6783 12.3393 15.3982 10.9507 15.586V19.9678C12.7495 19.8113 14.4536 19.2166 15.9368 18.1838C17.3885 17.1822 18.5246 15.8051 19.282 14.2401C19.4082 13.9585 19.5344 13.6455 19.6607 13.3325C19.7238 13.176 19.7238 12.9882 19.7238 12.8317V5.57031H10.9507Z" fill="#fff"/><path d="M9.278 0C6.75338 0.219092 4.4181 1.34585 2.68242 3.19249C0.946738 5.03914 0 7.44914 0 9.98433C0 12.5196 0.946738 14.9609 2.68242 16.8075C4.4181 18.6541 6.75338 19.7809 9.24648 20V0H9.278Z" fill="#fff"/></g><text x="108" y="62" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">iStockLink</text></g>
-<g id="headline"><text x="56" y="170" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800">14 дней</text>
-<text x="56" y="234" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800">бесплатно</text>
-<text x="56" y="310" fill="#dbeafe" font-family="Arial,Helvetica,sans-serif" font-size="24">Попробуйте без карты</text></g>
+<g id="headline"><text x="56" y="170" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800">Госзакупки</text>
+<text x="56" y="234" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800">в iStockLink</text>
+<text x="56" y="310" fill="#dbeafe" font-family="Arial,Helvetica,sans-serif" font-size="24">44-ФЗ · 223-ФЗ · фильтры</text></g>
 <g id="visual">
 <g filter="url(#shadow)">
   <rect x="580" y="72" width="560" height="484" rx="26" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.65" stroke-width="1.5"/>
@@ -47,13 +47,23 @@
   <circle cx="608" cy="98" r="6" fill="#ff6b6b"/>
   <circle cx="628" cy="98" r="6" fill="#ffd166"/>
   <circle cx="648" cy="98" r="6" fill="#06d6a0"/>
-  <text x="860.0" y="106" text-anchor="middle" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700">Демо-доступ</text>
+  <text x="860.0" y="106" text-anchor="middle" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700">Госзакупки · ЕИС</text>
 </g>
-<circle cx="860" cy="290" r="118" fill="none" stroke="#1c50de" stroke-width="4" opacity="0.35"/>
-<circle cx="860" cy="290" r="96" fill="#ffffff" filter="url(#soft)"/>
-<text x="860" y="282" text-anchor="middle" fill="#1c50de" font-family="Arial" font-size="72" font-weight="800">14</text>
-<text x="860" y="322" text-anchor="middle" fill="#64748b" font-family="Arial" font-size="20" font-weight="600">дней</text>
-<rect x="700" y="430" width="320" height="54" rx="27" fill="url(#cardHi)" filter="url(#soft)"/>
-<text x="860" y="463" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="18" font-weight="700">Запросить демо</text>
-<text x="860" y="510" text-anchor="middle" fill="#94a3b8" font-family="Arial" font-size="13">без привязки карты</text></g>
+<rect x="608" y="140" width="504" height="56" rx="14" fill="#eef3ff" stroke="#c7d7ff"/>
+<text x="630" y="175" fill="#1c50de" font-family="Arial" font-size="16" font-weight="700">🏛  Реестр подключён</text>
+<rect x="608" y="220" width="504" height="78" rx="16" fill="#ffffff" filter="url(#soft)"/>
+<text x="630" y="252" fill="#1e293b" font-family="Arial" font-size="14" font-weight="700">Медоборудование</text>
+<text x="630" y="274" fill="#64748b" font-family="Arial" font-size="11">4,2 млн · 44-ФЗ · Москва</text>
+<rect x="1000" y="244" width="90" height="30" rx="8" fill="#eef3ff"/>
+<text x="1045" y="264" text-anchor="middle" fill="#1c50de" font-family="Arial" font-size="11" font-weight="700">новый</text>
+<rect x="608" y="318" width="504" height="78" rx="16" fill="#ffffff" filter="url(#soft)"/>
+<text x="630" y="350" fill="#1e293b" font-family="Arial" font-size="14" font-weight="700">Лицензии ПО</text>
+<text x="630" y="372" fill="#64748b" font-family="Arial" font-size="11">890 тыс. · 223-ФЗ</text>
+<rect x="1000" y="342" width="90" height="30" rx="8" fill="#eef3ff"/>
+<text x="1045" y="362" text-anchor="middle" fill="#1c50de" font-family="Arial" font-size="11" font-weight="700">анализ</text>
+<rect x="608" y="416" width="504" height="78" rx="16" fill="#ffffff" filter="url(#soft)"/>
+<text x="630" y="448" fill="#1e293b" font-family="Arial" font-size="14" font-weight="700">Ремонт школы</text>
+<text x="630" y="470" fill="#64748b" font-family="Arial" font-size="11">2,1 млн · 44-ФЗ · СПб</text>
+<rect x="1000" y="440" width="90" height="30" rx="8" fill="#eef3ff"/>
+<text x="1045" y="460" text-anchor="middle" fill="#1c50de" font-family="Arial" font-size="11" font-weight="700">подача</text></g>
 </svg>

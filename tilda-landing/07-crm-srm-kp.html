@@ -75,74 +75,81 @@
     border: 1px solid rgba(28,80,222,0.12);
     border-radius: 24px;
     padding: 28px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 28px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
+  .tg-funnel-kanban-wrap { width: 100%; overflow-x: auto; }
   .tg-funnel-title {
     font-size: 15px; font-weight: 700; color: #1e293b;
     margin: 0 0 16px;
   }
   .tg-kanban {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 10px;
-    margin-bottom: 16px;
+    grid-template-columns: repeat(5, minmax(148px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
     align-items: stretch;
+    min-width: 760px;
   }
   .tg-kanban-col {
     background: #fff;
     border-radius: 14px;
     border: 1px solid #e2e8f0;
-    min-height: 168px;
-    padding: 10px 8px;
+    min-height: 156px;
+    padding: 10px 10px 12px;
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
   .tg-kanban-head {
-    font-size: 10px; font-weight: 700;
+    font-size: 9px; font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     color: #64748b;
     text-align: center;
     padding-bottom: 8px;
     border-bottom: 1px solid #f1f5f9;
     margin-bottom: 8px;
-    min-height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    line-height: 1.2;
   }
-  .tg-kanban-cards { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .tg-kanban-cards { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .tg-kanban-card {
     background: linear-gradient(135deg, #f8faff, #f1f5ff);
     border: 1px solid rgba(28,80,222,0.12);
     border-radius: 10px;
-    padding: 10px 8px;
-    font-size: 10px;
+    padding: 8px 8px;
+    font-size: 9px;
     font-weight: 600;
     color: #334155;
-    line-height: 1.35;
-    min-height: 52px;
+    line-height: 1.3;
+    min-height: 48px;
+    overflow: hidden;
+    word-break: break-word;
+    hyphens: auto;
   }
   .tg-kanban-card.active {
     background: linear-gradient(135deg, #1c50de, #3b6df0);
     color: #fff; border: none;
     box-shadow: 0 6px 16px rgba(28,80,222,0.22);
   }
-  .tg-kanban-card .price { font-size: 9px; opacity: 0.85; margin-top: 4px; font-weight: 500; }
+  .tg-kanban-card .price {
+    font-size: 8px; opacity: 0.85; margin-top: 3px;
+    font-weight: 500; line-height: 1.25;
+    word-break: break-word;
+  }
   .tg-kanban-card.empty {
     background: transparent;
     border: 1px dashed #e2e8f0;
     color: #cbd5e1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 48px; font-size: 9px;
   }
-
-  .tg-side-panels { display: flex; flex-direction: column; gap: 14px; }
+  .tg-side-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
   .tg-panel {
     background: #fff;
     border-radius: 14px;
@@ -197,11 +204,10 @@
 
   @media (max-width: 900px) {
     .tg-pillars { grid-template-columns: 1fr; }
-    .tg-funnel-board { grid-template-columns: 1fr; }
-    .tg-kanban { grid-template-columns: repeat(3, 1fr); }
+    .tg-side-panels { grid-template-columns: 1fr; }
+    .tg-kanban { min-width: 680px; }
   }
   @media (max-width: 560px) {
-    .tg-kanban { grid-template-columns: 1fr 1fr; }
     .tg-platform-wrap { padding: 56px 20px; }
   }
 </style>
@@ -251,42 +257,42 @@
     </div>
 
     <div class="tg-funnel-board">
-      <div>
+      <div class="tg-funnel-kanban-wrap">
         <p class="tg-funnel-title">Воронка участия в торгах</p>
         <div class="tg-kanban">
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card">Медоборудование<div class="price">4,2 млн ₽</div></div>
-              <div class="tg-kanban-card">Лицензии ПО<div class="price">890 тыс. ₽</div></div>
+              <div class="tg-kanban-card">Медтехника<div class="price">4,2 млн</div></div>
+              <div class="tg-kanban-card">Лицензии<div class="price">890 тыс.</div></div>
             </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Анализ</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card active">Ремонт офиса<div class="price">1,1 млн ₽</div></div>
+              <div class="tg-kanban-card active">Ремонт<div class="price">1,1 млн</div></div>
             </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подготовка</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card">КП от 3 поставщиков<div class="price">сбор предложений</div></div>
+              <div class="tg-kanban-card">3 КП<div class="price">сбор</div></div>
             </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подача</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card">Дедлайн<div class="price">28 июня</div></div>
+              <div class="tg-kanban-card">Срок<div class="price">28.06</div></div>
             </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Контракт</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card empty">пусто</div>
+              <div class="tg-kanban-card empty">—</div>
             </div>
           </div>
         </div>
-        <p style="font-size:12px;color:#94a3b8;margin:0">Перетаскивайте карточки · назначайте ответственных · ставьте задачи к каждому этапу</p>
+        <p style="font-size:12px;color:#94a3b8;margin:0">Перетаскивайте карточки · назначайте ответственных · ставьте задачи</p>
       </div>
 
       <div class="tg-side-panels">
