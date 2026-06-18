@@ -1,4 +1,4 @@
-<!-- Tilda block: For whom + Pricing -->
+<!-- Tilda block: Pricing -->
 <style>
   .tg-price-wrap {
     --tg-primary: #1c50de;
@@ -12,22 +12,6 @@
   }
   .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
   .tg-price-inner { max-width: 1120px; margin: 0 auto; }
-
-  .tg-audience {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 64px;
-  }
-  .tg-audience-card {
-    border-radius: 18px;
-    padding: 28px 24px;
-    background: linear-gradient(145deg, #f8faff, #fff);
-    border: 1px solid #e8edf5;
-  }
-  .tg-audience-emoji { font-size: 32px; margin-bottom: 12px; }
-  .tg-audience-title { font-size: 16px; font-weight: 700; color: #1e293b; margin: 0 0 8px; }
-  .tg-audience-text { font-size: 14px; line-height: 1.55; color: #64748b; margin: 0; }
 
   .tg-price-header { text-align: center; margin-bottom: 40px; }
   .tg-section-label {
@@ -145,37 +129,17 @@
   .tg-price-btn:hover { transform: translateY(-2px); }
 
   @media (max-width: 960px) {
-    .tg-audience { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
     .tg-pricing-grid { grid-template-columns: 1fr 1fr; }
     .tg-price-card.featured { transform: none; }
   }
   @media (max-width: 560px) {
     .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
     .tg-price-wrap { padding: 48px 20px 56px; }
-    .tg-audience { margin-bottom: 40px; }
   }
 </style>
 
 <div class="tg-price-wrap">
   <div class="tg-price-inner">
-    <div class="tg-audience">
-      <div class="tg-audience-card">
-        <div class="tg-audience-emoji">🏢</div>
-        <h3 class="tg-audience-title">Тендерный отдел</h3>
-        <p class="tg-audience-text">Уже платите за Контур или Seldon — подключите ключ и ведите все торги в единой воронке iStockLink для всей команды.</p>
-      </div>
-      <div class="tg-audience-card">
-        <div class="tg-audience-emoji">🚀</div>
-        <h3 class="tg-audience-title">Малый бизнес</h3>
-        <p class="tg-audience-text">Нет своего агрегатора — подключите его через iStockLink со скидкой или начните с госзакупок.</p>
-      </div>
-      <div class="tg-audience-card">
-        <div class="tg-audience-emoji">⚙️</div>
-        <h3 class="tg-audience-title">Компании с несколькими источниками</h3>
-        <p class="tg-audience-text">Подключите 2–3 агрегатора и получите одну ленту, одну воронку и единую базу поставщиков.</p>
-      </div>
-    </div>
-
     <div class="tg-price-header">
       <span class="tg-section-label">Тариф</span>
       <h2 class="tg-section-title">Специальное предложение</h2>
@@ -195,7 +159,7 @@
           <li>База поставщиков и КП</li>
           <li>Командный доступ</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Оформить за год</a>
+        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Оформить на год</a>
       </div>
 
       <div class="tg-price-card">

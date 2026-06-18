@@ -79,7 +79,13 @@
     flex-direction: column;
     gap: 24px;
   }
-  .tg-funnel-kanban-wrap { width: 100%; overflow-x: auto; }
+  .tg-funnel-kanban-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tg-kanban-scroll-hint {
+    display: none;
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 0 0 12px;
+  }
   .tg-funnel-title {
     font-size: 15px; font-weight: 700; color: #1e293b;
     margin: 0 0 16px;
@@ -215,40 +221,37 @@
     .tg-pillars { grid-template-columns: 1fr; gap: 16px; }
     .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
     .tg-funnel-board { padding: 20px; gap: 20px; }
-  }
-  @media (max-width: 768px) {
-    .tg-funnel-kanban-wrap { overflow-x: visible; }
+    .tg-kanban-scroll-hint { display: block; }
+    .tg-funnel-kanban-wrap {
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 16px;
+      margin: 0 -8px;
+      padding: 0 8px 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(28,80,222,0.25) transparent;
+    }
+    .tg-funnel-kanban-wrap::-webkit-scrollbar { height: 4px; }
+    .tg-funnel-kanban-wrap::-webkit-scrollbar-thumb {
+      background: rgba(28,80,222,0.25);
+      border-radius: 4px;
+    }
     .tg-kanban {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      flex-direction: row;
+      gap: 12px;
       min-width: 0;
+      width: max-content;
+      margin-bottom: 12px;
     }
     .tg-kanban-col {
-      min-height: auto;
+      flex: 0 0 min(76vw, 280px);
+      scroll-snap-align: start;
+      min-height: 160px;
     }
-    .tg-kanban-col:not(:last-child)::after {
-      content: "↓";
-      display: block;
-      text-align: center;
-      color: var(--tg-primary);
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1;
-      padding: 10px 0 6px;
-    }
-    .tg-kanban-head {
-      text-align: left;
-      font-size: 11px;
-    }
-    .tg-kanban-card {
-      font-size: 13px;
-      min-height: auto;
-      padding: 12px;
-    }
-    .tg-kanban-card .tg-card-title { font-size: 13px; }
-    .tg-kanban-card .tg-card-field { font-size: 12px; }
-    .tg-kanban-card.empty { min-height: 40px; }
+    .tg-kanban-head { font-size: 11px; }
+    .tg-kanban-card { font-size: 12px; padding: 10px; min-height: 52px; }
+    .tg-kanban-card .tg-card-title { font-size: 12px; }
+    .tg-kanban-card .tg-card-field { font-size: 11px; }
   }
   @media (max-width: 560px) {
     .tg-platform-wrap { padding: 48px 20px 56px; }
@@ -304,6 +307,7 @@
     <div class="tg-funnel-board">
       <div class="tg-funnel-kanban-wrap">
         <p class="tg-funnel-title">Воронка участия в торгах</p>
+        <p class="tg-kanban-scroll-hint">Листайте колонки →</p>
         <div class="tg-kanban">
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
