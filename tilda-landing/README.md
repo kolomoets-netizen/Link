@@ -14,25 +14,25 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | 6 | `04-audience-pricing.html` | Для кого + тарифы |
 | 7 | `05-faq-cta.html` | FAQ + CTA + футер |
 
-## Превью на планшете / телефоне (без сервера)
+## Превью на планшете / телефоне
 
-Откройте в браузере одну ссылку — всё в одном файле, сервер не нужен:
+### Рабочая ссылка (GitHub Pages)
 
 **https://kolomoets-netizen.github.io/Link/**
 
-(после включения GitHub Pages в настройках репозитория)
+Откройте в Safari или Chrome на планшете — сервер не нужен.
+
+> Если видите 404: подождите 2–3 минуты после пуша в `main` (сайт собирается автоматически из папки `docs/`).
+
+### Скачать файл
+
+https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standalone.html
+
+Скачайте → откройте в браузере планшета через «Файлы».
 
 ### Локально на компьютере
 
-Файл **`preview-standalone.html`** — все блоки в одном файле. Откройте двойным кликом в Chrome/Safari.
-
-### Локальный сервер (опционально)
-
-```bash
-cd tilda-landing
-python3 -m http.server 8080
-# http://localhost:8080/preview.html
-```
+Файл `preview-standalone.html` — откройте двойным кликом.
 
 ## Как вставить в Tilda
 
