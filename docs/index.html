@@ -1195,7 +1195,7 @@
       <div class="tg-feat-card">
         <div class="tg-feat-icon">📋</div>
         <h3 class="tg-feat-title">Воронка торгов</h3>
-        <p class="tg-feat-text">Доска по этапам: новый → анализ → подготовка → подача → контракт. Задачи, дедлайны, ответственные.</p>
+        <p class="tg-feat-text">Доска по вашим этапам. Задачи, дедлайны, ответственные.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🤝</div>
@@ -1205,7 +1205,7 @@
       <div class="tg-feat-card">
         <div class="tg-feat-icon">📄</div>
         <h3 class="tg-feat-title">Оцифровка КП</h3>
-        <p class="tg-feat-text">Загружайте PDF и Excel — сервис извлечёт цены, сроки и позиции для сравнения предложений.</p>
+        <p class="tg-feat-text">Сервис извлечёт цены, сроки и позиции из коммерческих предложений для сравнения.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🔔</div>
@@ -1261,20 +1261,55 @@
   }
 
   .tg-price-offer-plaque {
-    display: block;
-    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 14px;
     max-width: 100%;
     margin: 0 auto 36px;
-    padding: 12px 28px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 50%, #3b6df0 100%);
-    color: #fff;
-    font-size: 15px;
+    padding: 14px 20px 14px 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 55%, #fed7aa 100%);
+    border: 2px solid #fdba74;
+    box-shadow: 0 14px 36px rgba(234, 88, 12, 0.16);
+    position: relative;
+    overflow: hidden;
+  }
+  .tg-price-offer-plaque::before {
+    content: "";
+    position: absolute;
+    top: -40px; right: -20px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .tg-price-offer-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .tg-price-offer-label {
+    font-size: 16px;
     font-weight: 800;
+    color: #9a3412;
     letter-spacing: -0.01em;
-    text-align: center;
-    box-shadow: 0 16px 40px rgba(28,80,222,0.28);
-    border: 1px solid rgba(255,255,255,0.15);
+    position: relative;
+    z-index: 1;
+  }
+  .tg-price-offer-date {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #fb923c 0%, #f97316 45%, #ea580c 100%);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(234, 88, 12, 0.32);
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
   }
 
   .tg-pricing-grid {
@@ -1376,8 +1411,9 @@
     .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
     .tg-price-wrap { padding: 48px 20px 56px; }
     .tg-price-offer-plaque {
-      padding: 12px 22px;
+      padding: 14px 16px;
       margin-bottom: 28px;
+      gap: 8px 12px;
     }
   }
 </style>
@@ -1390,7 +1426,11 @@
       <p class="tg-section-sub">Полный доступ к iStockLink: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
-    <div class="tg-price-offer-plaque">Специальное предложение</div>
+    <div class="tg-price-offer-plaque">
+      <span class="tg-price-offer-icon" aria-hidden="true">⏳</span>
+      <span class="tg-price-offer-label">Специальное предложение</span>
+      <span class="tg-price-offer-date">до 31.07.2026</span>
+    </div>
 
     <div class="tg-pricing-grid">
       <div class="tg-price-card featured">
