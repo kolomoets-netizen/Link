@@ -19,8 +19,9 @@ jobs:
 
       - name: Prepare site
         run: |
-          mkdir -p public
+          mkdir -p public/assets
           cp tilda-landing/preview-standalone.html public/index.html
+          cp -r tilda-landing/assets/* public/assets/
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4

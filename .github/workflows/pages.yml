@@ -29,8 +29,9 @@ jobs:
 
       - name: Build preview site
         run: |
-          mkdir -p _site
+          mkdir -p _site/assets
           cp tilda-landing/preview-standalone.html _site/index.html
+          cp -r tilda-landing/assets/* _site/assets/
           cp -r tilda-landing/*.html _site/ 2>/dev/null || true
 
       - uses: actions/configure-pages@v5

@@ -7,10 +7,10 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | № | Файл | Секция |
 |---|------|--------|
 | 1 | `01-hero.html` | Hero + мини-превью ленты |
-| 2 | `06-integrations.html` | Полоса интеграций |
+| 2 | `06-integrations.html` | Поддерживаемые агрегаторы |
 | 3 | `02-how-it-works.html` | Как работает (главная схема) |
-| 4 | `07-crm-srm-kp.html` | CRM-воронка + SRM + оцифровка КП |
-| 5 | `03-features.html` | Возможности + визуал дедупликации |
+| 4 | `07-crm-srm-kp.html` | Воронка торгов + поставщики + оцифровка КП |
+| 5 | `03-features.html` | Возможности платформы |
 | 6 | `04-audience-pricing.html` | Для кого + тарифы |
 | 7 | `05-faq-cta.html` | FAQ + CTA + футер |
 
@@ -43,7 +43,7 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 
 ## Кастомизация
 
-- **Название продукта**: замените «Платформа агрегации тендеров» в hero и footer на своё имя
+- **Название продукта**: iStockLink — логотип в `assets/istocklink-icon.png`
 - **Цены**: отредактируйте в `04-audience-pricing.html`
 - **Форма CTA**: в `05-faq-cta.html` замените `action="#"` на URL формы Tilda или webhook (AmoCRM, Битрикс)
 - **Цвет**: основной `#1c50de` — везде через CSS-переменную `--tg-primary`

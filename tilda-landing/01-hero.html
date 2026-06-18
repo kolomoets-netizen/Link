@@ -42,6 +42,25 @@
     position: relative;
     z-index: 1;
   }
+  .tg-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .tg-brand img {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    object-fit: contain;
+  }
+  .tg-brand-name {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--tg-primary);
+    line-height: 1;
+  }
   .tg-badge {
     display: inline-flex;
     align-items: center;
@@ -202,7 +221,7 @@
     color: var(--tg-primary);
     white-space: nowrap;
   }
-  .tg-tag.dedup { background: rgba(6,214,160,0.12); color: #059669; }
+  .tg-tag.status { background: rgba(6,214,160,0.12); color: #059669; }
   @media (max-width: 900px) {
     .tg-hero-inner { grid-template-columns: 1fr; }
     .tg-hero-wrap { padding: 56px 20px 64px; }
@@ -212,17 +231,21 @@
 <div class="tg-hero-wrap">
   <div class="tg-hero-inner">
     <div>
-      <div class="tg-badge"><span class="tg-badge-dot"></span>Тендерная CRM + SRM + агрегация закупок</div>
+      <div class="tg-brand">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/istocklink-icon.png" alt="iStockLink">
+        <span class="tg-brand-name">iStockLink</span>
+      </div>
+      <div class="tg-badge"><span class="tg-badge-dot"></span>Закупки · воронка торгов · поставщики · КП</div>
       <h1 class="tg-hero-title">От поиска тендера<br>до <span>контракта</span></h1>
-      <p class="tg-hero-sub">Собирайте закупки с любых агрегаторов без дублей, ведите воронку торгов, управляйте поставщиками и оцифровывайте коммерческие предложения — в одной платформе.</p>
+      <p class="tg-hero-sub">Собирайте закупки с агрегаторов, ведите воронку торгов, управляйте поставщиками и оцифровывайте коммерческие предложения — в одной платформе iStockLink.</p>
       <div class="tg-hero-actions">
         <a href="#demo" class="tg-btn tg-btn-primary">Запросить демо</a>
         <a href="#how" class="tg-btn tg-btn-secondary">Как это работает</a>
       </div>
       <div class="tg-hero-stats">
-        <div class="tg-stat"><strong>CRM</strong><span>воронка торгов</span></div>
-        <div class="tg-stat"><strong>SRM</strong><span>база поставщиков</span></div>
-        <div class="tg-stat"><strong>AI</strong><span>оцифровка КП</span></div>
+        <div class="tg-stat"><strong>Воронка</strong><span>этапы участия в торгах</span></div>
+        <div class="tg-stat"><strong>Поставщики</strong><span>база и субподрядчики</span></div>
+        <div class="tg-stat"><strong>КП</strong><span>оцифровка предложений</span></div>
       </div>
     </div>
 
@@ -235,9 +258,9 @@
       <div class="tg-flow-mini">
         <div class="tg-flow-box">Контур</div>
         <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box accent">Ваш<br>сервис</div>
+        <div class="tg-flow-box accent">iStock<br>Link</div>
         <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box">1 лента</div>
+        <div class="tg-flow-box">Единая<br>лента</div>
       </div>
       <div class="tg-tender-list">
         <div class="tg-tender-item">
@@ -248,8 +271,7 @@
           </div>
           <div class="tg-tender-tags">
             <span class="tg-tag">Контур</span>
-            <span class="tg-tag">ГосПлан</span>
-            <span class="tg-tag dedup">1 запись</span>
+            <span class="tg-tag status">в работе</span>
           </div>
         </div>
         <div class="tg-tender-item">
@@ -270,7 +292,7 @@
           </div>
           <div class="tg-tender-tags">
             <span class="tg-tag">Seldon</span>
-            <span class="tg-tag dedup">объединено</span>
+            <span class="tg-tag status">новый</span>
           </div>
         </div>
       </div>

@@ -3,29 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тендерная платформа — превью лендинга</title>
-  <style>
-    body { margin: 0; background: #e8edf5; }
-    .preview-bar {
-      position: sticky; top: 0; z-index: 99999;
-      background: #0f172a; color: #fff;
-      padding: 12px 16px;
-      font-family: system-ui, sans-serif;
-      font-size: 13px;
-      text-align: center;
-    }
-    .preview-bar strong { color: #7aa2ff; }
-    .preview-label {
-      background: #1c50de; color: #fff;
-      padding: 8px 16px; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      font-family: system-ui, sans-serif;
-    }
-  </style>
+  <title>iStockLink — от поиска тендера до контракта</title>
+  <meta name="description" content="iStockLink: сбор закупок с агрегаторов, воронка торгов, поставщики и оцифровка КП в одной платформе.">
+  <style>body{margin:0;padding:0;}</style>
 </head>
 <body>
-  <div class="preview-bar"><strong>Превью лендинга</strong> · откройте на любом устройстве, сервер не нужен</div>
-  <div class="preview-label">01 — Hero</div>
 <!-- Tilda block: Hero -->
 <style>
   .tg-hero-wrap {
@@ -69,6 +51,25 @@
     align-items: center;
     position: relative;
     z-index: 1;
+  }
+  .tg-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .tg-brand img {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    object-fit: contain;
+  }
+  .tg-brand-name {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--tg-primary);
+    line-height: 1;
   }
   .tg-badge {
     display: inline-flex;
@@ -230,7 +231,7 @@
     color: var(--tg-primary);
     white-space: nowrap;
   }
-  .tg-tag.dedup { background: rgba(6,214,160,0.12); color: #059669; }
+  .tg-tag.status { background: rgba(6,214,160,0.12); color: #059669; }
   @media (max-width: 900px) {
     .tg-hero-inner { grid-template-columns: 1fr; }
     .tg-hero-wrap { padding: 56px 20px 64px; }
@@ -240,17 +241,21 @@
 <div class="tg-hero-wrap">
   <div class="tg-hero-inner">
     <div>
-      <div class="tg-badge"><span class="tg-badge-dot"></span>Тендерная CRM + SRM + агрегация закупок</div>
+      <div class="tg-brand">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/istocklink-icon.png" alt="iStockLink">
+        <span class="tg-brand-name">iStockLink</span>
+      </div>
+      <div class="tg-badge"><span class="tg-badge-dot"></span>Закупки · воронка торгов · поставщики · КП</div>
       <h1 class="tg-hero-title">От поиска тендера<br>до <span>контракта</span></h1>
-      <p class="tg-hero-sub">Собирайте закупки с любых агрегаторов без дублей, ведите воронку торгов, управляйте поставщиками и оцифровывайте коммерческие предложения — в одной платформе.</p>
+      <p class="tg-hero-sub">Собирайте закупки с агрегаторов, ведите воронку торгов, управляйте поставщиками и оцифровывайте коммерческие предложения — в одной платформе iStockLink.</p>
       <div class="tg-hero-actions">
         <a href="#demo" class="tg-btn tg-btn-primary">Запросить демо</a>
         <a href="#how" class="tg-btn tg-btn-secondary">Как это работает</a>
       </div>
       <div class="tg-hero-stats">
-        <div class="tg-stat"><strong>CRM</strong><span>воронка торгов</span></div>
-        <div class="tg-stat"><strong>SRM</strong><span>база поставщиков</span></div>
-        <div class="tg-stat"><strong>AI</strong><span>оцифровка КП</span></div>
+        <div class="tg-stat"><strong>Воронка</strong><span>этапы участия в торгах</span></div>
+        <div class="tg-stat"><strong>Поставщики</strong><span>база и субподрядчики</span></div>
+        <div class="tg-stat"><strong>КП</strong><span>оцифровка предложений</span></div>
       </div>
     </div>
 
@@ -263,9 +268,9 @@
       <div class="tg-flow-mini">
         <div class="tg-flow-box">Контур</div>
         <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box accent">Ваш<br>сервис</div>
+        <div class="tg-flow-box accent">iStock<br>Link</div>
         <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box">1 лента</div>
+        <div class="tg-flow-box">Единая<br>лента</div>
       </div>
       <div class="tg-tender-list">
         <div class="tg-tender-item">
@@ -276,8 +281,7 @@
           </div>
           <div class="tg-tender-tags">
             <span class="tg-tag">Контур</span>
-            <span class="tg-tag">ГосПлан</span>
-            <span class="tg-tag dedup">1 запись</span>
+            <span class="tg-tag status">в работе</span>
           </div>
         </div>
         <div class="tg-tender-item">
@@ -298,7 +302,7 @@
           </div>
           <div class="tg-tender-tags">
             <span class="tg-tag">Seldon</span>
-            <span class="tg-tag dedup">объединено</span>
+            <span class="tg-tag status">новый</span>
           </div>
         </div>
       </div>
@@ -306,8 +310,7 @@
   </div>
 </div>
 
-  <div class="preview-label">06 — Интеграции</div>
-<!-- Tilda block: Integrations strip -->
+<!-- Tilda block: Aggregators strip -->
 <style>
   .tg-logos-wrap {
     --tg-primary: #1c50de;
@@ -338,12 +341,12 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 12px 16px;
+    gap: 14px 18px;
   }
   .tg-logo-pill {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 10px 18px;
     border-radius: 12px;
     background: #f8faff;
@@ -357,37 +360,47 @@
     border-color: rgba(28,80,222,0.25);
     box-shadow: 0 4px 12px rgba(28,80,222,0.08);
   }
-  .tg-logo-pill .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1c50de, #4d7aef);
-  }
-  .tg-logo-pill.builtin {
-    border-style: dashed;
-    border-color: rgba(28,80,222,0.3);
-    color: var(--tg-primary);
+  .tg-logo-pill img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: contain;
+    flex-shrink: 0;
   }
 </style>
 
 <div class="tg-logos-wrap">
   <div class="tg-logos-inner">
-    <p class="tg-logos-title">Поддерживаемые источники и интеграции</p>
+    <p class="tg-logos-title">Поддерживаемые агрегаторы закупок</p>
     <div class="tg-logos-row">
-      <span class="tg-logo-pill"><span class="dot"></span>Контур.Закупки</span>
-      <span class="tg-logo-pill"><span class="dot"></span>Seldon</span>
-      <span class="tg-logo-pill"><span class="dot"></span>ТендерГуру</span>
-      <span class="tg-logo-pill"><span class="dot"></span>Закупки360</span>
-      <span class="tg-logo-pill"><span class="dot"></span>Saby Trade</span>
-      <span class="tg-logo-pill builtin"><span class="dot"></span>ГосПлан API</span>
-      <span class="tg-logo-pill"><span class="dot"></span>1С</span>
-      <span class="tg-logo-pill"><span class="dot"></span>Битрикс24</span>
-      <span class="tg-logo-pill"><span class="dot"></span>amoCRM</span>
-      <span class="tg-logo-pill"><span class="dot"></span>Telegram</span>
+      <span class="tg-logo-pill">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" alt="Контур.Закупки">
+        Контур.Закупки
+      </span>
+      <span class="tg-logo-pill">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" alt="Seldon">
+        Seldon
+      </span>
+      <span class="tg-logo-pill">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/tenderguru.png" alt="ТендерГуру">
+        ТендерГуру
+      </span>
+      <span class="tg-logo-pill">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/zakupki360.png" alt="Закупки360">
+        Закупки360
+      </span>
+      <span class="tg-logo-pill">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/saby.png" alt="Саби">
+        Саби
+      </span>
+      <span class="tg-logo-pill">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/bicotender.png" alt="Бикотендер">
+        Бикотендер
+      </span>
     </div>
   </div>
 </div>
 
-  <div class="preview-label">02 — Как работает</div>
 <!-- Tilda block: How it works -->
 <style>
   .tg-how-wrap {
@@ -424,10 +437,50 @@
     font-size: 17px;
     line-height: 1.6;
     color: var(--tg-muted);
-    max-width: 640px;
+    max-width: 720px;
   }
 
-  /* Main diagram */
+  .tg-modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .tg-mode-card {
+    border-radius: 20px;
+    padding: 28px 24px;
+    border: 2px solid #e8edf5;
+    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+    position: relative;
+  }
+  .tg-mode-card.highlight {
+    border-color: var(--tg-primary);
+    box-shadow: 0 12px 32px rgba(28,80,222,0.12);
+  }
+  .tg-mode-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--tg-primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .tg-mode-title { font-size: 18px; font-weight: 800; color: #1e293b; margin: 0 0 10px; }
+  .tg-mode-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0 0 14px; }
+  .tg-mode-list { list-style: none; padding: 0; margin: 0; }
+  .tg-mode-list li {
+    font-size: 13px; color: #475569;
+    padding: 5px 0 5px 18px; position: relative;
+  }
+  .tg-mode-list li::before {
+    content: "→"; position: absolute; left: 0;
+    color: var(--tg-primary); font-weight: 700;
+  }
+
   .tg-diagram {
     background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
     border: 1px solid rgba(28,80,222,0.1);
@@ -436,13 +489,6 @@
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
-  }
-  .tg-diagram::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(28,80,222,0.06) 0%, transparent 60%);
-    pointer-events: none;
   }
   .tg-diagram-grid {
     display: grid;
@@ -466,15 +512,10 @@
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 14px;
-    padding: 14px 16px;
+    padding: 12px 14px;
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .tg-source-card:hover {
-    border-color: rgba(28,80,222,0.3);
-    box-shadow: 0 8px 24px rgba(28,80,222,0.08);
   }
   .tg-source-card.builtin {
     border-style: dashed;
@@ -482,13 +523,9 @@
     background: linear-gradient(135deg, rgba(28,80,222,0.04), rgba(28,80,222,0.01));
   }
   .tg-source-logo {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #eef3ff, #e0eaff);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--tg-primary);
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    object-fit: contain;
     flex-shrink: 0;
   }
   .tg-source-name { font-size: 13px; font-weight: 700; color: #1e293b; margin: 0; }
@@ -598,7 +635,6 @@
     color: var(--tg-primary);
   }
 
-  /* Steps row */
   .tg-steps-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -609,7 +645,6 @@
     border: 1px solid #e8edf5;
     border-radius: 16px;
     padding: 24px 20px;
-    position: relative;
   }
   .tg-step-num {
     width: 32px; height: 32px;
@@ -625,10 +660,8 @@
   .tg-step-text { font-size: 13px; line-height: 1.55; color: #64748b; margin: 0; }
 
   @media (max-width: 960px) {
-    .tg-diagram-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
+    .tg-modes { grid-template-columns: 1fr; }
+    .tg-diagram-grid { grid-template-columns: 1fr; gap: 24px; }
     .tg-diagram-arrow { flex-direction: row; min-width: auto; }
     .tg-diagram-arrow-line { width: 40px; height: 2px; }
     .tg-steps-row { grid-template-columns: 1fr 1fr; }
@@ -642,106 +675,117 @@
 <div class="tg-how-wrap" id="how">
   <div class="tg-how-inner">
     <span class="tg-section-label">Как это работает</span>
-    <h2 class="tg-section-title">Два режима — один движок</h2>
-    <p class="tg-section-sub">Пользователь подключает свой агрегатор по API-ключу или использует встроенный источник. Все данные проходят через нормализацию и дедупликацию — на выходе единая лента без повторов.</p>
+    <h2 class="tg-section-title">Два способа подключения — одна платформа</h2>
+    <p class="tg-section-sub">Выберите, откуда iStockLink будет получать закупки. Дальше всё одинаково: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
+
+    <div class="tg-modes">
+      <div class="tg-mode-card highlight">
+        <div class="tg-mode-num">1</div>
+        <h3 class="tg-mode-title">Свой агрегатор</h3>
+        <p class="tg-mode-text">У вас уже есть подписка на Контур, Seldon, ТендерГуру или другой сервис? Подключите ключ доступа — закупки пойдут в iStockLink по вашей лицензии.</p>
+        <ul class="tg-mode-list">
+          <li>Данные по вашей подписке</li>
+          <li>Можно подключить несколько сервисов</li>
+          <li>Тариф «Бизнес» и выше</li>
+        </ul>
+      </div>
+      <div class="tg-mode-card">
+        <div class="tg-mode-num">2</div>
+        <h3 class="tg-mode-title">Встроенный поиск iStockLink</h3>
+        <p class="tg-mode-text">Нет своего агрегатора? Включите встроенный поиск — госзакупки и коммерческие площадки уже внутри платформы, отдельная подписка не нужна.</p>
+        <ul class="tg-mode-list">
+          <li>Госзакупки и коммерция из коробки</li>
+          <li>Старт за 2 минуты</li>
+          <li>Тарифы «Старт» и «Про»</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="tg-diagram">
       <div class="tg-diagram-grid">
-        <!-- Sources -->
         <div class="tg-diagram-col">
-          <div class="tg-diagram-col-title">Источники данных</div>
+          <div class="tg-diagram-col-title">Откуда приходят закупки</div>
           <div class="tg-source-card">
-            <div class="tg-source-logo">КЗ</div>
+            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" alt="">
             <div>
               <p class="tg-source-name">Контур.Закупки</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+              <p class="tg-source-desc">ваш ключ доступа</p>
             </div>
           </div>
           <div class="tg-source-card">
-            <div class="tg-source-logo">SL</div>
+            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" alt="">
             <div>
               <p class="tg-source-name">Seldon</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+              <p class="tg-source-desc">ваш ключ доступа</p>
             </div>
           </div>
           <div class="tg-source-card">
-            <div class="tg-source-logo">TG</div>
+            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/tenderguru.png" alt="">
             <div>
               <p class="tg-source-name">ТендерГуру</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
-            </div>
-          </div>
-          <div class="tg-source-card">
-            <div class="tg-source-logo">Z3</div>
-            <div>
-              <p class="tg-source-name">Закупки360</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+              <p class="tg-source-desc">ваш ключ доступа</p>
             </div>
           </div>
           <div class="tg-source-card builtin">
-            <div class="tg-source-logo">GP</div>
+            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/istocklink-icon.png" alt="">
             <div>
-              <p class="tg-source-name">Встроенный источник</p>
-              <p class="tg-source-desc">ГосПлан + коммерция</p>
+              <p class="tg-source-name">Поиск iStockLink</p>
+              <p class="tg-source-desc">встроенный источник</p>
             </div>
           </div>
         </div>
 
-        <!-- Arrow -->
         <div class="tg-diagram-arrow">
           <div class="tg-diagram-arrow-line"></div>
           <div class="tg-diagram-arrow-icon">→</div>
           <div class="tg-diagram-arrow-line"></div>
         </div>
 
-        <!-- Core -->
         <div class="tg-core-box">
           <div class="tg-core-icon">⚙️</div>
-          <p class="tg-core-title">Ядро платформы</p>
+          <p class="tg-core-title">iStockLink</p>
           <ul class="tg-core-steps">
-            <li>Адаптеры под каждый агрегатор</li>
-            <li>Единая модель тендера</li>
-            <li>Дедуп по реестровому номеру</li>
-            <li>Fuzzy-match для коммерции</li>
-            <li>Версии и история изменений</li>
+            <li>Сбор закупок из всех источников</li>
+            <li>Единый формат карточки тендера</li>
+            <li>Фильтры по ключевым словам и регионам</li>
+            <li>Воронка: от «новый» до «контракт»</li>
+            <li>Уведомления и задачи команде</li>
           </ul>
         </div>
 
-        <!-- Arrow -->
         <div class="tg-diagram-arrow">
           <div class="tg-diagram-arrow-line"></div>
           <div class="tg-diagram-arrow-icon">→</div>
           <div class="tg-diagram-arrow-line"></div>
         </div>
 
-        <!-- Output -->
         <div class="tg-diagram-col">
-          <div class="tg-diagram-col-title">Результат для пользователя</div>
+          <div class="tg-diagram-col-title">Что видите вы</div>
           <div class="tg-output-card">
             <div class="tg-output-header">📥 Единая лента закупок</div>
             <div class="tg-output-body">
               <div class="tg-output-row">
                 <span class="check">✓</span>
                 <span class="label">Медоборудование · 4,2 млн</span>
-                <span class="badge">×3 → 1</span>
+                <span class="badge">анализ</span>
               </div>
               <div class="tg-output-row">
                 <span class="check">✓</span>
-                <span class="label">IT-лицензии · 890 тыс.</span>
-                <span class="badge">Seldon</span>
+                <span class="label">ИТ-лицензии · 890 тыс.</span>
+                <span class="badge">новый</span>
               </div>
               <div class="tg-output-row">
                 <span class="check">✓</span>
                 <span class="label">Ремонт офиса · коммерция</span>
-                <span class="badge">новый</span>
+                <span class="badge">подача</span>
               </div>
             </div>
           </div>
           <div class="tg-source-card" style="margin-top:10px">
-            <div class="tg-source-logo">🔔</div>
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:18px;background:#eef3ff;border-radius:8px;">🔔</div>
             <div>
-              <p class="tg-source-name">Уведомления · задачи · CRM</p>
-              <p class="tg-source-desc">Ваш рабочий процесс</p>
+              <p class="tg-source-name">Задачи · поставщики · КП</p>
+              <p class="tg-source-desc">всё в одном окне</p>
             </div>
           </div>
         </div>
@@ -751,30 +795,29 @@
     <div class="tg-steps-row">
       <div class="tg-step-card">
         <div class="tg-step-num">1</div>
-        <h3 class="tg-step-title">Подключите источник</h3>
-        <p class="tg-step-text">Введите API-ключ своего агрегатора или активируйте встроенный тариф — настройка за 2 минуты.</p>
+        <h3 class="tg-step-title">Выберите способ</h3>
+        <p class="tg-step-text">Подключите свой агрегатор по ключу или включите встроенный поиск iStockLink — настройка занимает пару минут.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">2</div>
         <h3 class="tg-step-title">Настройте фильтры</h3>
-        <p class="tg-step-text">Ключевые слова, регионы, ОКПД2, тип закупки — правила применяются ко всем источникам сразу.</p>
+        <p class="tg-step-text">Ключевые слова, регионы, коды ОКПД2, тип закупки — правила работают для всех подключённых источников.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">3</div>
-        <h3 class="tg-step-title">Получите чистую ленту</h3>
-        <p class="tg-step-text">Сервис объединяет записи по реестровому номеру и убирает дубли между агрегаторами.</p>
+        <h3 class="tg-step-title">Получите ленту</h3>
+        <p class="tg-step-text">Подходящие закупки собираются в одном списке. Видно источник, сумму, сроки и статус в воронке.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">4</div>
-        <h3 class="tg-step-title">Работайте в одном окне</h3>
-        <p class="tg-step-text">Избранное, статусы, напоминания и выгрузка — без переключения между кабинетами.</p>
+        <h3 class="tg-step-title">Ведите до контракта</h3>
+        <p class="tg-step-text">Переводите тендеры по этапам, назначайте задачи, запрашивайте КП у поставщиков — без переключения между сервисами.</p>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="preview-label">07 — CRM · SRM · КП</div>
-<!-- Tilda block: CRM + SRM + КП -->
+<!-- Tilda block: Воронка + поставщики + КП -->
 <style>
   .tg-platform-wrap {
     --tg-primary: #1c50de;
@@ -846,7 +889,6 @@
     color: var(--tg-primary); font-weight: 700;
   }
 
-  /* Funnel visual */
   .tg-funnel-board {
     background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
     border: 1px solid rgba(28,80,222,0.12);
@@ -969,49 +1011,49 @@
   <div class="tg-platform-inner">
     <div class="tg-platform-header">
       <span class="tg-section-label">Полный цикл</span>
-      <h2 class="tg-section-title">Не поиск. Вся тендерная операция в одном окне</h2>
-      <p class="tg-section-sub">Агрегация — только вход. Дальше — CRM-воронка по торгам, SRM для поставщиков и автоматическая оцифровка коммерческих предложений.</p>
+      <h2 class="tg-section-title">Не поиск. Вся тендерная работа в iStockLink</h2>
+      <p class="tg-section-sub">Сбор закупок — только вход. Дальше — воронка по торгам, база поставщиков и автоматическая оцифровка коммерческих предложений.</p>
     </div>
 
     <div class="tg-pillars">
       <div class="tg-pillar">
         <div class="tg-pillar-icon">📥</div>
         <span class="tg-pillar-tag">Сбор</span>
-        <h3 class="tg-pillar-title">Агрегация</h3>
-        <p class="tg-pillar-text">BYO-подключение агрегаторов или встроенный источник. Единая лента без дублей.</p>
+        <h3 class="tg-pillar-title">Агрегаторы</h3>
+        <p class="tg-pillar-text">Подключите свой сервис поиска или встроенный поиск iStockLink. Все закупки — в одной ленте.</p>
         <ul class="tg-pillar-list">
           <li>Контур, Seldon, ТендерГуру</li>
-          <li>Дедупликация</li>
-          <li>Уведомления</li>
+          <li>Фильтры и уведомления</li>
+          <li>Единый список закупок</li>
         </ul>
       </div>
       <div class="tg-pillar">
         <div class="tg-pillar-icon">🎯</div>
-        <span class="tg-pillar-tag">CRM</span>
-        <h3 class="tg-pillar-title">Воронка торгов</h3>
+        <span class="tg-pillar-tag">Воронка</span>
+        <h3 class="tg-pillar-title">Этапы торгов</h3>
         <p class="tg-pillar-text">Ведите каждый тендер по этапам: от «новый» до «контракт» с задачами и дедлайнами.</p>
         <ul class="tg-pillar-list">
-          <li>Kanban по статусам</li>
+          <li>Доска по статусам</li>
           <li>Задачи и напоминания</li>
           <li>Командная работа</li>
         </ul>
       </div>
       <div class="tg-pillar">
         <div class="tg-pillar-icon">🤝</div>
-        <span class="tg-pillar-tag">SRM</span>
-        <h3 class="tg-pillar-title">Поставщики</h3>
+        <span class="tg-pillar-tag">Поставщики</span>
+        <h3 class="tg-pillar-title">База партнёров</h3>
         <p class="tg-pillar-text">Ищите субподрядчиков, ведите базу текущих партнёров, собирайте и сравнивайте КП.</p>
         <ul class="tg-pillar-list">
           <li>База поставщиков</li>
-          <li>Сбор КП по email/API</li>
-          <li>AI-оцифровка предложений</li>
+          <li>Сбор КП по почте</li>
+          <li>Оцифровка предложений</li>
         </ul>
       </div>
     </div>
 
     <div class="tg-funnel-board">
       <div>
-        <p class="tg-funnel-title">CRM: воронка участия в торгах</p>
+        <p class="tg-funnel-title">Воронка участия в торгах</p>
         <div class="tg-kanban">
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
@@ -1040,7 +1082,7 @@
 
       <div class="tg-side-panels">
         <div class="tg-panel">
-          <div class="tg-panel-head">🤝 SRM — поставщики по тендеру</div>
+          <div class="tg-panel-head">🤝 Поставщики по тендеру</div>
           <div class="tg-supplier-row">
             <div class="tg-avatar">МТ</div>
             <div>
@@ -1053,21 +1095,21 @@
             <div class="tg-avatar">ПК</div>
             <div>
               <div class="tg-supplier-name">ПромКомплект</div>
-              <div class="tg-supplier-meta">Новый · найден в SRM</div>
+              <div class="tg-supplier-meta">Новый · найден в базе</div>
             </div>
             <span class="tg-supplier-badge">приглашён</span>
           </div>
         </div>
 
         <div class="tg-panel">
-          <div class="tg-panel-head">📄 КП — оцифровка предложений</div>
+          <div class="tg-panel-head">📄 Оцифровка предложений</div>
           <div class="tg-kp-item">
             <span class="tg-kp-icon">📎</span>
             <div>
               <p class="tg-kp-title">КП_МедТех.pdf</p>
               <p class="tg-kp-meta">3 890 000 ₽ · срок 45 дней · 47 позиций</p>
             </div>
-            <span class="tg-kp-status done">оцифровано</span>
+            <span class="tg-kp-status done">готово</span>
           </div>
           <div class="tg-kp-item">
             <span class="tg-kp-icon">📎</span>
@@ -1075,7 +1117,7 @@
               <p class="tg-kp-title">Коммерческое_ПромКомплект.xlsx</p>
               <p class="tg-kp-meta">Обработка… извлечение цен и сроков</p>
             </div>
-            <span class="tg-kp-status">AI</span>
+            <span class="tg-kp-status">в работе</span>
           </div>
         </div>
       </div>
@@ -1083,7 +1125,6 @@
   </div>
 </div>
 
-  <div class="preview-label">03 — Возможности</div>
 <!-- Tilda block: Features -->
 <style>
   .tg-feat-wrap {
@@ -1126,7 +1167,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-bottom: 32px;
   }
   .tg-feat-card {
     background: #fff;
@@ -1140,7 +1180,6 @@
     transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(28,80,222,0.1);
   }
-  .tg-feat-card.wide { grid-column: span 2; }
   .tg-feat-icon {
     width: 48px; height: 48px;
     border-radius: 14px;
@@ -1152,79 +1191,8 @@
   .tg-feat-title { font-size: 17px; font-weight: 700; color: #1e293b; margin: 0 0 10px; }
   .tg-feat-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0; }
 
-  /* Dedup visual */
-  .tg-dedup-visual {
-    background: #fff;
-    border-radius: 20px;
-    border: 1px solid rgba(28,80,222,0.1);
-    padding: 32px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 24px;
-    align-items: center;
-  }
-  .tg-dedup-side h4 {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #94a3b8;
-    margin: 0 0 14px;
-    text-align: center;
-  }
-  .tg-dedup-items { display: flex; flex-direction: column; gap: 8px; }
-  .tg-dedup-item {
-    padding: 12px 14px;
-    border-radius: 10px;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    font-size: 12px;
-    color: #991b1b;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .tg-dedup-item span.src {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: rgba(0,0,0,0.06);
-  }
-  .tg-dedup-center {
-    text-align: center;
-  }
-  .tg-dedup-arrow {
-    width: 56px; height: 56px;
-    margin: 0 auto 8px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
-    color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    box-shadow: 0 8px 24px rgba(28,80,222,0.3);
-  }
-  .tg-dedup-center p { font-size: 11px; color: #64748b; margin: 0; font-weight: 600; }
-  .tg-dedup-result {
-    padding: 16px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(6,214,160,0.1), rgba(6,214,160,0.04));
-    border: 2px solid rgba(6,214,160,0.3);
-    text-align: center;
-  }
-  .tg-dedup-result .title { font-size: 14px; font-weight: 700; color: #065f46; margin: 0 0 4px; }
-  .tg-dedup-result .meta { font-size: 11px; color: #059669; margin: 0; }
-  .tg-dedup-result .sources { margin-top: 8px; display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
-  .tg-dedup-result .sources span {
-    font-size: 10px; font-weight: 600;
-    padding: 2px 7px; border-radius: 5px;
-    background: rgba(28,80,222,0.1); color: var(--tg-primary);
-  }
-
   @media (max-width: 900px) {
     .tg-feat-grid { grid-template-columns: 1fr; }
-    .tg-feat-card.wide { grid-column: span 1; }
-    .tg-dedup-visual { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -1232,39 +1200,34 @@
   <div class="tg-feat-inner">
     <div class="tg-feat-header">
       <span class="tg-section-label">Возможности</span>
-      <h2 class="tg-section-title">Платформа, а не поисковик</h2>
-      <p class="tg-section-sub">Агрегация — точка входа. Дальше — воронка, задачи, поставщики и автоматический разбор коммерческих предложений.</p>
+      <h2 class="tg-section-title">iStockLink — платформа, а не поисковик</h2>
+      <p class="tg-section-sub">Сбор закупок — только начало. Дальше — воронка торгов, задачи, поставщики и автоматический разбор коммерческих предложений.</p>
     </div>
 
     <div class="tg-feat-grid">
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🔑</div>
-        <h3 class="tg-feat-title">BYO — свой агрегатор</h3>
-        <p class="tg-feat-text">Контур, Seldon, ТендерГуру, Закупки360, Saby — подключите API-ключ и работайте по своей лицензии.</p>
+        <h3 class="tg-feat-title">Свой агрегатор</h3>
+        <p class="tg-feat-text">Контур, Seldon, ТендерГуру, Закупки360, Саби — подключите ключ доступа и работайте по своей подписке.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">📦</div>
-        <h3 class="tg-feat-title">Встроенный источник</h3>
-        <p class="tg-feat-text">Нет подписки? Используйте наш тариф: госзакупки через ГосПлан + коммерческие площадки.</p>
+        <h3 class="tg-feat-title">Встроенный поиск</h3>
+        <p class="tg-feat-text">Нет подписки на агрегатор? Включите встроенный поиск iStockLink: госзакупки и коммерческие площадки уже внутри.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🔗</div>
-        <h3 class="tg-feat-title">Multi-source</h3>
-        <p class="tg-feat-text">Подключите 2–3 агрегатора одновременно — сервис объединит данные и покажет, откуда пришла закупка.</p>
-      </div>
-      <div class="tg-feat-card wide">
-        <div class="tg-feat-icon">🎯</div>
-        <h3 class="tg-feat-title">Умная дедупликация</h3>
-        <p class="tg-feat-text">Три уровня: точное совпадение по реестровому номеру ЕИС, слияние версий извещений, нечёткое сопоставление для коммерческих закупок без единого ID.</p>
+        <h3 class="tg-feat-title">Несколько источников</h3>
+        <p class="tg-feat-text">Подключите 2–3 агрегатора одновременно — все закупки соберутся в одной ленте с указанием источника.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">📋</div>
-        <h3 class="tg-feat-title">CRM-воронка</h3>
-        <p class="tg-feat-text">Kanban по этапам: новый → анализ → подготовка → подача → контракт. Задачи, дедлайны, ответственные.</p>
+        <h3 class="tg-feat-title">Воронка торгов</h3>
+        <p class="tg-feat-text">Доска по этапам: новый → анализ → подготовка → подача → контракт. Задачи, дедлайны, ответственные.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🤝</div>
-        <h3 class="tg-feat-title">SRM поставщиков</h3>
+        <h3 class="tg-feat-title">База поставщиков</h3>
         <p class="tg-feat-text">Ищите субподрядчиков, ведите базу партнёров, привязывайте поставщиков к конкретным торгам.</p>
       </div>
       <div class="tg-feat-card">
@@ -1275,46 +1238,22 @@
       <div class="tg-feat-card">
         <div class="tg-feat-icon">📊</div>
         <h3 class="tg-feat-title">Прозрачность источников</h3>
-        <p class="tg-feat-text">В каждой карточке видно: из каких агрегаторов пришла закупка и сколько дублей было объединено.</p>
+        <p class="tg-feat-text">В каждой карточке видно, из какого агрегатора пришла закупка и на каком этапе воронки она сейчас.</p>
+      </div>
+      <div class="tg-feat-card">
+        <div class="tg-feat-icon">🔔</div>
+        <h3 class="tg-feat-title">Уведомления</h3>
+        <p class="tg-feat-text">Письма и Telegram-бот: новые закупки, приближающиеся дедлайны, смена статуса в воронке.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🛡️</div>
         <h3 class="tg-feat-title">Безопасность ключей</h3>
-        <p class="tg-feat-text">API-ключи шифруются. Данные идут по лицензии пользователя — юридически чистая модель.</p>
-      </div>
-    </div>
-
-    <!-- Dedup visual -->
-    <div class="tg-dedup-visual">
-      <div class="tg-dedup-side">
-        <h4>До — 3 дубля</h4>
-        <div class="tg-dedup-items">
-          <div class="tg-dedup-item">📋 Поставка медоборудования <span class="src">Контур</span></div>
-          <div class="tg-dedup-item">📋 Поставка медоборудования <span class="src">Seldon</span></div>
-          <div class="tg-dedup-item">📋 Поставка медоборудования <span class="src">ГосПлан</span></div>
-        </div>
-      </div>
-      <div class="tg-dedup-center">
-        <div class="tg-dedup-arrow">⚡</div>
-        <p>purchase_number<br>0373200586526000067</p>
-      </div>
-      <div class="tg-dedup-side">
-        <h4>После — 1 запись</h4>
-        <div class="tg-dedup-result">
-          <p class="title">Поставка медоборудования</p>
-          <p class="meta">4,2 млн ₽ · 44-ФЗ · Москва</p>
-          <div class="tg-dedup-result sources">
-            <span>Контур</span>
-            <span>Seldon</span>
-            <span>ГосПлан</span>
-          </div>
-        </div>
+        <p class="tg-feat-text">Ключи доступа шифруются. Данные идут по вашей лицензии — юридически чистая модель.</p>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="preview-label">04 — Тарифы</div>
 <!-- Tilda block: For whom + Pricing -->
 <style>
   .tg-price-wrap {
@@ -1477,79 +1416,79 @@
       <div class="tg-audience-card">
         <div class="tg-audience-emoji">🏢</div>
         <h3 class="tg-audience-title">Тендерный отдел</h3>
-        <p class="tg-audience-text">Уже платите за Контур или Seldon — подключите ключ и получите единую ленту без дублей для всей команды.</p>
+        <p class="tg-audience-text">Уже платите за Контур или Seldon — подключите ключ и ведите все торги в единой воронке iStockLink для всей команды.</p>
       </div>
       <div class="tg-audience-card">
         <div class="tg-audience-emoji">🚀</div>
         <h3 class="tg-audience-title">Малый бизнес</h3>
-        <p class="tg-audience-text">Нет своего агрегатора — начните со встроенного тарифа. Госзакупки и коммерция из коробки.</p>
+        <p class="tg-audience-text">Нет своего агрегатора — начните со встроенного поиска. Госзакупки и коммерция из коробки.</p>
       </div>
       <div class="tg-audience-card">
         <div class="tg-audience-emoji">⚙️</div>
-        <h3 class="tg-audience-title">Интеграторы и CRM</h3>
-        <p class="tg-audience-text">API и webhook для встраивания чистой ленты закупок в 1С, Битрикс24, amoCRM и собственные системы.</p>
+        <h3 class="tg-audience-title">Компании с несколькими источниками</h3>
+        <p class="tg-audience-text">Подключите 2–3 агрегатора и получите одну ленту, одну воронку и единую базу поставщиков.</p>
       </div>
     </div>
 
     <div class="tg-price-header">
       <span class="tg-section-label">Тарифы</span>
-      <h2 class="tg-section-title">Платите за оркестрацию, не за данные дважды</h2>
-      <p class="tg-section-sub">Данные идут по вашей лицензии агрегатора. Мы берём оплату за единую ленту, дедупликацию и рабочий процесс.</p>
+      <h2 class="tg-section-title">Платите за платформу, не за данные дважды</h2>
+      <p class="tg-section-sub">Закупки идут по вашей лицензии агрегатора. iStockLink берёт оплату за единую ленту, воронку и работу с поставщиками.</p>
     </div>
 
     <div class="tg-pricing-grid">
       <div class="tg-price-card">
-        <p class="tg-price-name">Starter</p>
+        <p class="tg-price-name">Старт</p>
         <p class="tg-price-amount">0 ₽</p>
         <p class="tg-price-desc">Попробовать на госзакупках</p>
         <ul class="tg-price-list">
-          <li>Встроенный источник (гос)</li>
+          <li>Встроенный поиск (гос)</li>
           <li>До 3 поисковых шаблонов</li>
-          <li>Email-уведомления</li>
-          <li class="off">BYO-подключения</li>
-          <li class="off">Коммерческие ЭТП</li>
+          <li>Уведомления на почту</li>
+          <li class="off">Свой агрегатор</li>
+          <li class="off">Коммерческие площадки</li>
         </ul>
         <a href="#demo" class="tg-price-btn tg-price-btn-outline">Начать бесплатно</a>
       </div>
 
       <div class="tg-price-card">
-        <p class="tg-price-name">Pro</p>
+        <p class="tg-price-name">Про</p>
         <p class="tg-price-amount">4 900 ₽ <span>/мес</span></p>
         <p class="tg-price-desc">Без своего агрегатора</p>
         <ul class="tg-price-list">
           <li>Гос + коммерция (встроенный)</li>
           <li>Безлимитные фильтры</li>
-          <li>Дедупликация</li>
+          <li>Воронка торгов</li>
           <li>Telegram-бот</li>
-          <li class="off">BYO-подключения</li>
+          <li class="off">Подключение агрегатора</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать Pro</a>
+        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать Про</a>
       </div>
 
       <div class="tg-price-card featured">
         <span class="tg-price-badge">Популярный</span>
-        <p class="tg-price-name">Business</p>
+        <p class="tg-price-name">Бизнес</p>
         <p class="tg-price-amount">2 900 ₽ <span>/мес</span></p>
         <p class="tg-price-desc">Есть свой агрегатор</p>
         <ul class="tg-price-list">
-          <li>До 2 BYO-подключений</li>
-          <li>Multi-source дедуп</li>
-          <li>Единая лента и статусы</li>
+          <li>До 2 подключений агрегаторов</li>
+          <li>Несколько источников в одной ленте</li>
+          <li>Воронка и статусы</li>
           <li>Командный доступ (3 места)</li>
-          <li>Webhook в CRM</li>
+          <li>Интеграция с учётными системами</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать Business</a>
+        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать Бизнес</a>
       </div>
 
       <div class="tg-price-card">
-        <p class="tg-price-name">Enterprise</p>
+        <p class="tg-price-name">Корпоративный</p>
         <p class="tg-price-amount">от 9 900 ₽ <span>/мес</span></p>
         <p class="tg-price-desc">Тендерный отдел 5+ человек</p>
         <ul class="tg-price-list">
-          <li>Безлимит BYO-источников</li>
-          <li>Seldon · Контур · TG · z360</li>
-          <li>SSO, аудит, SLA</li>
-          <li>API для интеграций</li>
+          <li>Безлимит подключений</li>
+          <li>Контур · Seldon · ТендерГуру · Закупки360</li>
+          <li>Единый вход · аудит · гарантии</li>
+          <li>Интеграции под заказ</li>
           <li>Персональный менеджер</li>
         </ul>
         <a href="#demo" class="tg-price-btn tg-price-btn-outline">Связаться</a>
@@ -1558,7 +1497,6 @@
   </div>
 </div>
 
-  <div class="preview-label">05 — FAQ + CTA</div>
 <!-- Tilda block: FAQ + CTA -->
 <style>
   .tg-cta-wrap {
@@ -1633,14 +1571,6 @@
     background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
-  .tg-cta-box::after {
-    content: "";
-    position: absolute;
-    bottom: -60px; left: -40px;
-    width: 240px; height: 240px;
-    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
   .tg-cta-content { position: relative; z-index: 1; }
   .tg-cta-title {
     font-size: clamp(26px, 3.5vw, 38px);
@@ -1702,6 +1632,14 @@
   }
   .tg-footer a { color: #94a3b8; text-decoration: none; }
   .tg-footer a:hover { color: #fff; }
+  .tg-footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .tg-footer-logo img { width: 28px; height: 28px; border-radius: 6px; }
+  .tg-footer-logo span { font-weight: 700; color: #fff; font-size: 15px; }
 
   @media (max-width: 700px) {
     .tg-faq-grid { grid-template-columns: 1fr; }
@@ -1715,41 +1653,41 @@
   <div class="tg-cta-inner">
     <div class="tg-faq">
       <div class="tg-faq-header">
-        <span class="tg-section-label">FAQ</span>
+        <span class="tg-section-label">Вопросы и ответы</span>
         <h2 class="tg-section-title">Частые вопросы</h2>
       </div>
       <div class="tg-faq-grid">
         <div class="tg-faq-item">
           <p class="tg-faq-q">Зачем платить, если у меня уже есть Контур?</p>
-          <p class="tg-faq-a">Вы не платите за данные повторно. Платформа объединяет источники, убирает дубли и даёт единый workflow — то, чего нет ни у одного агрегатора по отдельности.</p>
+          <p class="tg-faq-a">Вы не платите за данные повторно. iStockLink объединяет источники, ведёт воронку торгов и работу с поставщиками — то, чего нет ни у одного агрегатора по отдельности.</p>
         </div>
         <div class="tg-faq-item">
           <p class="tg-faq-q">Какие агрегаторы можно подключить?</p>
-          <p class="tg-faq-a">Контур.Закупки, Seldon, ТендерГуру, Закупки360, Saby Trade и другие с REST API. Список расширяется — вы подключаете свой ключ.</p>
+          <p class="tg-faq-a">Контур.Закупки, Seldon, ТендерГуру, Закупки360, Саби и другие. Список расширяется — вы подключаете свой ключ доступа.</p>
         </div>
         <div class="tg-faq-item">
           <p class="tg-faq-q">Что если у меня нет подписки на агрегатор?</p>
-          <p class="tg-faq-a">Используйте встроенный тариф Pro: госзакупки и коммерческие площадки без отдельной подписки на Контур или Seldon.</p>
+          <p class="tg-faq-a">Включите встроенный поиск iStockLink на тарифе «Про»: госзакупки и коммерческие площадки без отдельной подписки на Контур или Seldon.</p>
         </div>
         <div class="tg-faq-item">
-          <p class="tg-faq-q">Как работает дедупликация?</p>
-          <p class="tg-faq-a">Госзакупки объединяются по реестровому номеру ЕИС. Коммерческие — по связке заказчик + сумма + дата + нечёткое сравнение названия.</p>
+          <p class="tg-faq-q">Как работает объединение дублей?</p>
+          <p class="tg-faq-a">Если одна закупка пришла из нескольких агрегаторов, iStockLink связывает записи: госзакупки — по реестровому номеру ЕИС, коммерческие — по заказчику, сумме, дате и названию.</p>
         </div>
         <div class="tg-faq-item">
-          <p class="tg-faq-q">Это легально — использовать чужой API?</p>
-          <p class="tg-faq-a">Да. Вы подключаете свой API-ключ по своей лицензии. Мы — интегратор, как CRM-плагин. Данные не перепродаются.</p>
+          <p class="tg-faq-q">Это легально — подключать свой агрегатор?</p>
+          <p class="tg-faq-a">Да. Вы подключаете ключ по своей лицензии. iStockLink — платформа для работы с закупками, данные не перепродаются.</p>
         </div>
         <div class="tg-faq-item">
           <p class="tg-faq-q">Можно подключить несколько агрегаторов?</p>
-          <p class="tg-faq-a">Да, на тарифе Business — до 2 источников, на Enterprise — без ограничений. Именно здесь максимальная ценность дедупликации.</p>
+          <p class="tg-faq-a">Да, на тарифе «Бизнес» — до 2 источников, на «Корпоративном» — без ограничений. Именно здесь особенно полезно объединение дублей из разных сервисов.</p>
         </div>
       </div>
     </div>
 
     <div class="tg-cta-box" id="demo">
       <div class="tg-cta-content">
-        <h2 class="tg-cta-title">Подключите первый источник за 2 минуты</h2>
-        <p class="tg-cta-sub">Оставьте email — пришлём доступ к демо и инструкцию по подключению вашего агрегатора или встроенного тарифа.</p>
+        <h2 class="tg-cta-title">Подключите iStockLink за 2 минуты</h2>
+        <p class="tg-cta-sub">Оставьте email — пришлём доступ к демо и инструкцию: свой агрегатор или встроенный поиск.</p>
         <form class="tg-cta-form" action="#" method="post" onsubmit="return false;">
           <input type="email" class="tg-cta-input" placeholder="work@company.ru" required>
           <button type="submit" class="tg-cta-submit">Получить демо</button>
@@ -1761,8 +1699,12 @@
 </div>
 
 <div class="tg-footer">
-  <p style="margin:0 0 8px">© 2026 · Платформа агрегации тендеров</p>
-  <p style="margin:0"><a href="#">Политика конфиденциальности</a> · <a href="#">Документация API</a></p>
+  <div class="tg-footer-logo">
+    <img src="https://kolomoets-netizen.github.io/Link/assets/istocklink-icon.png" alt="iStockLink">
+    <span>iStockLink</span>
+  </div>
+  <p style="margin:0 0 8px">© 2026 · Платформа для тендеров и закупок</p>
+  <p style="margin:0"><a href="#">Политика конфиденциальности</a> · <a href="#">Документация</a></p>
 </div>
 
 </body>
