@@ -254,12 +254,12 @@
     text-align: center;
   }
   .tg-logos-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
     margin: 0 0 24px;
+    text-transform: none;
   }
   .tg-logos-row {
     display: flex;
@@ -296,7 +296,7 @@
 
 <div class="tg-logos-wrap">
   <div class="tg-logos-inner">
-    <p class="tg-logos-title">Поддерживаемые агрегаторы закупок</p>
+    <h2 class="tg-logos-title">Поддерживаемые агрегаторы закупок</h2>
     <div class="tg-logos-row">
       <span class="tg-logo-pill">
         <img src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" alt="Контур.Закупки">
@@ -358,11 +358,72 @@
     line-height: 1.15;
   }
   .tg-section-sub {
-    margin: 0 0 48px;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--tg-muted);
-    max-width: 720px;
+    margin: 0 0 40px;
+    max-width: 100%;
+  }
+  .tg-flow-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 12px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
+    border: 1px solid rgba(28,80,222,0.12);
+    border-radius: 20px;
+    margin-bottom: 40px;
+  }
+  .tg-flow-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .tg-flow-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+    white-space: nowrap;
+  }
+  .tg-flow-chip.light { background: #f1f5ff; color: #334155; }
+  .tg-flow-chip.accent {
+    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    color: #fff;
+    border: none;
+    box-shadow: 0 8px 20px rgba(28,80,222,0.28);
+    font-weight: 700;
+    padding: 12px 20px;
+  }
+  .tg-flow-chip.outline {
+    background: #fff;
+    color: var(--tg-primary);
+    border-color: rgba(28,80,222,0.22);
+  }
+  .tg-flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid rgba(28,80,222,0.15);
+    color: var(--tg-primary);
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  @media (max-width: 700px) {
+    .tg-flow-strip { padding: 16px; gap: 8px; }
+    .tg-flow-arrow { width: 28px; height: 28px; font-size: 14px; }
+    .tg-flow-chip { font-size: 13px; padding: 8px 12px; }
   }
 
   .tg-diagram {
@@ -555,9 +616,23 @@
 
 <div class="tg-how-wrap" id="how">
   <div class="tg-how-inner">
-    <span class="tg-section-label">Как это работает</span>
-    <h2 class="tg-section-title">От источников до контракта</h2>
-    <p class="tg-section-sub">Агрегаторы и госзакупки → iStockLink → единая лента, воронка и задачи команды.</p>
+    <h2 class="tg-section-title">Как это работает</h2>
+    <div class="tg-section-sub">
+      <div class="tg-flow-strip">
+        <div class="tg-flow-group">
+          <span class="tg-flow-chip">Агрегаторы</span>
+          <span class="tg-flow-chip light">Госзакупки</span>
+        </div>
+        <span class="tg-flow-arrow">→</span>
+        <span class="tg-flow-chip accent">iStockLink</span>
+        <span class="tg-flow-arrow">→</span>
+        <div class="tg-flow-group">
+          <span class="tg-flow-chip outline">Единая лента</span>
+          <span class="tg-flow-chip outline">Воронка</span>
+          <span class="tg-flow-chip outline">Задачи</span>
+        </div>
+      </div>
+    </div>
 
     <div class="tg-diagram">
       <div class="tg-diagram-grid">
@@ -964,7 +1039,6 @@
               <div class="tg-kanban-card active">
                 <div class="tg-card-title">Ремонт офисных помещений</div>
                 <div class="tg-card-field">НМЦК: 1 100 000 ₽</div>
-                <div class="tg-card-field">Цена: 980 000 ₽</div>
               </div>
             </div>
           </div>
@@ -974,7 +1048,6 @@
               <div class="tg-kanban-card">
                 <div class="tg-card-title">Поставка мебели для школы</div>
                 <div class="tg-card-field">НМЦК: 2 450 000 ₽</div>
-                <div class="tg-card-field">Цена: 2 310 000 ₽</div>
               </div>
             </div>
           </div>
@@ -984,7 +1057,6 @@
               <div class="tg-kanban-card">
                 <div class="tg-card-title">Уборка территории больницы</div>
                 <div class="tg-card-field">НМЦК: 760 000 ₽</div>
-                <div class="tg-card-field">Цена: 720 000 ₽</div>
               </div>
             </div>
           </div>

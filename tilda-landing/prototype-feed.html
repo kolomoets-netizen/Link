@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iStockLink — прототип: единая лента</title>
+  <style>
+    :root {
+      --primary: #1c50de;
+      --primary-light: #eef3ff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f4f7ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Top bar */
+    .proto-top {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(15,23,42,0.04);
+    }
+    .proto-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .proto-logo img { width: 32px; height: 32px; border-radius: 8px; }
+    .proto-search {
+      flex: 1;
+      max-width: 480px;
+      position: relative;
+    }
+    .proto-search input {
+      width: 100%;
+      padding: 10px 16px 10px 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      background: #f8faff;
+      outline: none;
+    }
+    .proto-search input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(28,80,222,0.12);
+      background: #fff;
+    }
+    .proto-search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .proto-tabs {
+      display: flex;
+      gap: 4px;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 12px;
+    }
+    .proto-tab {
+      padding: 8px 18px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: default;
+      border: none;
+      background: transparent;
+    }
+    .proto-tab.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(15,23,42,0.06);
+    }
+    .proto-user {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), #3b6df0);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Layout */
+    .proto-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* Sidebar filters */
+    .proto-sidebar {
+      background: #fff;
+      border-right: 1px solid var(--border);
+      padding: 20px 16px;
+      overflow-y: auto;
+    }
+    .proto-sidebar h3 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .proto-filter-block { margin-bottom: 24px; }
+    .proto-filter-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .proto-select, .proto-input {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      background: #fafbff;
+      margin-bottom: 8px;
+    }
+    .proto-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proto-chip {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #475569;
+      cursor: default;
+    }
+    .proto-chip.on {
+      background: var(--primary-light);
+      border-color: rgba(28,80,222,0.3);
+      color: var(--primary);
+    }
+    .proto-btn-apply {
+      width: 100%;
+      padding: 11px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #1c50de, #3b6df0);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 8px;
+      cursor: default;
+    }
+    .proto-sources { display: flex; flex-direction: column; gap: 6px; }
+    .proto-source-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .proto-source-item.on { background: var(--primary-light); }
+    .proto-source-item img { width: 22px; height: 22px; border-radius: 4px; }
+    .proto-source-dot {
+      margin-left: auto;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #06d6a0;
+    }
+
+    /* Main feed */
+    .proto-main { padding: 20px 24px; overflow-y: auto; }
+    .proto-main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .proto-main-header h1 {
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .proto-main-header span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .proto-active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .proto-active-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(28,80,222,0.2);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .proto-active-tag em {
+      font-style: normal;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Feed table */
+    .proto-feed {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(15,23,42,0.04);
+    }
+    .proto-feed-head {
+      display: grid;
+      grid-template-columns: 1fr 120px 100px 110px 90px 100px;
+      gap: 12px;
+      padding: 12px 18px;
+      background: #f8faff;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .proto-feed-row {
+      display: grid;
+      grid-template-columns: 1fr 120px 100px 110px 90px 100px;
+      gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid #f1f5f9;
+      align-items: center;
+      transition: background .15s;
+    }
+    .proto-feed-row:hover { background: #fafbff; }
+    .proto-feed-row:last-child { border-bottom: none; }
+    .proto-feed-row.highlight { background: linear-gradient(90deg, #f8faff, #fff); }
+    .proto-tender-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+    .proto-tender-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .proto-src-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+    }
+    .proto-src-badge img { width: 18px; height: 18px; border-radius: 3px; }
+    .proto-nmck {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .proto-law { font-size: 12px; color: var(--muted); }
+    .proto-deadline { font-size: 12px; color: #b45309; font-weight: 600; }
+    .proto-status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .proto-status.new { background: rgba(28,80,222,0.1); color: var(--primary); }
+    .proto-status.work { background: rgba(6,214,160,0.12); color: #059669; }
+    .proto-status.deadline { background: rgba(255,209,102,0.2); color: #b45309; }
+
+    .proto-note {
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px dashed rgba(28,80,222,0.25);
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .proto-note a { color: var(--primary); font-weight: 600; }
+
+    @media (max-width: 1100px) {
+      .proto-layout { grid-template-columns: 1fr; }
+      .proto-sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+      .proto-feed-head, .proto-feed-row {
+        grid-template-columns: 1fr 90px 80px;
+      }
+      .proto-feed-head span:nth-child(n+4),
+      .proto-feed-row > *:nth-child(n+4) { display: none; }
+    }
+    @media (max-width: 640px) {
+      .proto-top { flex-wrap: wrap; height: auto; padding: 12px; }
+      .proto-search { max-width: 100%; order: 3; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="proto-top">
+    <div class="proto-logo">
+      <img src="assets/istocklink-icon.png" alt="">
+      iStockLink
+    </div>
+    <div class="proto-search">
+      <span class="proto-search-icon">🔍</span>
+      <input type="text" value="медоборудование" placeholder="Поиск по названию, заказчику, номеру…" readonly>
+    </div>
+    <div class="proto-tabs">
+      <button class="proto-tab active">Лента</button>
+      <button class="proto-tab">Воронка</button>
+      <button class="proto-tab">Поставщики</button>
+    </div>
+    <div class="proto-user">АК</div>
+  </header>
+
+  <div class="proto-layout">
+    <aside class="proto-sidebar">
+      <h3>Фильтры</h3>
+
+      <div class="proto-filter-block">
+        <label class="proto-filter-label">Ключевые слова</label>
+        <input class="proto-input" type="text" value="медоборудование, томограф" readonly>
+      </div>
+
+      <div class="proto-filter-block">
+        <label class="proto-filter-label">Регион</label>
+        <select class="proto-select" disabled>
+          <option>Москва и МО</option>
+        </select>
+      </div>
+
+      <div class="proto-filter-block">
+        <label class="proto-filter-label">Тип закупки</label>
+        <div class="proto-chips">
+          <span class="proto-chip on">44-ФЗ</span>
+          <span class="proto-chip on">223-ФЗ</span>
+          <span class="proto-chip">Коммерция</span>
+        </div>
+      </div>
+
+      <div class="proto-filter-block">
+        <label class="proto-filter-label">НМЦК от, ₽</label>
+        <input class="proto-input" type="text" value="500 000" readonly>
+      </div>
+
+      <div class="proto-filter-block">
+        <label class="proto-filter-label">Источники</label>
+        <div class="proto-sources">
+          <div class="proto-source-item on">
+            <img src="assets/kontur.png" alt=""> Контур
+            <span class="proto-source-dot"></span>
+          </div>
+          <div class="proto-source-item on">
+            <img src="assets/seldon.png" alt=""> Seldon
+            <span class="proto-source-dot"></span>
+          </div>
+          <div class="proto-source-item on">
+            <span style="width:22px;text-align:center">🏛</span> Госзакупки
+            <span class="proto-source-dot"></span>
+          </div>
+          <div class="proto-source-item">
+            <img src="assets/tenderguru.png" alt=""> ТендерГуру
+          </div>
+        </div>
+      </div>
+
+      <button class="proto-btn-apply">Применить фильтры</button>
+    </aside>
+
+    <main class="proto-main">
+      <div class="proto-main-header">
+        <div>
+          <h1>Единая лента закупок</h1>
+          <span>Найдено 47 закупок · обновлено 5 мин назад</span>
+        </div>
+      </div>
+
+      <div class="proto-active-filters">
+        <span class="proto-active-tag">🔍 <em>поиск:</em> медоборудование</span>
+        <span class="proto-active-tag">📍 Москва и МО</span>
+        <span class="proto-active-tag">44-ФЗ · 223-ФЗ</span>
+        <span class="proto-active-tag">от 500 000 ₽</span>
+        <span class="proto-active-tag">3 источника</span>
+      </div>
+
+      <div class="proto-feed">
+        <div class="proto-feed-head">
+          <span>Закупка</span>
+          <span>Источник</span>
+          <span>НМЦК</span>
+          <span>Закон</span>
+          <span>Срок</span>
+          <span>Статус</span>
+        </div>
+
+        <div class="proto-feed-row highlight">
+          <div>
+            <div class="proto-tender-title">Поставка медоборудования для городской больницы</div>
+            <div class="proto-tender-meta">ГБУЗ «Городская клиническая больница №12» · Москва</div>
+          </div>
+          <div class="proto-src-badge"><img src="assets/kontur.png" alt=""> Контур</div>
+          <div class="proto-nmck">4 200 000 ₽</div>
+          <div class="proto-law">44-ФЗ</div>
+          <div class="proto-deadline">28.06</div>
+          <div><span class="proto-status work">Анализ</span></div>
+        </div>
+
+        <div class="proto-feed-row">
+          <div>
+            <div class="proto-tender-title">Поставка томографа и сопутствующего оборудования</div>
+            <div class="proto-tender-meta">ФГБУ «НМИЦ» · Москва</div>
+          </div>
+          <div class="proto-src-badge"><img src="assets/seldon.png" alt=""> Seldon</div>
+          <div class="proto-nmck">12 800 000 ₽</div>
+          <div class="proto-law">44-ФЗ</div>
+          <div class="proto-deadline">02.07</div>
+          <div><span class="proto-status new">Новый</span></div>
+        </div>
+
+        <div class="proto-feed-row">
+          <div>
+            <div class="proto-tender-title">Закупка расходных материалов для лаборатории</div>
+            <div class="proto-tender-meta">АО «МедТех» · Московская обл.</div>
+          </div>
+          <div class="proto-src-badge">🏛 Госзакупки</div>
+          <div class="proto-nmck">890 000 ₽</div>
+          <div class="proto-law">223-ФЗ</div>
+          <div class="proto-deadline">15.07</div>
+          <div><span class="proto-status new">Новый</span></div>
+        </div>
+
+        <div class="proto-feed-row">
+          <div>
+            <div class="proto-tender-title">Ремонт офисных помещений администрации</div>
+            <div class="proto-tender-meta">Администрация г. Химки · МО</div>
+          </div>
+          <div class="proto-src-badge"><img src="assets/kontur.png" alt=""> Контур</div>
+          <div class="proto-nmck">1 100 000 ₽</div>
+          <div class="proto-law">44-ФЗ</div>
+          <div class="proto-deadline">20.06</div>
+          <div><span class="proto-status deadline">Подача</span></div>
+        </div>
+
+        <div class="proto-feed-row">
+          <div>
+            <div class="proto-tender-title">Поставка мебели для школы №45</div>
+            <div class="proto-tender-meta">МБОУ «Средняя школа №45» · МО</div>
+          </div>
+          <div class="proto-src-badge"><img src="assets/seldon.png" alt=""> Seldon</div>
+          <div class="proto-nmck">2 450 000 ₽</div>
+          <div class="proto-law">44-ФЗ</div>
+          <div class="proto-deadline">05.07</div>
+          <div><span class="proto-status work">Анализ</span></div>
+        </div>
+      </div>
+
+      <p class="proto-note">
+        Прототип интерфейса iStockLink — не для вставки в Tilda.
+        <a href="preview-standalone.html">← Вернуться к лендингу</a>
+      </p>
+    </main>
+  </div>
+
+</body>
+</html>

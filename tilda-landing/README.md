@@ -16,6 +16,12 @@ HTML-блоки для встраивания в Tilda через блок **T12
 
 ## Превью на планшете / телефоне
 
+### Прототип интерфейса (не для Tilda)
+
+**https://kolomoets-netizen.github.io/Link/prototype.html**
+
+Единая лента + поиск + фильтры + источники. Файл: `tilda-landing/prototype-feed.html`
+
 ### Рабочая ссылка (GitHub Pages)
 
 **https://kolomoets-netizen.github.io/Link/**

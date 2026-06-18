@@ -31,6 +31,7 @@ jobs:
         run: |
           mkdir -p _site/assets
           cp tilda-landing/preview-standalone.html _site/index.html
+          cp tilda-landing/prototype-feed.html _site/prototype.html
           cp -r tilda-landing/assets/* _site/assets/
           cp -r tilda-landing/*.html _site/ 2>/dev/null || true
 

@@ -21,6 +21,7 @@ jobs:
         run: |
           mkdir -p public/assets
           cp tilda-landing/preview-standalone.html public/index.html
+          cp tilda-landing/prototype-feed.html public/prototype.html
           cp -r tilda-landing/assets/* public/assets/
 
       - name: Deploy to gh-pages branch
