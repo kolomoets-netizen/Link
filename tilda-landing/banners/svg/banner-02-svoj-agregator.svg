@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="628" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1c50de"/>
+      <stop offset="55%" stop-color="#2a5fe8"/>
+      <stop offset="100%" stop-color="#3b6df0"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g id="background">
+
+  <rect width="1200" height="628" fill="url(#bg)"/>
+  <path d="M900,-80 C1050,120 1150,280 1280,420 L1280,-80 Z" fill="#ffffff" fill-opacity="0.06"/>
+  <path d="M-60,500 C180,380 320,560 520,628 L-60,628 Z" fill="#ffffff" fill-opacity="0.05"/>
+  <path d="M0,180 C220,80 380,220 600,160 C820,100 980,40 1200,120" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="2"/>
+  <path d="M0,420 C260,500 420,340 680,400 C900,450 1040,360 1200,440" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
+
+  </g>
+  <g id="brand-block">
+
+  <g id="brand" transform="translate(64,48)">
+    <g transform="scale(1.55)">
+      <path d="M17.2112 8.91393V21.8341H22.7664C21.3776 23.4867 19.3936 24.6385 17.2112 24.939V31.9499C20.0384 31.6995 22.7168 30.748 25.048 29.0955C27.3296 27.493 29.1152 25.2895 30.3056 22.7856C30.504 22.3349 30.7024 21.8341 30.9008 21.3333C31 21.0829 31 20.7825 31 20.5321V8.91393H17.2112Z M14.5824 0C10.6144 0.350548 6.944 2.15336 4.216 5.10798C1.488 8.0626 0 11.9186 0 15.975C0 20.0313 1.488 23.9374 4.216 26.892C6.944 29.8466 10.6144 31.6495 14.5328 32V0H14.5824Z" fill="#ffffff"/>
+    </g>
+    <text x="58" y="36" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">iStockLink</text>
+  </g>
+
+  </g>
+  <g id="headline">
+    <text x="64" y="210" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800">Подключи</text>
+    <text x="64" y="285" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800">свой Контур</text>
+    <text x="64" y="350" fill="#e8efff" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400">Единая лента закупок в iStockLink</text>
+  </g>
+  <g id="visual" filter="url(#shadow)">
+
+    <g transform="translate(620,210)">
+      <rect x="0" y="0" width="120" height="72" rx="14" fill="#ffffff"/>
+      <text x="60" y="44" text-anchor="middle" fill="#1e293b" font-family="Arial" font-size="18" font-weight="700">Контур</text>
+      <text x="140" y="46" fill="#ffffff" font-family="Arial" font-size="28" font-weight="700">→</text>
+      <rect x="170" y="0" width="120" height="72" rx="14" fill="#ffffff"/>
+      <text x="230" y="44" text-anchor="middle" fill="#1e293b" font-family="Arial" font-size="18" font-weight="700">Seldon</text>
+      <text x="310" y="46" fill="#ffffff" font-family="Arial" font-size="28" font-weight="700">→</text>
+      <rect x="340" y="0" width="150" height="72" rx="14" fill="#153fb8" stroke="#ffffff" stroke-opacity="0.4"/>
+      <text x="415" y="44" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="18" font-weight="700">iStockLink</text>
+      <text x="510" y="46" fill="#ffffff" font-family="Arial" font-size="28" font-weight="700">→</text>
+      <rect x="540" y="0" width="120" height="72" rx="14" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-opacity="0.35"/>
+      <text x="600" y="44" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="18" font-weight="700">Лента</text>
+    </g>
+
+  </g>
+</svg>
