@@ -1222,7 +1222,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: #fff;
+    background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 45%, #fff 100%);
     padding: 80px 24px;
   }
   .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
@@ -1250,6 +1250,41 @@
     line-height: 1.6;
     color: var(--tg-muted);
     max-width: 560px;
+  }
+
+  .tg-price-offer-plaque {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 16px;
+    max-width: 560px;
+    margin: 0 auto 36px;
+    padding: 14px 24px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 50%, #3b6df0 100%);
+    color: #fff;
+    box-shadow: 0 16px 40px rgba(28,80,222,0.28);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .tg-price-offer-plaque strong {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .tg-price-offer-plaque span {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.92;
+  }
+  .tg-price-offer-plaque em {
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.18);
+    white-space: nowrap;
   }
 
   .tg-pricing-grid {
@@ -1350,15 +1385,27 @@
   @media (max-width: 560px) {
     .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
     .tg-price-wrap { padding: 48px 20px 56px; }
+    .tg-price-offer-plaque {
+      flex-direction: column;
+      text-align: center;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+    }
   }
 </style>
 
 <div class="tg-price-wrap">
   <div class="tg-price-inner">
     <div class="tg-price-header">
-      <span class="tg-section-label">Тариф</span>
-      <h2 class="tg-section-title">Специальное предложение</h2>
+      <span class="tg-section-label">Стоимость</span>
+      <h2 class="tg-section-title">Стоимость платформы</h2>
       <p class="tg-section-sub">Полный доступ к iStockLink: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
+    </div>
+
+    <div class="tg-price-offer-plaque">
+      <strong>Специальное предложение</strong>
+      <span>при оплате за год</span>
+      <em>экономия 24 000 ₽</em>
     </div>
 
     <div class="tg-pricing-grid">
