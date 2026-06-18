@@ -1262,13 +1262,16 @@
 
   .tg-price-offer-plaque {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
     width: fit-content;
     max-width: 100%;
     margin: 0 auto 32px;
     padding: 8px 16px;
     border-radius: 999px;
     background: #fffbeb;
-    border: 1px solid #fde68a;
     font-size: 14px;
     font-weight: 600;
     color: #92400e;
@@ -1391,13 +1394,11 @@
     <div class="tg-price-header">
       <span class="tg-section-label">Стоимость</span>
       <h2 class="tg-section-title">Стоимость платформы</h2>
-      <p class="tg-section-sub">Полный доступ к iStockLink: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
+      <p class="tg-section-sub">Единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
     <div class="tg-price-offer-plaque">
-      <span class="tg-price-offer-icon" aria-hidden="true">⏳</span>
-      <span class="tg-price-offer-label">Специальное предложение</span>
-      <span class="tg-price-offer-date">до 31.07.2026</span>
+      Специальное предложение <span class="tg-price-offer-date">до 31.07.2026</span>
     </div>
 
     <div class="tg-pricing-grid">
