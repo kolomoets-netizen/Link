@@ -79,7 +79,8 @@
     flex-direction: column;
     gap: 24px;
   }
-  .tg-funnel-kanban-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tg-funnel-kanban-block { width: 100%; }
+  .tg-funnel-kanban-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .tg-kanban-scroll-hint {
     display: none;
     font-size: 12px;
@@ -89,6 +90,11 @@
   .tg-funnel-title {
     font-size: 15px; font-weight: 700; color: #1e293b;
     margin: 0 0 16px;
+  }
+  .tg-kanban-footnote {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 12px 0 0;
   }
   .tg-kanban {
     display: grid;
@@ -222,7 +228,7 @@
     .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
     .tg-funnel-board { padding: 20px; gap: 20px; }
     .tg-kanban-scroll-hint { display: block; }
-    .tg-funnel-kanban-wrap {
+    .tg-funnel-kanban-scroll {
       scroll-snap-type: x mandatory;
       scroll-padding: 0 16px;
       margin: 0 -8px;
@@ -230,8 +236,8 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(28,80,222,0.25) transparent;
     }
-    .tg-funnel-kanban-wrap::-webkit-scrollbar { height: 4px; }
-    .tg-funnel-kanban-wrap::-webkit-scrollbar-thumb {
+    .tg-funnel-kanban-scroll::-webkit-scrollbar { height: 4px; }
+    .tg-funnel-kanban-scroll::-webkit-scrollbar-thumb {
       background: rgba(28,80,222,0.25);
       border-radius: 4px;
     }
@@ -305,10 +311,11 @@
     </div>
 
     <div class="tg-funnel-board">
-      <div class="tg-funnel-kanban-wrap">
+      <div class="tg-funnel-kanban-block">
         <p class="tg-funnel-title">Воронка участия в торгах</p>
         <p class="tg-kanban-scroll-hint">Листайте колонки →</p>
-        <div class="tg-kanban">
+        <div class="tg-funnel-kanban-scroll">
+          <div class="tg-kanban">
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
             <div class="tg-kanban-cards">
@@ -355,8 +362,9 @@
               <div class="tg-kanban-card empty">—</div>
             </div>
           </div>
+          </div>
         </div>
-        <p style="font-size:12px;color:#94a3b8;margin:0">Перетаскивайте карточки · назначайте ответственных · ставьте задачи</p>
+        <p class="tg-kanban-footnote">Перетаскивайте карточки · назначайте ответственных · ставьте задачи</p>
       </div>
 
       <div class="tg-side-panels">

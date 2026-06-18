@@ -38,38 +38,20 @@
   }
 
   .tg-price-offer-plaque {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px 16px;
-    max-width: 560px;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 auto 36px;
-    padding: 14px 24px;
-    border-radius: 16px;
+    padding: 12px 28px;
+    border-radius: 999px;
     background: linear-gradient(135deg, #1c50de 0%, #2f63ea 50%, #3b6df0 100%);
     color: #fff;
-    box-shadow: 0 16px 40px rgba(28,80,222,0.28);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .tg-price-offer-plaque strong {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     letter-spacing: -0.01em;
-  }
-  .tg-price-offer-plaque span {
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0.92;
-  }
-  .tg-price-offer-plaque em {
-    font-style: normal;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.18);
-    white-space: nowrap;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(28,80,222,0.28);
+    border: 1px solid rgba(255,255,255,0.15);
   }
 
   .tg-pricing-grid {
@@ -171,9 +153,7 @@
     .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
     .tg-price-wrap { padding: 48px 20px 56px; }
     .tg-price-offer-plaque {
-      flex-direction: column;
-      text-align: center;
-      padding: 16px 20px;
+      padding: 12px 22px;
       margin-bottom: 28px;
     }
   }
@@ -187,11 +167,7 @@
       <p class="tg-section-sub">Полный доступ к iStockLink: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
-    <div class="tg-price-offer-plaque">
-      <strong>Специальное предложение</strong>
-      <span>при оплате за год</span>
-      <em>экономия 24 000 ₽</em>
-    </div>
+    <div class="tg-price-offer-plaque">Специальное предложение</div>
 
     <div class="tg-pricing-grid">
       <div class="tg-price-card featured">

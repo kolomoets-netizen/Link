@@ -350,7 +350,7 @@
   }
   .tg-how-wrap *, .tg-how-wrap *::before, .tg-how-wrap *::after { box-sizing: border-box; }
   .tg-how-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-how-header { text-align: center; margin-bottom: 0; }
+  .tg-how-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
     font-size: 12px;
@@ -369,7 +369,7 @@
     line-height: 1.15;
   }
   .tg-section-sub {
-    margin: 0 auto 48px;
+    margin: 0 auto;
     font-size: 17px;
     line-height: 1.6;
     color: var(--tg-muted);
@@ -562,7 +562,7 @@
     .tg-steps-row { grid-template-columns: 1fr; gap: 16px; }
     .tg-how-wrap { padding: 48px 20px 56px; }
     .tg-diagram { margin-bottom: 24px; padding: 24px 16px 28px; }
-    .tg-section-sub { margin-bottom: 40px; }
+    .tg-how-header { margin-bottom: 32px; }
   }
 </style>
 
@@ -769,7 +769,8 @@
     flex-direction: column;
     gap: 24px;
   }
-  .tg-funnel-kanban-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tg-funnel-kanban-block { width: 100%; }
+  .tg-funnel-kanban-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .tg-kanban-scroll-hint {
     display: none;
     font-size: 12px;
@@ -779,6 +780,11 @@
   .tg-funnel-title {
     font-size: 15px; font-weight: 700; color: #1e293b;
     margin: 0 0 16px;
+  }
+  .tg-kanban-footnote {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 12px 0 0;
   }
   .tg-kanban {
     display: grid;
@@ -912,7 +918,7 @@
     .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
     .tg-funnel-board { padding: 20px; gap: 20px; }
     .tg-kanban-scroll-hint { display: block; }
-    .tg-funnel-kanban-wrap {
+    .tg-funnel-kanban-scroll {
       scroll-snap-type: x mandatory;
       scroll-padding: 0 16px;
       margin: 0 -8px;
@@ -920,8 +926,8 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(28,80,222,0.25) transparent;
     }
-    .tg-funnel-kanban-wrap::-webkit-scrollbar { height: 4px; }
-    .tg-funnel-kanban-wrap::-webkit-scrollbar-thumb {
+    .tg-funnel-kanban-scroll::-webkit-scrollbar { height: 4px; }
+    .tg-funnel-kanban-scroll::-webkit-scrollbar-thumb {
       background: rgba(28,80,222,0.25);
       border-radius: 4px;
     }
@@ -995,10 +1001,11 @@
     </div>
 
     <div class="tg-funnel-board">
-      <div class="tg-funnel-kanban-wrap">
+      <div class="tg-funnel-kanban-block">
         <p class="tg-funnel-title">Воронка участия в торгах</p>
         <p class="tg-kanban-scroll-hint">Листайте колонки →</p>
-        <div class="tg-kanban">
+        <div class="tg-funnel-kanban-scroll">
+          <div class="tg-kanban">
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
             <div class="tg-kanban-cards">
@@ -1045,8 +1052,9 @@
               <div class="tg-kanban-card empty">—</div>
             </div>
           </div>
+          </div>
         </div>
-        <p style="font-size:12px;color:#94a3b8;margin:0">Перетаскивайте карточки · назначайте ответственных · ставьте задачи</p>
+        <p class="tg-kanban-footnote">Перетаскивайте карточки · назначайте ответственных · ставьте задачи</p>
       </div>
 
       <div class="tg-side-panels">
@@ -1253,38 +1261,20 @@
   }
 
   .tg-price-offer-plaque {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px 16px;
-    max-width: 560px;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 auto 36px;
-    padding: 14px 24px;
-    border-radius: 16px;
+    padding: 12px 28px;
+    border-radius: 999px;
     background: linear-gradient(135deg, #1c50de 0%, #2f63ea 50%, #3b6df0 100%);
     color: #fff;
-    box-shadow: 0 16px 40px rgba(28,80,222,0.28);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .tg-price-offer-plaque strong {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     letter-spacing: -0.01em;
-  }
-  .tg-price-offer-plaque span {
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0.92;
-  }
-  .tg-price-offer-plaque em {
-    font-style: normal;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.18);
-    white-space: nowrap;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(28,80,222,0.28);
+    border: 1px solid rgba(255,255,255,0.15);
   }
 
   .tg-pricing-grid {
@@ -1386,9 +1376,7 @@
     .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
     .tg-price-wrap { padding: 48px 20px 56px; }
     .tg-price-offer-plaque {
-      flex-direction: column;
-      text-align: center;
-      padding: 16px 20px;
+      padding: 12px 22px;
       margin-bottom: 28px;
     }
   }
@@ -1402,11 +1390,7 @@
       <p class="tg-section-sub">Полный доступ к iStockLink: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
-    <div class="tg-price-offer-plaque">
-      <strong>Специальное предложение</strong>
-      <span>при оплате за год</span>
-      <em>экономия 24 000 ₽</em>
-    </div>
+    <div class="tg-price-offer-plaque">Специальное предложение</div>
 
     <div class="tg-pricing-grid">
       <div class="tg-price-card featured">
