@@ -365,47 +365,6 @@
     max-width: 720px;
   }
 
-  .tg-modes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-  .tg-mode-card {
-    border-radius: 20px;
-    padding: 28px 24px;
-    border: 2px solid #e8edf5;
-    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
-    position: relative;
-  }
-  .tg-mode-card.highlight {
-    border-color: var(--tg-primary);
-    box-shadow: 0 12px 32px rgba(28,80,222,0.12);
-  }
-  .tg-mode-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px; height: 28px;
-    border-radius: 8px;
-    background: var(--tg-primary);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 800;
-    margin-bottom: 12px;
-  }
-  .tg-mode-title { font-size: 18px; font-weight: 800; color: #1e293b; margin: 0 0 10px; }
-  .tg-mode-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0 0 14px; }
-  .tg-mode-list { list-style: none; padding: 0; margin: 0; }
-  .tg-mode-list li {
-    font-size: 13px; color: #475569;
-    padding: 5px 0 5px 18px; position: relative;
-  }
-  .tg-mode-list li::before {
-    content: "→"; position: absolute; left: 0;
-    color: var(--tg-primary); font-weight: 700;
-  }
-
   .tg-diagram {
     background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
     border: 1px solid rgba(28,80,222,0.1);
@@ -583,7 +542,6 @@
   .tg-step-text { font-size: 13px; line-height: 1.55; color: #64748b; margin: 0; }
 
   @media (max-width: 960px) {
-    .tg-modes { grid-template-columns: 1fr; }
     .tg-diagram-grid { grid-template-columns: 1fr; gap: 24px; }
     .tg-diagram-arrow { flex-direction: row; min-width: auto; }
     .tg-diagram-arrow-line { width: 40px; height: 2px; }
@@ -598,31 +556,8 @@
 <div class="tg-how-wrap" id="how">
   <div class="tg-how-inner">
     <span class="tg-section-label">Как это работает</span>
-    <h2 class="tg-section-title">Два способа подключения — одна платформа</h2>
-    <p class="tg-section-sub">Подключите агрегаторы по ключу или реестр госзакупок — iStockLink соберёт всё в одной ленте, воронке и задачах команды.</p>
-
-    <div class="tg-modes">
-      <div class="tg-mode-card highlight">
-        <div class="tg-mode-num">1</div>
-        <h3 class="tg-mode-title">Свой агрегатор</h3>
-        <p class="tg-mode-text">Уже платите за Контур, Seldon, ТендерГуру или другой сервис? Подключите ключ доступа — закупки пойдут в iStockLink по вашей лицензии.</p>
-        <ul class="tg-mode-list">
-          <li>Данные по вашей подписке</li>
-          <li>Можно подключить несколько сервисов</li>
-          <li>Тариф «Бизнес» и выше</li>
-        </ul>
-      </div>
-      <div class="tg-mode-card">
-        <div class="tg-mode-num">2</div>
-        <h3 class="tg-mode-title">Госзакупки</h3>
-        <p class="tg-mode-text">Подключите реестр госзакупок — извещения из ЕИС будут приходить в iStockLink наряду с данными из агрегаторов.</p>
-        <ul class="tg-mode-list">
-          <li>44-ФЗ и 223-ФЗ</li>
-          <li>Фильтры по регионам и ОКПД2</li>
-          <li>Работает вместе с агрегаторами</li>
-        </ul>
-      </div>
-    </div>
+    <h2 class="tg-section-title">От источников до контракта</h2>
+    <p class="tg-section-sub">Агрегаторы и госзакупки → iStockLink → единая лента, воронка и задачи команды.</p>
 
     <div class="tg-diagram">
       <div class="tg-diagram-grid">
@@ -827,11 +762,11 @@
   }
   .tg-kanban {
     display: grid;
-    grid-template-columns: repeat(5, minmax(148px, 1fr));
+    grid-template-columns: repeat(5, minmax(168px, 1fr));
     gap: 12px;
     margin-bottom: 12px;
     align-items: stretch;
-    min-width: 760px;
+    min-width: 860px;
   }
   .tg-kanban-col {
     background: #fff;
@@ -879,6 +814,15 @@
     font-weight: 500; line-height: 1.25;
     word-break: break-word;
   }
+  .tg-kanban-card .tg-card-title {
+    font-size: 9px; font-weight: 700; line-height: 1.25;
+    margin-bottom: 4px; word-break: break-word;
+  }
+  .tg-kanban-card .tg-card-field {
+    font-size: 8px; font-weight: 500; line-height: 1.3;
+    color: #64748b; word-break: break-word;
+  }
+  .tg-kanban-card.active .tg-card-field { color: rgba(255,255,255,0.85); }
   .tg-kanban-card.empty {
     background: transparent;
     border: 1px dashed #e2e8f0;
@@ -957,7 +901,7 @@
   <div class="tg-platform-inner">
     <div class="tg-platform-header">
       <span class="tg-section-label">Полный цикл</span>
-      <h2 class="tg-section-title">Не поиск. Вся тендерная работа в iStockLink</h2>
+      <h2 class="tg-section-title">Вся тендерная работа в iStockLink</h2>
       <p class="tg-section-sub">Сбор закупок — только вход. Дальше — воронка по торгам, база поставщиков и автоматическая оцифровка коммерческих предложений.</p>
     </div>
 
@@ -992,7 +936,7 @@
         <ul class="tg-pillar-list">
           <li>База поставщиков</li>
           <li>Сбор КП по почте</li>
-          <li>Оцифровка предложений</li>
+          <li>Оцифровка предложений ваших поставщиков</li>
         </ul>
       </div>
     </div>
@@ -1004,26 +948,44 @@
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card">Медтехника<div class="price">4,2 млн</div></div>
-              <div class="tg-kanban-card">Лицензии<div class="price">890 тыс.</div></div>
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Поставка медоборудования</div>
+                <div class="tg-card-field">НМЦК: 4 200 000 ₽</div>
+              </div>
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Лицензии ПО для госсектора</div>
+                <div class="tg-card-field">НМЦК: 890 000 ₽</div>
+              </div>
             </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Анализ</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card active">Ремонт<div class="price">1,1 млн</div></div>
+              <div class="tg-kanban-card active">
+                <div class="tg-card-title">Ремонт офисных помещений</div>
+                <div class="tg-card-field">НМЦК: 1 100 000 ₽</div>
+                <div class="tg-card-field">Цена: 980 000 ₽</div>
+              </div>
             </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подготовка</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card">3 КП<div class="price">сбор</div></div>
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Поставка мебели для школы</div>
+                <div class="tg-card-field">НМЦК: 2 450 000 ₽</div>
+                <div class="tg-card-field">Цена: 2 310 000 ₽</div>
+              </div>
             </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подача</div>
             <div class="tg-kanban-cards">
-              <div class="tg-kanban-card">Срок<div class="price">28.06</div></div>
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Уборка территории больницы</div>
+                <div class="tg-card-field">НМЦК: 760 000 ₽</div>
+                <div class="tg-card-field">Цена: 720 000 ₽</div>
+              </div>
             </div>
           </div>
           <div class="tg-kanban-col">
@@ -1058,7 +1020,7 @@
         </div>
 
         <div class="tg-panel">
-          <div class="tg-panel-head">📄 Оцифровка предложений</div>
+          <div class="tg-panel-head">📄 Оцифровка предложений ваших поставщиков</div>
           <div class="tg-kp-item">
             <span class="tg-kp-icon">📎</span>
             <div>
@@ -1199,7 +1161,7 @@
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🔔</div>
         <h3 class="tg-feat-title">Уведомления</h3>
-        <p class="tg-feat-text">Письма и Telegram-бот: новые закупки, приближающиеся дедлайны, смена статуса в воронке.</p>
+        <p class="tg-feat-text">Письма о новых закупках, приближающихся дедлайнах и смене статуса в воронке.</p>
       </div>
       <div class="tg-feat-card">
         <div class="tg-feat-icon">🛡️</div>
@@ -1267,9 +1229,10 @@
 
   .tg-pricing-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    align-items: stretch;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 720px;
+    margin: 0 auto;
   }
   .tg-price-card {
     border-radius: 20px;
@@ -1387,67 +1350,39 @@
     </div>
 
     <div class="tg-price-header">
-      <span class="tg-section-label">Тарифы</span>
-      <h2 class="tg-section-title">Платите за платформу, не за данные дважды</h2>
-      <p class="tg-section-sub">Закупки идут по вашей лицензии агрегатора. iStockLink берёт оплату за единую ленту, воронку и работу с поставщиками.</p>
+      <span class="tg-section-label">Тариф</span>
+      <h2 class="tg-section-title">Специальное предложение</h2>
+      <p class="tg-section-sub">Полный доступ к iStockLink: единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
     <div class="tg-pricing-grid">
-      <div class="tg-price-card">
-        <p class="tg-price-name">Старт</p>
-        <p class="tg-price-amount">0 ₽</p>
-        <p class="tg-price-desc">Госзакупки и демо</p>
-        <ul class="tg-price-list">
-          <li>Подключение госзакупок</li>
-          <li>До 3 поисковых шаблонов</li>
-          <li>Уведомления на почту</li>
-          <li class="off">Свой агрегатор</li>
-          <li class="off">Коммерческие площадки</li>
-        </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Начать бесплатно</a>
-      </div>
-
-      <div class="tg-price-card">
-        <p class="tg-price-name">Про</p>
-        <p class="tg-price-amount">4 900 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Агрегатор со скидкой</p>
-        <ul class="tg-price-list">
-          <li>Госзакупки + коммерция</li>
-          <li>Подключение агрегатора со скидкой</li>
-          <li>Безлимитные фильтры</li>
-          <li>Воронка торгов</li>
-          <li>Telegram-бот</li>
-        </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать Про</a>
-      </div>
-
       <div class="tg-price-card featured">
-        <span class="tg-price-badge">Популярный</span>
-        <p class="tg-price-name">Бизнес</p>
-        <p class="tg-price-amount">2 900 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Есть свой агрегатор</p>
+        <span class="tg-price-badge">Выгодно</span>
+        <p class="tg-price-name">Оплата за год</p>
+        <p class="tg-price-amount">3 500 ₽ <span>/мес</span></p>
+        <p class="tg-price-desc">42 000 ₽ в год · экономия 24 000 ₽</p>
         <ul class="tg-price-list">
-          <li>До 2 подключений агрегаторов</li>
-          <li>Несколько источников в одной ленте</li>
-          <li>Воронка и статусы</li>
-          <li>Командный доступ (3 места)</li>
-          <li>Интеграция с учётными системами</li>
+          <li>Все возможности платформы</li>
+          <li>Подключение агрегаторов</li>
+          <li>Госзакупки и воронка</li>
+          <li>База поставщиков и КП</li>
+          <li>Командный доступ</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать Бизнес</a>
+        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Оформить за год</a>
       </div>
 
       <div class="tg-price-card">
-        <p class="tg-price-name">Корпоративный</p>
-        <p class="tg-price-amount">от 9 900 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Тендерный отдел 5+ человек</p>
+        <p class="tg-price-name">Помесячная оплата</p>
+        <p class="tg-price-amount">5 500 ₽ <span>/мес</span></p>
+        <p class="tg-price-desc">Без долгосрочных обязательств</p>
         <ul class="tg-price-list">
-          <li>Безлимит подключений</li>
-          <li>Контур · Seldon · ТендерГуру · Закупки360</li>
-          <li>Единый вход · аудит · гарантии</li>
-          <li>Интеграции под заказ</li>
-          <li>Персональный менеджер</li>
+          <li>Все возможности платформы</li>
+          <li>Подключение агрегаторов</li>
+          <li>Госзакупки и воронка</li>
+          <li>База поставщиков и КП</li>
+          <li>Командный доступ</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Связаться</a>
+        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Оформить на месяц</a>
       </div>
     </div>
   </div>
@@ -1635,7 +1570,7 @@
         </div>
         <div class="tg-faq-item">
           <p class="tg-faq-q">Можно подключить несколько агрегаторов?</p>
-          <p class="tg-faq-a">Да, на тарифе «Бизнес» — до 2 источников, на «Корпоративном» — без ограничений. Именно здесь особенно полезно объединение дублей из разных сервисов.</p>
+          <p class="tg-faq-a">Да, можно подключить несколько агрегаторов одновременно — все закупки соберутся в одной ленте. Именно здесь особенно полезно объединение дублей из разных сервисов.</p>
         </div>
       </div>
     </div>
