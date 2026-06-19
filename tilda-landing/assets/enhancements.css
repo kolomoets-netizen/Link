@@ -58,9 +58,7 @@ body {
   color: var(--ds-accent) !important;
 }
 
-/* Убираем лишние декоративные слои */
-.tg-hero-wrap::before,
-.tg-hero-wrap::after,
+/* Убираем лишний декор у CTA */
 .tg-cta-box::before {
   display: none !important;
 }
@@ -84,8 +82,8 @@ body {
 .tg-price-card:hover,
 .tg-faq-item:hover {
   transform: none !important;
-  border-color: #afb8c1 !important;
-  box-shadow: var(--ds-shadow-md) !important;
+  border-color: rgba(28, 80, 222, 0.22) !important;
+  box-shadow: 0 4px 12px rgba(28, 80, 222, 0.08) !important;
 }
 
 .tg-feat-icon {
@@ -97,7 +95,7 @@ body {
 }
 
 .tg-pillar::before {
-  display: none !important;
+  display: block !important;
 }
 
 /* Кнопки — плоские, без градиента */
