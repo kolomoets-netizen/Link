@@ -1,0 +1,132 @@
+/* Preview polish — Tilda Sans + фирменная типографика */
+:root {
+  --ds-text: #24292f;
+  --ds-muted: #57606a;
+  --ds-border: #d0d7de;
+  --ds-canvas: #f6f8fa;
+  --ds-surface: #ffffff;
+  --ds-accent: #1c50de;
+  --ds-accent-subtle: #ddf4ff;
+  --ds-radius: 12px;
+  --ds-radius-sm: 6px;
+  --ds-shadow-sm: 0 1px 0 rgba(27, 31, 36, 0.04), 0 1px 3px rgba(27, 31, 36, 0.08);
+  --ds-shadow-md: 0 3px 6px rgba(27, 31, 36, 0.06);
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: var(--ds-text);
+}
+
+[class*='tg-'][class*='-wrap'],
+[class*='tg-'][class*='-inner'] {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(28, 80, 222, 0.14);
+  color: var(--ds-text);
+}
+
+.tg-section-title,
+.tg-hero-title,
+.tg-cta-title {
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--ds-text) !important;
+}
+
+.tg-section-label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--ds-accent) !important;
+}
+
+.tg-section-sub {
+  color: var(--ds-muted) !important;
+}
+
+.tg-hero-title span {
+  background: none !important;
+  -webkit-text-fill-color: var(--ds-accent) !important;
+  color: var(--ds-accent) !important;
+}
+
+.tg-cta-box::before {
+  display: none !important;
+}
+
+.tg-feat-card,
+.tg-pillar,
+.tg-price-card,
+.tg-faq-item,
+.tg-step-card,
+.tg-source-card,
+.tg-kanban-col,
+.tg-panel,
+.tg-hero-visual,
+.tg-diagram,
+.tg-compare-table {
+  box-shadow: var(--ds-shadow-sm) !important;
+}
+
+.tg-feat-card:hover,
+.tg-pillar:hover,
+.tg-price-card:hover,
+.tg-faq-item:hover {
+  transform: none !important;
+  border-color: rgba(28, 80, 222, 0.22) !important;
+  box-shadow: 0 4px 12px rgba(28, 80, 222, 0.08) !important;
+}
+
+.tg-feat-icon {
+  display: none !important;
+}
+
+.tg-pillar-icon {
+  display: none !important;
+}
+
+.tg-pillar::before {
+  display: block !important;
+}
+
+.tg-btn-primary,
+.tg-price-btn-primary {
+  background: var(--ds-accent) !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(27, 31, 36, 0.12) !important;
+}
+
+.tg-btn-primary:hover,
+.tg-price-btn-primary:hover,
+.tg-cta-submit:hover {
+  transform: none !important;
+  filter: none !important;
+  background: #1a47c4 !important;
+}
+
+.tg-btn-secondary,
+.tg-price-btn-outline {
+  background: var(--ds-surface) !important;
+  border: 1px solid var(--ds-border) !important;
+  box-shadow: var(--ds-shadow-sm) !important;
+}
+
+.tg-btn-primary:hover,
+.tg-price-btn-primary:hover {
+  box-shadow: var(--ds-shadow-sm) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lenis { scroll-behavior: auto; }
+}
