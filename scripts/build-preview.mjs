@@ -1,10 +1,23 @@
 import { readFileSync, writeFileSync, cpSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const base = join(root, 'tilda-landing');
 const docs = join(root, 'docs');
+
+function getBuildId() {
+  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA.slice(0, 7);
+  try {
+    return execSync('git rev-parse --short HEAD', { cwd: root, encoding: 'utf-8' }).trim();
+  } catch {
+    return String(Date.now());
+  }
+}
+
+const buildId = getBuildId();
+const buildDate = new Date().toISOString().slice(0, 10);
 
 const blocks = [
   '01-hero.html',
@@ -26,16 +39,28 @@ const html = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="build" content="${buildId}">
 <title>iStockLink</title>
-<link rel="stylesheet" href="assets/vendor/aos/aos.css">
-<link rel="stylesheet" href="assets/enhancements.css">
-<style>body{margin:0}</style>
+<link rel="stylesheet" href="assets/vendor/aos/aos.css?v=${buildId}">
+<link rel="stylesheet" href="assets/enhancements.css?v=${buildId}">
+<style>
+  body{margin:0}
+  .tg-preview-bar{
+    position:sticky;top:0;z-index:9999;
+    padding:8px 16px;text-align:center;font-size:13px;font-weight:600;
+    background:#1c50de;color:#fff;font-family:'TildaSans','Tilda Sans',Arial,sans-serif;
+    border-bottom:1px solid rgba(255,255,255,.2);
+  }
+  .tg-preview-bar a{color:#dbeafe}
+</style>
 </head>
 <body>
+<div class="tg-preview-bar">Превью GitHub Pages · сборка ${buildDate} (${buildId}) · тарифы от 6&nbsp;000&nbsp;₽ · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
 ${body}
-<script src="assets/vendor/lenis/lenis.min.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/enhancements.js"></script>
+<script src="assets/vendor/lenis/lenis.min.js?v=${buildId}"></script>
+<script src="assets/vendor/aos/aos.js?v=${buildId}"></script>
+<script src="assets/enhancements.js?v=${buildId}"></script>
 </body>
 </html>
 `;
