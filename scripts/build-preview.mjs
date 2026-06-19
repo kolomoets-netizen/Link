@@ -42,6 +42,7 @@ const html = `<!DOCTYPE html>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta name="build" content="${buildId}">
 <title>iStockLink</title>
+<link rel="stylesheet" href="https://static.tildacdn.com/css/fonts-tildasans.css">
 <link rel="stylesheet" href="assets/vendor/aos/aos.css?v=${buildId}">
 <link rel="stylesheet" href="assets/enhancements.css?v=${buildId}">
 <style>
@@ -49,14 +50,14 @@ const html = `<!DOCTYPE html>
   .tg-preview-bar{
     position:sticky;top:0;z-index:9999;
     padding:8px 16px;text-align:center;font-size:13px;font-weight:600;
-    background:#1c50de;color:#fff;font-family:'Plus Jakarta Sans Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:#1c50de;color:#fff;font-family:'TildaSans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
     border-bottom:1px solid rgba(255,255,255,.2);
   }
   .tg-preview-bar a{color:#dbeafe}
 </style>
 </head>
 <body>
-<div class="tg-preview-bar">Превью GitHub Pages · сборка ${buildDate} (${buildId}) · тарифы от 6&nbsp;000&nbsp;₽ · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
+<div class="tg-preview-bar">Превью GitHub Pages · Tilda Sans · сборка ${buildDate} (${buildId}) · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
 ${body}
 <script src="assets/vendor/lenis/lenis.min.js?v=${buildId}"></script>
 <script src="assets/vendor/aos/aos.js?v=${buildId}"></script>
