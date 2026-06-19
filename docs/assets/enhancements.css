@@ -36,11 +36,14 @@ body {
 }
 
 .tg-section-title,
-.tg-hero-title,
-.tg-cta-title {
+.tg-hero-title {
   font-weight: 700 !important;
   letter-spacing: -0.025em !important;
   color: var(--ds-text) !important;
+}
+
+.tg-cta-box .tg-cta-title {
+  color: #fff !important;
 }
 
 .tg-section-label {
@@ -77,6 +80,10 @@ body {
 .tg-diagram,
 .tg-compare-table {
   box-shadow: var(--ds-shadow-sm) !important;
+}
+
+.tg-demo-modal.is-open {
+  visibility: visible;
 }
 
 .tg-feat-card:hover,

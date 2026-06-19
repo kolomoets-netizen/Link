@@ -28,9 +28,7 @@
     '.tg-feat-card',
     '.tg-compare-header',
     '.tg-compare-table',
-    '.tg-compare-note',
     '.tg-price-header',
-    '.tg-price-offer-plaque',
     '.tg-price-card',
     '.tg-faq-header',
     '.tg-faq-item',
@@ -57,4 +55,46 @@
       disable: reduced,
     });
   }
+
+  var modal = document.getElementById('tg-demo-modal');
+  var tierEl = document.getElementById('tg-demo-modal-tier');
+
+  function openDemoModal(tier) {
+    if (!modal) return;
+    if (tierEl) {
+      if (tier) {
+        tierEl.textContent = 'Тариф: ' + tier;
+        tierEl.hidden = false;
+      } else {
+        tierEl.hidden = true;
+      }
+    }
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var input = modal.querySelector('.tg-demo-modal-input');
+    if (input) setTimeout(function () { input.focus(); }, 50);
+  }
+
+  function closeDemoModal() {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-demo-open]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openDemoModal(btn.getAttribute('data-tier') || '');
+    });
+  });
+
+  document.querySelectorAll('[data-demo-close]').forEach(function (el) {
+    el.addEventListener('click', closeDemoModal);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeDemoModal();
+  });
 })();

@@ -46,65 +46,97 @@
     border: 1px solid var(--tg-border-accent);
     border-radius: 12px;
     overflow: hidden;
-    background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
     box-shadow: 0 2px 8px rgba(28, 80, 222, 0.04);
   }
   .tg-compare-row {
     display: grid;
-    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1.15fr;
     border-bottom: 1px solid #eef2ff;
   }
   .tg-compare-row:last-child { border-bottom: none; }
   .tg-compare-row.head {
-    background: #f4f7ff;
+    background: #1c50de;
     font-weight: 700;
     font-size: 14px;
-    color: var(--tg-text);
+    color: #fff;
+  }
+  .tg-compare-row.highlight {
+    background: linear-gradient(90deg, #fff8f8 0%, #fff 42%, #f0f5ff 42%, #eef3ff 100%);
   }
   .tg-compare-cell {
-    padding: 16px 20px;
+    padding: 18px 20px;
     font-size: 14px;
-    line-height: 1.5;
-    color: #475569;
+    line-height: 1.55;
     border-right: 1px solid #eef2ff;
   }
   .tg-compare-cell:last-child { border-right: none; }
-  .tg-compare-row.head .tg-compare-cell { padding: 18px 20px; }
-  .tg-compare-cell.criteria {
-    font-weight: 600;
-    color: var(--tg-text);
-    background: rgba(255, 255, 255, 0.5);
-  }
-  .tg-compare-cell.crm { color: #64748b; }
-  .tg-compare-cell.us {
-    color: var(--tg-text);
-    background: rgba(28, 80, 222, 0.03);
-    font-weight: 500;
+  .tg-compare-row.head .tg-compare-cell {
+    padding: 18px 20px;
+    border-right-color: rgba(255,255,255,0.15);
+    color: #fff;
   }
   .tg-compare-row.head .tg-compare-cell.us {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .tg-compare-cell.criteria {
+    font-weight: 700;
+    color: var(--tg-text);
+    background: #fafbfc;
+  }
+  .tg-compare-row.highlight .tg-compare-cell.criteria {
+    background: #fff5f5;
+    color: #991b1b;
+  }
+  .tg-compare-cell.crm {
+    color: #64748b;
+    background: #f8fafc;
+  }
+  .tg-compare-row.highlight .tg-compare-cell.crm {
+    background: #fff8f8;
+  }
+  .tg-compare-cell.us {
+    color: var(--tg-text);
+    background: #f4f7ff;
+    border-left: 3px solid var(--tg-primary);
+    font-weight: 500;
+  }
+  .tg-compare-row.highlight .tg-compare-cell.us {
+    background: #eef3ff;
+  }
+  .tg-compare-bad {
+    display: block;
+    color: #b45309;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .tg-compare-good {
+    display: block;
     color: var(--tg-primary);
-    background: rgba(28, 80, 222, 0.06);
+    font-weight: 700;
+    margin-bottom: 4px;
   }
-  .tg-compare-bad { color: #94a3b8; }
-  .tg-compare-good { color: var(--tg-primary); font-weight: 600; }
-
-  .tg-compare-note {
-    margin-top: 24px;
-    padding: 16px 20px;
-    border-radius: 10px;
-    background: #f8faff;
-    border: 1px solid var(--tg-border-accent);
-    font-size: 14px;
-    line-height: 1.55;
+  .tg-compare-cost {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .tg-compare-cost.crm-cost { color: #dc2626; }
+  .tg-compare-cost.us-cost { color: var(--tg-primary); }
+  .tg-compare-cost-note {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--tg-muted);
-    text-align: center;
+    line-height: 1.45;
   }
-  .tg-compare-note strong { color: var(--tg-text); }
 
   @media (max-width: 760px) {
     .tg-compare-wrap { padding: 48px 20px 56px; }
     .tg-compare-row { grid-template-columns: 1fr; }
-    .tg-compare-cell { border-right: none; border-bottom: 1px solid #eef2ff; }
+    .tg-compare-cell { border-right: none; border-bottom: 1px solid #eef2ff; border-left: none !important; }
     .tg-compare-row.head { display: none; }
     .tg-compare-row:not(.head) .tg-compare-cell.criteria {
       background: #f4f7ff;
@@ -114,7 +146,7 @@
     }
     .tg-compare-row:not(.head) .tg-compare-cell.crm::before {
       content: "Обычная CRM: ";
-      font-weight: 600;
+      font-weight: 700;
       color: #94a3b8;
     }
     .tg-compare-row:not(.head) .tg-compare-cell.us::before {
@@ -124,6 +156,8 @@
     }
     .tg-compare-row:not(.head) .tg-compare-cell.us {
       padding-top: 4px;
+      border-left: none;
+      background: #f4f7ff;
     }
   }
 </style>
@@ -142,36 +176,38 @@
         <div class="tg-compare-cell crm">Обычная CRM</div>
         <div class="tg-compare-cell us">iStockLink</div>
       </div>
+      <div class="tg-compare-row highlight">
+        <div class="tg-compare-cell criteria">Стоимость получения системы</div>
+        <div class="tg-compare-cell crm">
+          <span class="tg-compare-cost crm-cost">от 100 000 ₽</span>
+          <span class="tg-compare-cost-note">Минимум за внедрение + подписка на тариф + маркетплейс приложений и интеграций</span>
+        </div>
+        <div class="tg-compare-cell us">
+          <span class="tg-compare-cost us-cost">от 6 000 ₽/мес</span>
+          <span class="tg-compare-good">Только подписка</span>
+          <span class="tg-compare-cost-note">Без внедрения, без маркетплейса — готовый инструмент с первого дня</span>
+        </div>
+      </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Запуск</div>
-        <div class="tg-compare-cell crm"><span class="tg-compare-bad">Внедрение от 100 000 ₽</span>, настройка воронок и интеграций — недели и месяцы</div>
-        <div class="tg-compare-cell us"><span class="tg-compare-good">Готовый инструмент</span> — лента, воронка и поставщики из коробки, старт за 1 день</div>
+        <div class="tg-compare-cell crm"><span class="tg-compare-bad">Недели и месяцы</span>Настройка воронок, интеграций и обучение команды</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">Старт за 1 день</span>Лента, воронка и поставщики уже в платформе</div>
       </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Тендеры и закупки</div>
-        <div class="tg-compare-cell crm">Нужны доработки, подключение агрегаторов и отдельные модули</div>
-        <div class="tg-compare-cell us">Единая лента, госзакупки, этапы торгов и оцифровка КП — уже в платформе</div>
+        <div class="tg-compare-cell crm">Доработки под закупки, отдельные модули и интеграции с агрегаторами</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">Из коробки</span>Единая лента, госзакупки, этапы торгов и оцифровка КП</div>
       </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Дополнительные расходы</div>
-        <div class="tg-compare-cell crm">Маркетплейс приложений, платные интеграции, обновления коробки</div>
-        <div class="tg-compare-cell us">Всё включено в подписку — без отдельного внедрения и маркетплейса</div>
-      </div>
-      <div class="tg-compare-row">
-        <div class="tg-compare-cell criteria">Тарифы (облако)</div>
-        <div class="tg-compare-cell crm">Базовый от 2 490 ₽/мес · Стандартный от 6 990 ₽ · Профессиональный от 13 990 ₽ + внедрение</div>
-        <div class="tg-compare-cell us"><span class="tg-compare-good">От 1 990 ₽/мес</span> · Стандартный 5 490 ₽ · Профессиональный 10 990 ₽ — ниже, без скрытых платежей</div>
+        <div class="tg-compare-cell crm"><span class="tg-compare-bad">Скрытые платежи</span>Маркетплейс, платные приложения, обновления коробки</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">Всё включено</span>Функции платформы в подписке — без доплат за модули</div>
       </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Пользователи</div>
         <div class="tg-compare-cell crm">Лимиты по тарифу: 5 / 50 / 100+</div>
-        <div class="tg-compare-cell us">Та же логика: до 5 / до 50 / 100 и более — масштабируйте команду по мере роста</div>
+        <div class="tg-compare-cell us">Та же логика: до 5 / до 50 / 100 и более</div>
       </div>
     </div>
-
-    <p class="tg-compare-note">
-      <strong>Итог:</strong> вместо проекта внедрения CRM вы получаете специализированную платформу с прозрачной подпиской.
-      Годовая оплата — скидка ~30%.
-    </p>
   </div>
 </div>

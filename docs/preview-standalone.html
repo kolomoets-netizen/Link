@@ -814,8 +814,8 @@
     background: #fff;
     border-radius: 14px;
     border: 1px solid #e2e8f0;
-    min-height: 156px;
-    padding: 10px 10px 12px;
+    min-height: 188px;
+    padding: 12px 12px 14px;
     display: flex;
     flex-direction: column;
     min-width: 0;
@@ -836,12 +836,12 @@
     background: linear-gradient(135deg, #f8faff, #f1f5ff);
     border: 1px solid rgba(28,80,222,0.12);
     border-radius: 10px;
-    padding: 8px 8px;
-    font-size: 9px;
+    padding: 12px 11px;
+    font-size: 11px;
     font-weight: 600;
     color: #334155;
-    line-height: 1.3;
-    min-height: 48px;
+    line-height: 1.35;
+    min-height: 72px;
     overflow: hidden;
     word-break: break-word;
     hyphens: auto;
@@ -857,11 +857,11 @@
     word-break: break-word;
   }
   .tg-kanban-card .tg-card-title {
-    font-size: 9px; font-weight: 700; line-height: 1.25;
-    margin-bottom: 4px; word-break: break-word;
+    font-size: 12px; font-weight: 700; line-height: 1.3;
+    margin-bottom: 5px; word-break: break-word;
   }
   .tg-kanban-card .tg-card-field {
-    font-size: 8px; font-weight: 500; line-height: 1.3;
+    font-size: 10px; font-weight: 500; line-height: 1.35;
     color: #64748b; word-break: break-word;
   }
   .tg-kanban-card.active .tg-card-field { color: rgba(255,255,255,0.85); }
@@ -870,7 +870,7 @@
     border: 1px dashed #e2e8f0;
     color: #cbd5e1;
     display: flex; align-items: center; justify-content: center;
-    min-height: 48px; font-size: 9px;
+    min-height: 72px; font-size: 11px;
   }
   .tg-side-panels {
     display: grid;
@@ -963,10 +963,10 @@
     .tg-kanban-col {
       flex: 0 0 min(76vw, 280px);
       scroll-snap-align: start;
-      min-height: 160px;
+      min-height: 188px;
     }
     .tg-kanban-head { font-size: 11px; }
-    .tg-kanban-card { font-size: 12px; padding: 10px; min-height: 52px; }
+    .tg-kanban-card { font-size: 12px; padding: 12px; min-height: 68px; }
     .tg-kanban-card .tg-card-title { font-size: 12px; }
     .tg-kanban-card .tg-card-field { font-size: 11px; }
   }
@@ -1275,65 +1275,97 @@
     border: 1px solid var(--tg-border-accent);
     border-radius: 12px;
     overflow: hidden;
-    background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
     box-shadow: 0 2px 8px rgba(28, 80, 222, 0.04);
   }
   .tg-compare-row {
     display: grid;
-    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1.15fr;
     border-bottom: 1px solid #eef2ff;
   }
   .tg-compare-row:last-child { border-bottom: none; }
   .tg-compare-row.head {
-    background: #f4f7ff;
+    background: #1c50de;
     font-weight: 700;
     font-size: 14px;
-    color: var(--tg-text);
+    color: #fff;
+  }
+  .tg-compare-row.highlight {
+    background: linear-gradient(90deg, #fff8f8 0%, #fff 42%, #f0f5ff 42%, #eef3ff 100%);
   }
   .tg-compare-cell {
-    padding: 16px 20px;
+    padding: 18px 20px;
     font-size: 14px;
-    line-height: 1.5;
-    color: #475569;
+    line-height: 1.55;
     border-right: 1px solid #eef2ff;
   }
   .tg-compare-cell:last-child { border-right: none; }
-  .tg-compare-row.head .tg-compare-cell { padding: 18px 20px; }
-  .tg-compare-cell.criteria {
-    font-weight: 600;
-    color: var(--tg-text);
-    background: rgba(255, 255, 255, 0.5);
-  }
-  .tg-compare-cell.crm { color: #64748b; }
-  .tg-compare-cell.us {
-    color: var(--tg-text);
-    background: rgba(28, 80, 222, 0.03);
-    font-weight: 500;
+  .tg-compare-row.head .tg-compare-cell {
+    padding: 18px 20px;
+    border-right-color: rgba(255,255,255,0.15);
+    color: #fff;
   }
   .tg-compare-row.head .tg-compare-cell.us {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .tg-compare-cell.criteria {
+    font-weight: 700;
+    color: var(--tg-text);
+    background: #fafbfc;
+  }
+  .tg-compare-row.highlight .tg-compare-cell.criteria {
+    background: #fff5f5;
+    color: #991b1b;
+  }
+  .tg-compare-cell.crm {
+    color: #64748b;
+    background: #f8fafc;
+  }
+  .tg-compare-row.highlight .tg-compare-cell.crm {
+    background: #fff8f8;
+  }
+  .tg-compare-cell.us {
+    color: var(--tg-text);
+    background: #f4f7ff;
+    border-left: 3px solid var(--tg-primary);
+    font-weight: 500;
+  }
+  .tg-compare-row.highlight .tg-compare-cell.us {
+    background: #eef3ff;
+  }
+  .tg-compare-bad {
+    display: block;
+    color: #b45309;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .tg-compare-good {
+    display: block;
     color: var(--tg-primary);
-    background: rgba(28, 80, 222, 0.06);
+    font-weight: 700;
+    margin-bottom: 4px;
   }
-  .tg-compare-bad { color: #94a3b8; }
-  .tg-compare-good { color: var(--tg-primary); font-weight: 600; }
-
-  .tg-compare-note {
-    margin-top: 24px;
-    padding: 16px 20px;
-    border-radius: 10px;
-    background: #f8faff;
-    border: 1px solid var(--tg-border-accent);
-    font-size: 14px;
-    line-height: 1.55;
+  .tg-compare-cost {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .tg-compare-cost.crm-cost { color: #dc2626; }
+  .tg-compare-cost.us-cost { color: var(--tg-primary); }
+  .tg-compare-cost-note {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--tg-muted);
-    text-align: center;
+    line-height: 1.45;
   }
-  .tg-compare-note strong { color: var(--tg-text); }
 
   @media (max-width: 760px) {
     .tg-compare-wrap { padding: 48px 20px 56px; }
     .tg-compare-row { grid-template-columns: 1fr; }
-    .tg-compare-cell { border-right: none; border-bottom: 1px solid #eef2ff; }
+    .tg-compare-cell { border-right: none; border-bottom: 1px solid #eef2ff; border-left: none !important; }
     .tg-compare-row.head { display: none; }
     .tg-compare-row:not(.head) .tg-compare-cell.criteria {
       background: #f4f7ff;
@@ -1343,7 +1375,7 @@
     }
     .tg-compare-row:not(.head) .tg-compare-cell.crm::before {
       content: "Обычная CRM: ";
-      font-weight: 600;
+      font-weight: 700;
       color: #94a3b8;
     }
     .tg-compare-row:not(.head) .tg-compare-cell.us::before {
@@ -1353,6 +1385,8 @@
     }
     .tg-compare-row:not(.head) .tg-compare-cell.us {
       padding-top: 4px;
+      border-left: none;
+      background: #f4f7ff;
     }
   }
 </style>
@@ -1371,37 +1405,39 @@
         <div class="tg-compare-cell crm">Обычная CRM</div>
         <div class="tg-compare-cell us">iStockLink</div>
       </div>
+      <div class="tg-compare-row highlight">
+        <div class="tg-compare-cell criteria">Стоимость получения системы</div>
+        <div class="tg-compare-cell crm">
+          <span class="tg-compare-cost crm-cost">от 100 000 ₽</span>
+          <span class="tg-compare-cost-note">Минимум за внедрение + подписка на тариф + маркетплейс приложений и интеграций</span>
+        </div>
+        <div class="tg-compare-cell us">
+          <span class="tg-compare-cost us-cost">от 6 000 ₽/мес</span>
+          <span class="tg-compare-good">Только подписка</span>
+          <span class="tg-compare-cost-note">Без внедрения, без маркетплейса — готовый инструмент с первого дня</span>
+        </div>
+      </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Запуск</div>
-        <div class="tg-compare-cell crm"><span class="tg-compare-bad">Внедрение от 100 000 ₽</span>, настройка воронок и интеграций — недели и месяцы</div>
-        <div class="tg-compare-cell us"><span class="tg-compare-good">Готовый инструмент</span> — лента, воронка и поставщики из коробки, старт за 1 день</div>
+        <div class="tg-compare-cell crm"><span class="tg-compare-bad">Недели и месяцы</span>Настройка воронок, интеграций и обучение команды</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">Старт за 1 день</span>Лента, воронка и поставщики уже в платформе</div>
       </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Тендеры и закупки</div>
-        <div class="tg-compare-cell crm">Нужны доработки, подключение агрегаторов и отдельные модули</div>
-        <div class="tg-compare-cell us">Единая лента, госзакупки, этапы торгов и оцифровка КП — уже в платформе</div>
+        <div class="tg-compare-cell crm">Доработки под закупки, отдельные модули и интеграции с агрегаторами</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">Из коробки</span>Единая лента, госзакупки, этапы торгов и оцифровка КП</div>
       </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Дополнительные расходы</div>
-        <div class="tg-compare-cell crm">Маркетплейс приложений, платные интеграции, обновления коробки</div>
-        <div class="tg-compare-cell us">Всё включено в подписку — без отдельного внедрения и маркетплейса</div>
-      </div>
-      <div class="tg-compare-row">
-        <div class="tg-compare-cell criteria">Тарифы (облако)</div>
-        <div class="tg-compare-cell crm">Базовый от 2 490 ₽/мес · Стандартный от 6 990 ₽ · Профессиональный от 13 990 ₽ + внедрение</div>
-        <div class="tg-compare-cell us"><span class="tg-compare-good">От 1 990 ₽/мес</span> · Стандартный 5 490 ₽ · Профессиональный 10 990 ₽ — ниже, без скрытых платежей</div>
+        <div class="tg-compare-cell crm"><span class="tg-compare-bad">Скрытые платежи</span>Маркетплейс, платные приложения, обновления коробки</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">Всё включено</span>Функции платформы в подписке — без доплат за модули</div>
       </div>
       <div class="tg-compare-row">
         <div class="tg-compare-cell criteria">Пользователи</div>
         <div class="tg-compare-cell crm">Лимиты по тарифу: 5 / 50 / 100+</div>
-        <div class="tg-compare-cell us">Та же логика: до 5 / до 50 / 100 и более — масштабируйте команду по мере роста</div>
+        <div class="tg-compare-cell us">Та же логика: до 5 / до 50 / 100 и более</div>
       </div>
     </div>
-
-    <p class="tg-compare-note">
-      <strong>Итог:</strong> вместо проекта внедрения CRM вы получаете специализированную платформу с прозрачной подпиской.
-      Годовая оплата — скидка ~30%.
-    </p>
   </div>
 </div>
 
@@ -1433,51 +1469,12 @@
     margin-bottom: 12px;
   }
   .tg-section-title {
-    margin: 0 0 14px;
+    margin: 0;
     font-size: clamp(26px, 3.2vw, 36px);
     font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--tg-text);
   }
-  .tg-section-sub {
-    margin: 0 auto;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--tg-muted);
-    max-width: 600px;
-  }
-
-  .tg-price-offer-plaque {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35em;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto 20px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: #fffbeb;
-    font-size: 14px;
-    font-weight: 600;
-    color: #92400e;
-    text-align: center;
-  }
-  .tg-price-offer-date {
-    font-weight: 700;
-    color: #b45309;
-    white-space: nowrap;
-  }
-  .tg-price-annual-note {
-    text-align: center;
-    font-size: 14px;
-    color: var(--tg-muted);
-    margin: 0 auto 32px;
-    max-width: 520px;
-    line-height: 1.5;
-  }
-  .tg-price-annual-note strong { color: var(--tg-primary); }
 
   .tg-pricing-grid {
     display: grid;
@@ -1528,39 +1525,11 @@
     font-size: 32px;
     font-weight: 800;
     color: var(--tg-text);
-    margin: 0 0 2px;
+    margin: 0 0 4px;
     line-height: 1.1;
   }
   .tg-price-amount span { font-size: 14px; font-weight: 600; color: #94a3b8; }
-  .tg-price-period { font-size: 12px; color: #94a3b8; margin: 0 0 12px; }
-  .tg-price-annual {
-    padding: 10px 12px;
-    border-radius: 8px;
-    background: #f4f7ff;
-    border: 1px solid var(--tg-border-accent);
-    margin-bottom: 20px;
-  }
-  .tg-price-annual-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--tg-primary);
-    margin: 0 0 4px;
-  }
-  .tg-price-annual-val {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--tg-text);
-    margin: 0;
-    line-height: 1.2;
-  }
-  .tg-price-annual-val span { font-size: 13px; font-weight: 600; color: #94a3b8; }
-  .tg-price-annual-total {
-    font-size: 12px;
-    color: var(--tg-muted);
-    margin: 4px 0 0;
-  }
+  .tg-price-period { font-size: 12px; color: #94a3b8; margin: 0 0 20px; }
   .tg-price-list {
     list-style: none;
     padding: 0;
@@ -1585,12 +1554,14 @@
   }
   .tg-price-btn {
     display: block;
+    width: 100%;
     text-align: center;
     padding: 10px 16px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
-    text-decoration: none;
+    font-family: inherit;
+    cursor: pointer;
     transition: background .15s, border-color .15s;
   }
   .tg-price-btn-primary {
@@ -1612,11 +1583,6 @@
   }
   @media (max-width: 560px) {
     .tg-price-wrap { padding: 48px 20px 56px; }
-    .tg-price-offer-plaque {
-      padding: 8px 14px;
-      margin-bottom: 16px;
-      font-size: 13px;
-    }
   }
 </style>
 
@@ -1625,72 +1591,49 @@
     <div class="tg-price-header">
       <span class="tg-section-label">Стоимость</span>
       <h2 class="tg-section-title">Стоимость платформы</h2>
-      <p class="tg-section-sub">Тарифы по числу пользователей — как в облачной CRM, но ниже и без внедрения.</p>
     </div>
-
-    <div class="tg-price-offer-plaque">
-      <span>Специальное предложение</span>
-      <span class="tg-price-offer-date">до 31.07.2026</span>
-    </div>
-    <p class="tg-price-annual-note">При оплате за год — <strong>скидка ~30%</strong> на любой тариф. Без внедрения от 100 000 ₽ и доплат за маркетплейс.</p>
 
     <div class="tg-pricing-grid">
       <div class="tg-price-card">
         <p class="tg-price-tier">Базовый</p>
         <p class="tg-price-users">До 5 пользователей</p>
-        <p class="tg-price-amount">1 990 ₽ <span>/мес</span></p>
-        <p class="tg-price-period">при ежемесячной оплате</p>
-        <div class="tg-price-annual">
-          <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">1 390 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">16 680 ₽ в год · экономия 7 200 ₽</p>
-        </div>
+        <p class="tg-price-amount">6 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">ежемесячная оплата</p>
         <ul class="tg-price-list">
           <li>Единая лента закупок</li>
           <li>Воронка торгов</li>
           <li>Подключение агрегаторов</li>
           <li>База поставщиков</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать базовый</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Базовый">Выбрать тариф</button>
       </div>
 
       <div class="tg-price-card featured">
         <span class="tg-price-badge">Популярный</span>
         <p class="tg-price-tier">Стандартный</p>
         <p class="tg-price-users">До 50 пользователей</p>
-        <p class="tg-price-amount">5 490 ₽ <span>/мес</span></p>
-        <p class="tg-price-period">при ежемесячной оплате</p>
-        <div class="tg-price-annual">
-          <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">3 990 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">47 880 ₽ в год · экономия 18 000 ₽</p>
-        </div>
+        <p class="tg-price-amount">15 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">ежемесячная оплата</p>
         <ul class="tg-price-list">
           <li>Всё из базового</li>
-          <li>Госзакупки и реестры</li>
-          <li>Оцифровка КП</li>
-          <li>Командные роли и доступы</li>
+          <li>Запросы КП поставщикам</li>
+          <li>Ведение своей базы поставщиков</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать стандартный</a>
+        <button type="button" class="tg-price-btn tg-price-btn-primary" data-demo-open data-tier="Стандартный">Выбрать тариф</button>
       </div>
 
       <div class="tg-price-card">
         <p class="tg-price-tier">Профессиональный</p>
         <p class="tg-price-users">100 и более пользователей</p>
-        <p class="tg-price-amount">10 990 ₽ <span>/мес</span></p>
-        <p class="tg-price-period">при ежемесячной оплате</p>
-        <div class="tg-price-annual">
-          <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">7 990 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">95 880 ₽ в год · экономия 36 000 ₽</p>
-        </div>
+        <p class="tg-price-amount">30 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">ежемесячная оплата</p>
         <ul class="tg-price-list">
           <li>Всё из стандартного</li>
           <li>Расширенная аналитика</li>
           <li>Приоритетная поддержка</li>
           <li>Индивидуальные условия для крупных команд</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Обсудить профессиональный</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Профессиональный">Выбрать тариф</button>
       </div>
     </div>
   </div>
@@ -1769,9 +1712,10 @@
   .tg-cta-content { position: relative; z-index: 1; }
   .tg-cta-title {
     font-size: clamp(24px, 3.2vw, 32px);
-    font-weight: 650;
+    font-weight: 700;
     margin: 0 0 14px;
     letter-spacing: -0.025em;
+    color: #fff;
   }
   .tg-cta-sub {
     font-size: 17px;
@@ -1825,6 +1769,112 @@
     .tg-cta-wrap { padding: 48px 20px 56px; }
     .tg-faq { margin-bottom: 48px; }
   }
+
+  .tg-demo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s, visibility .2s;
+  }
+  .tg-demo-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .tg-demo-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    border: none;
+    cursor: pointer;
+  }
+  .tg-demo-modal-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 480px);
+    background: #fff;
+    border-radius: 14px;
+    padding: 32px 28px 28px;
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(28, 80, 222, 0.12);
+  }
+  .tg-demo-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f4f7ff;
+    color: #64748b;
+    border-radius: 8px;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .tg-demo-modal-title {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--tg-text);
+    letter-spacing: -0.02em;
+  }
+  .tg-demo-modal-sub {
+    margin: 0 0 20px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--tg-muted);
+  }
+  .tg-demo-modal-tier {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eef3ff;
+    color: var(--tg-primary);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .tg-demo-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tg-demo-modal-input {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+  }
+  .tg-demo-modal-input:focus {
+    border-color: var(--tg-primary);
+    box-shadow: 0 0 0 3px rgba(28, 80, 222, 0.12);
+  }
+  .tg-demo-modal-submit {
+    padding: 11px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(27,31,36,0.12);
+    background: var(--tg-primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .tg-demo-modal-note {
+    margin: 14px 0 0;
+    font-size: 12px;
+    color: #94a3b8;
+    text-align: center;
+  }
 </style>
 
 <div class="tg-cta-wrap">
@@ -1873,6 +1923,21 @@
         <p class="tg-cta-note">Бесплатный период 14 дней · Без привязки карты</p>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="tg-demo-modal" id="tg-demo-modal" aria-hidden="true">
+  <button type="button" class="tg-demo-modal-backdrop" data-demo-close aria-label="Закрыть"></button>
+  <div class="tg-demo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="tg-demo-modal-title">
+    <button type="button" class="tg-demo-modal-close" data-demo-close aria-label="Закрыть">&times;</button>
+    <span class="tg-demo-modal-tier" id="tg-demo-modal-tier" hidden></span>
+    <h3 class="tg-demo-modal-title" id="tg-demo-modal-title">Запросить демо</h3>
+    <p class="tg-demo-modal-sub">Оставьте email — пришлём доступ к демо и инструкцию по подключению.</p>
+    <form class="tg-demo-modal-form" action="#" method="post" onsubmit="return false;">
+      <input type="email" class="tg-demo-modal-input" placeholder="work@company.ru" required>
+      <button type="submit" class="tg-demo-modal-submit">Получить демо</button>
+    </form>
+    <p class="tg-demo-modal-note">Бесплатный период 14 дней · Без привязки карты</p>
   </div>
 </div>
 <script src="assets/vendor/lenis/lenis.min.js"></script>

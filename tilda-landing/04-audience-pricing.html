@@ -26,51 +26,12 @@
     margin-bottom: 12px;
   }
   .tg-section-title {
-    margin: 0 0 14px;
+    margin: 0;
     font-size: clamp(26px, 3.2vw, 36px);
     font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--tg-text);
   }
-  .tg-section-sub {
-    margin: 0 auto;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--tg-muted);
-    max-width: 600px;
-  }
-
-  .tg-price-offer-plaque {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35em;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto 20px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: #fffbeb;
-    font-size: 14px;
-    font-weight: 600;
-    color: #92400e;
-    text-align: center;
-  }
-  .tg-price-offer-date {
-    font-weight: 700;
-    color: #b45309;
-    white-space: nowrap;
-  }
-  .tg-price-annual-note {
-    text-align: center;
-    font-size: 14px;
-    color: var(--tg-muted);
-    margin: 0 auto 32px;
-    max-width: 520px;
-    line-height: 1.5;
-  }
-  .tg-price-annual-note strong { color: var(--tg-primary); }
 
   .tg-pricing-grid {
     display: grid;
@@ -121,39 +82,11 @@
     font-size: 32px;
     font-weight: 800;
     color: var(--tg-text);
-    margin: 0 0 2px;
+    margin: 0 0 4px;
     line-height: 1.1;
   }
   .tg-price-amount span { font-size: 14px; font-weight: 600; color: #94a3b8; }
-  .tg-price-period { font-size: 12px; color: #94a3b8; margin: 0 0 12px; }
-  .tg-price-annual {
-    padding: 10px 12px;
-    border-radius: 8px;
-    background: #f4f7ff;
-    border: 1px solid var(--tg-border-accent);
-    margin-bottom: 20px;
-  }
-  .tg-price-annual-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--tg-primary);
-    margin: 0 0 4px;
-  }
-  .tg-price-annual-val {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--tg-text);
-    margin: 0;
-    line-height: 1.2;
-  }
-  .tg-price-annual-val span { font-size: 13px; font-weight: 600; color: #94a3b8; }
-  .tg-price-annual-total {
-    font-size: 12px;
-    color: var(--tg-muted);
-    margin: 4px 0 0;
-  }
+  .tg-price-period { font-size: 12px; color: #94a3b8; margin: 0 0 20px; }
   .tg-price-list {
     list-style: none;
     padding: 0;
@@ -178,12 +111,14 @@
   }
   .tg-price-btn {
     display: block;
+    width: 100%;
     text-align: center;
     padding: 10px 16px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
-    text-decoration: none;
+    font-family: inherit;
+    cursor: pointer;
     transition: background .15s, border-color .15s;
   }
   .tg-price-btn-primary {
@@ -205,11 +140,6 @@
   }
   @media (max-width: 560px) {
     .tg-price-wrap { padding: 48px 20px 56px; }
-    .tg-price-offer-plaque {
-      padding: 8px 14px;
-      margin-bottom: 16px;
-      font-size: 13px;
-    }
   }
 </style>
 
@@ -218,72 +148,49 @@
     <div class="tg-price-header">
       <span class="tg-section-label">Стоимость</span>
       <h2 class="tg-section-title">Стоимость платформы</h2>
-      <p class="tg-section-sub">Тарифы по числу пользователей — как в облачной CRM, но ниже и без внедрения.</p>
     </div>
-
-    <div class="tg-price-offer-plaque">
-      <span>Специальное предложение</span>
-      <span class="tg-price-offer-date">до 31.07.2026</span>
-    </div>
-    <p class="tg-price-annual-note">При оплате за год — <strong>скидка ~30%</strong> на любой тариф. Без внедрения от 100 000 ₽ и доплат за маркетплейс.</p>
 
     <div class="tg-pricing-grid">
       <div class="tg-price-card">
         <p class="tg-price-tier">Базовый</p>
         <p class="tg-price-users">До 5 пользователей</p>
-        <p class="tg-price-amount">1 990 ₽ <span>/мес</span></p>
-        <p class="tg-price-period">при ежемесячной оплате</p>
-        <div class="tg-price-annual">
-          <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">1 390 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">16 680 ₽ в год · экономия 7 200 ₽</p>
-        </div>
+        <p class="tg-price-amount">6 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">ежемесячная оплата</p>
         <ul class="tg-price-list">
           <li>Единая лента закупок</li>
           <li>Воронка торгов</li>
           <li>Подключение агрегаторов</li>
           <li>База поставщиков</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать базовый</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Базовый">Выбрать тариф</button>
       </div>
 
       <div class="tg-price-card featured">
         <span class="tg-price-badge">Популярный</span>
         <p class="tg-price-tier">Стандартный</p>
         <p class="tg-price-users">До 50 пользователей</p>
-        <p class="tg-price-amount">5 490 ₽ <span>/мес</span></p>
-        <p class="tg-price-period">при ежемесячной оплате</p>
-        <div class="tg-price-annual">
-          <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">3 990 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">47 880 ₽ в год · экономия 18 000 ₽</p>
-        </div>
+        <p class="tg-price-amount">15 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">ежемесячная оплата</p>
         <ul class="tg-price-list">
           <li>Всё из базового</li>
-          <li>Госзакупки и реестры</li>
-          <li>Оцифровка КП</li>
-          <li>Командные роли и доступы</li>
+          <li>Запросы КП поставщикам</li>
+          <li>Ведение своей базы поставщиков</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать стандартный</a>
+        <button type="button" class="tg-price-btn tg-price-btn-primary" data-demo-open data-tier="Стандартный">Выбрать тариф</button>
       </div>
 
       <div class="tg-price-card">
         <p class="tg-price-tier">Профессиональный</p>
         <p class="tg-price-users">100 и более пользователей</p>
-        <p class="tg-price-amount">10 990 ₽ <span>/мес</span></p>
-        <p class="tg-price-period">при ежемесячной оплате</p>
-        <div class="tg-price-annual">
-          <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">7 990 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">95 880 ₽ в год · экономия 36 000 ₽</p>
-        </div>
+        <p class="tg-price-amount">30 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">ежемесячная оплата</p>
         <ul class="tg-price-list">
           <li>Всё из стандартного</li>
           <li>Расширенная аналитика</li>
           <li>Приоритетная поддержка</li>
           <li>Индивидуальные условия для крупных команд</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Обсудить профессиональный</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Профессиональный">Выбрать тариф</button>
       </div>
     </div>
   </div>
