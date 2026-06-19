@@ -2,8 +2,9 @@
 <style>
   .tg-platform-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -15,15 +16,14 @@
   .tg-platform-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--tg-primary); margin-bottom: 12px;
+    font-size: 13px; font-weight: 600;
+    color: var(--tg-muted); margin-bottom: 10px;
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800; color: var(--tg-text);
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 650; color: var(--tg-text);
+    letter-spacing: -0.025em;
   }
   .tg-section-sub {
     margin: 0 auto; max-width: 680px;
@@ -37,26 +37,23 @@
     margin-bottom: 40px;
   }
   .tg-pillar {
-    border-radius: 20px;
-    padding: 28px 24px;
-    border: 1px solid #e8edf5;
-    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+    border-radius: 12px;
+    padding: 24px 20px;
+    border: 1px solid var(--tg-border);
+    background: #fff;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
-  .tg-pillar::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #1c50de, #4d7aef);
-  }
-  .tg-pillar-icon { font-size: 28px; margin-bottom: 12px; }
-  .tg-pillar-title { font-size: 18px; font-weight: 800; color: #1e293b; margin: 0 0 8px; }
+  .tg-pillar::before { display: none; }
+  .tg-pillar-icon { display: none; }
+  .tg-pillar-title { font-size: 17px; font-weight: 600; color: var(--tg-text); margin: 0 0 8px; }
   .tg-pillar-tag {
     display: inline-block;
-    font-size: 11px; font-weight: 700;
-    padding: 4px 10px; border-radius: 6px;
-    background: rgba(28,80,222,0.1); color: var(--tg-primary);
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 6px;
+    background: #f6f8fa; color: var(--tg-muted);
+    border: 1px solid var(--tg-border);
     margin-bottom: 12px;
   }
   .tg-pillar-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0 0 14px; }
@@ -71,9 +68,9 @@
   }
 
   .tg-funnel-board {
-    background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
-    border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 24px;
+    background: #f6f8fa;
+    border: 1px solid var(--tg-border);
+    border-radius: 12px;
     padding: 28px;
     display: flex;
     flex-direction: column;
@@ -141,9 +138,9 @@
     hyphens: auto;
   }
   .tg-kanban-card.active {
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
-    color: #fff; border: none;
-    box-shadow: 0 6px 16px rgba(28,80,222,0.22);
+    background: var(--tg-primary);
+    color: #fff; border: 1px solid var(--tg-primary);
+    box-shadow: none;
   }
   .tg-kanban-card .price {
     font-size: 8px; opacity: 0.85; margin-top: 3px;
@@ -212,7 +209,12 @@
     font-size: 11px;
   }
   .tg-kp-item:last-child { margin-bottom: 0; }
-  .tg-kp-icon { font-size: 18px; flex-shrink: 0; }
+  .tg-kp-icon {
+    font-size: 10px; flex-shrink: 0;
+    font-weight: 700; color: var(--tg-muted);
+    background: #f6f8fa; border: 1px solid var(--tg-border);
+    padding: 4px 6px; border-radius: 4px;
+  }
   .tg-kp-title { font-weight: 600; color: #334155; margin: 0 0 2px; }
   .tg-kp-meta { color: #94a3b8; margin: 0; font-size: 10px; }
   .tg-kp-status {
@@ -275,8 +277,7 @@
     </div>
 
     <div class="tg-pillars">
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">📥</div>
+        <div class="tg-pillar">
         <span class="tg-pillar-tag">Сбор</span>
         <h3 class="tg-pillar-title">Агрегаторы</h3>
         <p class="tg-pillar-text">Подключите агрегаторы и госзакупки — все торги собираются в одной ленте iStockLink.</p>
@@ -286,8 +287,7 @@
           <li>Единый список закупок</li>
         </ul>
       </div>
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">🎯</div>
+        <div class="tg-pillar">
         <span class="tg-pillar-tag">Воронка</span>
         <h3 class="tg-pillar-title">Этапы торгов</h3>
         <p class="tg-pillar-text">Ведите каждый тендер по этапам: от «новый» до «контракт» с задачами и дедлайнами.</p>
@@ -297,8 +297,7 @@
           <li>Командная работа</li>
         </ul>
       </div>
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">🤝</div>
+        <div class="tg-pillar">
         <span class="tg-pillar-tag">Поставщики</span>
         <h3 class="tg-pillar-title">База партнёров</h3>
         <p class="tg-pillar-text">Ищите субподрядчиков, ведите базу текущих партнёров, собирайте и сравнивайте КП.</p>
@@ -369,7 +368,7 @@
 
       <div class="tg-side-panels">
         <div class="tg-panel">
-          <div class="tg-panel-head">🤝 Поставщики по тендеру</div>
+          <div class="tg-panel-head">Поставщики по тендеру</div>
           <div class="tg-supplier-row">
             <div class="tg-avatar">МТ</div>
             <div>
@@ -389,9 +388,9 @@
         </div>
 
         <div class="tg-panel">
-          <div class="tg-panel-head">📄 Оцифровка предложений ваших поставщиков</div>
+          <div class="tg-panel-head">Оцифровка предложений ваших поставщиков</div>
           <div class="tg-kp-item">
-            <span class="tg-kp-icon">📎</span>
+            <span class="tg-kp-icon">PDF</span>
             <div>
               <p class="tg-kp-title">КП_МедТех.pdf</p>
               <p class="tg-kp-meta">3 890 000 ₽ · срок 45 дней · 47 позиций</p>
@@ -399,7 +398,7 @@
             <span class="tg-kp-status done">готово</span>
           </div>
           <div class="tg-kp-item">
-            <span class="tg-kp-icon">📎</span>
+            <span class="tg-kp-icon">XLS</span>
             <div>
               <p class="tg-kp-title">Коммерческое_ПромКомплект.xlsx</p>
               <p class="tg-kp-meta">Обработка… извлечение цен и сроков</p>

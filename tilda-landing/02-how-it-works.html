@@ -2,8 +2,9 @@
 <style>
   .tg-how-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -15,20 +16,18 @@
   .tg-how-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    margin-bottom: 10px;
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 650;
+    letter-spacing: -0.025em;
     color: var(--tg-text);
-    line-height: 1.15;
+    line-height: 1.2;
   }
   .tg-section-sub {
     margin: 0 auto;
@@ -39,10 +38,10 @@
   }
 
   .tg-diagram {
-    background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
-    border: 1px solid rgba(28,80,222,0.1);
-    border-radius: 24px;
-    padding: 36px 28px 40px;
+    background: #f6f8fa;
+    border: 1px solid var(--tg-border);
+    border-radius: 12px;
+    padding: 32px 24px 36px;
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
@@ -57,18 +56,18 @@
   }
   .tg-diagram-col { display: flex; flex-direction: column; gap: 10px; }
   .tg-diagram-col-title {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--tg-muted);
     text-align: center;
     margin-bottom: 4px;
   }
   .tg-source-card {
     background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
+    border: 1px solid var(--tg-border);
+    border-radius: 6px;
     padding: 12px 14px;
     display: flex;
     align-items: center;
@@ -76,8 +75,8 @@
   }
   .tg-source-card.builtin {
     border-style: dashed;
-    border-color: rgba(28,80,222,0.35);
-    background: linear-gradient(135deg, rgba(28,80,222,0.04), rgba(28,80,222,0.01));
+    border-color: #afb8c1;
+    background: #fff;
   }
   .tg-source-logo {
     width: 36px; height: 36px;
@@ -103,21 +102,21 @@
     border-radius: 2px;
   }
   .tg-diagram-arrow-icon {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    background: var(--tg-primary);
     color: #fff;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-    box-shadow: 0 6px 16px rgba(28,80,222,0.3);
+    font-size: 14px;
+    box-shadow: none;
   }
   .tg-core-box {
-    background: linear-gradient(145deg, #1c50de 0%, #2a5fe8 50%, #3b6df0 100%);
-    border-radius: 20px;
+    background: var(--tg-primary);
+    border-radius: 12px;
     padding: 24px 20px;
     color: #fff;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(28,80,222,0.35);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,17 +146,18 @@
   }
   .tg-output-card {
     background: #fff;
-    border: 2px solid rgba(28,80,222,0.15);
-    border-radius: 16px;
+    border: 1px solid var(--tg-border);
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 12px 32px rgba(15,23,42,0.06);
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-output-header {
-    background: linear-gradient(90deg, #1c50de, #3b6df0);
-    color: #fff;
+    background: #f6f8fa;
+    color: var(--tg-text);
     padding: 12px 16px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 600;
+    border-bottom: 1px solid var(--tg-border);
   }
   .tg-output-body { padding: 12px; }
   .tg-output-row {
@@ -197,17 +197,18 @@
   }
   .tg-step-card {
     background: #fff;
-    border: 1px solid #e8edf5;
-    border-radius: 16px;
-    padding: 24px 20px;
+    border: 1px solid var(--tg-border);
+    border-radius: 12px;
+    padding: 22px 20px;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-step-num {
-    width: 32px; height: 32px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #1c50de, #4d7aef);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 800;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: #ddf4ff;
+    color: var(--tg-primary);
+    font-size: 13px;
+    font-weight: 700;
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 14px;
   }
@@ -261,7 +262,7 @@
             </div>
           </div>
           <div class="tg-source-card builtin">
-            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef3ff;border-radius:8px;width:36px;height:36px;">🏛</div>
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#57606a;background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;width:36px;height:36px;">ЕИС</div>
             <div>
               <p class="tg-source-name">Госзакупки</p>
               <p class="tg-source-desc">реестр ЕИС</p>
@@ -295,7 +296,7 @@
         <div class="tg-diagram-col">
           <div class="tg-diagram-col-title">Что видите вы</div>
           <div class="tg-output-card">
-            <div class="tg-output-header">📥 Единая лента закупок</div>
+            <div class="tg-output-header">Единая лента закупок</div>
             <div class="tg-output-body">
               <div class="tg-output-row">
                 <span class="check">✓</span>
@@ -315,7 +316,7 @@
             </div>
           </div>
           <div class="tg-source-card" style="margin-top:10px">
-            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:18px;background:#eef3ff;border-radius:8px;">🔔</div>
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#57606a;background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;width:36px;height:36px;">CRM</div>
             <div>
               <p class="tg-source-name">Задачи · поставщики · КП</p>
               <p class="tg-source-desc">всё в одном окне</p>

@@ -1,21 +1,28 @@
-@font-face {
-  font-family: 'Plus Jakarta Sans Variable';
-  font-style: normal;
-  font-weight: 200 800;
-  font-display: swap;
-  src: url('vendor/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2');
+/* Primer / Polaris inspired polish — preview layer */
+:root {
+  --ds-text: #24292f;
+  --ds-muted: #57606a;
+  --ds-border: #d0d7de;
+  --ds-canvas: #f6f8fa;
+  --ds-surface: #ffffff;
+  --ds-accent: #1c50de;
+  --ds-accent-subtle: #ddf4ff;
+  --ds-radius: 12px;
+  --ds-radius-sm: 6px;
+  --ds-shadow-sm: 0 1px 0 rgba(27, 31, 36, 0.04), 0 1px 3px rgba(27, 31, 36, 0.08);
+  --ds-shadow-md: 0 3px 6px rgba(27, 31, 36, 0.06);
 }
 
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
-.lenis.lenis-smooth iframe { pointer-events: none; }
 
 body {
-  font-family: 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  color: var(--ds-text);
 }
 
 [class*='tg-'][class*='-wrap'],
@@ -24,69 +31,103 @@ body {
 }
 
 ::selection {
-  background: rgba(28, 80, 222, 0.18);
-  color: #0f172a;
+  background: rgba(28, 80, 222, 0.14);
+  color: var(--ds-text);
 }
 
-.tg-hero-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(28, 80, 222, 0.12), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(99, 102, 241, 0.1), transparent 50%);
-  pointer-events: none;
-  z-index: 0;
+/* Типографика: меньше «кричащих» заголовков */
+.tg-section-title,
+.tg-hero-title,
+.tg-cta-title {
+  font-weight: 650 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--ds-text) !important;
 }
 
+.tg-section-label {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--ds-muted) !important;
+}
+
+.tg-hero-title span {
+  background: none !important;
+  -webkit-text-fill-color: var(--ds-accent) !important;
+  color: var(--ds-accent) !important;
+}
+
+/* Убираем лишние декоративные слои */
+.tg-hero-wrap::before,
+.tg-hero-wrap::after,
+.tg-cta-box::before {
+  display: none !important;
+}
+
+/* Карточки — border-first, как Primer/Polaris */
 .tg-feat-card,
 .tg-pillar,
 .tg-price-card,
 .tg-faq-item,
 .tg-step-card,
-.tg-audience-card {
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+.tg-source-card,
+.tg-kanban-col,
+.tg-panel,
+.tg-hero-visual,
+.tg-diagram {
+  box-shadow: var(--ds-shadow-sm) !important;
 }
 
 .tg-feat-card:hover,
 .tg-pillar:hover,
 .tg-price-card:hover,
 .tg-faq-item:hover {
-  transform: translateY(-6px);
+  transform: none !important;
+  border-color: #afb8c1 !important;
+  box-shadow: var(--ds-shadow-md) !important;
 }
 
-.tg-hero-visual,
-.tg-diagram,
-.tg-funnel-board,
-.tg-cta-box {
-  backdrop-filter: blur(8px);
+.tg-feat-icon {
+  display: none !important;
 }
 
+.tg-pillar-icon {
+  display: none !important;
+}
+
+.tg-pillar::before {
+  display: none !important;
+}
+
+/* Кнопки — плоские, без градиента */
 .tg-btn-primary,
-.tg-price-btn-primary,
-.tg-cta-submit {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+.tg-price-btn-primary {
+  background: var(--ds-accent) !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(27, 31, 36, 0.12) !important;
 }
 
 .tg-btn-primary:hover,
 .tg-price-btn-primary:hover,
 .tg-cta-submit:hover {
-  filter: brightness(1.05);
+  transform: none !important;
+  filter: none !important;
+  background: #1a47c4 !important;
 }
 
-.tg-logo-pill {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+.tg-btn-secondary,
+.tg-price-btn-outline {
+  background: var(--ds-surface) !important;
+  border: 1px solid var(--ds-border) !important;
+  box-shadow: var(--ds-shadow-sm) !important;
 }
 
-.tg-logo-pill:hover {
-  transform: translateY(-2px);
+.tg-btn-primary:hover,
+.tg-price-btn-primary:hover {
+  box-shadow: var(--ds-shadow-sm) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html.lenis { scroll-behavior: auto; }
-  .tg-feat-card,
-  .tg-pillar,
-  .tg-price-card,
-  .tg-faq-item,
-  .tg-step-card { transition: none; }
 }

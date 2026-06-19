@@ -13,25 +13,21 @@
 <style>
   .tg-hero-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
+    --tg-canvas: #f6f8fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(135deg, #f4f7ff 0%, #e8efff 45%, #dce8ff 100%);
+    background: var(--tg-canvas);
     padding: 72px 24px 88px;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--tg-border);
   }
   .tg-hero-wrap *, .tg-hero-wrap *::before, .tg-hero-wrap *::after { box-sizing: border-box; }
-  .tg-hero-wrap::before {
-    content: "";
-    position: absolute;
-    top: -120px; right: -80px;
-    width: 480px; height: 480px;
-    background: radial-gradient(circle, rgba(28,80,222,0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  .tg-hero-wrap::before { display: none; }
   .tg-hero-inner {
     max-width: 1120px;
     margin: 0 auto;
@@ -46,34 +42,31 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(28,80,222,0.1);
-    border: 1px solid rgba(28,80,222,0.18);
-    color: var(--tg-primary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid var(--tg-border);
+    color: var(--tg-muted);
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 20px;
   }
   .tg-badge-dot {
-    width: 8px; height: 8px;
+    width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--tg-primary);
-    box-shadow: 0 0 0 4px rgba(28,80,222,0.2);
+    box-shadow: none;
   }
   .tg-hero-title {
     margin: 0 0 18px;
-    font-size: clamp(32px, 4.5vw, 52px);
-    line-height: 1.08;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-size: clamp(32px, 4.2vw, 48px);
+    line-height: 1.12;
+    font-weight: 650;
+    letter-spacing: -0.025em;
     color: var(--tg-text);
   }
   .tg-hero-title span {
-    background: linear-gradient(135deg, #1c50de 0%, #3b6df0 55%, #5b8af5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--tg-primary);
   }
   .tg-hero-sub {
     margin: 0 0 28px;
@@ -87,40 +80,41 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-size: 15px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
+    transition: background .15s, border-color .15s;
   }
   .tg-btn-primary {
-    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
+    background: var(--tg-primary);
     color: #fff;
-    box-shadow: 0 10px 30px rgba(28,80,222,0.28);
+    border: 1px solid rgba(27,31,36,0.12);
+    box-shadow: none;
   }
-  .tg-btn-primary:hover { transform: translateY(-2px); }
+  .tg-btn-primary:hover { background: #1a47c4; }
   .tg-btn-secondary {
     background: #fff;
-    color: var(--tg-primary);
-    border: 1px solid rgba(28,80,222,0.22);
+    color: var(--tg-text);
+    border: 1px solid var(--tg-border);
   }
 
-  /* Illustration */
   .tg-hero-visual {
     background: #fff;
-    border-radius: 24px;
-    border: 1px solid rgba(28,80,222,0.12);
-    box-shadow: 0 24px 60px rgba(15,23,42,0.08);
+    border-radius: 12px;
+    border: 1px solid var(--tg-border);
+    box-shadow: 0 1px 3px rgba(27,31,36,0.08);
     overflow: hidden;
   }
   .tg-mock-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 18px;
-    background: linear-gradient(90deg, #1c50de, #3b6df0);
-    color: #fff;
+    padding: 12px 16px;
+    background: #fff;
+    border-bottom: 1px solid var(--tg-border);
+    color: var(--tg-text);
   }
   .tg-mock-head span { font-size: 13px; font-weight: 700; }
   .tg-mock-dots { display: flex; gap: 5px; }
@@ -128,10 +122,10 @@
   .tg-mock-body { padding: 18px; }
   .tg-mock-label {
     font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #94a3b8;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--tg-muted);
     margin: 0 0 10px;
   }
   .tg-source-row {
@@ -144,29 +138,29 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 12px;
-    border-radius: 999px;
-    background: #f1f5ff;
-    border: 1px solid #e2e8f0;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: var(--tg-canvas);
+    border: 1px solid var(--tg-border);
     font-size: 12px;
-    font-weight: 600;
-    color: #334155;
+    font-weight: 500;
+    color: var(--tg-text);
   }
   .tg-src-chip img { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; }
-  .tg-src-chip.arrow { background: #1c50de; color: #fff; border: none; }
+  .tg-src-chip.arrow { background: var(--tg-primary); color: #fff; border-color: var(--tg-primary); }
   .tg-feed-item {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 12px;
     align-items: center;
-    padding: 14px 16px;
-    border-radius: 14px;
-    background: #fafbff;
-    border: 1px solid #eef2ff;
-    margin-bottom: 10px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid var(--tg-border);
+    margin-bottom: 8px;
   }
   .tg-feed-item:last-child { margin-bottom: 0; }
-  .tg-feed-item.highlight { border-color: rgba(28,80,222,0.25); background: linear-gradient(90deg, #f8faff, #f1f5ff); }
+  .tg-feed-item.highlight { border-color: #54aeff; background: #f6f8fa; }
   .tg-feed-title { font-size: 14px; font-weight: 700; color: #1e293b; margin: 0 0 4px; }
   .tg-feed-meta { font-size: 12px; color: #94a3b8; margin: 0; }
   .tg-feed-stage {
@@ -212,7 +206,7 @@
         <div class="tg-source-row">
           <span class="tg-src-chip"><img src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" alt="">Контур</span>
           <span class="tg-src-chip"><img src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" alt="">Seldon</span>
-          <span class="tg-src-chip">🏛 Госзакупки</span>
+          <span class="tg-src-chip">Госзакупки</span>
           <span class="tg-src-chip arrow">→ iStockLink</span>
         </div>
         <p class="tg-mock-label">Ваша лента</p>
@@ -279,18 +273,17 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 18px;
-    border-radius: 12px;
-    background: #f8faff;
-    border: 1px solid #e8edf5;
+    padding: 8px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #d0d7de;
     font-size: 14px;
-    font-weight: 600;
-    color: #475569;
-    transition: border-color .2s, box-shadow .2s;
+    font-weight: 500;
+    color: #24292f;
   }
   .tg-logo-pill:hover {
-    border-color: rgba(28,80,222,0.25);
-    box-shadow: 0 4px 12px rgba(28,80,222,0.08);
+    border-color: #afb8c1;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-logo-pill img {
     width: 28px;
@@ -342,8 +335,9 @@
 <style>
   .tg-how-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -355,20 +349,18 @@
   .tg-how-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    margin-bottom: 10px;
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 650;
+    letter-spacing: -0.025em;
     color: var(--tg-text);
-    line-height: 1.15;
+    line-height: 1.2;
   }
   .tg-section-sub {
     margin: 0 auto;
@@ -379,10 +371,10 @@
   }
 
   .tg-diagram {
-    background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
-    border: 1px solid rgba(28,80,222,0.1);
-    border-radius: 24px;
-    padding: 36px 28px 40px;
+    background: #f6f8fa;
+    border: 1px solid var(--tg-border);
+    border-radius: 12px;
+    padding: 32px 24px 36px;
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
@@ -397,18 +389,18 @@
   }
   .tg-diagram-col { display: flex; flex-direction: column; gap: 10px; }
   .tg-diagram-col-title {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--tg-muted);
     text-align: center;
     margin-bottom: 4px;
   }
   .tg-source-card {
     background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
+    border: 1px solid var(--tg-border);
+    border-radius: 6px;
     padding: 12px 14px;
     display: flex;
     align-items: center;
@@ -416,8 +408,8 @@
   }
   .tg-source-card.builtin {
     border-style: dashed;
-    border-color: rgba(28,80,222,0.35);
-    background: linear-gradient(135deg, rgba(28,80,222,0.04), rgba(28,80,222,0.01));
+    border-color: #afb8c1;
+    background: #fff;
   }
   .tg-source-logo {
     width: 36px; height: 36px;
@@ -443,21 +435,21 @@
     border-radius: 2px;
   }
   .tg-diagram-arrow-icon {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    background: var(--tg-primary);
     color: #fff;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-    box-shadow: 0 6px 16px rgba(28,80,222,0.3);
+    font-size: 14px;
+    box-shadow: none;
   }
   .tg-core-box {
-    background: linear-gradient(145deg, #1c50de 0%, #2a5fe8 50%, #3b6df0 100%);
-    border-radius: 20px;
+    background: var(--tg-primary);
+    border-radius: 12px;
     padding: 24px 20px;
     color: #fff;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(28,80,222,0.35);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -487,17 +479,18 @@
   }
   .tg-output-card {
     background: #fff;
-    border: 2px solid rgba(28,80,222,0.15);
-    border-radius: 16px;
+    border: 1px solid var(--tg-border);
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 12px 32px rgba(15,23,42,0.06);
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-output-header {
-    background: linear-gradient(90deg, #1c50de, #3b6df0);
-    color: #fff;
+    background: #f6f8fa;
+    color: var(--tg-text);
     padding: 12px 16px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 600;
+    border-bottom: 1px solid var(--tg-border);
   }
   .tg-output-body { padding: 12px; }
   .tg-output-row {
@@ -537,17 +530,18 @@
   }
   .tg-step-card {
     background: #fff;
-    border: 1px solid #e8edf5;
-    border-radius: 16px;
-    padding: 24px 20px;
+    border: 1px solid var(--tg-border);
+    border-radius: 12px;
+    padding: 22px 20px;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-step-num {
-    width: 32px; height: 32px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #1c50de, #4d7aef);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 800;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: #ddf4ff;
+    color: var(--tg-primary);
+    font-size: 13px;
+    font-weight: 700;
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 14px;
   }
@@ -601,7 +595,7 @@
             </div>
           </div>
           <div class="tg-source-card builtin">
-            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef3ff;border-radius:8px;width:36px;height:36px;">🏛</div>
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#57606a;background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;width:36px;height:36px;">ЕИС</div>
             <div>
               <p class="tg-source-name">Госзакупки</p>
               <p class="tg-source-desc">реестр ЕИС</p>
@@ -635,7 +629,7 @@
         <div class="tg-diagram-col">
           <div class="tg-diagram-col-title">Что видите вы</div>
           <div class="tg-output-card">
-            <div class="tg-output-header">📥 Единая лента закупок</div>
+            <div class="tg-output-header">Единая лента закупок</div>
             <div class="tg-output-body">
               <div class="tg-output-row">
                 <span class="check">✓</span>
@@ -655,7 +649,7 @@
             </div>
           </div>
           <div class="tg-source-card" style="margin-top:10px">
-            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:18px;background:#eef3ff;border-radius:8px;">🔔</div>
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#57606a;background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;width:36px;height:36px;">CRM</div>
             <div>
               <p class="tg-source-name">Задачи · поставщики · КП</p>
               <p class="tg-source-desc">всё в одном окне</p>
@@ -694,8 +688,9 @@
 <style>
   .tg-platform-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -707,15 +702,14 @@
   .tg-platform-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--tg-primary); margin-bottom: 12px;
+    font-size: 13px; font-weight: 600;
+    color: var(--tg-muted); margin-bottom: 10px;
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800; color: var(--tg-text);
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 650; color: var(--tg-text);
+    letter-spacing: -0.025em;
   }
   .tg-section-sub {
     margin: 0 auto; max-width: 680px;
@@ -729,26 +723,23 @@
     margin-bottom: 40px;
   }
   .tg-pillar {
-    border-radius: 20px;
-    padding: 28px 24px;
-    border: 1px solid #e8edf5;
-    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+    border-radius: 12px;
+    padding: 24px 20px;
+    border: 1px solid var(--tg-border);
+    background: #fff;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
-  .tg-pillar::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #1c50de, #4d7aef);
-  }
-  .tg-pillar-icon { font-size: 28px; margin-bottom: 12px; }
-  .tg-pillar-title { font-size: 18px; font-weight: 800; color: #1e293b; margin: 0 0 8px; }
+  .tg-pillar::before { display: none; }
+  .tg-pillar-icon { display: none; }
+  .tg-pillar-title { font-size: 17px; font-weight: 600; color: var(--tg-text); margin: 0 0 8px; }
   .tg-pillar-tag {
     display: inline-block;
-    font-size: 11px; font-weight: 700;
-    padding: 4px 10px; border-radius: 6px;
-    background: rgba(28,80,222,0.1); color: var(--tg-primary);
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 6px;
+    background: #f6f8fa; color: var(--tg-muted);
+    border: 1px solid var(--tg-border);
     margin-bottom: 12px;
   }
   .tg-pillar-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0 0 14px; }
@@ -763,9 +754,9 @@
   }
 
   .tg-funnel-board {
-    background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
-    border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 24px;
+    background: #f6f8fa;
+    border: 1px solid var(--tg-border);
+    border-radius: 12px;
     padding: 28px;
     display: flex;
     flex-direction: column;
@@ -833,9 +824,9 @@
     hyphens: auto;
   }
   .tg-kanban-card.active {
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
-    color: #fff; border: none;
-    box-shadow: 0 6px 16px rgba(28,80,222,0.22);
+    background: var(--tg-primary);
+    color: #fff; border: 1px solid var(--tg-primary);
+    box-shadow: none;
   }
   .tg-kanban-card .price {
     font-size: 8px; opacity: 0.85; margin-top: 3px;
@@ -904,7 +895,12 @@
     font-size: 11px;
   }
   .tg-kp-item:last-child { margin-bottom: 0; }
-  .tg-kp-icon { font-size: 18px; flex-shrink: 0; }
+  .tg-kp-icon {
+    font-size: 10px; flex-shrink: 0;
+    font-weight: 700; color: var(--tg-muted);
+    background: #f6f8fa; border: 1px solid var(--tg-border);
+    padding: 4px 6px; border-radius: 4px;
+  }
   .tg-kp-title { font-weight: 600; color: #334155; margin: 0 0 2px; }
   .tg-kp-meta { color: #94a3b8; margin: 0; font-size: 10px; }
   .tg-kp-status {
@@ -967,8 +963,7 @@
     </div>
 
     <div class="tg-pillars">
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">📥</div>
+        <div class="tg-pillar">
         <span class="tg-pillar-tag">Сбор</span>
         <h3 class="tg-pillar-title">Агрегаторы</h3>
         <p class="tg-pillar-text">Подключите агрегаторы и госзакупки — все торги собираются в одной ленте iStockLink.</p>
@@ -978,8 +973,7 @@
           <li>Единый список закупок</li>
         </ul>
       </div>
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">🎯</div>
+        <div class="tg-pillar">
         <span class="tg-pillar-tag">Воронка</span>
         <h3 class="tg-pillar-title">Этапы торгов</h3>
         <p class="tg-pillar-text">Ведите каждый тендер по этапам: от «новый» до «контракт» с задачами и дедлайнами.</p>
@@ -989,8 +983,7 @@
           <li>Командная работа</li>
         </ul>
       </div>
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">🤝</div>
+        <div class="tg-pillar">
         <span class="tg-pillar-tag">Поставщики</span>
         <h3 class="tg-pillar-title">База партнёров</h3>
         <p class="tg-pillar-text">Ищите субподрядчиков, ведите базу текущих партнёров, собирайте и сравнивайте КП.</p>
@@ -1061,7 +1054,7 @@
 
       <div class="tg-side-panels">
         <div class="tg-panel">
-          <div class="tg-panel-head">🤝 Поставщики по тендеру</div>
+          <div class="tg-panel-head">Поставщики по тендеру</div>
           <div class="tg-supplier-row">
             <div class="tg-avatar">МТ</div>
             <div>
@@ -1081,9 +1074,9 @@
         </div>
 
         <div class="tg-panel">
-          <div class="tg-panel-head">📄 Оцифровка предложений ваших поставщиков</div>
+          <div class="tg-panel-head">Оцифровка предложений ваших поставщиков</div>
           <div class="tg-kp-item">
-            <span class="tg-kp-icon">📎</span>
+            <span class="tg-kp-icon">PDF</span>
             <div>
               <p class="tg-kp-title">КП_МедТех.pdf</p>
               <p class="tg-kp-meta">3 890 000 ₽ · срок 45 дней · 47 позиций</p>
@@ -1091,7 +1084,7 @@
             <span class="tg-kp-status done">готово</span>
           </div>
           <div class="tg-kp-item">
-            <span class="tg-kp-icon">📎</span>
+            <span class="tg-kp-icon">XLS</span>
             <div>
               <p class="tg-kp-title">Коммерческое_ПромКомплект.xlsx</p>
               <p class="tg-kp-meta">Обработка… извлечение цен и сроков</p>
@@ -1108,31 +1101,32 @@
 <style>
   .tg-feat-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
+    --tg-canvas: #f6f8fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 100%);
+    background: var(--tg-canvas);
     padding: 80px 24px;
+    border-top: 1px solid var(--tg-border);
   }
   .tg-feat-wrap *, .tg-feat-wrap *::before, .tg-feat-wrap *::after { box-sizing: border-box; }
   .tg-feat-inner { max-width: 1120px; margin: 0 auto; }
   .tg-feat-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    margin-bottom: 10px;
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 650;
+    letter-spacing: -0.025em;
     color: var(--tg-text);
   }
   .tg-section-sub {
@@ -1149,26 +1143,17 @@
   }
   .tg-feat-card {
     background: #fff;
-    border-radius: 18px;
-    padding: 28px 24px;
-    border: 1px solid rgba(28,80,222,0.08);
-    box-shadow: 0 8px 24px rgba(15,23,42,0.04);
-    transition: transform .2s, box-shadow .2s;
+    border-radius: 12px;
+    padding: 22px 20px;
+    border: 1px solid var(--tg-border);
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-feat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(28,80,222,0.1);
+    border-color: #afb8c1;
+    box-shadow: 0 3px 6px rgba(27,31,36,0.06);
   }
-  .tg-feat-icon {
-    width: 48px; height: 48px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(28,80,222,0.12), rgba(28,80,222,0.05));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    margin-bottom: 16px;
-  }
-  .tg-feat-title { font-size: 17px; font-weight: 700; color: #1e293b; margin: 0 0 10px; }
-  .tg-feat-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0; }
+  .tg-feat-title { font-size: 16px; font-weight: 600; color: var(--tg-text); margin: 0 0 8px; }
+  .tg-feat-text { font-size: 14px; line-height: 1.55; color: var(--tg-muted); margin: 0; }
 
   @media (max-width: 900px) {
     .tg-feat-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -1184,38 +1169,32 @@
   <div class="tg-feat-inner">
     <div class="tg-feat-header">
       <span class="tg-section-label">Возможности</span>
-      <h2 class="tg-section-title">iStockLink — платформа, а не поисковик</h2>
+      <h2 class="tg-section-title">Всё для работы с тендерами в одном месте</h2>
       <p class="tg-section-sub">Сбор закупок — только начало. Дальше — воронка торгов, задачи, поставщики и автоматический разбор коммерческих предложений.</p>
     </div>
 
     <div class="tg-feat-grid">
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🔑</div>
         <h3 class="tg-feat-title">Свой агрегатор</h3>
         <p class="tg-feat-text">Контур, Seldon, ТендерГуру, Закупки360, Саби — подключите ключ доступа и работайте по своей подписке.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">📋</div>
         <h3 class="tg-feat-title">Воронка торгов</h3>
         <p class="tg-feat-text">Доска по вашим этапам. Задачи, дедлайны, ответственные.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🤝</div>
         <h3 class="tg-feat-title">База поставщиков</h3>
         <p class="tg-feat-text">Ищите субподрядчиков, ведите базу партнёров, привязывайте поставщиков к конкретным торгам.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">📄</div>
         <h3 class="tg-feat-title">Оцифровка КП</h3>
         <p class="tg-feat-text">Сервис извлечёт цены, сроки и позиции из коммерческих предложений для сравнения.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🔔</div>
         <h3 class="tg-feat-title">Уведомления</h3>
         <p class="tg-feat-text">Письма о новых закупках, приближающихся дедлайнах и смене статуса в воронке.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🛡️</div>
         <h3 class="tg-feat-title">Безопасность ключей</h3>
         <p class="tg-feat-text">Ключи доступа шифруются. Данные идут по вашей лицензии — юридически чистая модель.</p>
       </div>
@@ -1227,12 +1206,13 @@
 <style>
   .tg-price-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 45%, #fff 100%);
+    background: linear-gradient(180deg, #f6f8fa 0%, #fff 100%);
     padding: 80px 24px;
   }
   .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
@@ -1241,17 +1221,15 @@
   .tg-price-header { text-align: center; margin-bottom: 40px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    margin-bottom: 10px;
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 650;
     color: var(--tg-text);
   }
   .tg-section-sub {
@@ -1293,31 +1271,32 @@
     margin: 0 auto;
   }
   .tg-price-card {
-    border-radius: 20px;
-    padding: 28px 22px;
-    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 20px;
+    border: 1px solid var(--tg-border);
     background: #fff;
     display: flex;
     flex-direction: column;
     position: relative;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-price-card.featured {
-    border: 2px solid var(--tg-primary);
-    background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
-    box-shadow: 0 20px 50px rgba(28,80,222,0.15);
-    transform: scale(1.03);
+    border: 1px solid var(--tg-primary);
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.08);
+    transform: none;
     z-index: 1;
   }
   .tg-price-badge {
     position: absolute;
-    top: -12px; left: 50%;
+    top: -10px; left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    background: var(--tg-primary);
     color: #fff;
     font-size: 11px;
-    font-weight: 700;
-    padding: 5px 14px;
-    border-radius: 999px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .tg-price-name { font-size: 15px; font-weight: 700; color: #64748b; margin: 0 0 8px; }
@@ -1357,24 +1336,25 @@
   .tg-price-btn {
     display: block;
     text-align: center;
-    padding: 12px 16px;
-    border-radius: 10px;
+    padding: 10px 16px;
+    border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform .2s;
+    transition: background .15s, border-color .15s;
   }
   .tg-price-btn-primary {
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    background: var(--tg-primary);
     color: #fff;
-    box-shadow: 0 8px 20px rgba(28,80,222,0.25);
+    border: 1px solid rgba(27,31,36,0.12);
+    box-shadow: none;
   }
   .tg-price-btn-outline {
     background: #fff;
-    color: var(--tg-primary);
-    border: 1px solid rgba(28,80,222,0.25);
+    color: var(--tg-text);
+    border: 1px solid var(--tg-border);
   }
-  .tg-price-btn:hover { transform: translateY(-2px); }
+  .tg-price-btn:hover { transform: none; }
 
   @media (max-width: 960px) {
     .tg-pricing-grid { grid-template-columns: 1fr 1fr; }
@@ -1446,8 +1426,9 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #eef3ff 0%, #f4f7ff 100%);
+    background: #f6f8fa;
     padding: 80px 24px;
+    border-top: 1px solid #d0d7de;
   }
   .tg-cta-wrap *, .tg-cta-wrap *::before, .tg-cta-wrap *::after { box-sizing: border-box; }
   .tg-cta-inner { max-width: 1120px; margin: 0 auto; }
@@ -1476,9 +1457,10 @@
   }
   .tg-faq-item {
     background: #fff;
-    border-radius: 14px;
-    padding: 22px 24px;
-    border: 1px solid rgba(28,80,222,0.08);
+    border-radius: 12px;
+    padding: 20px 22px;
+    border: 1px solid #d0d7de;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-faq-q {
     font-size: 15px;
@@ -1494,29 +1476,23 @@
   }
 
   .tg-cta-box {
-    background: linear-gradient(135deg, #1c50de 0%, #2a5fe8 40%, #3b6df0 100%);
-    border-radius: 24px;
-    padding: 56px 48px;
+    background: var(--tg-primary);
+    border-radius: 12px;
+    padding: 48px 40px;
     text-align: center;
     color: #fff;
     position: relative;
     overflow: hidden;
     margin-bottom: 0;
+    border: 1px solid rgba(27,31,36,0.12);
   }
-  .tg-cta-box::before {
-    content: "";
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  .tg-cta-box::before { display: none; }
   .tg-cta-content { position: relative; z-index: 1; }
   .tg-cta-title {
-    font-size: clamp(26px, 3.5vw, 38px);
-    font-weight: 800;
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 650;
     margin: 0 0 14px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
   .tg-cta-sub {
     font-size: 17px;
@@ -1536,26 +1512,26 @@
   .tg-cta-input {
     flex: 1;
     min-width: 220px;
-    padding: 14px 18px;
-    border-radius: 12px;
-    border: none;
-    font-size: 15px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(27,31,36,0.12);
+    font-size: 14px;
     outline: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    box-shadow: none;
   }
   .tg-cta-submit {
-    padding: 14px 28px;
-    border-radius: 12px;
-    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(27,31,36,0.12);
     background: #fff;
     color: var(--tg-primary);
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform .2s;
+    transition: background .15s;
     white-space: nowrap;
   }
-  .tg-cta-submit:hover { transform: translateY(-2px); }
+  .tg-cta-submit:hover { background: #f6f8fa; transform: none; }
   .tg-cta-note {
     margin-top: 16px;
     font-size: 13px;

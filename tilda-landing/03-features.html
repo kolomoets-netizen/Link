@@ -2,31 +2,32 @@
 <style>
   .tg-feat-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #d0d7de;
+    --tg-canvas: #f6f8fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 100%);
+    background: var(--tg-canvas);
     padding: 80px 24px;
+    border-top: 1px solid var(--tg-border);
   }
   .tg-feat-wrap *, .tg-feat-wrap *::before, .tg-feat-wrap *::after { box-sizing: border-box; }
   .tg-feat-inner { max-width: 1120px; margin: 0 auto; }
   .tg-feat-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    margin-bottom: 10px;
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 650;
+    letter-spacing: -0.025em;
     color: var(--tg-text);
   }
   .tg-section-sub {
@@ -43,26 +44,17 @@
   }
   .tg-feat-card {
     background: #fff;
-    border-radius: 18px;
-    padding: 28px 24px;
-    border: 1px solid rgba(28,80,222,0.08);
-    box-shadow: 0 8px 24px rgba(15,23,42,0.04);
-    transition: transform .2s, box-shadow .2s;
+    border-radius: 12px;
+    padding: 22px 20px;
+    border: 1px solid var(--tg-border);
+    box-shadow: 0 1px 3px rgba(27,31,36,0.06);
   }
   .tg-feat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(28,80,222,0.1);
+    border-color: #afb8c1;
+    box-shadow: 0 3px 6px rgba(27,31,36,0.06);
   }
-  .tg-feat-icon {
-    width: 48px; height: 48px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(28,80,222,0.12), rgba(28,80,222,0.05));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    margin-bottom: 16px;
-  }
-  .tg-feat-title { font-size: 17px; font-weight: 700; color: #1e293b; margin: 0 0 10px; }
-  .tg-feat-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0; }
+  .tg-feat-title { font-size: 16px; font-weight: 600; color: var(--tg-text); margin: 0 0 8px; }
+  .tg-feat-text { font-size: 14px; line-height: 1.55; color: var(--tg-muted); margin: 0; }
 
   @media (max-width: 900px) {
     .tg-feat-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -78,38 +70,32 @@
   <div class="tg-feat-inner">
     <div class="tg-feat-header">
       <span class="tg-section-label">Возможности</span>
-      <h2 class="tg-section-title">iStockLink — платформа, а не поисковик</h2>
+      <h2 class="tg-section-title">Всё для работы с тендерами в одном месте</h2>
       <p class="tg-section-sub">Сбор закупок — только начало. Дальше — воронка торгов, задачи, поставщики и автоматический разбор коммерческих предложений.</p>
     </div>
 
     <div class="tg-feat-grid">
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🔑</div>
         <h3 class="tg-feat-title">Свой агрегатор</h3>
         <p class="tg-feat-text">Контур, Seldon, ТендерГуру, Закупки360, Саби — подключите ключ доступа и работайте по своей подписке.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">📋</div>
         <h3 class="tg-feat-title">Воронка торгов</h3>
         <p class="tg-feat-text">Доска по вашим этапам. Задачи, дедлайны, ответственные.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🤝</div>
         <h3 class="tg-feat-title">База поставщиков</h3>
         <p class="tg-feat-text">Ищите субподрядчиков, ведите базу партнёров, привязывайте поставщиков к конкретным торгам.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">📄</div>
         <h3 class="tg-feat-title">Оцифровка КП</h3>
         <p class="tg-feat-text">Сервис извлечёт цены, сроки и позиции из коммерческих предложений для сравнения.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🔔</div>
         <h3 class="tg-feat-title">Уведомления</h3>
         <p class="tg-feat-text">Письма о новых закупках, приближающихся дедлайнах и смене статуса в воронке.</p>
       </div>
       <div class="tg-feat-card">
-        <div class="tg-feat-icon">🛡️</div>
         <h3 class="tg-feat-title">Безопасность ключей</h3>
         <p class="tg-feat-text">Ключи доступа шифруются. Данные идут по вашей лицензии — юридически чистая модель.</p>
       </div>
