@@ -49,7 +49,7 @@ const html = `<!DOCTYPE html>
   .tg-preview-bar{
     position:sticky;top:0;z-index:9999;
     padding:8px 16px;text-align:center;font-size:13px;font-weight:600;
-    background:#1c50de;color:#fff;font-family:'TildaSans','Tilda Sans',Arial,sans-serif;
+    background:#1c50de;color:#fff;font-family:'Plus Jakarta Sans Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
     border-bottom:1px solid rgba(255,255,255,.2);
   }
   .tg-preview-bar a{color:#dbeafe}

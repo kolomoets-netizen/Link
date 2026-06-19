@@ -2,16 +2,13 @@
 <style>
   .tg-compare-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #24292f;
-    --tg-muted: #57606a;
-    --tg-border: #e2e8f0;
-    --tg-border-accent: rgba(28, 80, 222, 0.12);
-    font-family: 'Commissioner Variable', Commissioner, Arial, sans-serif;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: #fff;
+    background: linear-gradient(180deg, #fff 0%, #f4f7ff 100%);
     padding: 80px 24px;
-    border-top: 1px solid #eef2ff;
   }
   .tg-compare-wrap *, .tg-compare-wrap *::before, .tg-compare-wrap *::after { box-sizing: border-box; }
   .tg-compare-inner { max-width: 1120px; margin: 0 auto; }
@@ -28,11 +25,10 @@
   }
   .tg-section-title {
     margin: 0 0 14px;
-    font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800;
     color: var(--tg-text);
-    line-height: 1.2;
+    line-height: 1.15;
   }
   .tg-section-sub {
     margin: 0 auto;
@@ -43,10 +39,11 @@
   }
 
   .tg-compare-table {
-    border: 1px solid var(--tg-border-accent);
-    border-radius: 12px;
+    border: 1px solid rgba(28,80,222,0.12);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(28, 80, 222, 0.04);
+    box-shadow: 0 16px 40px rgba(15,23,42,0.06);
+    background: #fff;
   }
   .tg-compare-row {
     display: grid;
@@ -55,27 +52,25 @@
   }
   .tg-compare-row:last-child { border-bottom: none; }
   .tg-compare-row.head {
-    background: #f4f7ff;
+    background: linear-gradient(90deg, #f4f7ff, #eef3ff);
     font-weight: 700;
     font-size: 14px;
     color: var(--tg-text);
   }
   .tg-compare-row.featured {
-    background: linear-gradient(90deg, #fafbfc 0%, #fafbfc 42%, #f4f7ff 42%, #f8faff 100%);
+    background: linear-gradient(90deg, #fafbff 0%, #fff 42%, #f4f7ff 42%, #f8faff 100%);
   }
   .tg-compare-cell {
-    padding: 18px 20px;
+    padding: 20px 22px;
     font-size: 14px;
     line-height: 1.55;
     border-right: 1px solid #eef2ff;
   }
   .tg-compare-cell:last-child { border-right: none; }
-  .tg-compare-row.head .tg-compare-cell { padding: 16px 20px; }
   .tg-compare-row.head .tg-compare-cell.us { color: var(--tg-primary); }
   .tg-compare-cell.criteria {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--tg-text);
-    background: rgba(255, 255, 255, 0.6);
   }
   .tg-compare-cell.crm { color: #64748b; }
   .tg-compare-cell.us {
@@ -86,7 +81,7 @@
   .tg-compare-lead {
     display: block;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--tg-text);
     margin-bottom: 4px;
@@ -99,35 +94,36 @@
   }
 
   .tg-compare-legend {
-    margin-top: 20px;
-    padding: 20px 22px;
-    border-radius: 10px;
-    background: #f8faff;
-    border: 1px solid var(--tg-border-accent);
+    margin-top: 24px;
+    padding: 24px 26px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid rgba(28,80,222,0.1);
+    box-shadow: 0 8px 24px rgba(28,80,222,0.06);
   }
   .tg-compare-legend-title {
-    margin: 0 0 12px;
-    font-size: 13px;
+    margin: 0 0 14px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--tg-muted);
+    letter-spacing: 0.08em;
+    color: var(--tg-primary);
   }
   .tg-compare-legend-list {
     margin: 0;
     padding: 0;
     list-style: none;
     display: grid;
-    gap: 10px;
+    gap: 12px;
   }
   .tg-compare-legend-list li {
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.6;
     color: #475569;
-    padding-left: 14px;
-    border-left: 2px solid rgba(28, 80, 222, 0.2);
+    padding-left: 16px;
+    border-left: 3px solid rgba(28, 80, 222, 0.25);
   }
-  .tg-compare-legend-list strong { color: var(--tg-text); font-weight: 600; }
+  .tg-compare-legend-list strong { color: var(--tg-text); font-weight: 700; }
 
   @media (max-width: 760px) {
     .tg-compare-wrap { padding: 48px 20px 56px; }

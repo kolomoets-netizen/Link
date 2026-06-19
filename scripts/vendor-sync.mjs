@@ -13,14 +13,6 @@ const copies = [
     'node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2',
     'fonts/plus-jakarta-sans-latin-wght-normal.woff2',
   ],
-  [
-    'node_modules/@fontsource-variable/commissioner/files/commissioner-latin-wght-normal.woff2',
-    'fonts/commissioner-latin-wght-normal.woff2',
-  ],
-  [
-    'node_modules/@fontsource-variable/commissioner/files/commissioner-cyrillic-wght-normal.woff2',
-    'fonts/commissioner-cyrillic-wght-normal.woff2',
-  ],
 ];
 
 mkdirSync(vendor, { recursive: true });
