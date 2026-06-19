@@ -1,38 +1,38 @@
-# Mobile adaptation and spacing checklist
+# Чеклист мобильной адаптации и отступов
 
-## Status
+## Статус
 
-V tekuschem repozitorii net frontend-ishodnikov: otsutstvuyut HTML, CSS, React/Vue/Svelte/Next files, package manifest i design assets. Poetomu fakticheskie pravki mobilnoj versii vypolnit nelzya, poka ne budut dobavleny:
+В текущем репозитории нет frontend-исходников: отсутствуют HTML, CSS, React/Vue/Svelte/Next-файлы, package manifest и дизайн-ассеты. Поэтому фактические правки мобильной версии выполнить нельзя, пока не будут добавлены:
 
-- kod stranicy ili prilozheniya;
-- ssylka na maket;
-- screenshots problemnyh ekranov;
-- design tokens / UI-kit, esli oni est.
+- код страницы или приложения;
+- ссылка на макет;
+- screenshots проблемных экранов;
+- design tokens / UI-kit, если они есть.
 
-Etot dokument fiksiruet standart proverki, kotoryj nuzhno primenit pri pervoj vozmozhnosti.
+Этот документ фиксирует стандарт проверки, который нужно применить при первой возможности.
 
-## Target breakpoints
+## Целевые breakpoint'ы
 
-| Viewport | Purpose |
+| Viewport | Назначение |
 | --- | --- |
-| 320px | Minimal mobile width, iPhone SE class |
-| 360px | Typical narrow Android |
-| 375px | Common iPhone width |
-| 390-414px | Modern iPhone width |
+| 320px | Минимальная мобильная ширина, iPhone SE class |
+| 360px | Узкий Android |
+| 375px | Частая ширина iPhone |
+| 390-414px | Современные iPhone |
 | 768px | Tablet portrait |
 | 1024px | Tablet landscape / small desktop |
 
-## Spacing system
+## Система отступов
 
-Rekomenduemaya shkala:
+Рекомендуемая шкала:
 
-- 4px - micro gaps;
-- 8px - compact inner gaps;
-- 12px - form/control vertical gaps;
-- 16px - base mobile padding;
-- 20px - section inner padding on larger phones;
-- 24px - card/section gap;
-- 32px - major section gap.
+- 4px - микрозазоры;
+- 8px - компактные внутренние зазоры;
+- 12px - вертикальные зазоры в формах/контролах;
+- 16px - базовый мобильный padding;
+- 20px - внутренний padding секций на крупных телефонах;
+- 24px - gap между карточками/секциями;
+- 32px - крупный gap между смысловыми блоками.
 
 Mobile container:
 
@@ -49,41 +49,41 @@ Mobile container:
 }
 ```
 
-## Mobile layout rules
+## Правила мобильного layout
 
-### Page
+### Страница
 
-- Net horizontal scroll at 320px.
-- Body background reaches edges correctly.
-- Page content has consistent left/right padding.
-- Header and first content block do not collapse into each other.
-- Bottom content is not hidden behind sticky footer/nav.
+- Нет горизонтального скролла на 320px.
+- Фон body корректно доходит до краев.
+- Основной контент имеет единый левый/правый padding.
+- Header и первый контентный блок не слипаются.
+- Нижний контент не скрыт под sticky footer/nav.
 
 ### Header
 
-- Logo and menu controls fit into one row.
-- Tap targets at least 44x44px.
-- Mobile menu has safe-area padding.
-- Header horizontal padding matches page container.
-- Sticky header, if present, does not cover anchors/content.
+- Логотип и menu controls помещаются в одну строку.
+- Tap target не меньше 44x44px.
+- Mobile menu учитывает safe-area padding.
+- Горизонтальный padding header совпадает с page container.
+- Sticky header, если есть, не перекрывает anchors/content.
 
-### Hero / first screen
+### Hero / первый экран
 
-- H1 wraps without orphan words where possible.
-- H1 line-height remains readable.
-- CTA buttons stack vertically on narrow screens.
-- Primary CTA is visible without horizontal scroll.
-- Secondary links/buttons have at least 8-12px gap.
+- H1 переносится без критичных обрывов.
+- H1 line-height остается читаемым.
+- CTA-кнопки складываются вертикально на узких экранах.
+- Primary CTA видна без горизонтального скролла.
+- Между secondary links/buttons есть gap 8-12px.
 
-### Cards and lists
+### Карточки и списки
 
-- Cards use `padding: 16px` on mobile.
-- Gap between cards: 12-16px.
-- Multi-column grids collapse to one column below 768px.
-- Card titles do not overflow.
-- Long IDs, tender numbers, URLs use wrapping rules.
+- Карточки используют `padding: 16px` на mobile.
+- Gap между карточками: 12-16px.
+- Multi-column grids схлопываются в одну колонку ниже 768px.
+- Заголовки карточек не вылезают за контейнер.
+- Длинные ID, номера тендеров и URL корректно переносятся.
 
-Recommended:
+Рекомендуемое правило:
 
 ```css
 .card-title,
@@ -93,12 +93,12 @@ Recommended:
 }
 ```
 
-### Tables
+### Таблицы
 
-Tables are risky on mobile. Use one of two patterns:
+Таблицы рискованны на mobile. Использовать один из двух паттернов:
 
-1. Convert rows to cards on mobile.
-2. Keep table but wrap it in horizontal scroll container.
+1. Превращать строки в карточки на mobile.
+2. Оставлять таблицу, но оборачивать ее в горизонтальный scroll container.
 
 ```css
 .table-scroll {
@@ -107,35 +107,35 @@ Tables are risky on mobile. Use one of two patterns:
 }
 ```
 
-If this product has tender lists, preferred mobile pattern is **card list**, not wide table.
+Для списка тендеров предпочтительный mobile pattern - **card list**, а не широкая таблица.
 
-### Forms
+### Формы
 
-- Inputs full width on mobile.
+- Inputs full width на mobile.
 - Label -> input gap: 6-8px.
 - Field group gap: 12-16px.
-- Submit button full width below 390px.
-- Error text does not change layout aggressively.
-- Date pickers and selects fit screen width.
+- Submit button full width ниже 390px.
+- Error text не должен резко ломать layout.
+- Date pickers и selects помещаются в экран.
 
-### Buttons
+### Кнопки
 
-- Minimum height: 44px.
-- Horizontal padding: 16px.
-- Gap between stacked buttons: 8-12px.
-- Avoid two primary-sized buttons in one row below 390px.
+- Минимальная высота: 44px.
+- Горизонтальный padding: 16px.
+- Gap между stacked buttons: 8-12px.
+- Не ставить две крупные кнопки в один ряд ниже 390px.
 
 ### Modals / drawers
 
-- On mobile, modal should become bottom sheet or full-screen dialog.
+- На mobile modal должен становиться bottom sheet или full-screen dialog.
 - Padding: 16px.
-- Close button tap target at least 44x44px.
-- Dialog max-height respects viewport.
-- Content scrolls inside dialog without locking the page incorrectly.
+- Close button tap target не меньше 44x44px.
+- Dialog max-height учитывает viewport.
+- Контент скроллится внутри dialog без некорректной блокировки страницы.
 
 ### Sticky elements
 
-- Account for mobile safe areas:
+- Учитывать mobile safe areas:
 
 ```css
 .bottom-bar {
@@ -143,71 +143,71 @@ If this product has tender lists, preferred mobile pattern is **card list**, not
 }
 ```
 
-- Sticky CTA/footer should not hide final form fields.
+- Sticky CTA/footer не должен скрывать последние поля формы.
 
-## Tender-product specific mobile checks
+## Проверки, специфичные для tender-product
 
 ### Tender card
 
-Each card should show, in this order:
+Каждая карточка должна показывать в таком порядке:
 
 1. Status / deadline badge.
-2. Tender title.
-3. Price.
-4. Customer.
-5. Submission deadline.
-6. Source / platform.
-7. Responsible user or next action.
+2. Название тендера.
+3. Цена.
+4. Заказчик.
+5. Дедлайн подачи.
+6. Источник / площадка.
+7. Ответственный или следующее действие.
 
-Avoid showing too many secondary metadata fields in the first viewport.
+Не нужно показывать слишком много вторичных metadata fields в первом viewport.
 
 ### Deduplication UI
 
-If duplicate sources are shown:
+Если показываются duplicate sources:
 
-- Show one canonical tender card.
-- Put source badges in a horizontally wrapping row.
-- Do not duplicate the whole tender card for every source.
-- On mobile, source details should expand/collapse.
+- показывать одну canonical tender card;
+- source badges выводить в строку с переносом;
+- не дублировать всю карточку тендера для каждого источника;
+- на mobile source details должны раскрываться/сворачиваться.
 
 ### Pipeline / kanban
 
-Kanban columns are hard on mobile. Recommended mobile behavior:
+Kanban columns сложны на mobile. Рекомендуемое поведение:
 
-- Replace full kanban with status tabs or vertical grouped list.
-- Allow swipe only if there are clear affordances.
-- Preserve quick action: change status, assign user, add comment.
+- заменить full kanban на status tabs или вертикальный grouped list;
+- разрешать swipe только при понятных affordances;
+- сохранить быстрые действия: change status, assign user, add comment.
 
 ## QA checklist
 
-Run manual checks at:
+Проверять вручную на:
 
-- 320x568
-- 360x740
-- 375x812
-- 390x844
-- 414x896
-- 768x1024
+- 320x568;
+- 360x740;
+- 375x812;
+- 390x844;
+- 414x896;
+- 768x1024.
 
-For each viewport:
+Для каждого viewport:
 
-- [ ] No horizontal scroll.
-- [ ] Main container padding is consistent.
-- [ ] Header does not overlap content.
-- [ ] Buttons have 44px+ tap targets.
-- [ ] Forms are usable with keyboard opened.
-- [ ] Cards/lists have consistent vertical rhythm.
-- [ ] Tables either collapse or scroll intentionally.
-- [ ] Long tender titles/numbers/URLs wrap correctly.
-- [ ] Sticky footer/header respects safe areas.
-- [ ] Empty/loading/error states have same padding as content.
+- [ ] Нет горизонтального скролла.
+- [ ] Main container padding консистентный.
+- [ ] Header не перекрывает content.
+- [ ] Buttons имеют tap target 44px+.
+- [ ] Forms usable при открытой клавиатуре.
+- [ ] Cards/lists имеют ровный vertical rhythm.
+- [ ] Tables либо схлопываются, либо скроллятся намеренно.
+- [ ] Длинные tender titles/numbers/URLs корректно переносятся.
+- [ ] Sticky footer/header учитывает safe areas.
+- [ ] Empty/loading/error states имеют такие же отступы, как основной content.
 
-## Definition of done for future implementation
+## Definition of done для будущей реализации
 
-Mobile adaptation can be considered done when:
+Мобильную адаптацию можно считать завершенной, когда:
 
-1. All key pages pass the QA checklist at 320px+.
-2. Spacing uses a single scale, not one-off values.
-3. Tender lists are readable without horizontal scroll.
-4. Critical actions fit above the fold or are reachable with clear hierarchy.
-5. Screenshots before/after are attached for the main mobile states.
+1. Все ключевые страницы проходят QA checklist на 320px+.
+2. Отступы используют единую шкалу, а не разовые значения.
+3. Списки тендеров читаются без горизонтального скролла.
+4. Критичные действия помещаются выше fold или имеют понятную иерархию.
+5. Для основных mobile states приложены screenshots before/after.

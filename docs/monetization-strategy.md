@@ -1,163 +1,163 @@
-# Strategiya monetizatsii servisa dlya tendernyh komand
+# Стратегия монетизации сервиса для тендерных команд
 
-## Kontekst i glavnyj vyvod
+## Контекст и главный вывод
 
-Produkt nahoditsya mezhdu dvumya rynkami:
+Продукт находится между двумя рынками:
 
-1. **Excel/Google Sheets process** - komandy uzhe rabotayut besplatno ili pochti besplatno, no teryayut vremya na ruchnoe vedenie statusov, dedlajnov, dokumentov i kommunikacii.
-2. **Professional tender stack** - kompanii uzhe platyat za agregatory, CRM, API i avtomatizaciyu tendernogo otdela.
+1. **Excel / Google Sheets-процесс** - команды уже работают бесплатно или почти бесплатно, но теряют время на ручное ведение статусов, дедлайнов, документов и коммуникации.
+2. **Профессиональный tender stack** - компании уже платят за агрегаторы, CRM, API и автоматизацию тендерного отдела.
 
-Iz-etogo sleduet, chto odna cena dlya vseh budet oshibkoj. Nuzhna **segmentnaya monetizaciya**: nizkij vhod dlya zameny Excel, srednij tarif dlya komand s platnym agregatorom i vysokij tarif/enterprise dlya tendernyh otdelov.
+Из этого следует, что одна цена для всех будет ошибкой. Нужна **сегментная монетизация**: низкий вход для замены Excel, средний тариф для команд с платным агрегатором и высокий тариф/enterprise для тендерных отделов.
 
-## Rynochnye orientiry
+## Рыночные ориентиры
 
-| Kategoriya | Primer | Public price / orientir | Chto znachit dlya nas |
+| Категория | Пример | Публичный ориентир | Что значит для нас |
 | --- | --- | --- | --- |
-| Excel / tablicy | Google Sheets, Excel | 0 rub. ili vhodit v ofisnyj paket | Etot segment boleznenno reagiruet na cenu vyshe 2-3k rub./mes. |
-| CRM dlya SMB | amoCRM | 599-1 699 rub./user/mes. | Polzovatelskaya cena v SMB privychna, no bez tendernoj specializacii. |
-| CRM dlya komand | Bitrix24 | 2 490-13 990 rub./mes. za paket, Enterprise ot 33 990 rub./mes. | Kompanii gotovy platit za workflow i komandu, esli produkt stanovitsya operacionnoj sistemoj. |
-| Tender search SMB | TenderGuru | okolo 19 900 rub./god za Standard; API-only ot 10 000 rub./mes. | Est nizkij godovoj chek za poisk i vysokij chek za API/integracii. |
-| Tender search SMB | Tenderplan | okolo 35 000 rub./god, ili ~2 900 rub./mes. pri godovoj oplate | Potolok dlya samostoyatelnyh malyh komand blizok k 3k rub./mes. |
-| Tender aggregators/API | Saby Trade API | 15 000-34 000 rub., paket Maximum+API okolo 30 000 rub. | Esli klient uzhe platit za agregator/API, servis-upravlenie mozet stoit 7-20k rub./mes. |
-| Tender aggregators/API | Kontur.Zakupki | 16 200-58 000 rub./god; API module ot 26 000 rub. | Baza poiskovogo SaaS v RF - desyatki tys. v god, API doprodazha. |
-| Tender department automation | Seldon.Doc | individualno; vstrechayutsya partner packages i kompleksnye vnedreniya | Etot produkt prodajotsya ne kak "zamena Excel", a kak avtomatizaciya tendernogo otdela. |
+| Excel / таблицы | Google Sheets, Excel | 0 руб. или входит в офисный пакет | Этот сегмент болезненно реагирует на цену выше 2-3 тыс. руб./мес. |
+| CRM для SMB | amoCRM | 599-1 699 руб./пользователь/мес. | Пользовательская цена в SMB привычна, но без тендерной специализации. |
+| CRM для команд | Bitrix24 | 2 490-13 990 руб./мес. за пакет, Enterprise от 33 990 руб./мес. | Компании готовы платить за workflow и команду, если продукт становится операционной системой. |
+| Tender search SMB | TenderGuru | около 19 900 руб./год за Standard; API-only от 10 000 руб./мес. | Есть низкий годовой чек за поиск и высокий чек за API/интеграции. |
+| Tender search SMB | Tenderplan | около 24 000-35 000 руб./год, или примерно 2-3 тыс. руб./мес. при годовой оплате | Потолок для самостоятельных малых команд близок к 3 тыс. руб./мес. |
+| Tender aggregators / API | Saby Trade API | 15 000-34 000 руб., пакет Maximum+API около 30 000 руб. | Если клиент уже платит за агрегатор/API, сервис управления может стоить 7-20 тыс. руб./мес. |
+| Tender aggregators / API | Контур.Закупки | 16 200-58 000 руб./год; API-модуль от 26 000 руб. | База поискового SaaS в РФ - десятки тысяч в год, API - допродажа. |
+| Tender department automation | Seldon.Doc | индивидуально; встречаются партнерские пакеты и комплексные внедрения | Этот продукт продается не как "замена Excel", а как автоматизация тендерного отдела. |
 
-## Segmenty i willingness to pay
+## Сегменты и готовность платить
 
-### 1. Solo / mikrokomanda: "uhodim iz Excel"
+### 1. Solo / микрокоманда: "уходим из Excel"
 
-**Kto eto:** IP, malyj postavshik, 1-2 cheloveka, uchastie v tenderah neregulyarno ili tolko nachinaetsya.
+**Кто это:** ИП, малый поставщик, 1-2 человека, участие в тендерах нерегулярное или только начинается.
 
-**Boli:**
+**Боли:**
 
-- ne propustit dedlajn;
-- videt statusy;
-- hranit ssylki i dokumenty;
-- poluchat prostye napominaniya;
-- ne dublirivat tender v tablice.
+- не пропустить дедлайн;
+- видеть статусы;
+- хранить ссылки и документы;
+- получать простые напоминания;
+- не дублировать тендер в таблице.
 
-**Cena:** 990-2 990 rub./mes. ili 24 000-30 000 rub./god.
+**Цена:** 990-2 990 руб./мес. или 19 900-30 000 руб./год.
 
-**Ogranicheniya tarifa:**
+**Ограничения тарифа:**
 
-- 1-2 polzovatelya;
-- ogranichennye doski/proekty;
-- bez API;
-- bez slozhnoj analitiki;
-- bez komandnyh soglasovanij;
-- import iz Excel i rucnoy dobavlenie tenderov.
+- 1-2 пользователя;
+- ограниченное число активных тендеров;
+- без API;
+- без сложной аналитики;
+- без командных согласований;
+- импорт из Excel и ручное добавление тендеров.
 
-**Logika:** etot tarif dolzhen konvertirovat s Excel. Ego nuzhno prodavat prosto: "ne propuskajte dedlajny i vedite tendernuyu voronku za cenu meneye odnoj oshibki".
+**Логика:** этот тариф должен конвертировать с Excel. Его нужно продавать просто: "не пропускайте дедлайны и ведите тендерную воронку за цену меньше одной ошибки".
 
-### 2. SMB tender team: "est agregator, nuzhen process"
+### 2. SMB tender team: "есть агрегатор, нужен процесс"
 
-**Kto eto:** kompaniya, kotoraya uzhe platit za Saby/Kontur/TenderGuru/Tenderplan/Seldon ili poluchaet tendernye podborki.
+**Кто это:** компания, которая уже платит за Saby, Контур, TenderGuru, Tenderplan, Seldon или получает тендерные подборки.
 
-**Boli:**
+**Боли:**
 
-- tenderov mnogo, a process razvalivaetsya;
-- nuzhno raspredelyat tendera po otvetstvennym;
-- nuzhny etapnost, kommentarii, failovaya istoriya;
-- rukovoditel hochet videt voronku i rezultat;
-- nuzhno ubrat dublikatnye tendera iz neskolkih istochnikov.
+- тендеров много, а процесс разваливается;
+- нужно распределять тендеры по ответственным;
+- нужны этапы, комментарии, файловая история;
+- руководитель хочет видеть воронку и результат;
+- нужно убрать дубли из нескольких источников.
 
-**Cena:** 5 900-14 900 rub./mes. za komandu.
+**Цена:** 5 900-14 900 руб./мес. за команду.
 
-**Cennost:** eto ne konkurenciya agregatoru, a "operacionnyj sloj poverh agregatorov". Esli klient uzhe platit 15 000-30 000 rub./mes. za dannye, dopolnitelnye 7 000-15 000 rub./mes. za upravlenie rabotoj i deduplication mogut byt vosprinaty normalno.
+**Ценность:** это не конкуренция агрегатору, а "операционный слой поверх агрегаторов". Если клиент уже платит 15 000-30 000 руб./мес. за данные, дополнительные 7 000-15 000 руб./мес. за управление работой и дедупликацию могут восприниматься нормально.
 
-### 3. Professional / tender department
+### 3. Professional / тендерный отдел
 
-**Kto eto:** tendernyj otdel, filialy, neskolko menedzherov, vysokaya chastota uchastiya.
+**Кто это:** тендерный отдел, филиалы, несколько менеджеров, высокая частота участия.
 
-**Boli:**
+**Боли:**
 
-- SLA po podgotovke zayavok;
-- kontrol rukovoditelya;
-- history/audit;
-- integracii s CRM, Bitrix24, 1C, pochtoj, agregatorami;
-- roli, prava, shablony dokumentov;
-- analytics po prichinam proigryshej, marzhe, konversiyam.
+- SLA по подготовке заявок;
+- контроль руководителя;
+- история и аудит;
+- интеграции с CRM, Bitrix24, 1C, почтой, агрегаторами;
+- роли, права, шаблоны документов;
+- аналитика по причинам проигрышей, марже, конверсиям.
 
-**Cena:** 24 900-49 900 rub./mes. ili individualno.
+**Цена:** 24 900-49 900 руб./мес. или индивидуально.
 
-**Logika:** etot segment sravnivaet ne s Excel, a s zarplatami, poteryannymi zayavkami, Seldon.Doc, integraciyami i stoimostyu tendernogo otdela.
+**Логика:** этот сегмент сравнивает не с Excel, а с зарплатами, потерянными заявками, Seldon.Doc, интеграциями и стоимостью тендерного отдела.
 
-### 4. Enterprise / integracii
+### 4. Enterprise / интеграции
 
-**Kto eto:** gruppy kompanij, proizvoditeli, distributory, holdingi, tendernye agentstva.
+**Кто это:** группы компаний, производители, дистрибьюторы, холдинги, тендерные агентства.
 
-**Cena:** ot 75 000 rub./mes. ili ot 600 000-1 500 000 rub./god.
+**Цена:** от 75 000 руб./мес. или от 600 000-1 500 000 руб./год.
 
-**Chto prodavat:**
+**Что продавать:**
 
 - custom API;
 - SSO;
-- role model;
-- integracii s vnutrennimi sistemami;
-- migraciya istorii;
+- ролевая модель;
+- интеграции с внутренними системами;
+- миграция истории;
 - private deployment / special SLA;
-- personalnyj customer success.
+- персональный customer success.
 
-## Rekomenduemaya tarifnaya setka
+## Рекомендуемая тарифная сетка
 
 ### Free / Trial
 
-- 14 dnej polnogo dostupa ili freemium s 5-10 tenderami.
-- Cel: pokazat cennost workflow i mobile UX.
-- Bez API i komandnyh integracij.
+- 14 дней полного доступа или freemium с 5-10 тендерами.
+- Цель: показать ценность workflow и мобильного UX.
+- Без API и командных интеграций.
 
-### Start - 1 990 rub./mes. ili 19 900 rub./god
+### Start - 1 990 руб./мес. или 19 900 руб./год
 
-**Dlya zameny Excel.**
+**Для замены Excel.**
 
-- 1 polzovatel;
-- do 100 aktivnyh tenderov;
-- statusy, dedlajny, kommentarii;
+- 1 пользователь;
+- до 100 активных тендеров;
+- статусы, дедлайны, комментарии;
 - import/export Excel;
-- bazovye napominaniya;
-- deduplication po nomeru zakupki i ssylke.
+- базовые напоминания;
+- дедупликация по номеру закупки и ссылке.
 
-Mozhno derzhat "psihologicheskij potolok" do 3 000 rub./mes., no pri godovoj oplate dat oshchutimuyu skidku.
+Можно держать психологический потолок до 3 000 руб./мес., но при годовой оплате дать ощутимую скидку.
 
-### Team - 7 900 rub./mes. ili 79 000 rub./god
+### Team - 7 900 руб./мес. или 79 000 руб./год
 
-**Dlya komand, kotorye uzhe platit za agregator.**
+**Для команд, которые уже платят за агрегатор.**
 
-- 3-5 polzovatelej;
-- komandnaya doska;
-- otvetstvennye i roli;
-- rasshirennye napominaniya;
+- 3-5 пользователей;
+- командная доска;
+- ответственные и роли;
+- расширенные напоминания;
 - mass import;
-- dedup iz neskolkih istochnikov;
-- bazovaya analitika po voronke;
+- дедупликация из нескольких источников;
+- базовая аналитика по воронке;
 - email/telegram notifications.
 
-### Pro - 14 900 rub./mes. ili 149 000 rub./god
+### Pro - 14 900 руб./мес. или 149 000 руб./год
 
-**Dlya aktivnogo tendernogo otdela.**
+**Для активного тендерного отдела.**
 
-- 10 polzovatelej;
+- 10 пользователей;
 - custom stages;
-- shablony processov;
-- integracii s agregatorami/API pri nalichii klucha klienta;
+- шаблоны процессов;
+- интеграции с агрегаторами/API при наличии ключа клиента;
 - BI export;
-- istorija izmenenij;
-- analytics po prichinam otkaza/proigrysha;
+- история изменений;
+- аналитика по причинам отказа/проигрыша;
 - priority support.
 
-### Business - 29 900 rub./mes. ili 299 000 rub./god
+### Business - 29 900 руб./мес. или 299 000 руб./год
 
-**Dlya otdelov i filialov.**
+**Для отделов и филиалов.**
 
-- 20+ polzovatelej;
+- 20+ пользователей;
 - rights/roles;
-- filialy/komandy;
+- филиалы/команды;
 - integrations with Bitrix24/amoCRM/1C;
 - advanced duplicate rules;
 - audit log;
 - onboarding session.
 
-### Enterprise - individualno, ot 75 000 rub./mes.
+### Enterprise - индивидуально, от 75 000 руб./мес.
 
 - SSO;
 - custom integrations;
@@ -166,88 +166,88 @@ Mozhno derzhat "psihologicheskij potolok" do 3 000 rub./mes., no pri godovoj opl
 - data residency/deployment requirements;
 - custom reports.
 
-## Chto imenno monetizirovat
+## Что именно монетизировать
 
-Ne stoit monetizirovat tolko "hranenie tenderov". Eto legko sravnit s Excel i obescenit.
+Не стоит монетизировать только "хранение тендеров". Это легко сравнить с Excel и обесценить.
 
-Monetiziruemye capability:
+Монетизируемые capabilities:
 
-1. **Ne propustit dedlajn** - napominaniya, kalendar, escalation.
-2. **Komandnyj process** - stage pipeline, otvetstvennye, komentarii, history.
-3. **Deduplication** - esli tender prishol iz EIS, Saby i TenderGuru, komanda vidit odnu kartochku.
-4. **Integracii** - Bitrix24, amoCRM, 1C, API agregatorov, email.
-5. **Analytics** - skolko tenderov obrabotano, konversiya, prichiny otkaza, prichiny proigrysha.
-6. **Audit and control** - kto chto sdelal, kakoe reshenie prinyato, pochemu ne uchastvovali.
+1. **Не пропустить дедлайн** - напоминания, календарь, escalation.
+2. **Командный процесс** - stage pipeline, ответственные, комментарии, история.
+3. **Дедупликация** - если тендер пришел из ЕИС, Saby и TenderGuru, команда видит одну карточку.
+4. **Интеграции** - Bitrix24, amoCRM, 1C, API агрегаторов, email.
+5. **Аналитика** - сколько тендеров обработано, конверсия, причины отказа, причины проигрыша.
+6. **Audit and control** - кто что сделал, какое решение принято, почему не участвовали.
 
-## Pozicionirovanie
+## Позиционирование
 
-### Dlya Excel-segmenta
+### Для Excel-сегмента
 
-"Tendernaya doska vmesto Excel: dedlajny, statusy, dokumenty i napominaniya v odnom meste."
+"Тендерная доска вместо Excel: дедлайны, статусы, документы и напоминания в одном месте."
 
-Ne govorit "CRM" v pervom ekrane: CRM zvuchit slozhno i dorogo. Govorit "zamena Excel dlya tenderov".
+Не говорить "CRM" в первом экране: CRM звучит сложно и дорого. Лучше говорить "замена Excel для тендеров".
 
-### Dlya segmenta s agregatorom
+### Для сегмента с агрегатором
 
-"Upravlenie tendernoj rabotoj poverh Saby, Kontur, TenderGuru, Tenderplan i EIS: odna kartochka tendera bez dublikatov."
+"Управление тендерной работой поверх Saby, Контур, TenderGuru, Tenderplan и ЕИС: одна карточка тендера без дублей."
 
-### Dlya enterprise
+### Для enterprise
 
 "Operating system for tender departments: workflow, audit, integrations and performance analytics."
 
-## Paketirovanie onboarding
+## Пакетирование onboarding
 
-- Start: self-service, import iz Excel, video-guide.
-- Team: guided setup za doplatu ili vklyucheno pri godovoj oplate.
-- Pro/Business: onboarding 20 000-50 000 rub. odnorazovo.
-- Enterprise: project implementation individualno.
+- Start: self-service, импорт из Excel, video guide.
+- Team: guided setup за доплату или включено при годовой оплате.
+- Pro/Business: onboarding 20 000-50 000 руб. единоразово.
+- Enterprise: project implementation индивидуально.
 
-## Eksperimenty po cene
+## Эксперименты по цене
 
-### Eksperiment A: Start price
+### Эксперимент A: Start price
 
-Testirovat tri ceny:
+Тестировать три цены:
 
-- 990 rub./mes. - maksimalnaya konversiya iz Excel;
-- 1 990 rub./mes. - balans ceny i cennosti;
-- 2 990 rub./mes. - verhnyaya granica "ne bolno".
+- 990 руб./мес. - максимальная конверсия из Excel;
+- 1 990 руб./мес. - баланс цены и ценности;
+- 2 990 руб./мес. - верхняя граница "не больно".
 
-Metrika: trial-to-paid, retention 2-go mesyaca, aktivnost po tenderam.
+Метрика: trial-to-paid, retention второго месяца, активность по тендерам.
 
-### Eksperiment B: Team anchor
+### Эксперимент B: Team anchor
 
-Pokazat sravnenie:
+Показать сравнение:
 
-- agregator dannyh: 15 000-30 000 rub./mes.;
-- nash process-layer: 7 900-14 900 rub./mes.;
-- poterya odnogo tendera ili prosrochka dedlajna obyknovenno dorozhe.
+- агрегатор данных: 15 000-30 000 руб./мес.;
+- наш process-layer: 7 900-14 900 руб./мес.;
+- потеря одного тендера или просрочка дедлайна обычно дороже.
 
-Metrika: conversion iz klientov s agregatorom.
+Метрика: conversion из клиентов с агрегатором.
 
-### Eksperiment C: Annual discount
+### Эксперимент C: annual discount
 
-Godovaya oplata dolzhna byt glavnoi dlya nizkih tarifov:
+Годовая оплата должна быть основной для низких тарифов:
 
-- Start: 19 900 rub./god;
-- Team: 79 000 rub./god;
-- Pro: 149 000 rub./god.
+- Start: 19 900 руб./год;
+- Team: 79 000 руб./год;
+- Pro: 149 000 руб./год.
 
-## Rekomendaciya
+## Рекомендация
 
-Zapusk ne s odnoj cenoj, a s trehurovnevoj cenovoj lestnice:
+Запускать не с одной ценой, а с трехуровневой ценовой лестницей:
 
-1. **Start do 3 000 rub./mes.** - zahvat Excel-segmenta.
-2. **Team 7 900-14 900 rub./mes.** - osnovnoj kommercheskij fokus, klienty s agregatorami.
-3. **Business/Enterprise ot 29 900 rub./mes.** - tendernye otdely, integracii, audit.
+1. **Start до 3 000 руб./мес.** - захват Excel-сегмента.
+2. **Team 7 900-14 900 руб./мес.** - основной коммерческий фокус, клиенты с агрегаторами.
+3. **Business/Enterprise от 29 900 руб./мес.** - тендерные отделы, интеграции, аудит.
 
-Glavnyj tezis: da, eto raznye platyashchie segmenty. Excel-segment ne kupit produkt za 15 000 rub./mes., no klient, kotoryj uzhe platit za agregator ili tendernyj otdel, mozhet kupit servis za takuyu cenu, esli produkt prodaetsya ne kak "eshche odna tablica", a kak upravlenie processom, deduplication, kontrol dedlajnov i integracii.
+Главный тезис: да, это разные платящие сегменты. Excel-сегмент не купит продукт за 15 000 руб./мес., но клиент, который уже платит за агрегатор или тендерный отдел, может купить сервис за такую цену, если продукт продается не как "еще одна таблица", а как управление процессом, дедупликация, контроль дедлайнов и интеграции.
 
-## Istochniki dlya proverki
+## Источники для проверки
 
-- Saby Trade API: public pages show price range 15 000-34 000 rub. and API workflow.
-- Kontur.Zakupki: public tariffs 16 200-58 000 rub./year, API module from 26 000 rub.
-- TenderGuru: public tariffs around 19 900 rub./year for Standard; API-only plans from 10 000 rub./month.
-- Tenderplan: public/partner pages show yearly plans around 24 000-35 000 rub./year.
-- Bitrix24: public cloud tariffs around 2 490-13 990 rub./month, Enterprise from 33 990 rub./month.
-- amoCRM: public tariffs around 599-1 699 rub./user/month.
-- Seldon.Doc: public pages position it as automation/CRM for tender departments; pricing is individual or package-based via partners.
+- Saby Trade API: публичные страницы показывают диапазон 15 000-34 000 руб. и API workflow.
+- Контур.Закупки: публичные тарифы 16 200-58 000 руб./год, API-модуль от 26 000 руб.
+- TenderGuru: публичные тарифы около 19 900 руб./год за Standard; API-only планы от 10 000 руб./мес.
+- Tenderplan: публичные/партнерские страницы показывают годовые планы около 24 000-35 000 руб./год.
+- Bitrix24: публичные облачные тарифы около 2 490-13 990 руб./мес., Enterprise от 33 990 руб./мес.
+- amoCRM: публичные тарифы около 599-1 699 руб./пользователь/мес.
+- Seldon.Doc: публичные страницы позиционируют продукт как автоматизацию/CRM для тендерных отделов; цена индивидуальная или пакетная через партнеров.
