@@ -38,57 +38,12 @@
     max-width: 640px;
   }
 
-  .tg-compare-cost-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 32px;
-  }
-  .tg-compare-cost-card {
-    border-radius: 20px;
-    padding: 28px 26px;
-    border: 1px solid #e2e8f0;
-    background: #fff;
-    box-shadow: 0 12px 32px rgba(15,23,42,0.06);
-  }
-  .tg-compare-cost-card.us {
-    border: 2px solid var(--tg-primary);
-    background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
-    box-shadow: 0 16px 40px rgba(28,80,222,0.12);
-  }
-  .tg-compare-cost-label {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-muted);
-    margin-bottom: 12px;
-  }
-  .tg-compare-cost-card.us .tg-compare-cost-label { color: var(--tg-primary); }
-  .tg-compare-cost-val {
-    margin: 0 0 10px;
-    font-size: clamp(24px, 3.2vw, 32px);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
-  }
-  .tg-compare-cost-card.us .tg-compare-cost-val { color: var(--tg-primary); }
-  .tg-compare-cost-note {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.55;
-    color: var(--tg-muted);
-  }
-
   .tg-compare-matrix {
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid rgba(28,80,222,0.12);
     background: #fff;
     box-shadow: 0 16px 40px rgba(15,23,42,0.06);
-    margin-bottom: 28px;
   }
   .tg-compare-matrix-head,
   .tg-compare-matrix-row {
@@ -98,10 +53,11 @@
   }
   .tg-compare-matrix-row:last-child { border-bottom: none; }
   .tg-compare-matrix-head {
-    background: linear-gradient(90deg, #f4f7ff, #eef3ff);
+    background: #fff;
     font-weight: 700;
     font-size: 15px;
     color: var(--tg-text);
+    border-bottom: 2px solid #eef2ff;
   }
   .tg-compare-matrix-crit,
   .tg-compare-matrix-cell,
@@ -110,6 +66,7 @@
     font-size: 16px;
     line-height: 1.55;
     border-right: 1px solid #eef2ff;
+    background: #fff;
   }
   .tg-compare-matrix-crit:last-child,
   .tg-compare-matrix-cell:last-child,
@@ -117,55 +74,34 @@
   .tg-compare-matrix-crit {
     font-weight: 800;
     color: var(--tg-text);
-    background: #fff;
   }
   .tg-compare-matrix-col.crm { color: #64748b; }
   .tg-compare-matrix-col.us { color: var(--tg-primary); }
-  .tg-compare-matrix-cell.crm {
-    color: #64748b;
-    background: #fafbfc;
-  }
+  .tg-compare-matrix-cell.crm { color: #64748b; }
   .tg-compare-matrix-cell.us {
     color: var(--tg-text);
     font-weight: 600;
-    background: linear-gradient(90deg, #f4f7ff 0%, #f8faff 100%);
-    border-left: 3px solid rgba(28, 80, 222, 0.35);
   }
-
-  .tg-compare-legend {
-    padding: 24px 26px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.85);
-    border: 1px solid rgba(28,80,222,0.1);
+  .tg-compare-matrix-row.highlight .tg-compare-matrix-crit,
+  .tg-compare-matrix-row.highlight .tg-compare-matrix-cell {
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
-  .tg-compare-legend-title {
-    margin: 0 0 14px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--tg-primary);
-  }
-  .tg-compare-legend-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 12px;
-  }
-  .tg-compare-legend-list li {
-    font-size: 15px;
-    line-height: 1.6;
+  .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.crm {
+    font-size: 17px;
+    font-weight: 600;
     color: #475569;
-    padding-left: 16px;
-    border-left: 3px solid rgba(28, 80, 222, 0.22);
   }
-  .tg-compare-legend-list strong { color: var(--tg-text); font-weight: 700; }
+  .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--tg-primary);
+    line-height: 1.25;
+  }
 
   @media (max-width: 760px) {
     .tg-compare-wrap { padding: 48px 20px 56px; }
-    .tg-compare-cost-grid { grid-template-columns: 1fr; }
-    .tg-compare-cost-card.us { order: -1; }
     .tg-compare-matrix-head { display: none; }
     .tg-compare-matrix-row {
       grid-template-columns: 1fr;
@@ -177,12 +113,14 @@
       border-right: none;
       padding: 0 18px 12px;
       font-size: 15px;
-      background: transparent;
     }
     .tg-compare-matrix-cell {
       border-right: none;
       padding: 14px 18px;
       font-size: 15px;
+    }
+    .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
+      font-size: 22px;
     }
     .tg-compare-matrix-cell.crm::before,
     .tg-compare-matrix-cell.us::before {
@@ -201,7 +139,6 @@
       content: "iStockLink";
       color: var(--tg-primary);
     }
-    .tg-compare-matrix-cell.us { border-left: none; }
   }
 </style>
 
@@ -213,24 +150,16 @@
       <p class="tg-section-sub">iStockLink создан под тендеры и закупки — без настройки CRM «с нуля» и скрытых расходов на маркетплейс.</p>
     </div>
 
-    <div class="tg-compare-cost-grid">
-      <div class="tg-compare-cost-card crm">
-        <span class="tg-compare-cost-label">Обычная CRM</span>
-        <p class="tg-compare-cost-val">от 100 000 ₽ + подписка</p>
-        <p class="tg-compare-cost-note">Внедрение, настройка и модули — отдельно от ежемесячной оплаты</p>
-      </div>
-      <div class="tg-compare-cost-card us">
-        <span class="tg-compare-cost-label">iStockLink</span>
-        <p class="tg-compare-cost-val">от 6 000 ₽/мес</p>
-        <p class="tg-compare-cost-note">Одна подписка — без внедрения и маркетплейса</p>
-      </div>
-    </div>
-
     <div class="tg-compare-matrix">
       <div class="tg-compare-matrix-head">
         <div class="tg-compare-matrix-crit"></div>
         <div class="tg-compare-matrix-col crm">Обычная CRM</div>
         <div class="tg-compare-matrix-col us">iStockLink</div>
+      </div>
+      <div class="tg-compare-matrix-row highlight">
+        <div class="tg-compare-matrix-crit">Стоимость</div>
+        <div class="tg-compare-matrix-cell crm">от 100 000 ₽ + ежемесячная подписка</div>
+        <div class="tg-compare-matrix-cell us">от 6 000 ₽/мес</div>
       </div>
       <div class="tg-compare-matrix-row">
         <div class="tg-compare-matrix-crit">Запуск</div>
@@ -242,20 +171,6 @@
         <div class="tg-compare-matrix-cell crm">Доработки, отдельные модули и интеграции с агрегаторами</div>
         <div class="tg-compare-matrix-cell us">Лента, госзакупки, воронка и оцифровка КП из коробки</div>
       </div>
-      <div class="tg-compare-matrix-row">
-        <div class="tg-compare-matrix-crit">Стоимость</div>
-        <div class="tg-compare-matrix-cell crm">Проект внедрения + подписка + приложения из маркетплейса</div>
-        <div class="tg-compare-matrix-cell us">Фиксированная подписка без проекта внедрения</div>
-      </div>
-    </div>
-
-    <div class="tg-compare-legend">
-      <p class="tg-compare-legend-title">Подробнее</p>
-      <ul class="tg-compare-legend-list">
-        <li><strong>Стоимость получения</strong> — у CRM платите за внедрение, потом за подписку и приложения. У iStockLink одна подписка.</li>
-        <li><strong>Запуск</strong> — в CRM команда тратит время на настройку. В iStockLink подключаете источники и сразу работаете.</li>
-        <li><strong>Тендеры</strong> — в CRM закупки достраивают интеграторами. В iStockLink всё необходимое уже внутри.</li>
-      </ul>
     </div>
   </div>
 </div>

@@ -33,7 +33,6 @@ body {
 .tg-faq-item,
 .tg-step-card,
 .tg-audience-card,
-.tg-compare-cost-card,
 .tg-compare-matrix {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
@@ -41,8 +40,7 @@ body {
 .tg-feat-card:hover,
 .tg-pillar:hover,
 .tg-price-card:hover,
-.tg-faq-item:hover,
-.tg-compare-cost-card:hover {
+.tg-faq-item:hover {
   transform: translateY(-4px);
 }
 
@@ -71,6 +69,5 @@ body {
   .tg-price-card,
   .tg-faq-item,
   .tg-step-card,
-  .tg-compare-cost-card,
   .tg-compare-matrix { transition: none; }
 }

@@ -13,7 +13,7 @@
   .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
   .tg-price-inner { max-width: 1120px; margin: 0 auto; }
 
-  .tg-price-header { text-align: center; margin-bottom: 32px; }
+  .tg-price-header { text-align: center; margin-bottom: 40px; }
   .tg-section-label {
     display: inline-block;
     font-size: 12px;
@@ -24,43 +24,18 @@
     margin-bottom: 12px;
   }
   .tg-section-title {
-    margin: 0;
+    margin: 0 0 12px;
     font-size: clamp(28px, 3.5vw, 40px);
     font-weight: 800;
     color: var(--tg-text);
   }
-
-  .tg-price-offer-plaque {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35em;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto 16px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: #fffbeb;
-    font-size: 14px;
-    font-weight: 600;
-    color: #92400e;
-    text-align: center;
-  }
-  .tg-price-offer-date {
-    font-weight: 700;
-    color: #b45309;
-    white-space: nowrap;
-  }
-  .tg-price-annual-note {
-    text-align: center;
-    font-size: 14px;
+  .tg-section-sub {
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.6;
     color: var(--tg-muted);
-    margin: 0 auto 32px;
-    max-width: 520px;
-    line-height: 1.5;
+    max-width: 560px;
   }
-  .tg-price-annual-note strong { color: var(--tg-primary); }
 
   .tg-pricing-grid {
     display: grid;
@@ -206,13 +181,8 @@
     <div class="tg-price-header">
       <span class="tg-section-label">Стоимость</span>
       <h2 class="tg-section-title">Стоимость платформы</h2>
+      <p class="tg-section-sub">Единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
-
-    <div class="tg-price-offer-plaque">
-      <span>Специальное предложение</span>
-      <span class="tg-price-offer-date">до 31.07.2026</span>
-    </div>
-    <p class="tg-price-annual-note">При оплате за год — <strong>скидка ~30%</strong> на любой тариф</p>
 
     <div class="tg-pricing-grid">
       <div class="tg-price-card">
