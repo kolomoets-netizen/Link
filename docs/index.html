@@ -197,9 +197,20 @@
     .tg-hero-wrap { padding: 56px 20px 64px; }
   }
   @media (max-width: 560px) {
-    .tg-hero-wrap { padding: 48px 20px 56px; }
-    .tg-hero-inner { gap: 28px; }
-    .tg-feed-item { margin-bottom: 12px; }
+    .tg-hero-wrap { padding: 56px 20px 64px; }
+    .tg-hero-inner { gap: 24px; }
+    .tg-hero-sub { font-size: 16px; line-height: 1.6; margin-bottom: 24px; }
+    .tg-hero-actions { flex-direction: column; gap: 10px; }
+    .tg-hero-actions .tg-btn { width: 100%; }
+    .tg-feed-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .tg-feed-stage { align-self: flex-start; white-space: normal; }
+    .tg-mock-body { padding: 14px; }
+    .tg-source-row { gap: 6px; margin-bottom: 14px; }
   }
 </style>
 
@@ -313,9 +324,9 @@
     flex-shrink: 0;
   }
   @media (max-width: 560px) {
-    .tg-logos-wrap { padding: 40px 20px; }
+    .tg-logos-wrap { padding: 48px 20px; }
     .tg-logos-row { gap: 10px 12px; }
-    .tg-logos-title { margin-bottom: 20px; }
+    .tg-logos-title { margin-bottom: 20px; font-size: 20px; }
   }
 </style>
 
@@ -572,12 +583,16 @@
     .tg-diagram-arrow { flex-direction: row; min-width: auto; }
     .tg-diagram-arrow-line { width: 40px; height: 2px; }
     .tg-steps-row { grid-template-columns: 1fr 1fr; }
+    .tg-how-wrap { padding: 56px 20px 64px; }
   }
   @media (max-width: 560px) {
     .tg-steps-row { grid-template-columns: 1fr; gap: 16px; }
-    .tg-how-wrap { padding: 48px 20px 56px; }
-    .tg-diagram { margin-bottom: 24px; padding: 24px 16px 28px; }
+    .tg-how-wrap { padding: 56px 20px 64px; }
+    .tg-diagram { margin-bottom: 24px; padding: 20px 16px 24px; }
     .tg-how-header { margin-bottom: 32px; }
+    .tg-section-sub { font-size: 16px; }
+    .tg-output-row { flex-wrap: wrap; gap: 8px; }
+    .tg-step-card { padding: 20px 18px; }
   }
 </style>
 
@@ -942,15 +957,16 @@
   .tg-kp-status.done { background: rgba(6,214,160,0.12); color: #059669; }
 
   @media (max-width: 900px) {
+    .tg-platform-wrap { padding: 56px 20px 64px; }
     .tg-pillars { grid-template-columns: 1fr; gap: 16px; }
     .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
     .tg-funnel-board { padding: 20px; gap: 20px; }
     .tg-kanban-scroll-hint { display: block; }
     .tg-funnel-kanban-scroll {
       scroll-snap-type: x mandatory;
-      scroll-padding: 0 16px;
-      margin: 0 -8px;
-      padding: 0 8px 8px;
+      scroll-padding: 0 20px;
+      margin: 0 -4px;
+      padding: 0 4px 10px;
       scrollbar-width: thin;
       scrollbar-color: rgba(28,80,222,0.25) transparent;
     }
@@ -978,9 +994,18 @@
     .tg-kanban-card .tg-card-field { font-size: 13px; }
   }
   @media (max-width: 560px) {
-    .tg-platform-wrap { padding: 48px 20px 56px; }
+    .tg-platform-wrap { padding: 56px 20px 64px; }
     .tg-pillars { margin-bottom: 28px; gap: 16px; }
     .tg-platform-header { margin-bottom: 32px; }
+    .tg-section-sub { font-size: 16px; }
+    .tg-funnel-board { padding: 16px; gap: 16px; border-radius: 20px; }
+    .tg-funnel-title { font-size: 18px; margin-bottom: 14px; }
+    .tg-panel { padding: 18px 16px; }
+    .tg-panel-head { font-size: 15px; margin-bottom: 14px; }
+    .tg-kp-item { flex-wrap: wrap; gap: 10px; padding: 12px; }
+    .tg-kp-status { margin-left: 0; }
+    .tg-supplier-row { flex-wrap: wrap; gap: 10px; }
+    .tg-supplier-badge { margin-left: 0; }
   }
 </style>
 
@@ -1194,12 +1219,15 @@
   .tg-feat-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0; }
 
   @media (max-width: 900px) {
+    .tg-feat-wrap { padding: 56px 20px 64px; }
     .tg-feat-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   }
   @media (max-width: 560px) {
-    .tg-feat-wrap { padding: 48px 20px 56px; }
+    .tg-feat-wrap { padding: 56px 20px 64px; }
     .tg-feat-header { margin-bottom: 32px; }
-    .tg-feat-grid { grid-template-columns: 1fr; }
+    .tg-feat-grid { grid-template-columns: 1fr; gap: 14px; }
+    .tg-feat-card { padding: 22px 18px; }
+    .tg-section-sub { font-size: 16px; }
   }
 </style>
 
@@ -1362,27 +1390,36 @@
     line-height: 1.25;
   }
 
+  @media (max-width: 900px) {
+    .tg-compare-wrap { padding: 56px 20px 64px; }
+    .tg-compare-matrix-crit,
+    .tg-compare-matrix-cell,
+    .tg-compare-matrix-col { padding: 16px 14px; font-size: 15px; }
+    .tg-compare-matrix-head .tg-compare-matrix-col { padding: 18px 16px; font-size: 16px; }
+  }
   @media (max-width: 760px) {
-    .tg-compare-wrap { padding: 48px 20px 56px; }
+    .tg-compare-wrap { padding: 56px 20px 64px; }
+    .tg-compare-header { margin-bottom: 32px; }
     .tg-compare-matrix-head { display: none; }
     .tg-compare-matrix-row {
       grid-template-columns: 1fr;
       gap: 0;
-      padding: 18px 0 0;
+      padding: 16px 0 4px;
       border-bottom: 1px solid #e2e8f0;
     }
+    .tg-compare-matrix-row:last-child { padding-bottom: 8px; }
     .tg-compare-matrix-crit {
       border-right: none;
-      padding: 0 18px 12px;
-      font-size: 15px;
+      padding: 0 16px 10px;
+      font-size: 14px;
     }
     .tg-compare-matrix-cell {
       border-right: none;
-      padding: 14px 18px;
-      font-size: 15px;
+      padding: 12px 16px;
+      font-size: 14px;
     }
     .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
-      font-size: 22px;
+      font-size: 20px;
     }
     .tg-compare-matrix-cell.crm::before,
     .tg-compare-matrix-cell.us::before {
@@ -1401,6 +1438,9 @@
       content: "iStockLink";
       color: var(--tg-primary);
     }
+  }
+  @media (max-width: 560px) {
+    .tg-section-sub { font-size: 16px; }
   }
 </style>
 
@@ -1607,11 +1647,19 @@
   .tg-price-btn:hover { transform: translateY(-2px); }
 
   @media (max-width: 960px) {
-    .tg-pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .tg-price-wrap { padding: 56px 20px 64px; }
+    .tg-pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 16px; }
     .tg-price-card.featured { transform: none; order: -1; }
   }
   @media (max-width: 560px) {
-    .tg-price-wrap { padding: 48px 20px 56px; }
+    .tg-price-wrap { padding: 56px 20px 64px; }
+    .tg-price-header { margin-bottom: 32px; }
+    .tg-pricing-grid { max-width: none; }
+    .tg-price-card { padding: 24px 18px; }
+    .tg-price-amount { font-size: 28px; }
+    .tg-price-annual { padding: 10px 12px; margin-bottom: 16px; }
+    .tg-price-annual-total { font-size: 11px; line-height: 1.45; }
+    .tg-section-sub { font-size: 16px; }
   }
 </style>
 
@@ -1810,12 +1858,23 @@
   }
 
   @media (max-width: 700px) {
+    .tg-cta-wrap { padding: 56px 20px 64px; }
+    .tg-faq-header { margin-bottom: 32px; }
+    .tg-faq { margin-bottom: 40px; }
     .tg-faq-grid { grid-template-columns: 1fr; gap: 12px; }
-    .tg-cta-box { padding: 40px 24px; }
-    .tg-cta-form { flex-direction: column; }
-    .tg-cta-input { min-width: 100%; }
-    .tg-cta-wrap { padding: 48px 20px 0; }
-    .tg-faq { margin-bottom: 48px; }
+    .tg-faq-item { padding: 18px 16px; }
+    .tg-faq-q { font-size: 14px; }
+    .tg-faq-a { font-size: 13px; }
+    .tg-cta-box { padding: 36px 20px; border-radius: 20px; }
+    .tg-cta-sub { font-size: 16px; margin-bottom: 24px; }
+    .tg-cta-form { flex-direction: column; gap: 10px; }
+    .tg-cta-input,
+    .tg-cta-submit { width: 100%; min-width: 0; }
+  }
+  @media (max-width: 560px) {
+    .tg-section-title { font-size: 26px; }
+    .tg-demo-modal { padding: 16px; }
+    .tg-demo-modal-dialog { padding: 28px 20px 24px; border-radius: 16px; }
   }
 
   .tg-demo-modal {

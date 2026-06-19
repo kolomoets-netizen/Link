@@ -124,12 +124,23 @@
   }
 
   @media (max-width: 700px) {
+    .tg-cta-wrap { padding: 56px 20px 64px; }
+    .tg-faq-header { margin-bottom: 32px; }
+    .tg-faq { margin-bottom: 40px; }
     .tg-faq-grid { grid-template-columns: 1fr; gap: 12px; }
-    .tg-cta-box { padding: 40px 24px; }
-    .tg-cta-form { flex-direction: column; }
-    .tg-cta-input { min-width: 100%; }
-    .tg-cta-wrap { padding: 48px 20px 0; }
-    .tg-faq { margin-bottom: 48px; }
+    .tg-faq-item { padding: 18px 16px; }
+    .tg-faq-q { font-size: 14px; }
+    .tg-faq-a { font-size: 13px; }
+    .tg-cta-box { padding: 36px 20px; border-radius: 20px; }
+    .tg-cta-sub { font-size: 16px; margin-bottom: 24px; }
+    .tg-cta-form { flex-direction: column; gap: 10px; }
+    .tg-cta-input,
+    .tg-cta-submit { width: 100%; min-width: 0; }
+  }
+  @media (max-width: 560px) {
+    .tg-section-title { font-size: 26px; }
+    .tg-demo-modal { padding: 16px; }
+    .tg-demo-modal-dialog { padding: 28px 20px 24px; border-radius: 16px; }
   }
 
   .tg-demo-modal {

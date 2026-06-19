@@ -173,9 +173,20 @@
     .tg-hero-wrap { padding: 56px 20px 64px; }
   }
   @media (max-width: 560px) {
-    .tg-hero-wrap { padding: 48px 20px 56px; }
-    .tg-hero-inner { gap: 28px; }
-    .tg-feed-item { margin-bottom: 12px; }
+    .tg-hero-wrap { padding: 56px 20px 64px; }
+    .tg-hero-inner { gap: 24px; }
+    .tg-hero-sub { font-size: 16px; line-height: 1.6; margin-bottom: 24px; }
+    .tg-hero-actions { flex-direction: column; gap: 10px; }
+    .tg-hero-actions .tg-btn { width: 100%; }
+    .tg-feed-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .tg-feed-stage { align-self: flex-start; white-space: normal; }
+    .tg-mock-body { padding: 14px; }
+    .tg-source-row { gap: 6px; margin-bottom: 14px; }
   }
 </style>
 

@@ -114,27 +114,36 @@
     line-height: 1.25;
   }
 
+  @media (max-width: 900px) {
+    .tg-compare-wrap { padding: 56px 20px 64px; }
+    .tg-compare-matrix-crit,
+    .tg-compare-matrix-cell,
+    .tg-compare-matrix-col { padding: 16px 14px; font-size: 15px; }
+    .tg-compare-matrix-head .tg-compare-matrix-col { padding: 18px 16px; font-size: 16px; }
+  }
   @media (max-width: 760px) {
-    .tg-compare-wrap { padding: 48px 20px 56px; }
+    .tg-compare-wrap { padding: 56px 20px 64px; }
+    .tg-compare-header { margin-bottom: 32px; }
     .tg-compare-matrix-head { display: none; }
     .tg-compare-matrix-row {
       grid-template-columns: 1fr;
       gap: 0;
-      padding: 18px 0 0;
+      padding: 16px 0 4px;
       border-bottom: 1px solid #e2e8f0;
     }
+    .tg-compare-matrix-row:last-child { padding-bottom: 8px; }
     .tg-compare-matrix-crit {
       border-right: none;
-      padding: 0 18px 12px;
-      font-size: 15px;
+      padding: 0 16px 10px;
+      font-size: 14px;
     }
     .tg-compare-matrix-cell {
       border-right: none;
-      padding: 14px 18px;
-      font-size: 15px;
+      padding: 12px 16px;
+      font-size: 14px;
     }
     .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
-      font-size: 22px;
+      font-size: 20px;
     }
     .tg-compare-matrix-cell.crm::before,
     .tg-compare-matrix-cell.us::before {
@@ -153,6 +162,9 @@
       content: "iStockLink";
       color: var(--tg-primary);
     }
+  }
+  @media (max-width: 560px) {
+    .tg-section-sub { font-size: 16px; }
   }
 </style>
 

@@ -237,15 +237,16 @@
   .tg-kp-status.done { background: rgba(6,214,160,0.12); color: #059669; }
 
   @media (max-width: 900px) {
+    .tg-platform-wrap { padding: 56px 20px 64px; }
     .tg-pillars { grid-template-columns: 1fr; gap: 16px; }
     .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
     .tg-funnel-board { padding: 20px; gap: 20px; }
     .tg-kanban-scroll-hint { display: block; }
     .tg-funnel-kanban-scroll {
       scroll-snap-type: x mandatory;
-      scroll-padding: 0 16px;
-      margin: 0 -8px;
-      padding: 0 8px 8px;
+      scroll-padding: 0 20px;
+      margin: 0 -4px;
+      padding: 0 4px 10px;
       scrollbar-width: thin;
       scrollbar-color: rgba(28,80,222,0.25) transparent;
     }
@@ -273,9 +274,18 @@
     .tg-kanban-card .tg-card-field { font-size: 13px; }
   }
   @media (max-width: 560px) {
-    .tg-platform-wrap { padding: 48px 20px 56px; }
+    .tg-platform-wrap { padding: 56px 20px 64px; }
     .tg-pillars { margin-bottom: 28px; gap: 16px; }
     .tg-platform-header { margin-bottom: 32px; }
+    .tg-section-sub { font-size: 16px; }
+    .tg-funnel-board { padding: 16px; gap: 16px; border-radius: 20px; }
+    .tg-funnel-title { font-size: 18px; margin-bottom: 14px; }
+    .tg-panel { padding: 18px 16px; }
+    .tg-panel-head { font-size: 15px; margin-bottom: 14px; }
+    .tg-kp-item { flex-wrap: wrap; gap: 10px; padding: 12px; }
+    .tg-kp-status { margin-left: 0; }
+    .tg-supplier-row { flex-wrap: wrap; gap: 10px; }
+    .tg-supplier-badge { margin-left: 0; }
   }
 </style>
 

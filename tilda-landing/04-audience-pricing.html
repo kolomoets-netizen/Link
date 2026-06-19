@@ -168,11 +168,19 @@
   .tg-price-btn:hover { transform: translateY(-2px); }
 
   @media (max-width: 960px) {
-    .tg-pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .tg-price-wrap { padding: 56px 20px 64px; }
+    .tg-pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 16px; }
     .tg-price-card.featured { transform: none; order: -1; }
   }
   @media (max-width: 560px) {
-    .tg-price-wrap { padding: 48px 20px 56px; }
+    .tg-price-wrap { padding: 56px 20px 64px; }
+    .tg-price-header { margin-bottom: 32px; }
+    .tg-pricing-grid { max-width: none; }
+    .tg-price-card { padding: 24px 18px; }
+    .tg-price-amount { font-size: 28px; }
+    .tg-price-annual { padding: 10px 12px; margin-bottom: 16px; }
+    .tg-price-annual-total { font-size: 11px; line-height: 1.45; }
+    .tg-section-sub { font-size: 16px; }
   }
 </style>
 
