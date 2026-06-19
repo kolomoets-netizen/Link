@@ -1,10 +1,4 @@
-@font-face {
-  font-family: 'Plus Jakarta Sans Variable';
-  font-style: normal;
-  font-weight: 200 800;
-  font-display: swap;
-  src: url('vendor/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2');
-}
+/* Preview layer: анимации и hover — без переопределения шрифтов блоков */
 
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -13,14 +7,8 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 
 body {
-  font-family: 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}
-
-[class*='tg-'][class*='-wrap'],
-[class*='tg-'][class*='-inner'] {
-  font-family: inherit;
 }
 
 ::selection {
@@ -45,35 +33,23 @@ body {
 .tg-faq-item,
 .tg-step-card,
 .tg-audience-card,
-.tg-compare-table,
-.tg-compare-legend {
+.tg-compare-cost-card,
+.tg-compare-matrix {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .tg-feat-card:hover,
 .tg-pillar:hover,
 .tg-price-card:hover,
-.tg-faq-item:hover {
-  transform: translateY(-6px);
-}
-
-.tg-hero-visual,
-.tg-diagram,
-.tg-funnel-board,
-.tg-cta-box {
-  backdrop-filter: blur(8px);
+.tg-faq-item:hover,
+.tg-compare-cost-card:hover {
+  transform: translateY(-4px);
 }
 
 .tg-btn-primary,
 .tg-price-btn-primary,
 .tg-cta-submit {
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-}
-
-.tg-btn-primary:hover,
-.tg-price-btn-primary:hover,
-.tg-cta-submit:hover {
-  filter: brightness(1.05);
 }
 
 .tg-logo-pill {
@@ -84,11 +60,17 @@ body {
   transform: translateY(-2px);
 }
 
+.tg-demo-modal.is-open {
+  visibility: visible;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.lenis { scroll-behavior: auto; }
   .tg-feat-card,
   .tg-pillar,
   .tg-price-card,
   .tg-faq-item,
-  .tg-step-card { transition: none; }
+  .tg-step-card,
+  .tg-compare-cost-card,
+  .tg-compare-matrix { transition: none; }
 }
