@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'Plus Jakarta Sans Variable';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('vendor/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2');
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+body {
+  font-family: 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+[class*='tg-'][class*='-wrap'],
+[class*='tg-'][class*='-inner'] {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(28, 80, 222, 0.18);
+  color: #0f172a;
+}
+
+.tg-hero-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(28, 80, 222, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(99, 102, 241, 0.1), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tg-feat-card,
+.tg-pillar,
+.tg-price-card,
+.tg-faq-item,
+.tg-step-card,
+.tg-audience-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.tg-feat-card:hover,
+.tg-pillar:hover,
+.tg-price-card:hover,
+.tg-faq-item:hover {
+  transform: translateY(-6px);
+}
+
+.tg-hero-visual,
+.tg-diagram,
+.tg-funnel-board,
+.tg-cta-box {
+  backdrop-filter: blur(8px);
+}
+
+.tg-btn-primary,
+.tg-price-btn-primary,
+.tg-cta-submit {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.tg-btn-primary:hover,
+.tg-price-btn-primary:hover,
+.tg-cta-submit:hover {
+  filter: brightness(1.05);
+}
+
+.tg-logo-pill {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tg-logo-pill:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lenis { scroll-behavior: auto; }
+  .tg-feat-card,
+  .tg-pillar,
+  .tg-price-card,
+  .tg-faq-item,
+  .tg-step-card { transition: none; }
+}

@@ -11,8 +11,21 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | 3 | `02-how-it-works.html` | Как работает (главная схема) |
 | 4 | `07-crm-srm-kp.html` | Воронка торгов + поставщики + оцифровка КП |
 | 5 | `03-features.html` | Возможности платформы |
-| 6 | `04-audience-pricing.html` | Для кого + тарифы |
-| 7 | `05-faq-cta.html` | FAQ + CTA + футер |
+| 6 | `04-audience-pricing.html` | Стоимость платформы |
+| 7 | `05-faq-cta.html` | FAQ + CTA |
+| 0 | `00-enhancements-tilda.html` | *(опционально)* шрифт, анимации, плавный скролл |
+
+## Анимации и шрифты (превью)
+
+На GitHub Pages подключены библиотеки из npm:
+
+- **Plus Jakarta Sans** — современный шрифт
+- **AOS** — появление блоков при скролле
+- **Lenis** — плавная прокрутка
+
+Сборка: `npm install && npm run build:preview`
+
+Для Tilda вставьте `00-enhancements-tilda.html` **один раз** в Zero Block в начале страницы (CDN).
 
 ## Превью на планшете / телефоне
 

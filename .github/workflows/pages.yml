@@ -6,6 +6,9 @@ on:
     paths:
       - 'tilda-landing/**'
       - 'docs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'scripts/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -27,32 +30,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
       - name: Build preview site
         run: |
-          python3 << 'PY'
-          from pathlib import Path
-          blocks = [
-              '01-hero.html', '06-integrations.html', '02-how-it-works.html',
-              '07-crm-srm-kp.html', '03-features.html', '04-audience-pricing.html', '05-faq-cta.html',
-          ]
-          base = Path('tilda-landing')
-          body = '\n\n'.join((base / n).read_text(encoding='utf-8').strip() for n in blocks)
-          html = f'''<!DOCTYPE html>
-          <html lang="ru">
-          <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>iStockLink</title>
-          <style>body{{margin:0}}</style>
-          </head>
-          <body>
-          {body}
-          </body>
-          </html>
-          '''
-          (base / 'preview-standalone.html').write_text(html, encoding='utf-8')
-          Path('docs/index.html').write_text(html, encoding='utf-8')
-          PY
+          npm ci
+          npm run build:preview
           mkdir -p _site/assets
           cp tilda-landing/preview-standalone.html _site/index.html
           cp tilda-landing/prototype-feed.html _site/prototype.html

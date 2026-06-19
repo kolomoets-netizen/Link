@@ -1,0 +1,14 @@
+{
+  "name": "istocklink-landing",
+  "private": true,
+  "scripts": {
+    "vendor": "node scripts/vendor-sync.mjs",
+    "build:preview": "node scripts/build-preview.mjs",
+    "postinstall": "npm run vendor"
+  },
+  "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
+    "aos": "^2.3.4",
+    "lenis": "^1.3.17"
+  }
+}
