@@ -40,6 +40,9 @@ HTML-блоки для встраивания в Tilda через блок **T12
 
 **https://kolomoets-netizen.github.io/Link/**
 
+> Важно: в конце URL обязательно **`/Link/`** (с заглавной L).  
+> Адрес `https://kolomoets-netizen.github.io/` без `/Link/` — это 404.
+
 Откройте в Safari или Chrome на планшете — сервер не нужен.
 
 **Если видите старую версию:**
