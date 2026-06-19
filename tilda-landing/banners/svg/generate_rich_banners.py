@@ -188,12 +188,12 @@ def visual_free():
     p = panel(580, 72, 560, 484, "Демо-доступ")
     body = [p]
     body.append('<circle cx="860" cy="290" r="118" fill="none" stroke="#1c50de" stroke-width="4" opacity="0.35"/>')
-    body.append('<circle cx="860" cy="290" r="96" fill="#ffffff" filter="url(#soft)"/>')
-    body.append('<text x="860" y="282" text-anchor="middle" fill="#1c50de" font-family="Arial" font-size="72" font-weight="800">14</text>')
-    body.append('<text x="860" y="322" text-anchor="middle" fill="#64748b" font-family="Arial" font-size="20" font-weight="600">дней</text>')
+    body.append('<circle cx="860" cy="290" r="96" fill="url(#cardHi)" filter="url(#soft)"/>')
+    body.append('<text x="860" y="282" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="72" font-weight="800">14</text>')
+    body.append('<text x="860" y="322" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="20" font-weight="600">дней</text>')
     body.append('<rect x="700" y="430" width="320" height="54" rx="27" fill="url(#cardHi)" filter="url(#soft)"/>')
     body.append('<text x="860" y="463" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="18" font-weight="700">Запросить демо</text>')
-    body.append('<text x="860" y="510" text-anchor="middle" fill="#94a3b8" font-family="Arial" font-size="13">без привязки карты</text>')
+    body.append('<text x="860" y="510" text-anchor="middle" fill="#dbeafe" font-family="Arial" font-size="13">без привязки карты</text>')
     return "\n".join(body)
 
 BANNERS = [

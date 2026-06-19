@@ -18,7 +18,7 @@
     --tg-border: #e2e8f0;
     --tg-border-accent: rgba(28, 80, 222, 0.14);
     --tg-canvas: #f6f8fa;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: linear-gradient(135deg, #f4f7ff 0%, #e8efff 50%, #f6f8fa 100%);
@@ -248,7 +248,7 @@
 <style>
   .tg-logos-wrap {
     --tg-primary: #1c50de;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
@@ -347,7 +347,7 @@
     --tg-muted: #57606a;
     --tg-border: #e2e8f0;
     --tg-border-accent: rgba(28, 80, 222, 0.12);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
@@ -358,10 +358,12 @@
   .tg-how-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--tg-muted);
-    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
   }
   .tg-section-title {
     margin: 0 0 14px;
@@ -701,7 +703,7 @@
     --tg-muted: #57606a;
     --tg-border: #e2e8f0;
     --tg-border-accent: rgba(28, 80, 222, 0.12);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
@@ -712,8 +714,12 @@
   .tg-platform-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 13px; font-weight: 600;
-    color: var(--tg-muted); margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
   }
   .tg-section-title {
     margin: 0 0 14px;
@@ -1122,7 +1128,7 @@
     --tg-muted: #57606a;
     --tg-border: #e2e8f0;
     --tg-border-accent: rgba(28, 80, 222, 0.12);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 100%);
@@ -1134,10 +1140,12 @@
   .tg-feat-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--tg-muted);
-    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
   }
   .tg-section-title {
     margin: 0 0 14px;
@@ -1219,6 +1227,184 @@
   </div>
 </div>
 
+<!-- Tilda block: CRM comparison -->
+<style>
+  .tg-compare-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #24292f;
+    --tg-muted: #57606a;
+    --tg-border: #e2e8f0;
+    --tg-border-accent: rgba(28, 80, 222, 0.12);
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 80px 24px;
+    border-top: 1px solid #eef2ff;
+  }
+  .tg-compare-wrap *, .tg-compare-wrap *::before, .tg-compare-wrap *::after { box-sizing: border-box; }
+  .tg-compare-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-compare-header { text-align: center; margin-bottom: 40px; }
+  .tg-section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
+  }
+  .tg-section-title {
+    margin: 0 0 14px;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--tg-text);
+    line-height: 1.2;
+  }
+  .tg-section-sub {
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--tg-muted);
+    max-width: 640px;
+  }
+
+  .tg-compare-table {
+    border: 1px solid var(--tg-border-accent);
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
+    box-shadow: 0 2px 8px rgba(28, 80, 222, 0.04);
+  }
+  .tg-compare-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr;
+    border-bottom: 1px solid #eef2ff;
+  }
+  .tg-compare-row:last-child { border-bottom: none; }
+  .tg-compare-row.head {
+    background: #f4f7ff;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--tg-text);
+  }
+  .tg-compare-cell {
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #475569;
+    border-right: 1px solid #eef2ff;
+  }
+  .tg-compare-cell:last-child { border-right: none; }
+  .tg-compare-row.head .tg-compare-cell { padding: 18px 20px; }
+  .tg-compare-cell.criteria {
+    font-weight: 600;
+    color: var(--tg-text);
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .tg-compare-cell.crm { color: #64748b; }
+  .tg-compare-cell.us {
+    color: var(--tg-text);
+    background: rgba(28, 80, 222, 0.03);
+    font-weight: 500;
+  }
+  .tg-compare-row.head .tg-compare-cell.us {
+    color: var(--tg-primary);
+    background: rgba(28, 80, 222, 0.06);
+  }
+  .tg-compare-bad { color: #94a3b8; }
+  .tg-compare-good { color: var(--tg-primary); font-weight: 600; }
+
+  .tg-compare-note {
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    background: #f8faff;
+    border: 1px solid var(--tg-border-accent);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--tg-muted);
+    text-align: center;
+  }
+  .tg-compare-note strong { color: var(--tg-text); }
+
+  @media (max-width: 760px) {
+    .tg-compare-wrap { padding: 48px 20px 56px; }
+    .tg-compare-row { grid-template-columns: 1fr; }
+    .tg-compare-cell { border-right: none; border-bottom: 1px solid #eef2ff; }
+    .tg-compare-row.head { display: none; }
+    .tg-compare-row:not(.head) .tg-compare-cell.criteria {
+      background: #f4f7ff;
+      font-size: 13px;
+      padding-bottom: 8px;
+      border-bottom: none;
+    }
+    .tg-compare-row:not(.head) .tg-compare-cell.crm::before {
+      content: "Обычная CRM: ";
+      font-weight: 600;
+      color: #94a3b8;
+    }
+    .tg-compare-row:not(.head) .tg-compare-cell.us::before {
+      content: "iStockLink: ";
+      font-weight: 700;
+      color: var(--tg-primary);
+    }
+    .tg-compare-row:not(.head) .tg-compare-cell.us {
+      padding-top: 4px;
+    }
+  }
+</style>
+
+<div class="tg-compare-wrap">
+  <div class="tg-compare-inner">
+    <div class="tg-compare-header">
+      <span class="tg-section-label">Сравнение</span>
+      <h2 class="tg-section-title">Готовый инструмент вместо долгого внедрения</h2>
+      <p class="tg-section-sub">iStockLink создан под тендеры и закупки — без настройки CRM «с нуля» и скрытых расходов на маркетплейс.</p>
+    </div>
+
+    <div class="tg-compare-table">
+      <div class="tg-compare-row head">
+        <div class="tg-compare-cell criteria"></div>
+        <div class="tg-compare-cell crm">Обычная CRM</div>
+        <div class="tg-compare-cell us">iStockLink</div>
+      </div>
+      <div class="tg-compare-row">
+        <div class="tg-compare-cell criteria">Запуск</div>
+        <div class="tg-compare-cell crm"><span class="tg-compare-bad">Внедрение от 100 000 ₽</span>, настройка воронок и интеграций — недели и месяцы</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">Готовый инструмент</span> — лента, воронка и поставщики из коробки, старт за 1 день</div>
+      </div>
+      <div class="tg-compare-row">
+        <div class="tg-compare-cell criteria">Тендеры и закупки</div>
+        <div class="tg-compare-cell crm">Нужны доработки, подключение агрегаторов и отдельные модули</div>
+        <div class="tg-compare-cell us">Единая лента, госзакупки, этапы торгов и оцифровка КП — уже в платформе</div>
+      </div>
+      <div class="tg-compare-row">
+        <div class="tg-compare-cell criteria">Дополнительные расходы</div>
+        <div class="tg-compare-cell crm">Маркетплейс приложений, платные интеграции, обновления коробки</div>
+        <div class="tg-compare-cell us">Всё включено в подписку — без отдельного внедрения и маркетплейса</div>
+      </div>
+      <div class="tg-compare-row">
+        <div class="tg-compare-cell criteria">Тарифы (облако)</div>
+        <div class="tg-compare-cell crm">Базовый от 2 490 ₽/мес · Стандартный от 6 990 ₽ · Профессиональный от 13 990 ₽ + внедрение</div>
+        <div class="tg-compare-cell us"><span class="tg-compare-good">От 1 990 ₽/мес</span> · Стандартный 5 490 ₽ · Профессиональный 10 990 ₽ — ниже, без скрытых платежей</div>
+      </div>
+      <div class="tg-compare-row">
+        <div class="tg-compare-cell criteria">Пользователи</div>
+        <div class="tg-compare-cell crm">Лимиты по тарифу: 5 / 50 / 100+</div>
+        <div class="tg-compare-cell us">Та же логика: до 5 / до 50 / 100 и более — масштабируйте команду по мере роста</div>
+      </div>
+    </div>
+
+    <p class="tg-compare-note">
+      <strong>Итог:</strong> вместо проекта внедрения CRM вы получаете специализированную платформу с прозрачной подпиской.
+      Годовая оплата — скидка ~30%.
+    </p>
+  </div>
+</div>
+
 <!-- Tilda block: Pricing -->
 <style>
   .tg-price-wrap {
@@ -1227,7 +1413,7 @@
     --tg-muted: #57606a;
     --tg-border: #e2e8f0;
     --tg-border-accent: rgba(28, 80, 222, 0.12);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 45%, #fff 100%);
@@ -1239,15 +1425,18 @@
   .tg-price-header { text-align: center; margin-bottom: 40px; }
   .tg-section-label {
     display: inline-block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--tg-muted);
-    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
   }
   .tg-section-title {
     margin: 0 0 14px;
     font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 650;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     color: var(--tg-text);
   }
   .tg-section-sub {
@@ -1255,7 +1444,7 @@
     font-size: 17px;
     line-height: 1.6;
     color: var(--tg-muted);
-    max-width: 560px;
+    max-width: 600px;
   }
 
   .tg-price-offer-plaque {
@@ -1266,7 +1455,7 @@
     gap: 0.35em;
     width: fit-content;
     max-width: 100%;
-    margin: 0 auto 32px;
+    margin: 0 auto 20px;
     padding: 8px 16px;
     border-radius: 999px;
     background: #fffbeb;
@@ -1280,13 +1469,21 @@
     color: #b45309;
     white-space: nowrap;
   }
+  .tg-price-annual-note {
+    text-align: center;
+    font-size: 14px;
+    color: var(--tg-muted);
+    margin: 0 auto 32px;
+    max-width: 520px;
+    line-height: 1.5;
+  }
+  .tg-price-annual-note strong { color: var(--tg-primary); }
 
   .tg-pricing-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    max-width: 720px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
   }
   .tg-price-card {
     border-radius: 12px;
@@ -1302,7 +1499,6 @@
     border: 2px solid var(--tg-primary);
     background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
     box-shadow: 0 4px 16px rgba(28, 80, 222, 0.1);
-    transform: none;
     z-index: 1;
   }
   .tg-price-badge {
@@ -1317,16 +1513,54 @@
     border-radius: 6px;
     white-space: nowrap;
   }
-  .tg-price-name { font-size: 15px; font-weight: 700; color: #64748b; margin: 0 0 8px; }
+  .tg-price-tier {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--tg-text);
+    margin: 0 0 4px;
+  }
+  .tg-price-users {
+    font-size: 13px;
+    color: var(--tg-muted);
+    margin: 0 0 16px;
+  }
   .tg-price-amount {
     font-size: 32px;
     font-weight: 800;
     color: var(--tg-text);
-    margin: 0 0 4px;
+    margin: 0 0 2px;
     line-height: 1.1;
   }
   .tg-price-amount span { font-size: 14px; font-weight: 600; color: #94a3b8; }
-  .tg-price-desc { font-size: 13px; color: #94a3b8; margin: 0 0 20px; min-height: 36px; }
+  .tg-price-period { font-size: 12px; color: #94a3b8; margin: 0 0 12px; }
+  .tg-price-annual {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #f4f7ff;
+    border: 1px solid var(--tg-border-accent);
+    margin-bottom: 20px;
+  }
+  .tg-price-annual-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tg-primary);
+    margin: 0 0 4px;
+  }
+  .tg-price-annual-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--tg-text);
+    margin: 0;
+    line-height: 1.2;
+  }
+  .tg-price-annual-val span { font-size: 13px; font-weight: 600; color: #94a3b8; }
+  .tg-price-annual-total {
+    font-size: 12px;
+    color: var(--tg-muted);
+    margin: 4px 0 0;
+  }
   .tg-price-list {
     list-style: none;
     padding: 0;
@@ -1349,8 +1583,6 @@
     font-weight: 700;
     font-size: 12px;
   }
-  .tg-price-list li.off { color: #cbd5e1; }
-  .tg-price-list li.off::before { content: "—"; color: #cbd5e1; }
   .tg-price-btn {
     display: block;
     text-align: center;
@@ -1375,15 +1607,14 @@
   .tg-price-btn:hover { transform: none; }
 
   @media (max-width: 960px) {
-    .tg-pricing-grid { grid-template-columns: 1fr 1fr; }
-    .tg-price-card.featured { transform: none; }
+    .tg-pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .tg-price-card.featured { order: -1; }
   }
   @media (max-width: 560px) {
-    .tg-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
     .tg-price-wrap { padding: 48px 20px 56px; }
     .tg-price-offer-plaque {
       padding: 8px 14px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       font-size: 13px;
     }
   }
@@ -1394,42 +1625,72 @@
     <div class="tg-price-header">
       <span class="tg-section-label">Стоимость</span>
       <h2 class="tg-section-title">Стоимость платформы</h2>
-      <p class="tg-section-sub">Единая лента, воронка торгов, поставщики и оцифровка КП.</p>
+      <p class="tg-section-sub">Тарифы по числу пользователей — как в облачной CRM, но ниже и без внедрения.</p>
     </div>
 
     <div class="tg-price-offer-plaque">
       <span>Специальное предложение</span>
       <span class="tg-price-offer-date">до 31.07.2026</span>
     </div>
+    <p class="tg-price-annual-note">При оплате за год — <strong>скидка ~30%</strong> на любой тариф. Без внедрения от 100 000 ₽ и доплат за маркетплейс.</p>
 
     <div class="tg-pricing-grid">
-      <div class="tg-price-card featured">
-        <span class="tg-price-badge">Выгодно</span>
-        <p class="tg-price-name">Оплата за год</p>
-        <p class="tg-price-amount">3 500 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">42 000 ₽ в год · экономия 24 000 ₽</p>
+      <div class="tg-price-card">
+        <p class="tg-price-tier">Базовый</p>
+        <p class="tg-price-users">До 5 пользователей</p>
+        <p class="tg-price-amount">1 990 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">при ежемесячной оплате</p>
+        <div class="tg-price-annual">
+          <p class="tg-price-annual-label">Годовая подписка</p>
+          <p class="tg-price-annual-val">1 390 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total">16 680 ₽ в год · экономия 7 200 ₽</p>
+        </div>
         <ul class="tg-price-list">
-          <li>Все возможности платформы</li>
+          <li>Единая лента закупок</li>
+          <li>Воронка торгов</li>
           <li>Подключение агрегаторов</li>
-          <li>Госзакупки и воронка</li>
-          <li>База поставщиков и КП</li>
-          <li>Командный доступ</li>
+          <li>База поставщиков</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Оформить на год</a>
+        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать базовый</a>
+      </div>
+
+      <div class="tg-price-card featured">
+        <span class="tg-price-badge">Популярный</span>
+        <p class="tg-price-tier">Стандартный</p>
+        <p class="tg-price-users">До 50 пользователей</p>
+        <p class="tg-price-amount">5 490 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">при ежемесячной оплате</p>
+        <div class="tg-price-annual">
+          <p class="tg-price-annual-label">Годовая подписка</p>
+          <p class="tg-price-annual-val">3 990 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total">47 880 ₽ в год · экономия 18 000 ₽</p>
+        </div>
+        <ul class="tg-price-list">
+          <li>Всё из базового</li>
+          <li>Госзакупки и реестры</li>
+          <li>Оцифровка КП</li>
+          <li>Командные роли и доступы</li>
+        </ul>
+        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать стандартный</a>
       </div>
 
       <div class="tg-price-card">
-        <p class="tg-price-name">Ежемесячная оплата</p>
-        <p class="tg-price-amount">5 500 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Без долгосрочных обязательств</p>
+        <p class="tg-price-tier">Профессиональный</p>
+        <p class="tg-price-users">100 и более пользователей</p>
+        <p class="tg-price-amount">10 990 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">при ежемесячной оплате</p>
+        <div class="tg-price-annual">
+          <p class="tg-price-annual-label">Годовая подписка</p>
+          <p class="tg-price-annual-val">7 990 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total">95 880 ₽ в год · экономия 36 000 ₽</p>
+        </div>
         <ul class="tg-price-list">
-          <li>Все возможности платформы</li>
-          <li>Подключение агрегаторов</li>
-          <li>Госзакупки и воронка</li>
-          <li>База поставщиков и КП</li>
-          <li>Командный доступ</li>
+          <li>Всё из стандартного</li>
+          <li>Расширенная аналитика</li>
+          <li>Приоритетная поддержка</li>
+          <li>Индивидуальные условия для крупных команд</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Оформить на месяц</a>
+        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Обсудить профессиональный</a>
       </div>
     </div>
   </div>
@@ -1441,7 +1702,7 @@
     --tg-primary: #1c50de;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: linear-gradient(180deg, #eef3ff 0%, #f4f7ff 100%);

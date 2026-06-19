@@ -1,4 +1,4 @@
-/* Primer / Polaris inspired polish — preview layer */
+/* Preview polish — Tilda Sans + фирменная типографика */
 :root {
   --ds-text: #24292f;
   --ds-muted: #57606a;
@@ -19,7 +19,7 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: 'TildaSans', 'Tilda Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   color: var(--ds-text);
@@ -35,20 +35,23 @@ body {
   color: var(--ds-text);
 }
 
-/* Типографика: меньше «кричащих» заголовков */
 .tg-section-title,
 .tg-hero-title,
 .tg-cta-title {
-  font-weight: 650 !important;
+  font-weight: 700 !important;
   letter-spacing: -0.025em !important;
   color: var(--ds-text) !important;
 }
 
 .tg-section-label {
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0 !important;
-  text-transform: none !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--ds-accent) !important;
+}
+
+.tg-section-sub {
   color: var(--ds-muted) !important;
 }
 
@@ -58,12 +61,10 @@ body {
   color: var(--ds-accent) !important;
 }
 
-/* Убираем лишний декор у CTA */
 .tg-cta-box::before {
   display: none !important;
 }
 
-/* Карточки — border-first, как Primer/Polaris */
 .tg-feat-card,
 .tg-pillar,
 .tg-price-card,
@@ -73,7 +74,8 @@ body {
 .tg-kanban-col,
 .tg-panel,
 .tg-hero-visual,
-.tg-diagram {
+.tg-diagram,
+.tg-compare-table {
   box-shadow: var(--ds-shadow-sm) !important;
 }
 
@@ -98,7 +100,6 @@ body {
   display: block !important;
 }
 
-/* Кнопки — плоские, без градиента */
 .tg-btn-primary,
 .tg-price-btn-primary {
   background: var(--ds-accent) !important;
