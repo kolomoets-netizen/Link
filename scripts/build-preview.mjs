@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const base = join(root, 'tilda-landing');
+const docs = join(root, 'docs');
 
 const blocks = [
   '01-hero.html',
@@ -40,11 +41,30 @@ ${body}
 `;
 
 writeFileSync(join(base, 'preview-standalone.html'), html, 'utf-8');
-writeFileSync(join(root, 'docs/index.html'), html, 'utf-8');
+writeFileSync(join(docs, 'index.html'), html, 'utf-8');
+writeFileSync(join(docs, 'preview-standalone.html'), html, 'utf-8');
 
-const docsAssets = join(root, 'docs/assets');
+const docsAssets = join(docs, 'assets');
 mkdirSync(docsAssets, { recursive: true });
-cpSync(join(base, 'assets/enhancements.css'), join(docsAssets, 'enhancements.css'));
-cpSync(join(base, 'assets/enhancements.js'), join(docsAssets, 'enhancements.js'));
-cpSync(join(base, 'assets/vendor'), join(docsAssets, 'vendor'), { recursive: true });
-console.log('built preview-standalone.html and docs/index.html');
+cpSync(join(base, 'assets'), docsAssets, { recursive: true });
+
+const redirect404 = `<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iStockLink</title>
+  <meta http-equiv="refresh" content="0;url=./">
+  <style>
+    body { font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #f4f7ff; color: #1c50de; text-align: center; padding: 24px; }
+    a { color: #1c50de; }
+  </style>
+</head>
+<body>
+  <p>Страница не найдена. <a href="./">Перейти на лендинг iStockLink</a></p>
+</body>
+</html>
+`;
+writeFileSync(join(docs, '404.html'), redirect404, 'utf-8');
+
+console.log('built preview-standalone.html, docs/index.html and docs/preview-standalone.html');

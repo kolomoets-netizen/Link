@@ -1,11 +1,10 @@
-name: Deploy landing preview
+name: Build and publish preview
 
 on:
   push:
-    branches: [main, cursor/tilda-landing-blocks-4090]
+    branches: [main]
     paths:
       - 'tilda-landing/**'
-      - 'docs/**'
       - 'package.json'
       - 'package-lock.json'
       - 'scripts/**'
@@ -13,20 +12,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: pages-build
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -35,21 +29,15 @@ jobs:
           node-version: '20'
           cache: npm
 
-      - name: Build preview site
+      - name: Build docs for GitHub Pages
         run: |
           npm ci
           npm run build:preview
-          mkdir -p _site/assets
-          cp tilda-landing/preview-standalone.html _site/index.html
-          cp tilda-landing/prototype-feed.html _site/prototype.html
-          cp -r tilda-landing/assets/* _site/assets/
-          cp -r tilda-landing/*.html _site/ 2>/dev/null || true
 
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit updated docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "chore: rebuild docs for GitHub Pages"
+          git push
