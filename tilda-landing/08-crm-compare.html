@@ -53,11 +53,11 @@
   }
   .tg-compare-matrix-row:last-child { border-bottom: none; }
   .tg-compare-matrix-head {
-    background: #fff;
+    background: linear-gradient(90deg, #1c50de 0%, #2f63ea 48%, #3b6df0 100%);
     font-weight: 700;
-    font-size: 15px;
-    color: var(--tg-text);
-    border-bottom: 2px solid #eef2ff;
+    font-size: 16px;
+    color: #fff;
+    border-bottom: none;
   }
   .tg-compare-matrix-crit,
   .tg-compare-matrix-cell,
@@ -65,8 +65,17 @@
     padding: 20px 22px;
     font-size: 16px;
     line-height: 1.55;
-    border-right: 1px solid #eef2ff;
+    border-right: 1px solid rgba(255,255,255,0.12);
     background: #fff;
+  }
+  .tg-compare-matrix-head .tg-compare-matrix-crit,
+  .tg-compare-matrix-head .tg-compare-matrix-col {
+    padding: 22px 24px;
+    background: transparent;
+    border-right-color: rgba(255,255,255,0.15);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
   }
   .tg-compare-matrix-crit:last-child,
   .tg-compare-matrix-cell:last-child,
@@ -75,9 +84,14 @@
     font-weight: 800;
     color: var(--tg-text);
   }
-  .tg-compare-matrix-col.crm { color: #64748b; }
-  .tg-compare-matrix-col.us { color: var(--tg-primary); }
+  .tg-compare-matrix-head .tg-compare-matrix-crit { color: rgba(255,255,255,0.75); }
+  .tg-compare-matrix-col.crm { color: rgba(255,255,255,0.92); }
+  .tg-compare-matrix-col.us { color: #fff; }
   .tg-compare-matrix-cell.crm { color: #64748b; }
+  .tg-compare-matrix-row .tg-compare-matrix-crit,
+  .tg-compare-matrix-row .tg-compare-matrix-cell {
+    border-right: 1px solid #eef2ff;
+  }
   .tg-compare-matrix-cell.us {
     color: var(--tg-text);
     font-weight: 600;
