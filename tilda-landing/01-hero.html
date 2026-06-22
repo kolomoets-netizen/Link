@@ -42,6 +42,13 @@
     position: relative;
     z-index: 1;
   }
+  .tg-hero-brand {
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--tg-primary);
+  }
   .tg-badge {
     display: inline-flex;
     align-items: center;
@@ -171,7 +178,15 @@
     border: none;
     box-shadow: 0 8px 20px rgba(28,80,222,0.25);
   }
-  .tg-flow-arrow { color: #94a3b8; font-size: 14px; font-weight: 700; }
+  .tg-flow-arrow { color: var(--tg-primary); font-size: 18px; font-weight: 900; line-height: 1; }
+  .tg-mock-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin: 0 0 10px;
+  }
   .tg-tender-list { display: flex; flex-direction: column; gap: 10px; }
   .tg-tender-item {
     display: grid;
@@ -212,9 +227,9 @@
 <div class="tg-hero-wrap">
   <div class="tg-hero-inner">
     <div>
-      <div class="tg-badge"><span class="tg-badge-dot"></span>Тендерная CRM + SRM + агрегация закупок</div>
+      <p class="tg-hero-brand">iStockLink</p>
       <h1 class="tg-hero-title">От поиска тендера<br>до <span>контракта</span></h1>
-      <p class="tg-hero-sub">Собирайте закупки с любых агрегаторов без дублей, ведите воронку торгов, управляйте поставщиками и оцифровывайте коммерческие предложения — в одной платформе.</p>
+      <p class="tg-hero-sub">Тендеры и закупки в одном сервисе.</p>
       <div class="tg-hero-actions">
         <a href="#demo" class="tg-btn tg-btn-primary">Запросить демо</a>
         <a href="#how" class="tg-btn tg-btn-secondary">Как это работает</a>
@@ -232,45 +247,44 @@
         <span class="tg-dot tg-dot-y"></span>
         <span class="tg-dot tg-dot-g"></span>
       </div>
-      <div class="tg-flow-mini">
-        <div class="tg-flow-box">Контур</div>
-        <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box accent">Ваш<br>сервис</div>
-        <div class="tg-flow-arrow">→</div>
-        <div class="tg-flow-box">1 лента</div>
+      <p class="tg-mock-label">Подключённые агрегаторы</p>
+      <div class="tg-source-row" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+        <span class="tg-src-chip" style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#f1f5ff;border:1px solid #e2e8f0;font-size:12px;font-weight:600;color:#334155">Контур</span>
+        <span class="tg-src-chip" style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#f1f5ff;border:1px solid #e2e8f0;font-size:12px;font-weight:600;color:#334155">Seldon</span>
       </div>
+      <p class="tg-mock-label">Тендеры в работе</p>
       <div class="tg-tender-list">
         <div class="tg-tender-item">
           <div class="tg-tender-icon">📋</div>
           <div>
-            <p class="tg-tender-title">Поставка медоборудования</p>
-            <p class="tg-tender-meta">НМЦК 4,2 млн ₽ · 44-ФЗ · Москва</p>
+            <p class="tg-tender-title">Поставка серверного оборудования</p>
+            <p class="tg-tender-meta">НМЦК 2,8 млн ₽ · 44-ФЗ · Москва</p>
           </div>
           <div class="tg-tender-tags">
             <span class="tg-tag">Контур</span>
-            <span class="tg-tag">ГосПлан</span>
-            <span class="tg-tag dedup">1 запись</span>
+            <span class="tg-tag dedup">анализ</span>
           </div>
         </div>
         <div class="tg-tender-item">
           <div class="tg-tender-icon">🏗️</div>
           <div>
-            <p class="tg-tender-title">Ремонт офисных помещений</p>
-            <p class="tg-tender-meta">Коммерция · СПб · до 28.06</p>
-          </div>
-          <div class="tg-tender-tags">
-            <span class="tg-tag">ТендерГуру</span>
-          </div>
-        </div>
-        <div class="tg-tender-item">
-          <div class="tg-tender-icon">💻</div>
-          <div>
-            <p class="tg-tender-title">Лицензии ПО для госсектора</p>
-            <p class="tg-tender-meta">НМЦК 890 тыс. ₽ · 223-ФЗ</p>
+            <p class="tg-tender-title">Ремонт кровли административного здания</p>
+            <p class="tg-tender-meta">НМЦК 1,1 млн ₽ · коммерция · до 15.07</p>
           </div>
           <div class="tg-tender-tags">
             <span class="tg-tag">Seldon</span>
-            <span class="tg-tag dedup">объединено</span>
+            <span class="tg-tag">новый</span>
+          </div>
+        </div>
+        <div class="tg-tender-item">
+          <div class="tg-tender-icon">📦</div>
+          <div>
+            <p class="tg-tender-title">Закупка расходных материалов</p>
+            <p class="tg-tender-meta">НМЦК 340 тыс. ₽ · 223-ФЗ · СПб</p>
+          </div>
+          <div class="tg-tender-tags">
+            <span class="tg-tag">Контур</span>
+            <span class="tg-tag dedup">подача</span>
           </div>
         </div>
       </div>
