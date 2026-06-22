@@ -5,7 +5,7 @@
     --tg-text: #0f172a;
     --tg-muted: #64748b;
     --tg-win: #059669;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: linear-gradient(180deg, #fff 0%, #f4f7ff 100%);
@@ -13,6 +13,7 @@
   }
   .tg-compare-wrap *, .tg-compare-wrap *::before, .tg-compare-wrap *::after { box-sizing: border-box; }
   .tg-compare-inner { max-width: 1120px; margin: 0 auto; }
+
   .tg-compare-header { text-align: center; margin-bottom: 40px; }
   .tg-section-label {
     display: inline-block;
@@ -37,6 +38,7 @@
     color: var(--tg-muted);
     max-width: 640px;
   }
+
   .tg-compare-matrix {
     border-radius: 20px;
     overflow: hidden;
@@ -47,13 +49,16 @@
   .tg-compare-matrix-head,
   .tg-compare-matrix-row {
     display: grid;
-    grid-template-columns: minmax(120px, 0.85fr) 1fr 1.15fr;
+    grid-template-columns: minmax(120px, 0.9fr) 1fr 1.1fr;
     border-bottom: 1px solid #eef2ff;
   }
   .tg-compare-matrix-row:last-child { border-bottom: none; }
   .tg-compare-matrix-head {
     background: linear-gradient(90deg, #1c50de 0%, #2f63ea 48%, #3b6df0 100%);
+    font-weight: 700;
+    font-size: 16px;
     color: #fff;
+    border-bottom: none;
   }
   .tg-compare-matrix-crit,
   .tg-compare-matrix-cell,
@@ -61,28 +66,36 @@
     padding: 20px 22px;
     font-size: 16px;
     line-height: 1.55;
-    border-right: 1px solid #eef2ff;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    background: #fff;
   }
   .tg-compare-matrix-head .tg-compare-matrix-crit,
   .tg-compare-matrix-head .tg-compare-matrix-col {
+    padding: 22px 24px;
     background: transparent;
     border-right-color: rgba(255,255,255,0.15);
-    padding: 22px 24px;
     font-size: 17px;
     font-weight: 800;
+    letter-spacing: -0.01em;
   }
   .tg-compare-matrix-crit:last-child,
   .tg-compare-matrix-cell:last-child,
   .tg-compare-matrix-col:last-child { border-right: none; }
-  .tg-compare-matrix-crit { font-weight: 800; color: var(--tg-text); }
-  .tg-compare-matrix-head .tg-compare-matrix-crit { color: rgba(255,255,255,0.8); font-size: 14px; }
+  .tg-compare-matrix-crit {
+    font-weight: 800;
+    color: var(--tg-text);
+  }
+  .tg-compare-matrix-head .tg-compare-matrix-crit { color: rgba(255,255,255,0.75); }
   .tg-compare-matrix-col.crm { color: rgba(255,255,255,0.92); }
   .tg-compare-matrix-col.us { color: #fff; }
   .tg-compare-matrix-cell.crm { color: #64748b; }
+  .tg-compare-matrix-row .tg-compare-matrix-crit,
+  .tg-compare-matrix-row .tg-compare-matrix-cell {
+    border-right: 1px solid #eef2ff;
+  }
   .tg-compare-matrix-cell.us {
     color: var(--tg-text);
     font-weight: 600;
-    background: linear-gradient(90deg, #f8faff 0%, #fff 100%);
   }
   .tg-compare-win {
     display: inline-flex;
@@ -104,18 +117,55 @@
     justify-content: center;
     font-size: 12px;
   }
+  .tg-compare-matrix-row.highlight .tg-compare-matrix-crit,
+  .tg-compare-matrix-row.highlight .tg-compare-matrix-cell {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.crm {
+    font-size: 17px;
+    font-weight: 600;
+    color: #475569;
+  }
   .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
     font-size: clamp(20px, 2.5vw, 26px);
     font-weight: 800;
-    color: var(--tg-primary);
     letter-spacing: -0.02em;
+    color: var(--tg-primary);
+    line-height: 1.25;
+  }
+
+  @media (max-width: 900px) {
+    .tg-compare-wrap { padding: 56px 20px 64px; }
+    .tg-compare-matrix-crit,
+    .tg-compare-matrix-cell,
+    .tg-compare-matrix-col { padding: 16px 14px; font-size: 15px; }
+    .tg-compare-matrix-head .tg-compare-matrix-col { padding: 18px 16px; font-size: 16px; }
   }
   @media (max-width: 760px) {
     .tg-compare-wrap { padding: 56px 20px 64px; }
+    .tg-compare-header { margin-bottom: 32px; }
     .tg-compare-matrix-head { display: none; }
-    .tg-compare-matrix-row { grid-template-columns: 1fr; padding: 16px 0 4px; }
-    .tg-compare-matrix-crit { padding: 0 16px 10px; font-size: 14px; border-right: none; }
-    .tg-compare-matrix-cell { padding: 12px 16px; font-size: 14px; border-right: none; }
+    .tg-compare-matrix-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 16px 0 4px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .tg-compare-matrix-row:last-child { padding-bottom: 8px; }
+    .tg-compare-matrix-crit {
+      border-right: none;
+      padding: 0 16px 10px;
+      font-size: 14px;
+    }
+    .tg-compare-matrix-cell {
+      border-right: none;
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+    .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
+      font-size: 20px;
+    }
     .tg-compare-matrix-cell.crm::before,
     .tg-compare-matrix-cell.us::before {
       display: block;
@@ -125,8 +175,17 @@
       text-transform: uppercase;
       margin-bottom: 6px;
     }
-    .tg-compare-matrix-cell.crm::before { content: "Обычная CRM"; color: #94a3b8; }
-    .tg-compare-matrix-cell.us::before { content: "iStockLink"; color: var(--tg-primary); }
+    .tg-compare-matrix-cell.crm::before {
+      content: "Обычная CRM";
+      color: #94a3b8;
+    }
+    .tg-compare-matrix-cell.us::before {
+      content: "iStockLink";
+      color: var(--tg-primary);
+    }
+  }
+  @media (max-width: 560px) {
+    .tg-section-sub { font-size: 16px; }
   }
 </style>
 
@@ -151,7 +210,7 @@
       </div>
       <div class="tg-compare-matrix-row">
         <div class="tg-compare-matrix-crit">Запуск</div>
-        <div class="tg-compare-matrix-cell crm">Недели и месяцы настройки воронок, интеграций и обучения</div>
+        <div class="tg-compare-matrix-cell crm">Недели и месяцы настройки воронок, интеграций и обучения команды</div>
         <div class="tg-compare-matrix-cell us">Старт за 1 день: лента и воронка уже в платформе<span class="tg-compare-win">быстрее в работу</span></div>
       </div>
       <div class="tg-compare-matrix-row">

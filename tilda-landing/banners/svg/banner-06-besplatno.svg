@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="628" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#153fb8"/>
+    <stop offset="45%" stop-color="#1c50de"/>
+    <stop offset="100%" stop-color="#4d7aef"/>
+  </linearGradient>
+  <linearGradient id="bgGlow" cx="75%" cy="20%" r="60%">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="100%" stop-color="#f4f7ff"/>
+  </linearGradient>
+  <linearGradient id="cardHi" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#2f63ea"/>
+    <stop offset="100%" stop-color="#1c50de"/>
+  </linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0f172a" flood-opacity="0.22"/>
+  </filter>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1c50de" flood-opacity="0.18"/>
+  </filter>
+</defs>
+
+<g id="background">
+<rect width="1200" height="628" fill="url(#bg)"/>
+<circle cx="980" cy="80" r="280" fill="url(#bgGlow)"/>
+<circle cx="1100" cy="520" r="200" fill="#ffffff" opacity="0.06"/>
+<path d="M0,420 C200,520 380,360 620,430 C860,500 1000,300 1200,380 L1200,628 L0,628 Z" fill="#ffffff" opacity="0.05"/>
+<path d="M0,120 C260,40 420,180 700,100 C920,40 1080,80 1200,40" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2.5"/>
+<path d="M40,500 C220,420 360,560 560,500 C760,440 940,380 1160,460" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
+</g>
+<g id="brand"><g transform="translate(56,42) scale(1.4)"><path d="M10.9507 5.57031V13.6455H14.4852C13.6015 14.6783 12.3393 15.3982 10.9507 15.586V19.9678C12.7495 19.8113 14.4536 19.2166 15.9368 18.1838C17.3885 17.1822 18.5246 15.8051 19.282 14.2401C19.4082 13.9585 19.5344 13.6455 19.6607 13.3325C19.7238 13.176 19.7238 12.9882 19.7238 12.8317V5.57031H10.9507Z" fill="#fff"/><path d="M9.278 0C6.75338 0.219092 4.4181 1.34585 2.68242 3.19249C0.946738 5.03914 0 7.44914 0 9.98433C0 12.5196 0.946738 14.9609 2.68242 16.8075C4.4181 18.6541 6.75338 19.7809 9.24648 20V0H9.278Z" fill="#fff"/></g><text x="108" y="62" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">iStockLink</text></g>
+<g id="headline"><text x="56" y="170" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800">14 дней</text>
+<text x="56" y="234" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800">бесплатно</text>
+<text x="56" y="310" fill="#dbeafe" font-family="Arial,Helvetica,sans-serif" font-size="24">Попробуйте без карты</text></g>
+<g id="visual">
+<g filter="url(#shadow)">
+  <rect x="580" y="72" width="560" height="484" rx="26" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.65" stroke-width="1.5"/>
+  <rect x="580" y="72" width="560" height="52" rx="26" fill="#1c50de"/>
+  <rect x="580" y="98" width="560" height="26" fill="#1c50de"/>
+  <circle cx="608" cy="98" r="6" fill="#ff6b6b"/>
+  <circle cx="628" cy="98" r="6" fill="#ffd166"/>
+  <circle cx="648" cy="98" r="6" fill="#06d6a0"/>
+  <text x="860.0" y="106" text-anchor="middle" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700">Демо-доступ</text>
+</g>
+<circle cx="860" cy="290" r="118" fill="none" stroke="#1c50de" stroke-width="4" opacity="0.35"/>
+<circle cx="860" cy="290" r="96" fill="url(#cardHi)" filter="url(#soft)"/>
+<text x="860" y="282" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="72" font-weight="800">14</text>
+<text x="860" y="322" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="20" font-weight="600">дней</text>
+<rect x="700" y="430" width="320" height="54" rx="27" fill="url(#cardHi)" filter="url(#soft)"/>
+<text x="860" y="463" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="18" font-weight="700">Запросить демо</text>
+<text x="860" y="510" text-anchor="middle" fill="#dbeafe" font-family="Arial" font-size="13">без привязки карты</text></g>
+</svg>

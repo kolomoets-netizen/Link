@@ -1,10 +1,10 @@
-<!-- Tilda block: CRM + SRM + КП -->
+<!-- Tilda block: Воронка + поставщики + КП -->
 <style>
   .tg-platform-wrap {
     --tg-primary: #1c50de;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
@@ -70,122 +70,222 @@
     color: var(--tg-primary); font-weight: 700;
   }
 
-  /* Funnel visual */
   .tg-funnel-board {
     background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
     border: 1px solid rgba(28,80,222,0.12);
     border-radius: 24px;
-    padding: 28px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
     gap: 28px;
-    align-items: start;
+  }
+  .tg-funnel-kanban-block { width: 100%; }
+  .tg-funnel-kanban-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tg-kanban-scroll-hint {
+    display: none;
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 0 0 14px;
   }
   .tg-funnel-title {
-    font-size: 15px; font-weight: 700; color: #1e293b;
-    margin: 0 0 16px;
+    font-size: 20px; font-weight: 800; color: #1e293b;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+  }
+  .tg-kanban-footnote {
+    font-size: 14px;
+    color: #94a3b8;
+    margin: 16px 0 0;
   }
   .tg-kanban {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(5, minmax(196px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+    align-items: stretch;
+    min-width: 980px;
   }
   .tg-kanban-col {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid #e2e8f0;
-    min-height: 140px;
-    padding: 8px 6px;
+    min-height: 200px;
+    padding: 14px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
   }
   .tg-kanban-head {
-    font-size: 9px; font-weight: 700;
+    font-size: 12px; font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
+    letter-spacing: 0.05em;
+    color: #64748b;
     text-align: center;
-    padding-bottom: 6px;
+    padding-bottom: 12px;
     border-bottom: 1px solid #f1f5f9;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
+    line-height: 1.3;
   }
+  .tg-kanban-cards { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
   .tg-kanban-card {
     background: linear-gradient(135deg, #f8faff, #f1f5ff);
     border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 8px;
-    padding: 8px 6px;
-    font-size: 9px;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #334155;
-    margin-bottom: 5px;
-    line-height: 1.3;
+    line-height: 1.35;
+    min-height: 72px;
+    overflow: hidden;
+    word-break: break-word;
+    hyphens: auto;
   }
   .tg-kanban-card.active {
     background: linear-gradient(135deg, #1c50de, #3b6df0);
     color: #fff; border: none;
+    box-shadow: 0 8px 20px rgba(28,80,222,0.24);
   }
-  .tg-kanban-card .price { font-size: 8px; opacity: 0.8; margin-top: 2px; }
-
-  .tg-side-panels { display: flex; flex-direction: column; gap: 14px; }
+  .tg-kanban-card .price {
+    font-size: 12px; opacity: 0.85; margin-top: 4px;
+    font-weight: 500; line-height: 1.3;
+    word-break: break-word;
+  }
+  .tg-kanban-card .tg-card-title {
+    font-size: 14px; font-weight: 700; line-height: 1.3;
+    margin-bottom: 6px; word-break: break-word;
+  }
+  .tg-kanban-card .tg-card-field {
+    font-size: 13px; font-weight: 500; line-height: 1.35;
+    color: #64748b; word-break: break-word;
+  }
+  .tg-kanban-card.active .tg-card-field { color: rgba(255,255,255,0.9); }
+  .tg-kanban-card.empty {
+    background: transparent;
+    border: 1px dashed #e2e8f0;
+    color: #cbd5e1;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 72px; font-size: 14px;
+  }
+  .tg-side-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
   .tg-panel {
     background: #fff;
-    border-radius: 14px;
+    border-radius: 16px;
     border: 1px solid #e8edf5;
-    padding: 16px;
+    padding: 22px;
   }
   .tg-panel-head {
     display: flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 700; color: #1e293b;
-    margin-bottom: 12px;
+    font-size: 16px; font-weight: 700; color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.35;
   }
   .tg-supplier-row {
-    display: flex; align-items: center; gap: 10px;
-    padding: 8px 0;
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0;
     border-bottom: 1px solid #f8fafc;
-    font-size: 12px;
+    font-size: 14px;
   }
   .tg-supplier-row:last-child { border-bottom: none; }
   .tg-avatar {
-    width: 28px; height: 28px; border-radius: 8px;
+    width: 40px; height: 40px; border-radius: 10px;
     background: linear-gradient(135deg, #eef3ff, #dce8ff);
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 800; color: var(--tg-primary);
+    font-size: 13px; font-weight: 800; color: var(--tg-primary);
     flex-shrink: 0;
   }
-  .tg-supplier-name { font-weight: 600; color: #334155; }
-  .tg-supplier-meta { font-size: 10px; color: #94a3b8; }
+  .tg-supplier-name { font-weight: 600; color: #334155; font-size: 15px; }
+  .tg-supplier-meta { font-size: 13px; color: #94a3b8; margin-top: 2px; }
   .tg-supplier-badge {
     margin-left: auto;
-    font-size: 9px; font-weight: 700;
-    padding: 3px 7px; border-radius: 5px;
+    font-size: 11px; font-weight: 700;
+    padding: 5px 10px; border-radius: 6px;
     background: rgba(6,214,160,0.12); color: #059669;
   }
 
   .tg-kp-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 10px; border-radius: 10px;
-    background: #f8faff; margin-bottom: 8px;
-    font-size: 11px;
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px; border-radius: 12px;
+    background: #f8faff; margin-bottom: 10px;
+    font-size: 14px;
   }
   .tg-kp-item:last-child { margin-bottom: 0; }
-  .tg-kp-icon { font-size: 18px; flex-shrink: 0; }
-  .tg-kp-title { font-weight: 600; color: #334155; margin: 0 0 2px; }
-  .tg-kp-meta { color: #94a3b8; margin: 0; font-size: 10px; }
+  .tg-kp-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .tg-kp-icon svg { width: 22px; height: 22px; display: block; }
+  .tg-kp-icon.pdf { background: #fee2e2; color: #dc2626; }
+  .tg-kp-icon.xls { background: #dcfce7; color: #16a34a; }
+  .tg-kp-title { font-weight: 600; color: #334155; margin: 0 0 4px; font-size: 15px; }
+  .tg-kp-meta { color: #94a3b8; margin: 0; font-size: 13px; line-height: 1.4; }
   .tg-kp-status {
     margin-left: auto; flex-shrink: 0;
-    font-size: 9px; font-weight: 700;
-    padding: 3px 7px; border-radius: 5px;
+    font-size: 11px; font-weight: 700;
+    padding: 5px 10px; border-radius: 6px;
     background: rgba(28,80,222,0.1); color: var(--tg-primary);
   }
   .tg-kp-status.done { background: rgba(6,214,160,0.12); color: #059669; }
 
   @media (max-width: 900px) {
-    .tg-pillars { grid-template-columns: 1fr; }
-    .tg-funnel-board { grid-template-columns: 1fr; }
-    .tg-kanban { grid-template-columns: repeat(3, 1fr); }
+    .tg-platform-wrap { padding: 56px 20px 64px; }
+    .tg-pillars { grid-template-columns: 1fr; gap: 16px; }
+    .tg-side-panels { grid-template-columns: 1fr; gap: 16px; }
+    .tg-funnel-board { padding: 20px; gap: 20px; }
+    .tg-kanban-scroll-hint { display: block; }
+    .tg-funnel-kanban-scroll {
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 20px;
+      margin: 0 -4px;
+      padding: 0 4px 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(28,80,222,0.25) transparent;
+    }
+    .tg-funnel-kanban-scroll::-webkit-scrollbar { height: 4px; }
+    .tg-funnel-kanban-scroll::-webkit-scrollbar-thumb {
+      background: rgba(28,80,222,0.25);
+      border-radius: 4px;
+    }
+    .tg-kanban {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      min-width: 0;
+      width: max-content;
+      margin-bottom: 12px;
+    }
+    .tg-kanban-col {
+      flex: 0 0 min(80vw, 300px);
+      scroll-snap-align: start;
+      min-height: 200px;
+    }
+    .tg-kanban-head { font-size: 12px; }
+    .tg-kanban-card { font-size: 14px; padding: 12px 14px; min-height: 72px; }
+    .tg-kanban-card .tg-card-title { font-size: 14px; }
+    .tg-kanban-card .tg-card-field { font-size: 13px; }
   }
   @media (max-width: 560px) {
-    .tg-kanban { grid-template-columns: 1fr 1fr; }
-    .tg-platform-wrap { padding: 56px 20px; }
+    .tg-platform-wrap { padding: 56px 20px 64px; }
+    .tg-pillars { margin-bottom: 28px; gap: 16px; }
+    .tg-platform-header { margin-bottom: 32px; }
+    .tg-section-sub { font-size: 16px; }
+    .tg-funnel-board { padding: 16px; gap: 16px; border-radius: 20px; }
+    .tg-funnel-title { font-size: 18px; margin-bottom: 14px; }
+    .tg-panel { padding: 18px 16px; }
+    .tg-panel-head { font-size: 15px; margin-bottom: 14px; }
+    .tg-kp-item { flex-wrap: wrap; gap: 10px; padding: 12px; }
+    .tg-kp-status { margin-left: 0; }
+    .tg-supplier-row { flex-wrap: wrap; gap: 10px; }
+    .tg-supplier-badge { margin-left: 0; }
   }
 </style>
 
@@ -198,73 +298,98 @@
     </div>
 
     <div class="tg-pillars">
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">📥</div>
+        <div class="tg-pillar">
         <span class="tg-pillar-tag">Сбор</span>
-        <h3 class="tg-pillar-title">Агрегация</h3>
+        <h3 class="tg-pillar-title">Агрегаторы</h3>
         <p class="tg-pillar-text">Подключите агрегаторы, чтобы все торги собирались в одной ленте iStockLink.</p>
         <ul class="tg-pillar-list">
-          <li>Контур, Seldon, другой агрегатор</li>
-          <li>Дедупликация</li>
-          <li>Уведомления</li>
+          <li>Контур, Seldon, ТендерГуру</li>
+          <li>Фильтры и уведомления</li>
+          <li>Единый список закупок</li>
         </ul>
       </div>
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">🎯</div>
-        <span class="tg-pillar-tag">CRM</span>
-        <h3 class="tg-pillar-title">Воронка торгов</h3>
+        <div class="tg-pillar">
+        <span class="tg-pillar-tag">Воронка</span>
+        <h3 class="tg-pillar-title">Этапы торгов</h3>
         <p class="tg-pillar-text">Ведите каждый тендер по этапам: от «новый» до «контракт» с задачами и дедлайнами.</p>
         <ul class="tg-pillar-list">
-          <li>Kanban по статусам</li>
+          <li>Доска по статусам</li>
           <li>Задачи и напоминания</li>
           <li>Командная работа</li>
         </ul>
       </div>
-      <div class="tg-pillar">
-        <div class="tg-pillar-icon">🤝</div>
-        <span class="tg-pillar-tag">SRM</span>
-        <h3 class="tg-pillar-title">Поставщики</h3>
+        <div class="tg-pillar">
+        <span class="tg-pillar-tag">Поставщики</span>
+        <h3 class="tg-pillar-title">База партнёров</h3>
         <p class="tg-pillar-text">Ищите субподрядчиков, ведите базу текущих партнёров, собирайте и сравнивайте КП.</p>
         <ul class="tg-pillar-list">
           <li>База поставщиков</li>
-          <li>Сбор КП по email/API</li>
-          <li>AI-оцифровка предложений</li>
+          <li>Сбор КП по почте</li>
+          <li>Оцифровка предложений ваших поставщиков</li>
         </ul>
       </div>
     </div>
 
     <div class="tg-funnel-board">
-      <div>
-        <p class="tg-funnel-title">CRM: воронка участия в торгах</p>
-        <div class="tg-kanban">
+      <div class="tg-funnel-kanban-block">
+        <p class="tg-funnel-title">Воронка участия в торгах</p>
+        <p class="tg-kanban-scroll-hint">Листайте колонки →</p>
+        <div class="tg-funnel-kanban-scroll">
+          <div class="tg-kanban">
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Новые</div>
-            <div class="tg-kanban-card">Медоборудование<div class="price">4,2 млн</div></div>
-            <div class="tg-kanban-card">Лицензии ПО<div class="price">890 тыс.</div></div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Поставка медоборудования</div>
+                <div class="tg-card-field">НМЦК: 4 200 000 ₽</div>
+              </div>
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Лицензии ПО для госсектора</div>
+                <div class="tg-card-field">НМЦК: 890 000 ₽</div>
+              </div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Анализ</div>
-            <div class="tg-kanban-card active">Ремонт офиса<div class="price">1,1 млн</div></div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card active">
+                <div class="tg-card-title">Ремонт офисных помещений</div>
+                <div class="tg-card-field">НМЦК: 1 100 000 ₽</div>
+              </div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подготовка</div>
-            <div class="tg-kanban-card">КП запрошено<div class="price">3 поставщика</div></div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Поставка мебели для школы</div>
+                <div class="tg-card-field">НМЦК: 2 450 000 ₽</div>
+              </div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Подача</div>
-            <div class="tg-kanban-card">Дедлайн 28.06</div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card">
+                <div class="tg-card-title">Уборка территории больницы</div>
+                <div class="tg-card-field">НМЦК: 760 000 ₽</div>
+              </div>
+            </div>
           </div>
           <div class="tg-kanban-col">
             <div class="tg-kanban-head">Контракт</div>
-            <div class="tg-kanban-card" style="opacity:.5">—</div>
+            <div class="tg-kanban-cards">
+              <div class="tg-kanban-card empty">—</div>
+            </div>
+          </div>
           </div>
         </div>
-        <p style="font-size:12px;color:#94a3b8;margin:0">Перетаскивайте карточки · назначайте ответственных · ставьте задачи к каждому этапу</p>
+        <p class="tg-kanban-footnote">Перетаскивайте карточки · назначайте ответственных · ставьте задачи</p>
       </div>
 
       <div class="tg-side-panels">
         <div class="tg-panel">
-          <div class="tg-panel-head">🤝 SRM — поставщики по тендеру</div>
+          <div class="tg-panel-head">Поставщики по тендеру</div>
           <div class="tg-supplier-row">
             <div class="tg-avatar">МТ</div>
             <div>
@@ -277,29 +402,29 @@
             <div class="tg-avatar">ПК</div>
             <div>
               <div class="tg-supplier-name">ПромКомплект</div>
-              <div class="tg-supplier-meta">Новый · найден в SRM</div>
+              <div class="tg-supplier-meta">Новый · найден в базе</div>
             </div>
             <span class="tg-supplier-badge">приглашён</span>
           </div>
         </div>
 
         <div class="tg-panel">
-          <div class="tg-panel-head">📄 КП — оцифровка предложений</div>
+          <div class="tg-panel-head">Оцифровка предложений ваших поставщиков</div>
           <div class="tg-kp-item">
-            <span class="tg-kp-icon">📎</span>
+            <span class="tg-kp-icon pdf" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
             <div>
               <p class="tg-kp-title">КП_МедТех.pdf</p>
               <p class="tg-kp-meta">3 890 000 ₽ · срок 45 дней · 47 позиций</p>
             </div>
-            <span class="tg-kp-status done">оцифровано</span>
+            <span class="tg-kp-status done">готово</span>
           </div>
           <div class="tg-kp-item">
-            <span class="tg-kp-icon">📎</span>
+            <span class="tg-kp-icon xls" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M8 13l2.5 4L13 13M11 17l2-4"/></svg></span>
             <div>
               <p class="tg-kp-title">Коммерческое_ПромКомплект.xlsx</p>
               <p class="tg-kp-meta">Обработка… извлечение цен и сроков</p>
             </div>
-            <span class="tg-kp-status">AI</span>
+            <span class="tg-kp-status">в работе</span>
           </div>
         </div>
       </div>

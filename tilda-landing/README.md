@@ -2,37 +2,83 @@
 
 HTML-блоки для встраивания в Tilda через блок **T123 «HTML-код»**.
 
+## Важно: превью ≠ сайт на Tilda
+
+| Где смотрите | Что нужно сделать |
+|--------------|-------------------|
+| **GitHub Pages** (превью) | Откройте **https://kolomoets-netizen.github.io/Link/** — обновляется автоматически после пуша в `main` |
+| **Сайт на Tilda** | Изменения **не появятся сами** — скопируйте обновлённые файлы из `tilda-landing/` в блоки T123 на странице |
+
+**Как понять, что превью свежее:** вверху страницы синяя полоска «Превью GitHub Pages · сборка … · тарифы от 6 000 ₽».
+
+**Правильный URL превью:** `https://kolomoets-netizen.github.io/Link/` (с `/Link/` в конце). Без `/Link/` будет 404.
+
+**Жёсткое обновление:** Ctrl+Shift+R (Win) / Cmd+Shift+R (Mac).
+
 ## Порядок блоков на странице
 
 | № | Файл | Секция |
 |---|------|--------|
 | 1 | `01-hero.html` | Hero + мини-превью ленты |
-| 2 | `06-integrations.html` | Полоса интеграций |
+| 2 | `06-integrations.html` | Поддерживаемые агрегаторы |
 | 3 | `02-how-it-works.html` | Как работает (главная схема) |
-| 4 | `07-crm-srm-kp.html` | CRM-воронка + SRM + оцифровка КП |
-| 5 | `03-features.html` | Возможности + визуал дедупликации |
-| 6 | `04-audience-pricing.html` | Для кого + тарифы |
-| 7 | `05-faq-cta.html` | FAQ + CTA + футер |
+| 4 | `07-crm-srm-kp.html` | Воронка торгов + поставщики + оцифровка КП |
+| 5 | `03-features.html` | Возможности платформы |
+| 6 | `08-crm-compare.html` | Сравнение с обычной CRM |
+| 7 | `04-audience-pricing.html` | Стоимость платформы |
+| 8 | `05-faq-cta.html` | FAQ + CTA |
+| 0 | `00-enhancements-tilda.html` | *(опционально)* шрифт, анимации, плавный скролл |
 
-## Превью на планшете / телефоне (без сервера)
+## Анимации и шрифты (превью)
 
-Откройте в браузере одну ссылку — всё в одном файле, сервер не нужен:
+На GitHub Pages подключены библиотеки из npm:
+
+- **Plus Jakarta Sans** — шрифт превью (AOS + Lenis)
+- **AOS** — появление блоков при скролле
+- **Lenis** — плавная прокрутка
+
+Сборка: `npm install && npm run build:preview`
+
+Для Tilda вставьте `00-enhancements-tilda.html` **один раз** в Zero Block в начале страницы (CDN).
+
+## Превью на планшете / телефоне
+
+### Прототип интерфейса (не для Tilda)
+
+**https://kolomoets-netizen.github.io/Link/prototype.html**
+
+Единая лента + поиск + фильтры + источники. Файл: `tilda-landing/prototype-feed.html`
+
+### Рабочая ссылка (GitHub Pages)
 
 **https://kolomoets-netizen.github.io/Link/**
 
-(после включения GitHub Pages в настройках репозитория)
+> Важно: в конце URL обязательно **`/Link/`** (с заглавной L).  
+> Адрес `https://kolomoets-netizen.github.io/` без `/Link/` — это 404.
+
+Откройте в Safari или Chrome на планшете — сервер не нужен.
+
+**Если видите старую версию:**
+1. Убедитесь, что изменения в ветке `main` на GitHub (деплой идёт только с `main`)
+2. Подождите 2–5 минут после пуша — GitHub Actions собирает сайт
+3. Обновите страницу с очисткой кэша: **Ctrl+Shift+R** (Windows) или **Cmd+Shift+R** (Mac)
+4. На телефоне: закройте вкладку и откройте ссылку заново
+
+### Баннеры
+
+- Редактируемые SVG: `tilda-landing/banners/svg/` (6 вариантов)
+- Готовые PNG-превью: `tilda-landing/banners/`
+- На GitHub: `Link/tilda-landing/banners/svg/`
+
+### Скачать файл
+
+https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standalone.html
+
+Скачайте → откройте в браузере планшета через «Файлы».
 
 ### Локально на компьютере
 
-Файл **`preview-standalone.html`** — все блоки в одном файле. Откройте двойным кликом в Chrome/Safari.
-
-### Локальный сервер (опционально)
-
-```bash
-cd tilda-landing
-python3 -m http.server 8080
-# http://localhost:8080/preview.html
-```
+Файл `preview-standalone.html` — откройте двойным кликом.
 
 ## Как вставить в Tilda
 
@@ -43,7 +89,7 @@ python3 -m http.server 8080
 
 ## Кастомизация
 
-- **Название продукта**: замените «Платформа агрегации тендеров» в hero и footer на своё имя
+- **Название продукта**: iStockLink — логотип в `assets/istocklink-icon.png`
 - **Цены**: отредактируйте в `04-audience-pricing.html`
 - **Форма CTA**: в `05-faq-cta.html` замените `action="#"` на URL формы Tilda или webhook (AmoCRM, Битрикс)
 - **Цвет**: основной `#1c50de` — везде через CSS-переменную `--tg-primary`

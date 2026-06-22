@@ -4,7 +4,7 @@
     --tg-primary: #1c50de;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
@@ -12,6 +12,7 @@
   }
   .tg-how-wrap *, .tg-how-wrap *::before, .tg-how-wrap *::after { box-sizing: border-box; }
   .tg-how-inner { max-width: 1120px; margin: 0 auto; }
+  .tg-how-header { text-align: center; margin-bottom: 48px; }
   .tg-section-label {
     display: inline-block;
     font-size: 12px;
@@ -30,14 +31,13 @@
     line-height: 1.15;
   }
   .tg-section-sub {
-    margin: 0 0 48px;
+    margin: 0 auto;
     font-size: 17px;
     line-height: 1.6;
     color: var(--tg-muted);
-    max-width: 640px;
+    max-width: 720px;
   }
 
-  /* Main diagram */
   .tg-diagram {
     background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
     border: 1px solid rgba(28,80,222,0.1);
@@ -46,13 +46,6 @@
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
-  }
-  .tg-diagram::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(28,80,222,0.06) 0%, transparent 60%);
-    pointer-events: none;
   }
   .tg-diagram-grid {
     display: grid;
@@ -64,7 +57,7 @@
   }
   .tg-diagram-col { display: flex; flex-direction: column; gap: 10px; }
   .tg-diagram-col-title {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -76,15 +69,10 @@
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 14px;
-    padding: 14px 16px;
+    padding: 12px 14px;
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .tg-source-card:hover {
-    border-color: rgba(28,80,222,0.3);
-    box-shadow: 0 8px 24px rgba(28,80,222,0.08);
   }
   .tg-source-card.builtin {
     border-style: dashed;
@@ -92,17 +80,13 @@
     background: linear-gradient(135deg, rgba(28,80,222,0.04), rgba(28,80,222,0.01));
   }
   .tg-source-logo {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #eef3ff, #e0eaff);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--tg-primary);
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    object-fit: contain;
     flex-shrink: 0;
   }
-  .tg-source-name { font-size: 15px; font-weight: 700; color: #1e293b; margin: 0; }
-  .tg-source-desc { font-size: 13px; color: #94a3b8; margin: 2px 0 0; }
+  .tg-source-name { font-size: 13px; font-weight: 700; color: #1e293b; margin: 0; }
+  .tg-source-desc { font-size: 11px; color: #94a3b8; margin: 2px 0 0; }
   .tg-diagram-arrow {
     display: flex;
     flex-direction: column;
@@ -141,17 +125,15 @@
     min-height: 220px;
   }
   .tg-core-icon {
-    width: 52px; height: 52px;
+    width: auto; height: 28px;
     margin: 0 auto 14px;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.15);
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
   }
+  .tg-core-icon img { height: 28px; width: auto; display: block; }
   .tg-core-title { font-size: 16px; font-weight: 800; margin: 0 0 8px; }
   .tg-core-steps { list-style: none; padding: 0; margin: 0; text-align: left; }
   .tg-core-steps li {
-    font-size: 14px;
+    font-size: 12px;
     padding: 6px 0 6px 20px;
     position: relative;
     opacity: 0.92;
@@ -187,7 +169,7 @@
     border-radius: 10px;
     margin-bottom: 6px;
     background: #f8faff;
-    font-size: 14px;
+    font-size: 12px;
   }
   .tg-output-row:last-child { margin-bottom: 0; }
   .tg-output-row .check {
@@ -209,7 +191,6 @@
     color: var(--tg-primary);
   }
 
-  /* Steps row */
   .tg-steps-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -220,7 +201,6 @@
     border: 1px solid #e8edf5;
     border-radius: 16px;
     padding: 24px 20px;
-    position: relative;
   }
   .tg-step-num {
     width: 32px; height: 32px;
@@ -232,127 +212,118 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 14px;
   }
-  .tg-step-title { font-size: 17px; font-weight: 700; color: #1e293b; margin: 0 0 8px; }
+  .tg-step-title { font-size: 17px; font-weight: 700; color: var(--tg-text); margin: 0 0 8px; }
   .tg-step-text { font-size: 15px; line-height: 1.55; color: #64748b; margin: 0; }
 
   @media (max-width: 960px) {
-    .tg-diagram-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
+    .tg-diagram-grid { grid-template-columns: 1fr; gap: 24px; }
     .tg-diagram-arrow { flex-direction: row; min-width: auto; }
     .tg-diagram-arrow-line { width: 40px; height: 2px; }
     .tg-steps-row { grid-template-columns: 1fr 1fr; }
+    .tg-how-wrap { padding: 56px 20px 64px; }
   }
   @media (max-width: 560px) {
-    .tg-steps-row { grid-template-columns: 1fr; }
-    .tg-how-wrap { padding: 56px 20px; }
+    .tg-steps-row { grid-template-columns: 1fr; gap: 16px; }
+    .tg-how-wrap { padding: 56px 20px 64px; }
+    .tg-diagram { margin-bottom: 24px; padding: 20px 16px 24px; }
+    .tg-how-header { margin-bottom: 32px; }
+    .tg-section-sub { font-size: 16px; }
+    .tg-output-row { flex-wrap: wrap; gap: 8px; }
+    .tg-step-card { padding: 20px 18px; }
   }
 </style>
 
 <div class="tg-how-wrap" id="how">
   <div class="tg-how-inner">
-    <span class="tg-section-label">Как это работает</span>
-    <h2 class="tg-section-title">Два режима — один движок</h2>
-    <p class="tg-section-sub">Пользователь подключает свой агрегатор по API-ключу или использует встроенный источник. Все данные проходят через нормализацию и дедупликацию — на выходе единая лента без повторов.</p>
+    <div class="tg-how-header">
+      <h2 class="tg-section-title">Как это работает</h2>
+      <p class="tg-section-sub">Подключите агрегаторы и госзакупки — iStockLink соберёт закупки в одной ленте, проведёт по воронке и поможет довести тендер до контракта.</p>
+    </div>
 
     <div class="tg-diagram">
       <div class="tg-diagram-grid">
-        <!-- Sources -->
         <div class="tg-diagram-col">
-          <div class="tg-diagram-col-title">Источники данных</div>
+          <div class="tg-diagram-col-title">Откуда приходят закупки</div>
           <div class="tg-source-card">
-            <div class="tg-source-logo">КЗ</div>
+            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" alt="">
             <div>
               <p class="tg-source-name">Контур.Закупки</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+              <p class="tg-source-desc">ваш ключ доступа</p>
             </div>
           </div>
           <div class="tg-source-card">
-            <div class="tg-source-logo">SL</div>
+            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" alt="">
             <div>
               <p class="tg-source-name">Seldon</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+              <p class="tg-source-desc">ваш ключ доступа</p>
             </div>
           </div>
           <div class="tg-source-card">
-            <div class="tg-source-logo">…</div>
+            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/tenderguru.png" alt="">
             <div>
               <p class="tg-source-name">Другой агрегатор</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
-            </div>
-          </div>
-          <div class="tg-source-card">
-            <div class="tg-source-logo">Z3</div>
-            <div>
-              <p class="tg-source-name">Закупки360</p>
-              <p class="tg-source-desc">BYO · ваш API-ключ</p>
+              <p class="tg-source-desc">ваш ключ доступа</p>
             </div>
           </div>
           <div class="tg-source-card builtin">
-            <div class="tg-source-logo">GP</div>
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef3ff;border-radius:8px;width:36px;height:36px;">🏛</div>
             <div>
-              <p class="tg-source-name">Встроенный источник</p>
-              <p class="tg-source-desc">ГосПлан + коммерция</p>
+              <p class="tg-source-name">Госзакупки</p>
+              <p class="tg-source-desc">реестр ЕИС</p>
             </div>
           </div>
         </div>
 
-        <!-- Arrow -->
         <div class="tg-diagram-arrow">
           <div class="tg-diagram-arrow-line"></div>
           <div class="tg-diagram-arrow-icon">→</div>
           <div class="tg-diagram-arrow-line"></div>
         </div>
 
-        <!-- Core -->
         <div class="tg-core-box">
-          <div class="tg-core-icon">⚙️</div>
-          <p class="tg-core-title">Ядро платформы</p>
+          <div class="tg-core-icon"><img src="https://kolomoets-netizen.github.io/Link/assets/istocklink-logo-white.svg" alt="iStockLink"></div>
           <ul class="tg-core-steps">
-            <li>Адаптеры под каждый агрегатор</li>
-            <li>Единая модель тендера</li>
-            <li>Дедуп по реестровому номеру</li>
-            <li>Fuzzy-match для коммерции</li>
-            <li>Версии и история изменений</li>
+            <li>Сбор закупок из всех источников</li>
+            <li>Единый формат карточки тендера</li>
+            <li>Фильтры по ключевым словам и регионам</li>
+            <li>Воронка: от «новый» до «контракт»</li>
+            <li>Уведомления и задачи команде</li>
           </ul>
         </div>
 
-        <!-- Arrow -->
         <div class="tg-diagram-arrow">
           <div class="tg-diagram-arrow-line"></div>
           <div class="tg-diagram-arrow-icon">→</div>
           <div class="tg-diagram-arrow-line"></div>
         </div>
 
-        <!-- Output -->
         <div class="tg-diagram-col">
-          <div class="tg-diagram-col-title">Результат для пользователя</div>
+          <div class="tg-diagram-col-title">Что видите вы</div>
           <div class="tg-output-card">
             <div class="tg-output-header">📥 Единая лента закупок</div>
             <div class="tg-output-body">
               <div class="tg-output-row">
                 <span class="check">✓</span>
                 <span class="label">Медоборудование · 4,2 млн</span>
-                <span class="badge">×3 → 1</span>
+                <span class="badge">анализ</span>
               </div>
               <div class="tg-output-row">
                 <span class="check">✓</span>
-                <span class="label">IT-лицензии · 890 тыс.</span>
-                <span class="badge">Seldon</span>
+                <span class="label">ИТ-лицензии · 890 тыс.</span>
+                <span class="badge">новый</span>
               </div>
               <div class="tg-output-row">
                 <span class="check">✓</span>
                 <span class="label">Ремонт офиса · коммерция</span>
-                <span class="badge">новый</span>
+                <span class="badge">подача</span>
               </div>
             </div>
           </div>
           <div class="tg-source-card" style="margin-top:10px">
-            <div class="tg-source-logo">🔔</div>
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:18px;background:#eef3ff;border-radius:8px;width:36px;height:36px;">🔔</div>
             <div>
-              <p class="tg-source-name">Уведомления · задачи · CRM</p>
-              <p class="tg-source-desc">Ваш рабочий процесс</p>
+              <p class="tg-source-name">Задачи · поставщики · КП</p>
+              <p class="tg-source-desc">всё в одном окне</p>
             </div>
           </div>
         </div>
@@ -368,7 +339,7 @@
       <div class="tg-step-card">
         <div class="tg-step-num">2</div>
         <h3 class="tg-step-title">Настройте фильтры</h3>
-        <p class="tg-step-text">Ключевые слова, регионы, ОКПД2, тип закупки — правила применяются ко всем источникам сразу.</p>
+        <p class="tg-step-text">Ключевые слова, регионы, коды ОКПД2, тип закупки — правила работают для всех подключённых источников.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">3</div>
@@ -377,8 +348,8 @@
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">4</div>
-        <h3 class="tg-step-title">Работайте в одном окне</h3>
-        <p class="tg-step-text">Статусы, напоминания и задачи команды — без переключения между кабинетами агрегаторов.</p>
+        <h3 class="tg-step-title">Ведите до контракта</h3>
+        <p class="tg-step-text">Переводите тендеры по этапам, назначайте задачи, запрашивайте КП у поставщиков — без переключения между сервисами.</p>
       </div>
     </div>
   </div>

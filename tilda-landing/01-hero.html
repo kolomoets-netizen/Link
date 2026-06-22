@@ -2,12 +2,9 @@
 <style>
   .tg-hero-wrap {
     --tg-primary: #1c50de;
-    --tg-primary-dark: #153fb8;
-    --tg-primary-light: #4d7aef;
-    --tg-bg: #f4f7ff;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: linear-gradient(135deg, #f4f7ff 0%, #e8efff 45%, #dce8ff 100%);
@@ -24,19 +21,11 @@
     background: radial-gradient(circle, rgba(28,80,222,0.18) 0%, transparent 70%);
     pointer-events: none;
   }
-  .tg-hero-wrap::after {
-    content: "";
-    position: absolute;
-    bottom: -100px; left: -60px;
-    width: 360px; height: 360px;
-    background: radial-gradient(circle, rgba(28,80,222,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
   .tg-hero-inner {
     max-width: 1120px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1fr 1.05fr;
     gap: 48px;
     align-items: center;
     position: relative;
@@ -89,17 +78,11 @@
     color: var(--tg-muted);
     max-width: 540px;
   }
-  .tg-hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
+  .tg-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .tg-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     padding: 14px 24px;
     border-radius: 12px;
     font-size: 15px;
@@ -112,73 +95,33 @@
     color: #fff;
     box-shadow: 0 10px 30px rgba(28,80,222,0.28);
   }
-  .tg-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(28,80,222,0.34); }
+  .tg-btn-primary:hover { transform: translateY(-2px); }
   .tg-btn-secondary {
     background: #fff;
     color: var(--tg-primary);
     border: 1px solid rgba(28,80,222,0.22);
   }
-  .tg-btn-secondary:hover { transform: translateY(-2px); }
-  .tg-hero-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-  .tg-stat strong {
-    display: block;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--tg-text);
-    line-height: 1.2;
-  }
-  .tg-stat span {
-    font-size: 13px;
-    color: var(--tg-muted);
-  }
+
+  /* Illustration */
   .tg-hero-visual {
     background: #fff;
     border-radius: 24px;
     border: 1px solid rgba(28,80,222,0.12);
     box-shadow: 0 24px 60px rgba(15,23,42,0.08);
-    padding: 20px;
-    position: relative;
+    overflow: hidden;
   }
-  .tg-hero-visual-bar {
+  .tg-mock-head {
     display: flex;
-    gap: 6px;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #eef2ff;
-  }
-  .tg-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .tg-dot-r { background: #ff6b6b; }
-  .tg-dot-y { background: #ffd166; }
-  .tg-dot-g { background: #06d6a0; }
-  .tg-flow-mini {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    gap: 8px;
     align-items: center;
-    margin-bottom: 16px;
-  }
-  .tg-flow-box {
-    background: linear-gradient(180deg, #f8faff 0%, #f1f5ff 100%);
-    border: 1px solid rgba(28,80,222,0.12);
-    border-radius: 12px;
-    padding: 12px 10px;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 600;
-    color: #334155;
-    line-height: 1.3;
-  }
-  .tg-flow-box.accent {
-    background: linear-gradient(135deg, #1c50de 0%, #3b6df0 100%);
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, #1c50de, #3b6df0);
     color: #fff;
-    border: none;
-    box-shadow: 0 8px 20px rgba(28,80,222,0.25);
   }
-  .tg-flow-arrow { color: var(--tg-primary); font-size: 18px; font-weight: 900; line-height: 1; }
+  .tg-mock-head span { font-size: 13px; font-weight: 700; }
+  .tg-mock-dots { display: flex; gap: 5px; }
+  .tg-mock-dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.45); display: block; }
+  .tg-mock-body { padding: 18px; }
   .tg-mock-label {
     font-size: 11px;
     font-weight: 700;
@@ -187,40 +130,70 @@
     color: #94a3b8;
     margin: 0 0 10px;
   }
-  .tg-tender-list { display: flex; flex-direction: column; gap: 10px; }
-  .tg-tender-item {
+  .tg-source-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .tg-src-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #f1f5ff;
+    border: 1px solid #e2e8f0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+  }
+  .tg-src-chip img { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; }
+  .tg-src-chip.arrow { background: #1c50de; color: #fff; border: none; }
+  .tg-feed-item {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     gap: 12px;
     align-items: center;
-    padding: 12px 14px;
-    border-radius: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
     background: #fafbff;
     border: 1px solid #eef2ff;
+    margin-bottom: 10px;
   }
-  .tg-tender-icon {
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(28,80,222,0.12), rgba(28,80,222,0.06));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-  }
-  .tg-tender-title { font-size: 13px; font-weight: 600; color: #1e293b; margin: 0 0 2px; }
-  .tg-tender-meta { font-size: 11px; color: #94a3b8; margin: 0; }
-  .tg-tender-tags { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
-  .tg-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 7px;
-    border-radius: 6px;
-    background: rgba(28,80,222,0.08);
-    color: var(--tg-primary);
+  .tg-feed-item:last-child { margin-bottom: 0; }
+  .tg-feed-item.highlight { border-color: rgba(28,80,222,0.25); background: linear-gradient(90deg, #f8faff, #f1f5ff); }
+  .tg-feed-title { font-size: 14px; font-weight: 700; color: #1e293b; margin: 0 0 4px; }
+  .tg-feed-meta { font-size: 12px; color: #94a3b8; margin: 0; }
+  .tg-feed-stage {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
     white-space: nowrap;
   }
-  .tg-tag.dedup { background: rgba(6,214,160,0.12); color: #059669; }
+  .tg-feed-stage.new { background: rgba(28,80,222,0.1); color: #1c50de; }
+  .tg-feed-stage.work { background: rgba(6,214,160,0.12); color: #059669; }
+  .tg-feed-stage.deadline { background: rgba(255,209,102,0.2); color: #b45309; }
   @media (max-width: 900px) {
-    .tg-hero-inner { grid-template-columns: 1fr; }
+    .tg-hero-inner { grid-template-columns: 1fr; gap: 32px; }
     .tg-hero-wrap { padding: 56px 20px 64px; }
+  }
+  @media (max-width: 560px) {
+    .tg-hero-wrap { padding: 56px 20px 64px; }
+    .tg-hero-inner { gap: 24px; }
+    .tg-hero-sub { font-size: 16px; line-height: 1.6; margin-bottom: 24px; }
+    .tg-hero-actions { flex-direction: column; gap: 10px; }
+    .tg-hero-actions .tg-btn { width: 100%; }
+    .tg-feed-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .tg-feed-stage { align-self: flex-start; white-space: normal; }
+    .tg-mock-body { padding: 14px; }
+    .tg-source-row { gap: 6px; margin-bottom: 14px; }
   }
 </style>
 
@@ -234,58 +207,40 @@
         <a href="#demo" class="tg-btn tg-btn-primary">Запросить демо</a>
         <a href="#how" class="tg-btn tg-btn-secondary">Как это работает</a>
       </div>
-      <div class="tg-hero-stats">
-        <div class="tg-stat"><strong>CRM</strong><span>воронка торгов</span></div>
-        <div class="tg-stat"><strong>SRM</strong><span>база поставщиков</span></div>
-        <div class="tg-stat"><strong>AI</strong><span>оцифровка КП</span></div>
-      </div>
     </div>
 
     <div class="tg-hero-visual">
-      <div class="tg-hero-visual-bar">
-        <span class="tg-dot tg-dot-r"></span>
-        <span class="tg-dot tg-dot-y"></span>
-        <span class="tg-dot tg-dot-g"></span>
+      <div class="tg-mock-head">
+        <div class="tg-mock-dots"><i></i><i></i><i></i></div>
+        <span>Единая лента закупок</span>
       </div>
-      <p class="tg-mock-label">Подключённые агрегаторы</p>
-      <div class="tg-source-row" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
-        <span class="tg-src-chip" style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#f1f5ff;border:1px solid #e2e8f0;font-size:12px;font-weight:600;color:#334155">Контур</span>
-        <span class="tg-src-chip" style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#f1f5ff;border:1px solid #e2e8f0;font-size:12px;font-weight:600;color:#334155">Seldon</span>
-      </div>
-      <p class="tg-mock-label">Тендеры в работе</p>
-      <div class="tg-tender-list">
-        <div class="tg-tender-item">
-          <div class="tg-tender-icon">📋</div>
-          <div>
-            <p class="tg-tender-title">Поставка серверного оборудования</p>
-            <p class="tg-tender-meta">НМЦК 2,8 млн ₽ · 44-ФЗ · Москва</p>
-          </div>
-          <div class="tg-tender-tags">
-            <span class="tg-tag">Контур</span>
-            <span class="tg-tag dedup">анализ</span>
-          </div>
+      <div class="tg-mock-body">
+        <p class="tg-mock-label">Подключённые агрегаторы</p>
+        <div class="tg-source-row">
+          <span class="tg-src-chip"><img src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" alt="">Контур</span>
+          <span class="tg-src-chip"><img src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" alt="">Seldon</span>
         </div>
-        <div class="tg-tender-item">
-          <div class="tg-tender-icon">🏗️</div>
+        <p class="tg-mock-label">Тендеры в работе</p>
+        <div class="tg-feed-item highlight">
           <div>
-            <p class="tg-tender-title">Ремонт кровли административного здания</p>
-            <p class="tg-tender-meta">НМЦК 1,1 млн ₽ · коммерция · до 15.07</p>
+            <p class="tg-feed-title">Поставка серверного оборудования</p>
+            <p class="tg-feed-meta">НМЦК 2,8 млн ₽ · 44-ФЗ · Москва · Контур</p>
           </div>
-          <div class="tg-tender-tags">
-            <span class="tg-tag">Seldon</span>
-            <span class="tg-tag">новый</span>
-          </div>
+          <span class="tg-feed-stage work">Анализ</span>
         </div>
-        <div class="tg-tender-item">
-          <div class="tg-tender-icon">📦</div>
+        <div class="tg-feed-item">
           <div>
-            <p class="tg-tender-title">Закупка расходных материалов</p>
-            <p class="tg-tender-meta">НМЦК 340 тыс. ₽ · 223-ФЗ · СПб</p>
+            <p class="tg-feed-title">Ремонт кровли административного здания</p>
+            <p class="tg-feed-meta">НМЦК 1,1 млн ₽ · коммерция · до 15.07</p>
           </div>
-          <div class="tg-tender-tags">
-            <span class="tg-tag">Контур</span>
-            <span class="tg-tag dedup">подача</span>
+          <span class="tg-feed-stage new">Новый</span>
+        </div>
+        <div class="tg-feed-item">
+          <div>
+            <p class="tg-feed-title">Закупка расходных материалов</p>
+            <p class="tg-feed-meta">НМЦК 340 тыс. ₽ · 223-ФЗ · СПб</p>
           </div>
+          <span class="tg-feed-stage deadline">Подача</span>
         </div>
       </div>
     </div>
