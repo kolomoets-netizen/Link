@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Превью лендинга — Тендерная платформа</title>
+  <title>Превью лендинга — iStockLink</title>
   <style>
     body { margin: 0; background: #e8edf5; font-family: system-ui, sans-serif; }
     .preview-bar {
@@ -29,10 +29,9 @@
     <span><strong>Локальное превью</strong> — так будут выглядеть блоки в Tilda</span>
     <span>
       <a href="#hero">Hero</a>
-      <a href="#integrations">Интеграции</a>
-      <a href="#how">Схема</a>
-      <a href="#platform">CRM·SRM·КП</a>
-      <a href="#features">Фичи</a>
+      <a href="#platform">Платформа</a>
+      <a href="#how">Как работает</a>
+      <a href="#compare">Сравнение</a>
       <a href="#pricing">Тарифы</a>
       <a href="#cta">CTA</a>
     </span>
@@ -41,31 +40,27 @@
   <div id="hero" class="preview-section-label">01 — Hero</div>
   <div class="preview-frame" id="inject-hero"></div>
 
-  <div id="integrations" class="preview-section-label">06 — Интеграции</div>
-  <div class="preview-frame" id="inject-integrations"></div>
+  <div id="platform" class="preview-section-label">07 — Вся тендерная работа</div>
+  <div class="preview-frame" id="inject-platform"></div>
 
   <div id="how" class="preview-section-label">02 — Как работает</div>
   <div class="preview-frame" id="inject-how"></div>
 
-  <div id="platform" class="preview-section-label">07 — CRM · SRM · КП</div>
-  <div class="preview-frame" id="inject-platform"></div>
-
-  <div id="features" class="preview-section-label">03 — Возможности</div>
-  <div class="preview-frame" id="inject-features"></div>
+  <div id="compare" class="preview-section-label">08 — Сравнение с CRM</div>
+  <div class="preview-frame" id="inject-compare"></div>
 
   <div id="pricing" class="preview-section-label">04 — Тарифы</div>
   <div class="preview-frame" id="inject-pricing"></div>
 
-  <div id="cta" class="preview-section-label">05 — FAQ + CTA</div>
+  <div id="cta" class="preview-section-label">05 — CTA</div>
   <div class="preview-frame" id="inject-cta"></div>
 
   <script>
     const blocks = [
       ['inject-hero', '01-hero.html'],
-      ['inject-integrations', '06-integrations.html'],
-      ['inject-how', '02-how-it-works.html'],
       ['inject-platform', '07-crm-srm-kp.html'],
-      ['inject-features', '03-features.html'],
+      ['inject-how', '02-how-it-works.html'],
+      ['inject-compare', '08-crm-compare.html'],
       ['inject-pricing', '04-audience-pricing.html'],
       ['inject-cta', '05-faq-cta.html'],
     ];
