@@ -4,6 +4,7 @@
     --tg-primary: #1c50de;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
+    --tg-win: #059669;
     font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -31,11 +32,18 @@
     line-height: 1.15;
   }
   .tg-section-sub {
-    margin: 0 auto;
+    margin: 0 auto 10px;
     font-size: 17px;
     line-height: 1.6;
     color: var(--tg-muted);
     max-width: 640px;
+  }
+  .tg-compare-hint {
+    margin: 0 auto;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tg-primary);
+    letter-spacing: 0.02em;
   }
 
   .tg-compare-matrix {
@@ -48,7 +56,7 @@
   .tg-compare-matrix-head,
   .tg-compare-matrix-row {
     display: grid;
-    grid-template-columns: minmax(120px, 0.9fr) 1fr 1.1fr;
+    grid-template-columns: minmax(120px, 0.85fr) 1fr 1.15fr;
     border-bottom: 1px solid #eef2ff;
   }
   .tg-compare-matrix-row:last-child { border-bottom: none; }
@@ -65,7 +73,7 @@
     padding: 20px 22px;
     font-size: 16px;
     line-height: 1.55;
-    border-right: 1px solid rgba(255,255,255,0.12);
+    border-right: 1px solid #eef2ff;
     background: #fff;
   }
   .tg-compare-matrix-head .tg-compare-matrix-crit,
@@ -83,11 +91,28 @@
   .tg-compare-matrix-crit {
     font-weight: 800;
     color: var(--tg-text);
+    background: #f8fafc;
   }
-  .tg-compare-matrix-head .tg-compare-matrix-crit { color: rgba(255,255,255,0.75); }
-  .tg-compare-matrix-col.crm { color: rgba(255,255,255,0.92); }
-  .tg-compare-matrix-col.us { color: #fff; }
-  .tg-compare-matrix-cell.crm { color: #64748b; }
+  .tg-compare-matrix-head .tg-compare-matrix-crit { color: rgba(255,255,255,0.85); background: transparent; }
+  .tg-compare-matrix-col.crm { color: rgba(255,255,255,0.88); }
+  .tg-compare-matrix-col.us {
+    color: #fff;
+    position: relative;
+  }
+  .tg-compare-matrix-head .tg-compare-matrix-col.us::after {
+    content: "преимущество";
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .tg-compare-matrix-cell.crm {
+    color: #64748b;
+    background: #fafbfc;
+  }
   .tg-compare-matrix-row .tg-compare-matrix-crit,
   .tg-compare-matrix-row .tg-compare-matrix-cell {
     border-right: 1px solid #eef2ff;
@@ -95,16 +120,34 @@
   .tg-compare-matrix-cell.us {
     color: var(--tg-text);
     font-weight: 600;
+    background: linear-gradient(180deg, #f4f7ff 0%, #fafbff 100%);
+    border-left: 3px solid var(--tg-primary);
+  }
+  .tg-compare-win {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--tg-win);
+  }
+  .tg-compare-win::before {
+    content: "✓";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(6,214,160,0.15);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
   }
   .tg-compare-matrix-row.highlight .tg-compare-matrix-crit,
   .tg-compare-matrix-row.highlight .tg-compare-matrix-cell {
     padding-top: 24px;
     padding-bottom: 24px;
-  }
-  .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.crm {
-    font-size: 17px;
-    font-weight: 600;
-    color: #475569;
   }
   .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
     font-size: clamp(20px, 2.5vw, 26px);
@@ -136,11 +179,16 @@
       border-right: none;
       padding: 0 16px 10px;
       font-size: 14px;
+      background: transparent;
     }
     .tg-compare-matrix-cell {
       border-right: none;
       padding: 12px 16px;
       font-size: 14px;
+    }
+    .tg-compare-matrix-cell.us {
+      border-left: none;
+      border-top: 3px solid var(--tg-primary);
     }
     .tg-compare-matrix-row.highlight .tg-compare-matrix-cell.us {
       font-size: 20px;
@@ -159,7 +207,7 @@
       color: #94a3b8;
     }
     .tg-compare-matrix-cell.us::before {
-      content: "iStockLink";
+      content: "iStockLink · преимущество";
       color: var(--tg-primary);
     }
   }
@@ -173,29 +221,30 @@
     <div class="tg-compare-header">
       <span class="tg-section-label">Сравнение</span>
       <h2 class="tg-section-title">Готовый инструмент вместо долгого внедрения</h2>
-      <p class="tg-section-sub">iStockLink создан под тендеры и закупки — без настройки CRM «с нуля» и скрытых расходов на маркетплейс.</p>
+      <p class="tg-section-sub">iStockLink создан под тендеры и закупки без настройки CRM с нуля и скрытых расходов на маркетплейс.</p>
+      <p class="tg-compare-hint">Сопоставьте по критериям: слева обычная CRM, справа iStockLink</p>
     </div>
 
     <div class="tg-compare-matrix">
       <div class="tg-compare-matrix-head">
-        <div class="tg-compare-matrix-crit"></div>
+        <div class="tg-compare-matrix-crit">Критерий</div>
         <div class="tg-compare-matrix-col crm">Обычная CRM</div>
         <div class="tg-compare-matrix-col us">iStockLink</div>
       </div>
       <div class="tg-compare-matrix-row highlight">
         <div class="tg-compare-matrix-crit">Стоимость</div>
         <div class="tg-compare-matrix-cell crm">от 100 000 ₽ + ежемесячная подписка</div>
-        <div class="tg-compare-matrix-cell us">от 6 000 ₽/мес</div>
+        <div class="tg-compare-matrix-cell us">от 6 000 ₽/мес<span class="tg-compare-win">выгоднее для старта</span></div>
       </div>
       <div class="tg-compare-matrix-row">
         <div class="tg-compare-matrix-crit">Запуск</div>
-        <div class="tg-compare-matrix-cell crm">Недели и месяцы настройки воронок, интеграций и обучения команды</div>
-        <div class="tg-compare-matrix-cell us">Старт за 1 день — лента и воронка уже в платформе</div>
+        <div class="tg-compare-matrix-cell crm">Недели и месяцы настройки воронок, интеграций и обучения</div>
+        <div class="tg-compare-matrix-cell us">Старт за 1 день: лента и воронка уже в платформе<span class="tg-compare-win">быстрее в работу</span></div>
       </div>
       <div class="tg-compare-matrix-row">
         <div class="tg-compare-matrix-crit">Тендеры</div>
-        <div class="tg-compare-matrix-cell crm">Доработки, отдельные модули и интеграции с агрегаторами</div>
-        <div class="tg-compare-matrix-cell us">Лента, госзакупки, воронка и оцифровка КП из коробки</div>
+        <div class="tg-compare-matrix-cell crm">Закупки достраивают интеграторами и модулями</div>
+        <div class="tg-compare-matrix-cell us">Агрегаторы, воронка и оцифровка КП из коробки<span class="tg-compare-win">всё под тендеры</span></div>
       </div>
     </div>
   </div>
