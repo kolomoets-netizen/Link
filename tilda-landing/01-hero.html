@@ -31,32 +31,6 @@
     position: relative;
     z-index: 1;
   }
-  .tg-hero-brand {
-    margin: 0 0 16px;
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-primary);
-  }
-  .tg-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(28,80,222,0.1);
-    border: 1px solid rgba(28,80,222,0.18);
-    color: var(--tg-primary);
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  .tg-badge-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--tg-primary);
-    box-shadow: 0 0 0 4px rgba(28,80,222,0.2);
-  }
   .tg-hero-title {
     margin: 0 0 18px;
     font-size: clamp(32px, 4.5vw, 52px);
@@ -92,7 +66,7 @@
   }
   .tg-btn-primary {
     background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
-    color: #fff;
+    color: #fff !important;
     box-shadow: 0 10px 30px rgba(28,80,222,0.28);
   }
   .tg-btn-primary:hover { transform: translateY(-2px); }
@@ -200,8 +174,7 @@
 <div class="tg-hero-wrap">
   <div class="tg-hero-inner">
     <div>
-      <p class="tg-hero-brand">iStockLink</p>
-      <h1 class="tg-hero-title">Тендеры и закупки<br>в одном сервисе</h1>
+      <h1 class="tg-hero-title">Тендеры и закупки<br>в <span>одном сервисе</span></h1>
       <p class="tg-hero-sub">Подключайте агрегаторы и госзакупки — все подходящие торги собираются в одной ленте. Ведите воронку, поставщиков и КП в iStockLink.</p>
       <div class="tg-hero-actions">
         <a href="#demo" class="tg-btn tg-btn-primary">Запросить демо</a>

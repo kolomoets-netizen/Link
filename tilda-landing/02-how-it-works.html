@@ -57,7 +57,7 @@
   }
   .tg-diagram-col { display: flex; flex-direction: column; gap: 10px; }
   .tg-diagram-col-title {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -85,8 +85,8 @@
     object-fit: contain;
     flex-shrink: 0;
   }
-  .tg-source-name { font-size: 13px; font-weight: 700; color: #1e293b; margin: 0; }
-  .tg-source-desc { font-size: 11px; color: #94a3b8; margin: 2px 0 0; }
+  .tg-source-name { font-size: 15px; font-weight: 700; color: #1e293b; margin: 0; }
+  .tg-source-desc { font-size: 13px; color: #94a3b8; margin: 2px 0 0; }
   .tg-diagram-arrow {
     display: flex;
     flex-direction: column;
@@ -97,18 +97,19 @@
     min-width: 48px;
   }
   .tg-diagram-arrow-line {
-    width: 2px;
+    width: 3px;
     height: 40px;
     background: linear-gradient(180deg, transparent, var(--tg-primary), transparent);
     border-radius: 2px;
   }
   .tg-diagram-arrow-icon {
-    width: 36px; height: 36px;
+    width: 40px; height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, #1c50de, #3b6df0);
     color: #fff;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
+    font-size: 22px;
+    font-weight: 900;
     box-shadow: 0 6px 16px rgba(28,80,222,0.3);
   }
   .tg-core-box {
@@ -132,7 +133,7 @@
   .tg-core-title { font-size: 16px; font-weight: 800; margin: 0 0 8px; }
   .tg-core-steps { list-style: none; padding: 0; margin: 0; text-align: left; }
   .tg-core-steps li {
-    font-size: 12px;
+    font-size: 14px;
     padding: 6px 0 6px 20px;
     position: relative;
     opacity: 0.92;
@@ -156,7 +157,7 @@
     background: linear-gradient(90deg, #1c50de, #3b6df0);
     color: #fff;
     padding: 12px 16px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
   }
   .tg-output-body { padding: 12px; }
@@ -168,7 +169,7 @@
     border-radius: 10px;
     margin-bottom: 6px;
     background: #f8faff;
-    font-size: 12px;
+    font-size: 14px;
   }
   .tg-output-row:last-child { margin-bottom: 0; }
   .tg-output-row .check {
@@ -211,8 +212,8 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 14px;
   }
-  .tg-step-title { font-size: 17px; font-weight: 600; color: var(--tg-text); margin: 0 0 8px; }
-  .tg-step-text { font-size: 14px; line-height: 1.6; color: #64748b; margin: 0; }
+  .tg-step-title { font-size: 18px; font-weight: 700; color: var(--tg-text); margin: 0 0 8px; }
+  .tg-step-text { font-size: 16px; line-height: 1.55; color: #64748b; margin: 0; }
 
   @media (max-width: 960px) {
     .tg-diagram-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -258,9 +259,9 @@
             </div>
           </div>
           <div class="tg-source-card">
-            <img class="tg-source-logo" src="https://kolomoets-netizen.github.io/Link/assets/tenderguru.png" alt="">
+            <div class="tg-source-logo" style="display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;background:#eef3ff;border-radius:8px;width:36px;height:36px;color:#1c50de;">…</div>
             <div>
-              <p class="tg-source-name">ТендерГуру</p>
+              <p class="tg-source-name">Другой агрегатор</p>
               <p class="tg-source-desc">ваш ключ доступа</p>
             </div>
           </div>
@@ -332,8 +333,8 @@
     <div class="tg-steps-row">
       <div class="tg-step-card">
         <div class="tg-step-num">1</div>
-        <h3 class="tg-step-title">Подключите источники</h3>
-        <p class="tg-step-text">Добавьте ключ агрегатора и/или госзакупки — настройка занимает пару минут.</p>
+        <h3 class="tg-step-title">Подключите агрегаторы</h3>
+        <p class="tg-step-text">Добавьте ключ агрегатора — настройка занимает пару минут.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">2</div>
@@ -342,8 +343,8 @@
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">3</div>
-        <h3 class="tg-step-title">Получите ленту</h3>
-        <p class="tg-step-text">Подходящие закупки собираются в одном списке. Видно источник, сумму, сроки и статус в воронке.</p>
+        <h3 class="tg-step-title">Проведите закупки</h3>
+        <p class="tg-step-text">Запрашивайте КП у поставщиков, сравнивайте предложения и ведите закупку до контракта в SRM.</p>
       </div>
       <div class="tg-step-card">
         <div class="tg-step-num">4</div>
