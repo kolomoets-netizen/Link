@@ -20,11 +20,12 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | № | Файл | Секция |
 |---|------|--------|
 | 1 | `01-hero.html` | Hero |
-| 2 | `07-crm-srm-kp.html` | Вся тендерная работа в iStockLink |
-| 3 | `02-how-it-works.html` | Как это работает |
-| 4 | `08-crm-compare.html` | Сравнение с обычной CRM |
-| 5 | `04-audience-pricing.html` | Стоимость платформы |
-| 6 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
+| 2 | `09-audience-positioning.html` | Позиционирование и ЦА |
+| 3 | `07-crm-srm-kp.html` | Вся тендерная работа в iStockLink |
+| 4 | `02-how-it-works.html` | Как это работает |
+| 5 | `08-crm-compare.html` | Сравнение с обычной CRM |
+| 6 | `04-audience-pricing.html` | Стоимость платформы |
+| 7 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
 | 0 | `00-enhancements-tilda.html` | *(опционально)* шрифт, анимации, плавный скролл |
 
 Архив (не в сборке): `archive/03-features.html`, `archive/06-integrations.html`

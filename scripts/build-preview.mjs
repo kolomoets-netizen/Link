@@ -21,6 +21,7 @@ const buildDate = new Date().toISOString().slice(0, 10);
 
 const blocks = [
   '01-hero.html',
+  '09-audience-positioning.html',
   '07-crm-srm-kp.html',
   '02-how-it-works.html',
   '08-crm-compare.html',
