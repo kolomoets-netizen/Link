@@ -1,0 +1,219 @@
+<!--
+  CTA + нативная форма Tilda (два блока на странице)
+
+  1) Этот код → в T123 «HTML-код»
+  2) Сразу ПОД T123 → блок «Форма» (BF204): только Email + кнопка «Получить демо»
+  3) У блока формы: Настройки → Дополнительно → CSS class name: tg-tilda-form
+  4) У блока формы: отступы 0, фон прозрачный, заголовок формы убрать в Контенте
+  5) Настройки сайта → Формы → Email (или Telegram) + галочка в блоке формы
+  6) Опубликовать и проверить «Заявки»
+
+  ВАЖНО: блок формы снизу НЕ скрывать целиком (display:none) —
+  иначе форма не будет работать. CSS ниже прячет только обёртку/заголовки Tilda.
+-->
+<style>
+  .tg-cta-wrap {
+    --tg-primary: #1c50de;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: linear-gradient(180deg, #eef3ff 0%, #f4f7ff 100%);
+    padding: 80px 24px 0;
+    margin-bottom: 0;
+  }
+  .tg-cta-wrap *, .tg-cta-wrap *::before, .tg-cta-wrap *::after { box-sizing: border-box; }
+  .tg-cta-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-cta-box {
+    background: linear-gradient(135deg, #1c50de 0%, #2a5fe8 40%, #3b6df0 100%);
+    border-radius: 24px;
+    padding: 56px 48px 40px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 0;
+  }
+  .tg-cta-box::before {
+    content: "";
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .tg-cta-content { position: relative; z-index: 1; }
+  .tg-cta-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  .tg-cta-sub {
+    font-size: 17px;
+    opacity: 0.9;
+    margin: 0 auto 0;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+  .tg-cta-form-gap {
+    min-height: 72px;
+    margin: 20px auto 0;
+  }
+  .tg-cta-note {
+    margin: 18px 0 0;
+    font-size: 13px;
+    opacity: 0.75;
+  }
+
+  @media (max-width: 700px) {
+    .tg-cta-wrap { padding: 56px 20px 0; }
+    .tg-cta-box { padding: 36px 20px 32px; border-radius: 20px; }
+    .tg-cta-sub { font-size: 16px; }
+    .tg-cta-form-gap { min-height: 120px; }
+  }
+
+  /* === Блок формы Tilda сразу под T123 (класс tg-tilda-form) === */
+  .t-rec.tg-tilda-form,
+  #allrecords .t-rec.tg-tilda-form {
+    background: transparent !important;
+    margin-top: -92px !important;
+    margin-bottom: -24px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative;
+    z-index: 5;
+  }
+  .t-rec.tg-tilda-form .t-cover,
+  .t-rec.tg-tilda-form .t-cover__wrapper,
+  .t-rec.tg-tilda-form .t-container,
+  .t-rec.tg-tilda-form .t-cover__filter,
+  .t-rec.tg-tilda-form .t-cover__carrier {
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .t-rec.tg-tilda-form .t-records__padding,
+  .t-rec.tg-tilda-form .t396,
+  .t-rec.tg-tilda-form .t396__artboard {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Прячем только декоративную обёртку Tilda, не поля */
+  .t-rec.tg-tilda-form .t-form__title,
+  .t-rec.tg-tilda-form .t-form__descr,
+  .t-rec.tg-tilda-form .t-form__header,
+  .t-rec.tg-tilda-form .t-form__bottom-text {
+    display: none !important;
+  }
+
+  .t-rec.tg-tilda-form .t-form__inputsbox {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 480px;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  .t-rec.tg-tilda-form .t-input-group,
+  .t-rec.tg-tilda-form .t-input-block {
+    flex: 1 1 220px;
+    min-width: 0;
+    margin: 0 !important;
+    width: auto !important;
+  }
+  .t-rec.tg-tilda-form .t-input,
+  .t-rec.tg-tilda-form input[type="email"],
+  .t-rec.tg-tilda-form input[type="text"] {
+    width: 100% !important;
+    border-radius: 12px !important;
+    border: none !important;
+    padding: 14px 18px !important;
+    font-size: 15px !important;
+    color: #0f172a !important;
+    background: #fff !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+  }
+  .t-rec.tg-tilda-form .t-input__wrapper {
+    margin: 0 !important;
+  }
+  .t-rec.tg-tilda-form .t-form__submit {
+    flex: 0 0 auto;
+    margin: 0 !important;
+    width: auto !important;
+  }
+  .t-rec.tg-tilda-form .t-submit,
+  .t-rec.tg-tilda-form button[type="submit"] {
+    border-radius: 12px !important;
+    border: none !important;
+    background: #fff !important;
+    color: #1c50de !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    padding: 14px 28px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+    transition: transform .2s;
+  }
+  .t-rec.tg-tilda-form .t-submit:hover {
+    transform: translateY(-2px);
+  }
+  .t-rec.tg-tilda-form .t-form__errorbox-wrapper,
+  .t-rec.tg-tilda-form .t-form__successbox {
+    max-width: 480px;
+    margin: 12px auto 0 !important;
+    color: #fff !important;
+  }
+
+  @media (max-width: 700px) {
+    .t-rec.tg-tilda-form,
+    #allrecords .t-rec.tg-tilda-form {
+      margin-top: -148px !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+    .t-rec.tg-tilda-form .t-form__inputsbox {
+      flex-direction: column;
+    }
+    .t-rec.tg-tilda-form .t-input-group,
+    .t-rec.tg-tilda-form .t-input-block,
+    .t-rec.tg-tilda-form .t-form__submit {
+      flex: 1 1 100%;
+      width: 100% !important;
+    }
+    .t-rec.tg-tilda-form .t-submit,
+    .t-rec.tg-tilda-form button[type="submit"] {
+      width: 100% !important;
+    }
+  }
+
+  /* Нижний отступ секции после «прилипшей» формы */
+  .tg-cta-tail-spacer {
+    height: 64px;
+    background: linear-gradient(180deg, #f4f7ff 0%, #f4f7ff 100%);
+  }
+  @media (max-width: 700px) {
+    .tg-cta-tail-spacer { height: 80px; }
+  }
+</style>
+
+<div class="tg-cta-wrap">
+  <div class="tg-cta-inner">
+    <div class="tg-cta-box" id="demo">
+      <div class="tg-cta-content">
+        <h2 class="tg-cta-title">Подключите iStockLink за 2 минуты</h2>
+        <p class="tg-cta-sub">Оставьте email и мы пришлём доступ к демо и инструкцию по подключению агрегатора.</p>
+        <div class="tg-cta-form-gap" aria-hidden="true"></div>
+        <p class="tg-cta-note">Бесплатный период 14 дней · Без привязки карты</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tg-cta-tail-spacer" aria-hidden="true"></div>
