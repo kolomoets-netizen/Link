@@ -1,9 +1,13 @@
 <!-- Tilda block: CTA -->
+<!--
+  Попап Tilda:
+  1. Добавьте блок попапа (BF501 / BF502 / BF503) с формой Email
+  2. В Контенте попапа укажите Popup link: #popup:demo
+  3. Тот же #popup:demo — в href кнопки ниже (или свой linkhook из попапа)
+-->
 <style>
   .tg-cta-wrap {
     --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
     font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -21,7 +25,6 @@
     color: #fff;
     position: relative;
     overflow: hidden;
-    margin-bottom: 0;
   }
   .tg-cta-box::before {
     content: "";
@@ -45,37 +48,29 @@
     max-width: 520px;
     line-height: 1.6;
   }
-  .tg-cta-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  .tg-cta-btn {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-  .tg-cta-input {
-    flex: 1;
-    min-width: 220px;
-    padding: 14px 18px;
-    border-radius: 12px;
-    border: none;
-    font-size: 15px;
-    outline: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  }
-  .tg-cta-submit {
-    padding: 14px 28px;
+    padding: 14px 32px;
     border-radius: 12px;
     border: none;
     background: #fff;
     color: var(--tg-primary);
     font-size: 15px;
     font-weight: 700;
+    font-family: inherit;
+    text-decoration: none;
     cursor: pointer;
-    transition: transform .2s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transition: transform .2s, box-shadow .2s;
     white-space: nowrap;
   }
-  .tg-cta-submit:hover { transform: translateY(-2px); }
+  .tg-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    color: var(--tg-primary);
+  }
   .tg-cta-note {
     margin-top: 16px;
     font-size: 13px;
@@ -86,84 +81,19 @@
     .tg-cta-wrap { padding: 56px 20px 64px; }
     .tg-cta-box { padding: 36px 20px; border-radius: 20px; }
     .tg-cta-sub { font-size: 16px; margin-bottom: 24px; }
-    .tg-cta-form { flex-direction: column; gap: 10px; }
-    .tg-cta-input,
-    .tg-cta-submit { width: 100%; min-width: 0; }
+    .tg-cta-btn { width: 100%; max-width: 320px; }
   }
-  @media (max-width: 560px) {
-    .tg-demo-modal { padding: 16px; }
-    .tg-demo-modal-dialog { padding: 28px 20px 24px; border-radius: 16px; }
-  }
-
-  .tg-demo-modal {
-    position: fixed; inset: 0; z-index: 10000;
-    display: flex; align-items: center; justify-content: center; padding: 24px;
-    opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s;
-  }
-  .tg-demo-modal.is-open { opacity: 1; visibility: visible; }
-  .tg-demo-modal-backdrop {
-    position: absolute; inset: 0; background: rgba(15,23,42,0.5);
-    border: none; cursor: pointer;
-  }
-  .tg-demo-modal-dialog {
-    position: relative; z-index: 1; width: min(100%, 480px);
-    background: #fff; border-radius: 20px; padding: 32px 28px 28px;
-    box-shadow: 0 24px 60px rgba(15,23,42,0.18);
-    border: 1px solid rgba(28,80,222,0.12);
-  }
-  .tg-demo-modal-close {
-    position: absolute; top: 12px; right: 14px; width: 32px; height: 32px;
-    border: none; background: #f4f7ff; color: #64748b; border-radius: 10px;
-    font-size: 22px; line-height: 1; cursor: pointer;
-  }
-  .tg-demo-modal-title { margin: 0 0 8px; font-size: 22px; font-weight: 800; color: #0f172a; }
-  .tg-demo-modal-sub { margin: 0 0 20px; font-size: 15px; line-height: 1.55; color: #64748b; }
-  .tg-demo-modal-tier {
-    display: inline-block; margin-bottom: 16px; padding: 4px 12px; border-radius: 999px;
-    background: rgba(28,80,222,0.1); color: #1c50de; font-size: 12px; font-weight: 700;
-  }
-  .tg-demo-modal-form { display: flex; flex-direction: column; gap: 10px; }
-  .tg-demo-modal-input {
-    width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid #e2e8f0;
-    font-size: 15px; font-family: inherit; outline: none;
-  }
-  .tg-demo-modal-input:focus { border-color: #1c50de; box-shadow: 0 0 0 3px rgba(28,80,222,0.12); }
-  .tg-demo-modal-submit {
-    padding: 14px 18px; border-radius: 12px; border: none;
-    background: linear-gradient(135deg, #1c50de, #3b6df0); color: #fff;
-    font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer;
-    box-shadow: 0 8px 20px rgba(28,80,222,0.25);
-  }
-  .tg-demo-modal-note { margin: 14px 0 0; font-size: 12px; color: #94a3b8; text-align: center; }
 </style>
 
 <div class="tg-cta-wrap">
   <div class="tg-cta-inner">
-    <div class="tg-cta-box" id="demo">
+    <div class="tg-cta-box">
       <div class="tg-cta-content">
         <h2 class="tg-cta-title">Подключите iStockLink за 2 минуты</h2>
         <p class="tg-cta-sub">Оставьте email и мы пришлём доступ к демо и инструкцию по подключению агрегатора.</p>
-        <form class="tg-cta-form" action="#" method="post" onsubmit="return false;">
-          <input type="email" class="tg-cta-input" placeholder="work@company.ru" required>
-          <button type="submit" class="tg-cta-submit">Получить демо</button>
-        </form>
+        <a href="#popup:demo" class="tg-cta-btn">Получить демо</a>
         <p class="tg-cta-note">Бесплатный период 14 дней · Без привязки карты</p>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="tg-demo-modal" id="tg-demo-modal" aria-hidden="true">
-  <button type="button" class="tg-demo-modal-backdrop" data-demo-close aria-label="Закрыть"></button>
-  <div class="tg-demo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="tg-demo-modal-title">
-    <button type="button" class="tg-demo-modal-close" data-demo-close aria-label="Закрыть">&times;</button>
-    <span class="tg-demo-modal-tier" id="tg-demo-modal-tier" hidden></span>
-    <h3 class="tg-demo-modal-title" id="tg-demo-modal-title">Запросить демо</h3>
-    <p class="tg-demo-modal-sub">Оставьте email и мы пришлём доступ к демо и инструкцию по подключению агрегатора.</p>
-    <form class="tg-demo-modal-form" action="#" method="post" onsubmit="return false;">
-      <input type="email" class="tg-demo-modal-input" placeholder="work@company.ru" required>
-      <button type="submit" class="tg-demo-modal-submit">Получить демо</button>
-    </form>
-    <p class="tg-demo-modal-note">Бесплатный период 14 дней · Без привязки карты</p>
   </div>
 </div>
