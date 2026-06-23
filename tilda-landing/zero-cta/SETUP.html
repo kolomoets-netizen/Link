@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zero Block CTA — инструкция iStockLink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 28px; margin: 0 0 8px; }
+    h2 { font-size: 20px; margin: 36px 0 12px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+    h3 { font-size: 16px; margin: 24px 0 8px; }
+    p, li { font-size: 15px; }
+    .lead { color: #64748b; margin-bottom: 28px; }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 12px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 12px 0 20px;
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef3ff; }
+    .copy-box {
+      position: relative;
+      margin: 12px 0;
+    }
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1c50de;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-right: 6px;
+    }
+    .warn {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+    a { color: #1c50de; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>CTA в Zero Block — iStockLink</h1>
+    <p class="lead">
+      Один Zero Block: синяя карточка + нативная форма Tilda. Заявки идут в раздел «Заявки».
+      <a href="preview.html">Открыть превью</a>
+    </p>
+
+    <h2>Шаг 1. Создайте Zero Block</h2>
+    <ol>
+      <li>На странице: <strong>+ → Zero Block</strong> (или «Нулевой блок»).</li>
+      <li>Высота артборда <strong>1200px</strong>: <strong>480px</strong> (десктоп).</li>
+      <li>Высота артборда <strong>320px</strong>: <strong>520px</strong> (мобильный — подгоните визуально).</li>
+      <li>Настройки блока → <strong>Якорь / Block anchor ID</strong>: <code>demo</code> (для ссылок <code>#demo</code> с тарифов).</li>
+    </ol>
+
+    <h2>Шаг 2. Элементы (снизу вверх по слоям)</h2>
+    <p>Добавляйте через <strong>+</strong> в левом верхнем углу редактора Zero Block.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Элемент</th>
+          <th>CSS class</th>
+          <th>Контент / настройки</th>
+          <th>Позиция 1200px (X · Y · W · H)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Shape</strong> (прямоугольник)</td>
+          <td><code>tg-zb-cta-card</code></td>
+          <td>
+            Заливка: градиент 135°<br>
+            #1c50de → #2a5fe8 (40%) → #3b6df0<br>
+            Скругление: <strong>24px</strong>
+          </td>
+          <td>40 · 80 · 1120 · 300</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Shape</strong> (круг, опционально)</td>
+          <td><code>tg-zb-cta-glow</code></td>
+          <td>
+            Заливка: белый, opacity 12%<br>
+            Размытие по желанию
+          </td>
+          <td>900 · 10 · 280 · 280</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Text</strong></td>
+          <td><code>tg-zb-cta-title</code></td>
+          <td><code>Подключите iStockLink за 2 минуты</code><br>Выравнивание: по центру</td>
+          <td>центр · 120 · 720 · авто</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Text</strong></td>
+          <td><code>tg-zb-cta-sub</code></td>
+          <td><code>Оставьте email и мы пришлём доступ к демо и инструкцию по подключению агрегатора.</code><br>Ширина текста ~520px, по центру</td>
+          <td>центр · 190 · 520 · авто</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Form</strong></td>
+          <td><code>tg-zb-cta-form</code></td>
+          <td>
+            Тип: <strong>горизонтальная</strong><br>
+            Поля: Email (placeholder <code>work@company.ru</code>)<br>
+            Кнопка: <code>Получить демо</code><br>
+            Заголовок формы: <strong>убрать</strong>
+          </td>
+          <td>центр · 268 · 480 · авто</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Text</strong></td>
+          <td><code>tg-zb-cta-note</code></td>
+          <td><code>Бесплатный период 14 дней · Без привязки карты</code></td>
+          <td>центр · 348 · 400 · авто</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Координаты — стартовые. После вставки CSS подгоните Y на 320px и 640px в адаптиве Zero Block.</p>
+
+    <h2>Шаг 3. CSS class у каждого элемента</h2>
+    <p>Клик по элементу → <strong>Settings</strong> → поле <strong>CSS class name</strong> → вставьте класс из таблицы (без точки).</p>
+
+    <h2>Шаг 4. Вставьте CSS в Zero Block</h2>
+    <p>Настройки Zero Block → вкладка <strong>CSS</strong> → скопируйте <strong>весь</strong> код из файла <code>zero-cta.css</code> (без тегов <code>&lt;style&gt;</code>).</p>
+
+    <div class="copy-box">
+      <span class="tag">CSS</span>
+      <pre id="css-block">/* см. файл zero-cta.css в этой папке — скопируйте целиком */</pre>
+    </div>
+
+    <h2>Шаг 5. Приём заявок</h2>
+    <ol>
+      <li><strong>Настройки сайта → Формы → Email</strong> (или Telegram) — подключите сервис.</li>
+      <li>Клик по элементу <strong>Form</strong> → <strong>Settings → Services</strong> → галочка на Email.</li>
+      <li><strong>Опубликовать</strong> страницу.</li>
+      <li>Отправить тест → проверить <strong>Заявки</strong>.</li>
+    </ol>
+
+    <div class="warn">
+      <strong>Блок формы не скрывать.</strong> В Zero Block форма — это элемент внутри блока. Прячутся только заголовки формы через CSS, поле и кнопка остаются видимыми.
+    </div>
+
+    <h2>Шаг 6. Кнопки тарифов</h2>
+    <p>В блоках тарифов ссылка: <code>#demo</code> — скролл к этому Zero Block.</p>
+
+    <h2>Тексты для копирования</h2>
+    <pre>Заголовок:
+Подключите iStockLink за 2 минуты
+
+Подзаголовок:
+Оставьте email и мы пришлём доступ к демо и инструкцию по подключению агрегатора.
+
+Placeholder email:
+work@company.ru
+
+Кнопка:
+Получить демо
+
+Подпись:
+Бесплатный период 14 дней · Без привязки карты</pre>
+
+    <h2>Цвета</h2>
+    <table>
+      <tr><th>Роль</th><th>HEX</th></tr>
+      <tr><td>Primary</td><td>#1c50de</td></tr>
+      <tr><td>Градиент карточки</td><td>#1c50de → #2a5fe8 → #3b6df0</td></tr>
+      <tr><td>Фон секции</td><td>#eef3ff → #f4f7ff</td></tr>
+      <tr><td>Кнопка</td><td>фон #fff, текст #1c50de</td></tr>
+    </table>
+
+    <h2>Если форма выглядит «не так»</h2>
+    <ul>
+      <li>Проверьте класс <code>tg-zb-cta-form</code> на элементе Form.</li>
+      <li>В форме уберите заголовок и описание в Контенте.</li>
+      <li>На мобильном в Zero Block переключите Form на <strong>вертикальную</strong> в настройках элемента.</li>
+      <li>Сдвиньте Y координаты текста и формы на брейкпоинтах 640 и 320.</li>
+    </ul>
+
+    <h2>Файлы в папке</h2>
+    <ul>
+      <li><code>zero-cta.css</code> — CSS для Zero Block</li>
+      <li><code>preview.html</code> — как должно выглядеть</li>
+      <li><code>SETUP.html</code> — эта инструкция</li>
+    </ul>
+  </div>
+  <script>
+    fetch('zero-cta.css').then(function (r) { return r.text(); }).then(function (t) {
+      document.getElementById('css-block').textContent = t;
+    });
+  </script>
+</body>
+</html>

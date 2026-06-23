@@ -1,0 +1,151 @@
+/* Zero Block CTA iStockLink — вставить в Настройки Zero Block → CSS (без тегов <style>) */
+
+/* Фон всего Zero Block */
+.t396__artboard {
+  background: linear-gradient(180deg, #eef3ff 0%, #f4f7ff 100%) !important;
+}
+
+/* Синяя карточка (Shape) */
+.tg-zb-cta-card {
+  border-radius: 24px !important;
+  box-shadow: none !important;
+}
+
+/* Декоративное свечение (Shape-круг, опционально) */
+.tg-zb-cta-glow {
+  pointer-events: none !important;
+  opacity: 0.9;
+}
+
+/* Заголовок */
+.tg-zb-cta-title .tn-atom {
+  font-family: 'TildaSans', Arial, sans-serif !important;
+  font-size: 38px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  color: #ffffff !important;
+}
+
+/* Подзаголовок */
+.tg-zb-cta-sub .tn-atom {
+  font-family: 'TildaSans', Arial, sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Подпись под формой */
+.tg-zb-cta-note .tn-atom {
+  font-family: 'TildaSans', Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* === Форма (элемент Form в Zero Block) === */
+.tg-zb-cta-form .t-form__title,
+.tg-zb-cta-form .t-form__descr,
+.tg-zb-cta-form .t-form__header,
+.tg-zb-cta-form .t-form__bottom-text {
+  display: none !important;
+}
+
+.tg-zb-cta-form .t-form__inputsbox {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 480px;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.tg-zb-cta-form .t-input-group,
+.tg-zb-cta-form .t-input-block {
+  flex: 1 1 220px;
+  min-width: 0;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.tg-zb-cta-form .t-input,
+.tg-zb-cta-form input[type="email"],
+.tg-zb-cta-form input[type="text"] {
+  width: 100% !important;
+  border-radius: 12px !important;
+  border: none !important;
+  padding: 14px 18px !important;
+  font-size: 15px !important;
+  font-family: 'TildaSans', Arial, sans-serif !important;
+  color: #0f172a !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  height: auto !important;
+  line-height: 1.4 !important;
+}
+
+.tg-zb-cta-form .t-input__wrapper {
+  margin: 0 !important;
+}
+
+.tg-zb-cta-form .t-form__submit {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.tg-zb-cta-form .t-submit,
+.tg-zb-cta-form button[type="submit"] {
+  border-radius: 12px !important;
+  border: none !important;
+  background: #ffffff !important;
+  color: #1c50de !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  font-family: 'TildaSans', Arial, sans-serif !important;
+  padding: 14px 28px !important;
+  height: auto !important;
+  line-height: 1.4 !important;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s ease;
+}
+
+.tg-zb-cta-form .t-submit:hover {
+  transform: translateY(-2px);
+}
+
+.tg-zb-cta-form .t-form__errorbox-wrapper,
+.tg-zb-cta-form .t-form__successbox {
+  max-width: 480px;
+  margin: 12px auto 0 !important;
+  color: #ffffff !important;
+  text-align: center;
+}
+
+/* Мобильные брейкпоинты Zero Block */
+@media screen and (max-width: 639px) {
+  .tg-zb-cta-title .tn-atom {
+    font-size: 26px !important;
+  }
+  .tg-zb-cta-sub .tn-atom {
+    font-size: 16px !important;
+  }
+  .tg-zb-cta-form .t-form__inputsbox {
+    flex-direction: column;
+  }
+  .tg-zb-cta-form .t-input-group,
+  .tg-zb-cta-form .t-input-block,
+  .tg-zb-cta-form .t-form__submit {
+    flex: 1 1 100%;
+    width: 100% !important;
+  }
+  .tg-zb-cta-form .t-submit,
+  .tg-zb-cta-form button[type="submit"] {
+    width: 100% !important;
+  }
+}

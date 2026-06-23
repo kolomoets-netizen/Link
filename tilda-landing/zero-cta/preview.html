@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zero Block CTA — превью</title>
+  <link rel="stylesheet" href="https://static.tildacdn.com/css/fonts-tildasans.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f4f7ff;
+    }
+    .preview-bar {
+      position: sticky; top: 0; z-index: 9;
+      padding: 10px 16px; background: #0f172a; color: #fff; font-size: 13px;
+    }
+    .preview-bar a { color: #93c5fd; }
+    .tg-cta-wrap {
+      background: linear-gradient(180deg, #eef3ff 0%, #f4f7ff 100%);
+      padding: 80px 24px;
+    }
+    .tg-cta-inner { max-width: 1120px; margin: 0 auto; }
+    .tg-cta-box {
+      background: linear-gradient(135deg, #1c50de 0%, #2a5fe8 40%, #3b6df0 100%);
+      border-radius: 24px;
+      padding: 56px 48px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .tg-cta-box::before {
+      content: "";
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tg-cta-content { position: relative; z-index: 1; }
+    .tg-cta-title {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+    .tg-cta-sub {
+      font-size: 17px;
+      opacity: 0.9;
+      margin: 0 auto 28px;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+    .tg-cta-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .tg-cta-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: none;
+      font-size: 15px;
+      outline: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .tg-cta-submit {
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: none;
+      background: #fff;
+      color: #1c50de;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .tg-cta-note {
+      margin-top: 16px;
+      font-size: 13px;
+      opacity: 0.75;
+    }
+    @media (max-width: 700px) {
+      .tg-cta-wrap { padding: 56px 20px; }
+      .tg-cta-box { padding: 36px 20px; border-radius: 20px; }
+      .tg-cta-form { flex-direction: column; }
+      .tg-cta-input, .tg-cta-submit { width: 100%; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-bar">
+    Превью Zero Block CTA · соберите так же в Tilda · <a href="SETUP.html">инструкция</a>
+  </div>
+  <div class="tg-cta-wrap" id="demo">
+    <div class="tg-cta-inner">
+      <div class="tg-cta-box">
+        <div class="tg-cta-content">
+          <h2 class="tg-cta-title">Подключите iStockLink за 2 минуты</h2>
+          <p class="tg-cta-sub">Оставьте email и мы пришлём доступ к демо и инструкцию по подключению агрегатора.</p>
+          <form class="tg-cta-form" onsubmit="return false;">
+            <input type="email" class="tg-cta-input" placeholder="work@company.ru" required>
+            <button type="submit" class="tg-cta-submit">Получить демо</button>
+          </form>
+          <p class="tg-cta-note">Бесплатный период 14 дней · Без привязки карты</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
