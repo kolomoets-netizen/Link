@@ -26,7 +26,7 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | 5 | `08-crm-compare.html` | Сравнение с обычной CRM |
 | 6 | `04-audience-pricing.html` | Стоимость платформы |
 | 7 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
-| 0 | `00-enhancements-tilda.html` | *(опционально)* шрифт, анимации, плавный скролл |
+| 0 | `00-enhancements-tilda.html` | *(опционально)* плавный скролл и анимации — **в конце страницы** |
 
 Архив (не в сборке): `archive/03-features.html`, `archive/06-integrations.html`
 
@@ -40,7 +40,7 @@ HTML-блоки для встраивания в Tilda через блок **T12
 
 Сборка: `npm install && npm run build:preview`
 
-Для Tilda вставьте `00-enhancements-tilda.html` **один раз** в Zero Block в начале страницы (CDN).
+Для Tilda вставьте `00-enhancements-tilda.html` **один раз** в Zero Block **в конце страницы** (после всех T123-блоков). CDN.
 
 ## Превью на планшете / телефоне
 
