@@ -19,42 +19,51 @@
 
 ---
 
-## 2. Поток на Tilda (6 шагов)
+## 2. Поток на Tilda (6 постов)
 
 **Папка:** `tilda-flow/`
 
+В **Потоках Tilda нельзя вставлять HTML-блоки** (T123). Используйте нативные блоки поста: Введение, Заголовок, Текст, Изображение, Врезка.
+
 | Шаг | Файл | Содержание |
 |-----|------|------------|
-| 1 | `01-registration.html` | Регистрация, роль Покупатель |
-| 2 | `02-overview.html` | Разделы кабинета |
-| 3 | `03-aggregator.html` | API-ключ агрегатора |
-| 4 | `04-feed.html` | Фильтры и лента |
-| 5 | `05-funnel.html` | Воронка |
-| 6 | `06-support.html` | КП, FAQ, поддержка |
+| 1 | `01-registration.md` | Регистрация, роль Покупатель |
+| 2 | `02-overview.md` | Разделы кабинета |
+| 3 | `03-aggregator.md` | API-ключ агрегатора |
+| 4 | `04-feed.md` | Фильтры и лента |
+| 5 | `05-funnel.md` | Воронка |
+| 6 | `06-support.md` | КП, FAQ, поддержка |
 
 ### Как собрать поток в Tilda
 
-1. Создайте страницу «Инструкция» или используйте **Потоки** (Tilda → Потоки).
-2. На каждый шаг — блок **T123 HTML-код**.
-3. Скопируйте **весь** файл шага (включая `<style>`) в блок.
-4. Между шагами — кнопка «Далее» потока или навигация Tilda.
-5. Отступы блоков: 0px сверху/снизу для seamless-вида.
+1. **Настройки сайта → Подключаемые модули → Потоки** — подключите модуль.
+2. Создайте поток, например «Старт в iStockLink».
+3. Загрузите картинки из `screens/*.png` в **Файлы сайта** Tilda.
+4. Для каждого шага: **Добавить пост** → заполните карточку и тело по файлу `tilda-flow/0X-….md`.
+5. Создайте страницу «Инструкция» и добавьте блок из категории **Новости и потоки** — выберите ваш поток.
+6. В настройках потока задайте адрес страницы (alias), чтобы посты открывались по понятным URL.
+
+### Типы блоков в теле поста
+
+В редакторе поста нажмите **+** слева и добавляйте блоки в указанном порядке:
+
+- **Введение** — метка шага («Шаг 1 · Регистрация»)
+- **Заголовок** — H2 или H3
+- **Текст** — основной текст и списки
+- **Изображение** — схема экрана из `screens/`
+- **Врезка** — важные примечания (жёлтая подложка)
 
 ### Скриншоты интерфейса
 
-Схемы экранов (SVG): `screens/`
+PNG для загрузки в Tilda: `screens/01-registration.png` … `04-funnel.png`
 
-На GitHub Pages:
-- https://kolomoets-netizen.github.io/Link/onboarding/screens/01-registration.svg
-- https://kolomoets-netizen.github.io/Link/onboarding/screens/02-feed.svg
-- https://kolomoets-netizen.github.io/Link/onboarding/screens/03-aggregator.svg
-- https://kolomoets-netizen.github.io/Link/onboarding/screens/04-funnel.svg
+Также на GitHub Pages (для справки):
+- https://kolomoets-netizen.github.io/Link/onboarding/screens/01-registration.png
+- https://kolomoets-netizen.github.io/Link/onboarding/screens/02-feed.png
+- https://kolomoets-netizen.github.io/Link/onboarding/screens/03-aggregator.png
+- https://kolomoets-netizen.github.io/Link/onboarding/screens/04-funnel.png
 
-Когда появятся реальные скриншоты приложения — замените URL в HTML-блоках на загруженные в Tilda изображения.
-
-### Локальные пути (если без GitHub Pages)
-
-Загрузите SVG в **Файлы сайта** Tilda и замените в `img src` на `/uploads/...`.
+Когда появятся реальные скриншоты приложения — замените PNG в Tilda.
 
 ---
 
