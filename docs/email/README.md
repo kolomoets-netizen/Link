@@ -28,14 +28,34 @@
 - Группировка чатов по запросам
 - Шаблоны файлов к заявкам и запросам
 
-### Превью Rutube в письме
+### Анимированное превью (GIF)
 
-Встроенный плеер в email не работает (блокируется почтовыми клиентами). Используется **кликабельное превью**:
+Rutube не отдаёт «живую» обложку — в письме движение делается через **GIF** (короткий фрагмент видео в цикле).
 
-- картинка: `https://i.rtimg.ru/vi/{VIDEO_ID}/xl/`
-- ссылка: `https://rutube.ru/video/{VIDEO_ID}/`
+- Файл: `assets/rutube-preview.gif` (~265 КБ, 5 сек, 540px)
+- В письме: обычный `<img src="...gif">` внутри ссылки на Rutube
+- Клик по GIF → открывается полное видео на Rutube
 
-Если превью не загружается — проверьте ID ролика. Альтернатива: скачайте обложку из Rutube и загрузите в сервис рассылки как обычное изображение.
+**Как подключить:**
+
+1. Загрузите `rutube-preview.gif` в **Файлы сайта** Tilda (как логотип).
+2. В `product-update.html` замените `src` у превью на URL из Tilda — так надёжнее в Gmail.
+3. Запасной вариант: GitHub Pages — `https://kolomoets-netizen.github.io/Link/email/assets/rutube-preview.gif`
+
+**Ограничения:** Outlook (Windows) может показать только первый кадр GIF. Gmail и Apple Mail — анимацию показывают. Встроенный плеер в письме по-прежнему невозможен.
+
+**Пересобрать GIF** из другого ролика:
+
+```bash
+yt-dlp --download-sections "*0-5" -o preview.mp4 "https://rutube.ru/video/VIDEO_ID/"
+ffmpeg -i preview.mp4 -vf "fps=8,scale=540:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=128[p];[s1][p]paletteuse" -loop 0 rutube-preview.gif
+```
+
+### Превью Rutube (статичное)
+
+Если GIF не нужен — статичная обложка:
+
+- `https://i.rtimg.ru/vi/006e7fc4772734af1a1ba0191b9e6785/xl/`
 
 ### Как отправить через Gmail
 
