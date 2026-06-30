@@ -1,243 +1,160 @@
-<!--
-  iStockLink — HTML-письмо об обновлении
-
-  ПЕРЕД ОТПРАВКОЙ замените:
-  1. {{RUTUBE_VIDEO_ID}} — ID ролика (32 символа из ссылки rutube.ru/video/…)
-  2. {{SUPPORT_EMAIL}} — email поддержки
-  3. {{UNSUBSCRIBE_URL}} — ссылка отписки (если используете рассылку)
-  4. При необходимости — тексты блоков «Новые возможности»
-
-  Превью Rutube: https://i.rtimg.ru/vi/{VIDEO_ID}/xl/
-  Ссылка на видео: https://rutube.ru/video/{{RUTUBE_VIDEO_ID}}/
-
-  Тест: отправьте себе через Unisender, SendPulse, Mailchimp или «вставить HTML» в почтовом клиенте.
--->
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>iStockLink — новые возможности</title>
-  <!--[if mso]>
-  <noscript>
-    <xml>
-      <o:OfficeDocumentSettings>
-        <o:PixelsPerInch>96</o:PixelsPerInch>
-      </o:OfficeDocumentSettings>
-    </xml>
-  </noscript>
-  <![endif]-->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Новые возможности iStock.Link</title>
 </head>
-<body style="margin:0;padding:0;background-color:#eef2f8;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<body style="-webkit-text-size-adjust:none;box-sizing:border-box;color:#74787e;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;height:100%;line-height:1.4;margin:0;padding:0;width:100%!important;">
 
-  <!-- Preheader (скрытый текст в списке писем) -->
-  <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#eef2f8;">
-    Воронка торгов, поставщики, оцифровка КП — короткий обзор в видео на Rutube.
+  <!-- Preheader -->
+  <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#ffffff;">
+    Формулы в откликах, модуль тендеров, чаты по закупкам и шаблоны файлов — смотрите видео на Rutube.
   </div>
 
-  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#eef2f8;">
-    <tr>
-      <td align="center" style="padding:32px 16px;">
+  <div class="container" style="background:#fff;box-sizing:border-box;margin:0 auto;max-width:600px;padding:25px 30px;width:100%;">
+    <div class="content" style="box-sizing:border-box;margin:0;padding:0;width:100%;">
 
-        <!-- Container 600px -->
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;">
+      <!-- Logo -->
+      <div style="margin:0 0 24px;padding:0;text-align:center;">
+        <a href="https://zakupki.istock.link/" target="_blank" style="color:#bbbfc3;font-size:16px;font-weight:bold;text-decoration:none;">
+          <img src="{{layout_header_logo_url}}" alt="iStock.Link" style="border:none;display:block;margin:0 auto;padding:0;" width="560">
+        </a>
+      </div>
 
-          <!-- Header -->
-          <tr>
-            <td style="padding:28px 32px 24px;background-color:#ffffff;border-radius:16px 16px 0 0;border:1px solid #e2e8f0;border-bottom:none;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tr>
-                  <td>
-                    <a href="https://zakupki.istock.link/" target="_blank" style="text-decoration:none;">
-                      <span style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;color:#1c50de;letter-spacing:-0.02em;">iStockLink</span>
-                    </a>
-                  </td>
-                  <td align="right" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#94a3b8;">
-                    Обновление
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+      <!-- Title -->
+      <div style="margin:0 0 24px;padding:0;text-align:center;">
+        <p class="title-text" style="color:#212229;font-size:16px;font-style:normal;font-weight:700;line-height:120%;margin:0;padding:0;text-align:center;text-transform:uppercase;">
+          Новые возможности iStock.Link
+        </p>
+      </div>
 
-          <!-- Hero -->
-          <tr>
-            <td style="padding:8px 32px 28px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <h1 style="margin:0 0 14px;font-family:Arial,Helvetica,sans-serif;font-size:28px;line-height:1.25;font-weight:800;color:#0f172a;">
-                Новые возможности в&nbsp;iStockLink
-              </h1>
-              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.6;color:#64748b;">
-                Здравствуйте! Мы обновили сервис — теперь вести торги в команде проще: единая лента, воронка по этапам, поставщики и разбор КП в одном окне.
-              </p>
-            </td>
-          </tr>
+      <!-- Intro -->
+      <p class="main-text" style="color:#212229;font-size:16px;font-style:normal;font-weight:400;line-height:21px;margin:0;padding:0;text-align:left;">
+        Добрый день!
+      </p>
+      <p class="main-text mt-med" style="color:#212229;font-size:16px;font-style:normal;font-weight:400;line-height:21px;margin:24px 0 0;padding:0;text-align:left;">
+        В этом видео мы рассказываем о новых функциональных возможностях iStock.Link. Ниже — краткое описание основных изменений в последних релизах.
+      </p>
 
-          <!-- Video block -->
-          <tr>
-            <td style="padding:0 32px 28px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c50de;">
-                Видеообзор · 3 мин
-              </p>
+      <!-- Video -->
+      <div style="margin:24px 0 0;padding:0;text-align:center;">
+        <a href="https://rutube.ru/video/{{RUTUBE_VIDEO_ID}}/" target="_blank" style="text-decoration:none;display:inline-block;">
+          <img src="https://i.rtimg.ru/vi/{{RUTUBE_VIDEO_ID}}/xl/" alt="Смотреть видео на Rutube" style="border:none;border-radius:8px;display:block;margin:0 auto;max-width:100%;width:540px;" width="540">
+        </a>
+        <p style="color:#7f869e;font-size:14px;line-height:1.4;margin:12px 0 0;padding:0;text-align:center;">
+          Нажмите на превью, чтобы открыть видео на&nbsp;<a href="https://rutube.ru/video/{{RUTUBE_VIDEO_ID}}/" target="_blank" style="color:#1c50de;text-decoration:none;">Rutube</a>
+        </p>
+      </div>
 
-              <!--[if mso]>
-              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://rutube.ru/video/{{RUTUBE_VIDEO_ID}}/" style="height:315px;v-text-anchor:middle;width:536px;" arcsize="4%" strokecolor="#e2e8f0" fillcolor="#0f172a">
-                <w:anchorlock/>
-                <center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">▶ Смотреть на Rutube</center>
-              </v:roundrect>
-              <![endif]-->
-              <!--[if !mso]><!-->
-              <a href="https://rutube.ru/video/{{RUTUBE_VIDEO_ID}}/" target="_blank" style="text-decoration:none;display:block;">
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;">
-                  <tr>
-                    <td background="https://i.rtimg.ru/vi/{{RUTUBE_VIDEO_ID}}/xl/" bgcolor="#0f172a" width="536" height="302" valign="middle" align="center" style="background-image:url('https://i.rtimg.ru/vi/{{RUTUBE_VIDEO_ID}}/xl/');background-size:cover;background-position:center;background-color:#0f172a;">
-                      <!-- Play button -->
-                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td align="center" valign="middle" width="72" height="72" style="background-color:#1c50de;border-radius:50px;font-family:Arial,Helvetica,sans-serif;font-size:28px;line-height:72px;color:#ffffff;">
-                            &#9654;
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </a>
-              <!--<![endif]-->
+      <!-- Feature 1: Formulas -->
+      <div class="mt-med" style="margin:24px 0 0;padding:0;">
+        <h2 style="color:#2f3133;font-size:16px;font-weight:bold;margin:0;padding:0;text-align:left;">
+          Формулы в запросах поставщикам
+        </h2>
+        <div class="requisites" style="background-color:#F3F6FF;margin:10px 0 0;padding:16px 20px;">
+          <p style="color:#212229;font-size:16px;line-height:1.5em;margin:0;padding:0;text-align:left;">
+            Добавлена возможность использования формул в запросах поставщикам. Для настройки перейдите в раздел
+            <strong>«Настройки параметров системы»</strong> → <strong>«Отклики»</strong>.
+            В блоке <strong>«Управление дополнительными полями отклика»</strong> выберите
+            <strong>«Поле с формулой»</strong>, укажите наименование поля, формат и в поле
+            <strong>«Формула»</strong> добавьте выражение с математическими операциями и названиями столбцов запроса и отклика.
+            После создания активируйте поле — оно появится в откликах поставщиков и в таблице сравнения.
+          </p>
+        </div>
+      </div>
 
-              <p style="margin:12px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#94a3b8;text-align:center;">
-                Нажмите на превью, чтобы открыть видео на&nbsp;<a href="https://rutube.ru/video/{{RUTUBE_VIDEO_ID}}/" target="_blank" style="color:#1c50de;text-decoration:underline;">Rutube</a>
-              </p>
-            </td>
-          </tr>
+      <!-- Feature 2: Tender CRM -->
+      <div class="mt-med" style="margin:24px 0 0;padding:0;">
+        <h2 style="color:#2f3133;font-size:16px;font-weight:bold;margin:0;padding:0;text-align:left;">
+          Модуль работы с тендерами
+        </h2>
+        <div class="requisites" style="background-color:#F3F6FF;margin:10px 0 0;padding:16px 20px;">
+          <p style="color:#212229;font-size:16px;line-height:1.5em;margin:0;padding:0;text-align:left;">
+            Реализован модуль, который может значительно упростить работу торговой компании. Это CRM-система для учёта тендеров по этапам, включая проведение закупки. Формат карточек адаптирован под атрибуты тендерных процедур.
+          </p>
+          <p style="color:#212229;font-size:16px;line-height:1.5em;margin:12px 0 0;padding:0;text-align:left;">
+            Главная особенность: данные тендеров можно получать с различных ЭТП и агрегаторов в автоматическом режиме с учётом настроек фильтров. Полученные тендеры можно брать в работу без перехода на сторонние ресурсы.
+          </p>
+        </div>
+      </div>
 
-          <!-- Divider -->
-          <tr>
-            <td style="padding:0 32px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr><td style="border-top:1px solid #e2e8f0;font-size:1px;line-height:1px;">&nbsp;</td></tr>
-              </table>
-            </td>
-          </tr>
+      <!-- Feature 3: Comparison table -->
+      <div class="mt-med" style="margin:24px 0 0;padding:0;">
+        <h2 style="color:#2f3133;font-size:16px;font-weight:bold;margin:0;padding:0;text-align:left;">
+          Таблица сравнения
+        </h2>
+        <div class="requisites" style="background-color:#F3F6FF;margin:10px 0 0;padding:16px 20px;">
+          <p style="color:#212229;font-size:16px;line-height:1.5em;margin:0;padding:0;text-align:left;">
+            Изменён формат просмотра товарных позиций поставщика прямо в таблице сравнения — это визуально улучшает восприятие и упрощает сравнение предложений.
+          </p>
+        </div>
+      </div>
 
-          <!-- Features intro -->
-          <tr>
-            <td style="padding:28px 32px 8px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <h2 style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:800;color:#0f172a;">
-                Что появилось
-              </h2>
-              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.55;color:#64748b;">
-                Кратко — главное из обновления:
-              </p>
-            </td>
-          </tr>
+      <!-- Feature 4: Chats -->
+      <div class="mt-med" style="margin:24px 0 0;padding:0;">
+        <h2 style="color:#2f3133;font-size:16px;font-weight:bold;margin:0;padding:0;text-align:left;">
+          Чаты по закупкам
+        </h2>
+        <div class="requisites" style="background-color:#F3F6FF;margin:10px 0 0;padding:16px 20px;">
+          <p style="color:#212229;font-size:16px;line-height:1.5em;margin:0;padding:0;text-align:left;">
+            Чаты теперь автоматически группируются по запросам — быстрее понять, по какой закупке вопрос от поставщика. Добавлен быстрый переход к группе чатов прямо из закупки.
+          </p>
+        </div>
+      </div>
 
-          <!-- Feature 1 -->
-          <tr>
-            <td style="padding:16px 32px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f8faff;border:1px solid #e8edf5;border-radius:14px;">
-                <tr>
-                  <td style="padding:20px 22px;">
-                    <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c50de;">Воронка</p>
-                    <p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700;color:#1e293b;">Этапы от «Новые» до «Контракт»</p>
-                    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#64748b;">
-                      Перетаскивайте карточки торгов, назначайте ответственных и ставьте задачи — руководитель видит статус без сводных Excel.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+      <!-- Feature 5: File templates -->
+      <div class="mt-med" style="margin:24px 0 0;padding:0;">
+        <h2 style="color:#2f3133;font-size:16px;font-weight:bold;margin:0;padding:0;text-align:left;">
+          Шаблоны файлов к заявкам и запросам
+        </h2>
+        <div class="requisites" style="background-color:#F3F6FF;margin:10px 0 0;padding:16px 20px;">
+          <p style="color:#212229;font-size:16px;line-height:1.5em;margin:0;padding:0;text-align:left;">
+            Добавлена возможность создания шаблонов файлов, которые крепятся к заявке или запросу — это повышает полноту заполняемых исполнителями заявок.
+          </p>
+          <p style="color:#212229;font-size:16px;line-height:1.5em;margin:12px 0 0;padding:0;text-align:left;">
+            Для создания шаблонов перейдите в <strong>«Настройки параметров системы»</strong> →
+            <strong>«Заявки на закупку и Запросы»</strong>. В блоке <strong>«Управление приложениями»</strong>
+            выберите <strong>«Создать заголовок для приложения»</strong>, укажите наименование и сохраните.
+            После активации поля при создании заявки или запроса в приложениях отобразится заголовок с возможностью приложить файл.
+          </p>
+        </div>
+      </div>
 
-          <!-- Feature 2 -->
-          <tr>
-            <td style="padding:8px 32px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f8faff;border:1px solid #e8edf5;border-radius:14px;">
-                <tr>
-                  <td style="padding:20px 22px;">
-                    <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c50de;">Лента</p>
-                    <p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700;color:#1e293b;">Несколько агрегаторов в одном списке</p>
-                    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#64748b;">
-                      Контур, Seldon и другие источники собираются в единую ленту. Фильтры по региону, ОКПД2 и ключевым словам — только релевантные торги.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+      <!-- Closing -->
+      <p class="main-text mt-med" style="color:#212229;font-size:16px;font-style:normal;font-weight:400;line-height:21px;margin:24px 0 0;padding:0;text-align:left;">
+        Это основные изменения в системе, реализованные в последних релизах. Следите за новостями в нашем канале на Rutube.
+      </p>
 
-          <!-- Feature 3 -->
-          <tr>
-            <td style="padding:8px 32px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f8faff;border:1px solid #e8edf5;border-radius:14px;">
-                <tr>
-                  <td style="padding:20px 22px;">
-                    <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c50de;">Поставщики</p>
-                    <p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700;color:#1e293b;">Запросы КП из карточки торга</p>
-                    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#64748b;">
-                      База партнёров привязана к закупке. Отправляйте запросы, собирайте ответы и сравнивайте предложения — без копипаста в таблицы.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+      <!-- CTA -->
+      <div class="btn-container vertical-margin-med" style="margin:24px 0;padding:0;text-align:center;">
+        <a href="https://zakupki.istock.link/" class="button" target="_blank" style="-webkit-text-size-adjust:none;background-color:#1c50de;border-bottom:10px solid #1c50de;border-left:18px solid #1c50de;border-radius:30px;border-right:18px solid #1c50de;border-top:10px solid #1c50de;box-shadow:0 2px 3px rgba(0,0,0,0.16);color:#fff;display:inline-block;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;margin:0 auto;text-decoration:none;">
+          Открыть iStock.Link
+        </a>
+      </div>
 
-          <!-- Feature 4 -->
-          <tr>
-            <td style="padding:8px 32px 28px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f8faff;border:1px solid #e8edf5;border-radius:14px;">
-                <tr>
-                  <td style="padding:20px 22px;">
-                    <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c50de;">КП</p>
-                    <p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700;color:#1e293b;">Разбор PDF и Excel</p>
-                    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#64748b;">
-                      Загружайте коммерческие предложения — iStockLink извлекает цены и сроки, чтобы быстрее сравнить варианты перед подачей.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+      <div class="btn-container" style="margin:0 0 24px;padding:0;text-align:center;">
+        <a href="https://rutube.ru/video/{{RUTUBE_VIDEO_ID}}/" class="button" target="_blank" style="-webkit-text-size-adjust:none;background-color:#fff;border-bottom:10px solid #1c50de;border-left:18px solid #1c50de;border-radius:30px;border-right:18px solid #1c50de;border-top:10px solid #1c50de;box-shadow:0 2px 3px rgba(0,0,0,0.08);color:#1c50de;display:inline-block;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;margin:0 auto;text-decoration:none;">
+          Смотреть видео на Rutube
+        </a>
+      </div>
 
-          <!-- CTA -->
-          <tr>
-            <td align="center" style="padding:8px 32px 32px;background-color:#ffffff;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td align="center" style="border-radius:12px;background-color:#1c50de;">
-                    <a href="https://zakupki.istock.link/" target="_blank" style="display:inline-block;padding:16px 32px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:12px;">
-                      Открыть iStockLink
-                    </a>
-                  </td>
-                </tr>
-              </table>
-              <p style="margin:16px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#64748b;">
-                Вопросы? Напишите на&nbsp;<a href="mailto:{{SUPPORT_EMAIL}}" style="color:#1c50de;text-decoration:underline;">{{SUPPORT_EMAIL}}</a>
-              </p>
-            </td>
-          </tr>
+      <!-- Footer -->
+      <div class="footer" style="margin:24px 0 0;padding:0;text-align:center;width:100%;">
+        <span class="small-text" style="color:#7f869e;display:block;font-size:12px;font-style:normal;font-weight:400;line-height:130%;margin:0 0 4px;text-align:center;width:100%;">
+          Вы получили это письмо, так как подписаны на информационную рассылку
+          <a class="inline-link" href="https://zakupki.istock.link/" style="color:#1c50de;font-size:12px;font-weight:500;text-decoration:none;">Istock.Link</a>
+        </span>
+        <a class="link" href="{{layout_settings_unsubscribe_link}}" style="color:#1c50de;display:block;font-size:12px;font-weight:500;line-height:15px;margin:0;padding:0;text-align:center;text-decoration:none;">
+          {{layout_settings_unsubscribe_text}}
+        </a>
+        <span class="small-text" style="color:#7f869e;display:block;font-size:12px;font-style:normal;font-weight:400;line-height:130%;margin:0;text-align:center;">
+          Это письмо сгенерировано автоматически. Пожалуйста, не отвечайте на него.
+        </span>
+      </div>
 
-          <!-- Footer -->
-          <tr>
-            <td style="padding:24px 32px;background-color:#f8fafc;border-radius:0 0 16px 16px;border:1px solid #e2e8f0;border-top:none;">
-              <p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#94a3b8;text-align:center;">
-                Вы получили это письмо, потому что зарегистрированы в&nbsp;iStockLink.
-              </p>
-              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#94a3b8;text-align:center;">
-                <a href="https://zakupki.istock.link/" target="_blank" style="color:#64748b;text-decoration:underline;">zakupki.istock.link</a>
-                &nbsp;·&nbsp;
-                <a href="{{UNSUBSCRIBE_URL}}" target="_blank" style="color:#64748b;text-decoration:underline;">Отписаться</a>
-              </p>
-            </td>
-          </tr>
-
-        </table>
-        <!-- /Container -->
-
-      </td>
-    </tr>
-  </table>
+    </div>
+  </div>
 
 </body>
 </html>
