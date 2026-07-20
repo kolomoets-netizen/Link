@@ -1,35 +1,19 @@
-<!-- Tilda block: For whom + Pricing -->
+<!-- Tilda block: Pricing -->
 <style>
   .tg-price-wrap {
     --tg-primary: #1c50de;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: #fff;
+    background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 45%, #fff 100%);
     padding: 80px 24px;
   }
   .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
   .tg-price-inner { max-width: 1120px; margin: 0 auto; }
 
-  .tg-audience {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 64px;
-  }
-  .tg-audience-card {
-    border-radius: 18px;
-    padding: 28px 24px;
-    background: linear-gradient(145deg, #f8faff, #fff);
-    border: 1px solid #e8edf5;
-  }
-  .tg-audience-emoji { font-size: 32px; margin-bottom: 12px; }
-  .tg-audience-title { font-size: 16px; font-weight: 700; color: #1e293b; margin: 0 0 8px; }
-  .tg-audience-text { font-size: 14px; line-height: 1.55; color: #64748b; margin: 0; }
-
-  .tg-price-header { text-align: center; margin-bottom: 40px; }
+  .tg-price-header { text-align: center; margin-bottom: 32px; }
   .tg-section-label {
     display: inline-block;
     font-size: 12px;
@@ -39,12 +23,6 @@
     color: var(--tg-primary);
     margin-bottom: 12px;
   }
-  .tg-section-title {
-    margin: 0 0 14px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
-    color: var(--tg-text);
-  }
   .tg-section-sub {
     margin: 0 auto;
     font-size: 17px;
@@ -53,10 +31,58 @@
     max-width: 560px;
   }
 
+  .tg-price-billing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .tg-price-billing-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    margin: 0;
+  }
+  .tg-price-billing-toggle {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  }
+  .tg-price-billing-btn {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .tg-price-billing-btn.is-active {
+    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(28, 80, 222, 0.25);
+  }
+  .tg-price-billing-hint {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #94a3b8;
+    margin: 0;
+    max-width: 420px;
+    text-align: center;
+  }
+
   .tg-pricing-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     align-items: stretch;
   }
   .tg-price-card {
@@ -67,12 +93,13 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
   }
   .tg-price-card.featured {
     border: 2px solid var(--tg-primary);
     background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
     box-shadow: 0 20px 50px rgba(28,80,222,0.15);
-    transform: scale(1.03);
+    transform: scale(1.02);
     z-index: 1;
   }
   .tg-price-badge {
@@ -87,16 +114,56 @@
     border-radius: 999px;
     white-space: nowrap;
   }
-  .tg-price-name { font-size: 15px; font-weight: 700; color: #64748b; margin: 0 0 8px; }
+  .tg-price-tier {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--tg-text);
+    margin: 0 0 4px;
+  }
+  .tg-price-users {
+    font-size: 14px;
+    color: var(--tg-muted);
+    margin: 0 0 16px;
+    min-height: 21px;
+  }
+  .tg-price-wrap[data-billing="user"] .tg-price-users { visibility: hidden; }
   .tg-price-amount {
     font-size: 32px;
     font-weight: 800;
     color: var(--tg-text);
-    margin: 0 0 4px;
+    margin: 0 0 2px;
     line-height: 1.1;
   }
   .tg-price-amount span { font-size: 14px; font-weight: 600; color: #94a3b8; }
-  .tg-price-desc { font-size: 13px; color: #94a3b8; margin: 0 0 20px; min-height: 36px; }
+  .tg-price-period { font-size: 13px; color: #94a3b8; margin: 0 0 12px; }
+  .tg-price-annual {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #f4f7ff 0%, #eef3ff 100%);
+    border: 1px solid rgba(28,80,222,0.12);
+    margin-bottom: 20px;
+  }
+  .tg-price-annual-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tg-primary);
+    margin: 0 0 4px;
+  }
+  .tg-price-annual-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--tg-text);
+    margin: 0;
+    line-height: 1.2;
+  }
+  .tg-price-annual-val span { font-size: 13px; font-weight: 600; color: #94a3b8; }
+  .tg-price-annual-total {
+    font-size: 12px;
+    color: var(--tg-muted);
+    margin: 4px 0 0;
+  }
   .tg-price-list {
     list-style: none;
     padding: 0;
@@ -119,22 +186,23 @@
     font-weight: 700;
     font-size: 12px;
   }
-  .tg-price-list li.off { color: #cbd5e1; }
-  .tg-price-list li.off::before { content: "—"; color: #cbd5e1; }
   .tg-price-btn {
     display: block;
+    width: 100%;
     text-align: center;
     padding: 12px 16px;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
-    text-decoration: none;
-    transition: transform .2s;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
   }
   .tg-price-btn-primary {
     background: linear-gradient(135deg, #1c50de, #3b6df0);
     color: #fff;
     box-shadow: 0 8px 20px rgba(28,80,222,0.25);
+    border: none;
   }
   .tg-price-btn-outline {
     background: #fff;
@@ -144,99 +212,146 @@
   .tg-price-btn:hover { transform: translateY(-2px); }
 
   @media (max-width: 960px) {
-    .tg-audience { grid-template-columns: 1fr; }
-    .tg-pricing-grid { grid-template-columns: 1fr 1fr; }
-    .tg-price-card.featured { transform: none; }
+    .tg-price-wrap { padding: 56px 20px 64px; }
+    .tg-pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 16px; }
+    .tg-price-card.featured { transform: none; order: -1; }
   }
   @media (max-width: 560px) {
-    .tg-pricing-grid { grid-template-columns: 1fr; }
-    .tg-price-wrap { padding: 56px 20px; }
+    .tg-price-wrap { padding: 56px 20px 64px; }
+    .tg-price-header { margin-bottom: 24px; }
+    .tg-pricing-grid { max-width: none; }
+    .tg-price-card { padding: 24px 18px; }
+    .tg-price-amount { font-size: 28px; }
+    .tg-price-annual { padding: 10px 12px; margin-bottom: 16px; }
+    .tg-price-annual-total { font-size: 11px; line-height: 1.45; }
+    .tg-section-sub { font-size: 16px; }
+    .tg-price-billing-btn { padding: 9px 14px; font-size: 13px; }
   }
 </style>
 
-<div class="tg-price-wrap">
+<div class="tg-price-wrap" id="tg-pricing" data-billing="team">
   <div class="tg-price-inner">
-    <div class="tg-audience">
-      <div class="tg-audience-card">
-        <div class="tg-audience-emoji">🏢</div>
-        <h3 class="tg-audience-title">Тендерный отдел</h3>
-        <p class="tg-audience-text">Уже платите за Контур или Seldon — подключите ключ и получите единую ленту без дублей для всей команды.</p>
-      </div>
-      <div class="tg-audience-card">
-        <div class="tg-audience-emoji">🚀</div>
-        <h3 class="tg-audience-title">Малый бизнес</h3>
-        <p class="tg-audience-text">Нет своего агрегатора — начните со встроенного тарифа. Госзакупки и коммерция из коробки.</p>
-      </div>
-      <div class="tg-audience-card">
-        <div class="tg-audience-emoji">⚙️</div>
-        <h3 class="tg-audience-title">Интеграторы и CRM</h3>
-        <p class="tg-audience-text">API и webhook для встраивания чистой ленты закупок в 1С, Битрикс24, amoCRM и собственные системы.</p>
-      </div>
+    <div class="tg-price-header">
+      <span class="tg-section-label">Стоимость</span>
+      <p class="tg-section-sub">Единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
-    <div class="tg-price-header">
-      <span class="tg-section-label">Тарифы</span>
-      <h2 class="tg-section-title">Платите за оркестрацию, не за данные дважды</h2>
-      <p class="tg-section-sub">Данные идут по вашей лицензии агрегатора. Мы берём оплату за единую ленту, дедупликацию и рабочий процесс.</p>
+    <div class="tg-price-billing">
+      <p class="tg-price-billing-label">Модель оплаты</p>
+      <div class="tg-price-billing-toggle" role="group" aria-label="Модель оплаты">
+        <button type="button" class="tg-price-billing-btn is-active" data-billing="team" aria-pressed="true">На команду</button>
+        <button type="button" class="tg-price-billing-btn" data-billing="user" aria-pressed="false">За пользователя</button>
+      </div>
+      <p class="tg-price-billing-hint" data-hint-team>Фиксированная цена тарифа — выгодно для отдела из нескольких специалистов.</p>
+      <p class="tg-price-billing-hint" data-hint-user hidden>Оплата за каждого пользователя — удобно для 1–2 специалистов, тариф чуть дороже пакета.</p>
     </div>
 
     <div class="tg-pricing-grid">
-      <div class="tg-price-card">
-        <p class="tg-price-name">Starter</p>
-        <p class="tg-price-amount">0 ₽</p>
-        <p class="tg-price-desc">Попробовать на госзакупках</p>
+      <div class="tg-price-card" data-tier="basic">
+        <p class="tg-price-tier">Базовый</p>
+        <p class="tg-price-users">До 5 пользователей</p>
+        <p class="tg-price-amount" data-price-monthly>6 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">при ежемесячной оплате</p>
+        <div class="tg-price-annual">
+          <p class="tg-price-annual-label">Годовая подписка</p>
+          <p class="tg-price-annual-val" data-price-annual-monthly>4 200 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total" data-price-annual-total>50 400 ₽ в год · экономия 21 600 ₽</p>
+        </div>
         <ul class="tg-price-list">
-          <li>Встроенный источник (гос)</li>
-          <li>До 3 поисковых шаблонов</li>
-          <li>Email-уведомления</li>
-          <li class="off">BYO-подключения</li>
-          <li class="off">Коммерческие ЭТП</li>
+          <li>Единая лента закупок</li>
+          <li>Воронка торгов</li>
+          <li>Один агрегатор</li>
+          <li>Проведение тендеров с поставщиками</li>
+          <li>База поставщиков</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Начать бесплатно</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Базовый">Выбрать тариф</button>
       </div>
 
-      <div class="tg-price-card">
-        <p class="tg-price-name">Pro</p>
-        <p class="tg-price-amount">4 900 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Без своего агрегатора</p>
-        <ul class="tg-price-list">
-          <li>Гос + коммерция (встроенный)</li>
-          <li>Безлимитные фильтры</li>
-          <li>Дедупликация</li>
-          <li>Telegram-бот</li>
-          <li class="off">BYO-подключения</li>
-        </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Выбрать Pro</a>
-      </div>
-
-      <div class="tg-price-card featured">
+      <div class="tg-price-card featured" data-tier="standard">
         <span class="tg-price-badge">Популярный</span>
-        <p class="tg-price-name">Business</p>
-        <p class="tg-price-amount">2 900 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Есть свой агрегатор</p>
+        <p class="tg-price-tier">Стандартный</p>
+        <p class="tg-price-users">До 50 пользователей</p>
+        <p class="tg-price-amount" data-price-monthly>15 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">при ежемесячной оплате</p>
+        <div class="tg-price-annual">
+          <p class="tg-price-annual-label">Годовая подписка</p>
+          <p class="tg-price-annual-val" data-price-annual-monthly>10 500 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total" data-price-annual-total>126 000 ₽ в год · экономия 54 000 ₽</p>
+        </div>
         <ul class="tg-price-list">
-          <li>До 2 BYO-подключений</li>
-          <li>Multi-source дедуп</li>
-          <li>Единая лента и статусы</li>
-          <li>Командный доступ (3 места)</li>
-          <li>Webhook в CRM</li>
+          <li>Всё из базового</li>
+          <li>Несколько агрегаторов</li>
+          <li>Запросы КП поставщикам</li>
+          <li>Ведение своей базы поставщиков</li>
+          <li>Оценка и квалификация поставщиков</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-primary">Выбрать Business</a>
+        <button type="button" class="tg-price-btn tg-price-btn-primary" data-demo-open data-tier="Стандартный">Выбрать тариф</button>
       </div>
 
-      <div class="tg-price-card">
-        <p class="tg-price-name">Enterprise</p>
-        <p class="tg-price-amount">от 9 900 ₽ <span>/мес</span></p>
-        <p class="tg-price-desc">Тендерный отдел 5+ человек</p>
+      <div class="tg-price-card" data-tier="pro">
+        <p class="tg-price-tier">Профессиональный</p>
+        <p class="tg-price-users">100 пользователей</p>
+        <p class="tg-price-amount" data-price-monthly>30 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-period">при ежемесячной оплате</p>
+        <div class="tg-price-annual">
+          <p class="tg-price-annual-label">Годовая подписка</p>
+          <p class="tg-price-annual-val" data-price-annual-monthly>21 000 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total" data-price-annual-total>252 000 ₽ в год · экономия 108 000 ₽</p>
+        </div>
         <ul class="tg-price-list">
-          <li>Безлимит BYO-источников</li>
-          <li>Seldon · Контур · TG · z360</li>
-          <li>SSO, аудит, SLA</li>
-          <li>API для интеграций</li>
-          <li>Персональный менеджер</li>
+          <li>Всё из стандартного</li>
+          <li>Расширенная аналитика</li>
+          <li>Приоритетная поддержка</li>
+          <li>Индивидуальные условия для крупных команд</li>
         </ul>
-        <a href="#demo" class="tg-price-btn tg-price-btn-outline">Связаться</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Профессиональный">Выбрать тариф</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+(function () {
+  var root = document.getElementById('tg-pricing');
+  if (!root) return;
+
+  var prices = {
+    team: {
+      basic:    { monthly: '6 000 ₽', annualMonthly: '4 200 ₽', annualTotal: '50 400 ₽ в год · экономия 21 600 ₽', suffix: '/мес' },
+      standard: { monthly: '15 000 ₽', annualMonthly: '10 500 ₽', annualTotal: '126 000 ₽ в год · экономия 54 000 ₽', suffix: '/мес' },
+      pro:      { monthly: '30 000 ₽', annualMonthly: '21 000 ₽', annualTotal: '252 000 ₽ в год · экономия 108 000 ₽', suffix: '/мес' }
+    },
+    user: {
+      basic:    { monthly: '1 800 ₽', annualMonthly: '1 260 ₽', annualTotal: '15 120 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' },
+      standard: { monthly: '4 200 ₽', annualMonthly: '2 940 ₽', annualTotal: '35 280 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' },
+      pro:      { monthly: '7 500 ₽', annualMonthly: '5 250 ₽', annualTotal: '63 000 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' }
+    }
+  };
+
+  function setBilling(mode) {
+    root.setAttribute('data-billing', mode);
+    root.querySelectorAll('.tg-price-billing-btn').forEach(function (btn) {
+      var active = btn.getAttribute('data-billing') === mode;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    root.querySelector('[data-hint-team]').hidden = mode !== 'team';
+    root.querySelector('[data-hint-user]').hidden = mode !== 'user';
+
+    root.querySelectorAll('.tg-price-card[data-tier]').forEach(function (card) {
+      var tier = card.getAttribute('data-tier');
+      var p = prices[mode][tier];
+      if (!p) return;
+      card.querySelector('[data-price-monthly]').innerHTML = p.monthly + ' <span>' + p.suffix + '</span>';
+      card.querySelector('[data-price-annual-monthly]').innerHTML = p.annualMonthly + ' <span>' + p.suffix + '</span>';
+      card.querySelector('[data-price-annual-total]').textContent = p.annualTotal;
+    });
+  }
+
+  root.querySelectorAll('.tg-price-billing-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setBilling(btn.getAttribute('data-billing'));
+    });
+  });
+})();
+</script>
