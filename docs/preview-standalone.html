@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="64fa344">
+<meta name="build" content="67e09f5">
 <title>iStockLink</title>
 <link rel="stylesheet" href="https://static.tildacdn.com/css/fonts-tildasans.css">
-<link rel="stylesheet" href="assets/vendor/aos/aos.css?v=64fa344">
-<link rel="stylesheet" href="assets/enhancements.css?v=64fa344">
+<link rel="stylesheet" href="assets/vendor/aos/aos.css?v=67e09f5">
+<link rel="stylesheet" href="assets/enhancements.css?v=67e09f5">
 <style>
   body{margin:0}
   .tg-preview-bar{
@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-<div class="tg-preview-bar">Превью GitHub Pages · Tilda Sans · сборка 2026-07-20 (64fa344) · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
+<div class="tg-preview-bar">Превью GitHub Pages · Tilda Sans · сборка 2026-07-20 (67e09f5) · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
 <!-- Tilda block: Hero -->
 <style>
   .tg-hero-wrap {
@@ -1387,19 +1387,16 @@
   .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
   .tg-price-inner { max-width: 1120px; margin: 0 auto; }
 
-  .tg-price-header { text-align: center; margin-bottom: 32px; }
-  .tg-section-label {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-    margin-bottom: 12px;
+  .tg-price-header { text-align: center; margin-bottom: 36px; }
+  .tg-section-title {
+    margin: 0 0 12px;
+    font-size: clamp(32px, 3.5vw, 44px);
+    font-weight: 800;
+    color: var(--tg-text);
   }
   .tg-section-sub {
     margin: 0 auto;
-    font-size: 17px;
+    font-size: 23px;
     line-height: 1.6;
     color: var(--tg-muted);
     max-width: 560px;
@@ -1413,39 +1410,39 @@
     margin-bottom: 40px;
   }
   .tg-price-billing-label {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--tg-muted);
     margin: 0;
   }
   .tg-price-billing-toggle {
     display: inline-flex;
-    padding: 4px;
+    padding: 2px;
     border-radius: 999px;
     background: #fff;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
   }
   .tg-price-billing-btn {
     border: none;
     background: transparent;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--tg-muted);
-    padding: 10px 20px;
+    padding: 6px 18px;
     border-radius: 999px;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    transition: background 0.2s, color 0.2s;
     white-space: nowrap;
+    line-height: 1.2;
   }
   .tg-price-billing-btn.is-active {
-    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    background: #1c50de;
     color: #fff;
-    box-shadow: 0 6px 16px rgba(28, 80, 222, 0.25);
   }
   .tg-price-billing-hint {
-    font-size: 13px;
+    font-size: 17px;
     line-height: 1.5;
     color: #94a3b8;
     margin: 0;
@@ -1489,27 +1486,27 @@
     white-space: nowrap;
   }
   .tg-price-tier {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--tg-text);
     margin: 0 0 4px;
   }
   .tg-price-users {
-    font-size: 14px;
+    font-size: 18px;
     color: var(--tg-muted);
     margin: 0 0 16px;
     min-height: 21px;
   }
   .tg-price-wrap[data-billing="user"] .tg-price-users { visibility: hidden; }
   .tg-price-amount {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 800;
     color: var(--tg-text);
     margin: 0 0 2px;
     line-height: 1.1;
   }
-  .tg-price-amount span { font-size: 14px; font-weight: 600; color: #94a3b8; }
-  .tg-price-period { font-size: 13px; color: #94a3b8; margin: 0 0 12px; }
+  .tg-price-amount span { font-size: 18px; font-weight: 600; color: #94a3b8; }
+  .tg-price-period { font-size: 17px; color: #94a3b8; margin: 0 0 12px; }
   .tg-price-annual {
     padding: 12px 14px;
     border-radius: 12px;
@@ -1518,7 +1515,7 @@
     margin-bottom: 20px;
   }
   .tg-price-annual-label {
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -1526,15 +1523,15 @@
     margin: 0 0 4px;
   }
   .tg-price-annual-val {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--tg-text);
     margin: 0;
     line-height: 1.2;
   }
-  .tg-price-annual-val span { font-size: 13px; font-weight: 600; color: #94a3b8; }
+  .tg-price-annual-val span { font-size: 17px; font-weight: 600; color: #94a3b8; }
   .tg-price-annual-total {
-    font-size: 12px;
+    font-size: 16px;
     color: var(--tg-muted);
     margin: 4px 0 0;
   }
@@ -1545,7 +1542,7 @@
     flex: 1;
   }
   .tg-price-list li {
-    font-size: 13px;
+    font-size: 17px;
     color: #475569;
     padding: 7px 0 7px 22px;
     position: relative;
@@ -1558,7 +1555,7 @@
     left: 0;
     color: var(--tg-primary);
     font-weight: 700;
-    font-size: 12px;
+    font-size: 16px;
   }
   .tg-price-btn {
     display: block;
@@ -1566,7 +1563,7 @@
     text-align: center;
     padding: 12px 16px;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     font-family: inherit;
     cursor: pointer;
@@ -1595,18 +1592,18 @@
     .tg-price-header { margin-bottom: 24px; }
     .tg-pricing-grid { max-width: none; }
     .tg-price-card { padding: 24px 18px; }
-    .tg-price-amount { font-size: 28px; }
+    .tg-price-amount { font-size: 32px; }
     .tg-price-annual { padding: 10px 12px; margin-bottom: 16px; }
     .tg-price-annual-total { font-size: 11px; line-height: 1.45; }
-    .tg-section-sub { font-size: 16px; }
-    .tg-price-billing-btn { padding: 9px 14px; font-size: 13px; }
+    .tg-section-sub { font-size: 22px; }
+    .tg-price-billing-btn { padding: 5px 14px; font-size: 17px; }
   }
 </style>
 
 <div class="tg-price-wrap" id="tg-pricing" data-billing="team">
   <div class="tg-price-inner">
     <div class="tg-price-header">
-      <span class="tg-section-label">Стоимость</span>
+      <h2 class="tg-section-title">Стоимость платформы</h2>
       <p class="tg-section-sub">Единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
@@ -1664,7 +1661,7 @@
 
       <div class="tg-price-card" data-tier="pro">
         <p class="tg-price-tier">Профессиональный</p>
-        <p class="tg-price-users">100 пользователей</p>
+        <p class="tg-price-users">от 100 пользователей</p>
         <p class="tg-price-amount" data-price-monthly>30 000 ₽ <span>/мес</span></p>
         <p class="tg-price-period">при ежемесячной оплате</p>
         <div class="tg-price-annual">
@@ -1829,8 +1826,8 @@
     </div>
   </div>
 </div>
-<script src="assets/vendor/lenis/lenis.min.js?v=64fa344"></script>
-<script src="assets/vendor/aos/aos.js?v=64fa344"></script>
-<script src="assets/enhancements.js?v=64fa344"></script>
+<script src="assets/vendor/lenis/lenis.min.js?v=67e09f5"></script>
+<script src="assets/vendor/aos/aos.js?v=67e09f5"></script>
+<script src="assets/enhancements.js?v=67e09f5"></script>
 </body>
 </html>
