@@ -13,7 +13,7 @@
   .tg-price-wrap *, .tg-price-wrap *::before, .tg-price-wrap *::after { box-sizing: border-box; }
   .tg-price-inner { max-width: 1120px; margin: 0 auto; }
 
-  .tg-price-header { text-align: center; margin-bottom: 40px; }
+  .tg-price-header { text-align: center; margin-bottom: 32px; }
   .tg-section-label {
     display: inline-block;
     font-size: 12px;
@@ -23,18 +23,60 @@
     color: var(--tg-primary);
     margin-bottom: 12px;
   }
-  .tg-section-title {
-    margin: 0 0 12px;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 800;
-    color: var(--tg-text);
-  }
   .tg-section-sub {
     margin: 0 auto;
-    font-size: 19px;
+    font-size: 17px;
     line-height: 1.6;
     color: var(--tg-muted);
     max-width: 560px;
+  }
+
+  .tg-price-billing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .tg-price-billing-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    margin: 0;
+  }
+  .tg-price-billing-toggle {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  }
+  .tg-price-billing-btn {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tg-muted);
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .tg-price-billing-btn.is-active {
+    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(28, 80, 222, 0.25);
+  }
+  .tg-price-billing-hint {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #94a3b8;
+    margin: 0;
+    max-width: 420px;
+    text-align: center;
   }
 
   .tg-pricing-grid {
@@ -79,10 +121,12 @@
     margin: 0 0 4px;
   }
   .tg-price-users {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--tg-muted);
     margin: 0 0 16px;
+    min-height: 21px;
   }
+  .tg-price-wrap[data-billing="user"] .tg-price-users { visibility: hidden; }
   .tg-price-amount {
     font-size: 32px;
     font-weight: 800;
@@ -91,7 +135,7 @@
     line-height: 1.1;
   }
   .tg-price-amount span { font-size: 14px; font-weight: 600; color: #94a3b8; }
-  .tg-price-period { font-size: 14px; color: #94a3b8; margin: 0 0 12px; }
+  .tg-price-period { font-size: 13px; color: #94a3b8; margin: 0 0 12px; }
   .tg-price-annual {
     padding: 12px 14px;
     border-radius: 12px;
@@ -116,7 +160,7 @@
   }
   .tg-price-annual-val span { font-size: 13px; font-weight: 600; color: #94a3b8; }
   .tg-price-annual-total {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--tg-muted);
     margin: 4px 0 0;
   }
@@ -127,10 +171,9 @@
     flex: 1;
   }
   .tg-price-list li {
-    font-size: 17px;
-    line-height: 1.55;
-    color: #64748b;
-    padding: 8px 0 8px 24px;
+    font-size: 13px;
+    color: #475569;
+    padding: 7px 0 7px 22px;
     position: relative;
     border-bottom: 1px solid #f1f5f9;
   }
@@ -141,7 +184,7 @@
     left: 0;
     color: var(--tg-primary);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
   }
   .tg-price-btn {
     display: block;
@@ -152,21 +195,14 @@
     font-size: 14px;
     font-weight: 600;
     font-family: inherit;
-    text-decoration: none;
     cursor: pointer;
     transition: transform .2s, box-shadow .2s;
   }
   .tg-price-btn-primary {
     background: linear-gradient(135deg, #1c50de, #3b6df0);
-    color: #fff !important;
+    color: #fff;
     box-shadow: 0 8px 20px rgba(28,80,222,0.25);
     border: none;
-  }
-  a.tg-price-btn-primary,
-  a.tg-price-btn-primary:hover,
-  a.tg-price-btn-primary:visited,
-  a.tg-price-btn-primary:focus {
-    color: #fff !important;
   }
   .tg-price-btn-outline {
     background: #fff;
@@ -182,72 +218,85 @@
   }
   @media (max-width: 560px) {
     .tg-price-wrap { padding: 56px 20px 64px; }
-    .tg-price-header { margin-bottom: 32px; }
+    .tg-price-header { margin-bottom: 24px; }
     .tg-pricing-grid { max-width: none; }
     .tg-price-card { padding: 24px 18px; }
     .tg-price-amount { font-size: 28px; }
     .tg-price-annual { padding: 10px 12px; margin-bottom: 16px; }
     .tg-price-annual-total { font-size: 11px; line-height: 1.45; }
-    .tg-section-sub { font-size: 18px; }
+    .tg-section-sub { font-size: 16px; }
+    .tg-price-billing-btn { padding: 9px 14px; font-size: 13px; }
   }
 </style>
 
-<div class="tg-price-wrap">
+<div class="tg-price-wrap" id="tg-pricing" data-billing="team">
   <div class="tg-price-inner">
     <div class="tg-price-header">
-      <h2 class="tg-section-title">Стоимость платформы</h2>
+      <span class="tg-section-label">Стоимость</span>
       <p class="tg-section-sub">Единая лента, воронка торгов, поставщики и оцифровка КП.</p>
     </div>
 
+    <div class="tg-price-billing">
+      <p class="tg-price-billing-label">Модель оплаты</p>
+      <div class="tg-price-billing-toggle" role="group" aria-label="Модель оплаты">
+        <button type="button" class="tg-price-billing-btn is-active" data-billing="team" aria-pressed="true">На команду</button>
+        <button type="button" class="tg-price-billing-btn" data-billing="user" aria-pressed="false">За пользователя</button>
+      </div>
+      <p class="tg-price-billing-hint" data-hint-team>Фиксированная цена тарифа — выгодно для отдела из нескольких специалистов.</p>
+      <p class="tg-price-billing-hint" data-hint-user hidden>Оплата за каждого пользователя — удобно для 1–2 специалистов, тариф чуть дороже пакета.</p>
+    </div>
+
     <div class="tg-pricing-grid">
-      <div class="tg-price-card">
+      <div class="tg-price-card" data-tier="basic">
         <p class="tg-price-tier">Базовый</p>
         <p class="tg-price-users">До 5 пользователей</p>
-        <p class="tg-price-amount">6 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-amount" data-price-monthly>6 000 ₽ <span>/мес</span></p>
         <p class="tg-price-period">при ежемесячной оплате</p>
         <div class="tg-price-annual">
           <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">4 800 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">57 600 ₽ в год · экономия 14 400 ₽</p>
+          <p class="tg-price-annual-val" data-price-annual-monthly>4 200 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total" data-price-annual-total>50 400 ₽ в год · экономия 21 600 ₽</p>
         </div>
         <ul class="tg-price-list">
           <li>Единая лента закупок</li>
           <li>Воронка торгов</li>
           <li>Один агрегатор</li>
+          <li>Проведение тендеров с поставщиками</li>
           <li>База поставщиков</li>
         </ul>
-        <a href="#popup:demo" class="tg-price-btn tg-price-btn-outline">Выбрать тариф</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Базовый">Выбрать тариф</button>
       </div>
 
-      <div class="tg-price-card featured">
+      <div class="tg-price-card featured" data-tier="standard">
         <span class="tg-price-badge">Популярный</span>
         <p class="tg-price-tier">Стандартный</p>
         <p class="tg-price-users">До 50 пользователей</p>
-        <p class="tg-price-amount">15 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-amount" data-price-monthly>15 000 ₽ <span>/мес</span></p>
         <p class="tg-price-period">при ежемесячной оплате</p>
         <div class="tg-price-annual">
           <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">12 000 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">144 000 ₽ в год · экономия 36 000 ₽</p>
+          <p class="tg-price-annual-val" data-price-annual-monthly>10 500 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total" data-price-annual-total>126 000 ₽ в год · экономия 54 000 ₽</p>
         </div>
         <ul class="tg-price-list">
           <li>Всё из базового</li>
           <li>Несколько агрегаторов</li>
           <li>Запросы КП поставщикам</li>
           <li>Ведение своей базы поставщиков</li>
+          <li>Оценка и квалификация поставщиков</li>
         </ul>
-        <a href="#popup:demo" class="tg-price-btn tg-price-btn-primary">Выбрать тариф</a>
+        <button type="button" class="tg-price-btn tg-price-btn-primary" data-demo-open data-tier="Стандартный">Выбрать тариф</button>
       </div>
 
-      <div class="tg-price-card">
+      <div class="tg-price-card" data-tier="pro">
         <p class="tg-price-tier">Профессиональный</p>
         <p class="tg-price-users">100 пользователей</p>
-        <p class="tg-price-amount">30 000 ₽ <span>/мес</span></p>
+        <p class="tg-price-amount" data-price-monthly>30 000 ₽ <span>/мес</span></p>
         <p class="tg-price-period">при ежемесячной оплате</p>
         <div class="tg-price-annual">
           <p class="tg-price-annual-label">Годовая подписка</p>
-          <p class="tg-price-annual-val">24 000 ₽ <span>/мес</span></p>
-          <p class="tg-price-annual-total">288 000 ₽ в год · экономия 72 000 ₽</p>
+          <p class="tg-price-annual-val" data-price-annual-monthly>21 000 ₽ <span>/мес</span></p>
+          <p class="tg-price-annual-total" data-price-annual-total>252 000 ₽ в год · экономия 108 000 ₽</p>
         </div>
         <ul class="tg-price-list">
           <li>Всё из стандартного</li>
@@ -255,8 +304,54 @@
           <li>Приоритетная поддержка</li>
           <li>Индивидуальные условия для крупных команд</li>
         </ul>
-        <a href="#popup:demo" class="tg-price-btn tg-price-btn-outline">Выбрать тариф</a>
+        <button type="button" class="tg-price-btn tg-price-btn-outline" data-demo-open data-tier="Профессиональный">Выбрать тариф</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+(function () {
+  var root = document.getElementById('tg-pricing');
+  if (!root) return;
+
+  var prices = {
+    team: {
+      basic:    { monthly: '6 000 ₽', annualMonthly: '4 200 ₽', annualTotal: '50 400 ₽ в год · экономия 21 600 ₽', suffix: '/мес' },
+      standard: { monthly: '15 000 ₽', annualMonthly: '10 500 ₽', annualTotal: '126 000 ₽ в год · экономия 54 000 ₽', suffix: '/мес' },
+      pro:      { monthly: '30 000 ₽', annualMonthly: '21 000 ₽', annualTotal: '252 000 ₽ в год · экономия 108 000 ₽', suffix: '/мес' }
+    },
+    user: {
+      basic:    { monthly: '1 800 ₽', annualMonthly: '1 260 ₽', annualTotal: '15 120 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' },
+      standard: { monthly: '4 200 ₽', annualMonthly: '2 940 ₽', annualTotal: '35 280 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' },
+      pro:      { monthly: '7 500 ₽', annualMonthly: '5 250 ₽', annualTotal: '63 000 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' }
+    }
+  };
+
+  function setBilling(mode) {
+    root.setAttribute('data-billing', mode);
+    root.querySelectorAll('.tg-price-billing-btn').forEach(function (btn) {
+      var active = btn.getAttribute('data-billing') === mode;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    root.querySelector('[data-hint-team]').hidden = mode !== 'team';
+    root.querySelector('[data-hint-user]').hidden = mode !== 'user';
+
+    root.querySelectorAll('.tg-price-card[data-tier]').forEach(function (card) {
+      var tier = card.getAttribute('data-tier');
+      var p = prices[mode][tier];
+      if (!p) return;
+      card.querySelector('[data-price-monthly]').innerHTML = p.monthly + ' <span>' + p.suffix + '</span>';
+      card.querySelector('[data-price-annual-monthly]').innerHTML = p.annualMonthly + ' <span>' + p.suffix + '</span>';
+      card.querySelector('[data-price-annual-total]').textContent = p.annualTotal;
+    });
+  }
+
+  root.querySelectorAll('.tg-price-billing-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setBilling(btn.getAttribute('data-billing'));
+    });
+  });
+})();
+</script>
