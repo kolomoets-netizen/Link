@@ -2,7 +2,7 @@ name: Deploy landing preview
 
 on:
   push:
-    branches: [main, cursor/tilda-landing-blocks-4090]
+    branches: [main, cursor/tilda-landing-blocks-4090, cursor/pricing-toggle-4090]
     paths:
       - 'tilda-landing/**'
       - 'docs/**'
