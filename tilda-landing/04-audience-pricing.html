@@ -36,10 +36,7 @@
     margin-bottom: 40px;
   }
   .tg-price-billing-label {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--tg-muted);
-    margin: 0;
+    display: none;
   }
   .tg-price-billing-toggle {
     display: inline-flex;
@@ -68,7 +65,7 @@
     color: #fff;
   }
   .tg-price-billing-hint {
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1.5;
     color: #94a3b8;
     margin: 0;
@@ -112,27 +109,27 @@
     white-space: nowrap;
   }
   .tg-price-tier {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--tg-text);
     margin: 0 0 4px;
   }
   .tg-price-users {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--tg-muted);
     margin: 0 0 16px;
     min-height: 21px;
   }
   .tg-price-wrap[data-billing="user"] .tg-price-users { visibility: hidden; }
   .tg-price-amount {
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 800;
     color: var(--tg-text);
     margin: 0 0 2px;
     line-height: 1.1;
   }
-  .tg-price-amount span { font-size: 18px; font-weight: 600; color: #94a3b8; }
-  .tg-price-period { font-size: 17px; color: #94a3b8; margin: 0 0 12px; }
+  .tg-price-amount span { font-size: 16px; font-weight: 600; color: #94a3b8; }
+  .tg-price-period { font-size: 15px; color: #94a3b8; margin: 0 0 12px; }
   .tg-price-annual {
     padding: 12px 14px;
     border-radius: 12px;
@@ -141,7 +138,7 @@
     margin-bottom: 20px;
   }
   .tg-price-annual-label {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -149,15 +146,15 @@
     margin: 0 0 4px;
   }
   .tg-price-annual-val {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     color: var(--tg-text);
     margin: 0;
     line-height: 1.2;
   }
-  .tg-price-annual-val span { font-size: 17px; font-weight: 600; color: #94a3b8; }
+  .tg-price-annual-val span { font-size: 15px; font-weight: 600; color: #94a3b8; }
   .tg-price-annual-total {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--tg-muted);
     margin: 4px 0 0;
   }
@@ -168,7 +165,7 @@
     flex: 1;
   }
   .tg-price-list li {
-    font-size: 17px;
+    font-size: 15px;
     color: #475569;
     padding: 7px 0 7px 22px;
     position: relative;
@@ -181,7 +178,7 @@
     left: 0;
     color: var(--tg-primary);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
   }
   .tg-price-btn {
     display: block;
@@ -189,7 +186,7 @@
     text-align: center;
     padding: 12px 16px;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     font-family: inherit;
     cursor: pointer;
@@ -220,7 +217,7 @@
     .tg-price-card { padding: 24px 18px; }
     .tg-price-amount { font-size: 32px; }
     .tg-price-annual { padding: 10px 12px; margin-bottom: 16px; }
-    .tg-price-annual-total { font-size: 11px; line-height: 1.45; }
+    .tg-price-annual-total { font-size: 13px; line-height: 1.45; }
     .tg-section-sub { font-size: 22px; }
     .tg-price-billing-btn { padding: 5px 14px; font-size: 17px; }
   }
@@ -234,13 +231,12 @@
     </div>
 
     <div class="tg-price-billing">
-      <p class="tg-price-billing-label">Модель оплаты</p>
       <div class="tg-price-billing-toggle" role="group" aria-label="Модель оплаты">
         <button type="button" class="tg-price-billing-btn is-active" data-billing="team" aria-pressed="true">На команду</button>
         <button type="button" class="tg-price-billing-btn" data-billing="user" aria-pressed="false">За пользователя</button>
       </div>
       <p class="tg-price-billing-hint" data-hint-team>Фиксированная цена тарифа — выгодно для отдела из нескольких специалистов.</p>
-      <p class="tg-price-billing-hint" data-hint-user hidden>Оплата за каждого пользователя — удобно для 1–2 специалистов, тариф чуть дороже пакета.</p>
+      <p class="tg-price-billing-hint" data-hint-user hidden>Оплата за каждого пользователя — удобно для 1–2 специалистов.</p>
     </div>
 
     <div class="tg-pricing-grid">
@@ -319,9 +315,9 @@
       pro:      { monthly: '30 000 ₽', annualMonthly: '21 000 ₽', annualTotal: '252 000 ₽ в год · экономия 108 000 ₽', suffix: '/мес' }
     },
     user: {
-      basic:    { monthly: '1 800 ₽', annualMonthly: '1 260 ₽', annualTotal: '15 120 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' },
-      standard: { monthly: '4 200 ₽', annualMonthly: '2 940 ₽', annualTotal: '35 280 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' },
-      pro:      { monthly: '7 500 ₽', annualMonthly: '5 250 ₽', annualTotal: '63 000 ₽ в год на пользователя · −30%', suffix: '/пользователь/мес' }
+      basic:    { monthly: '1 800 ₽', annualMonthly: '1 260 ₽', annualTotal: '15 120 ₽ в год на пользователя · экономия 6 480 ₽', suffix: '/пользователь/мес' },
+      standard: { monthly: '4 200 ₽', annualMonthly: '2 940 ₽', annualTotal: '35 280 ₽ в год на пользователя · экономия 15 120 ₽', suffix: '/пользователь/мес' },
+      pro:      { monthly: '7 500 ₽', annualMonthly: '5 250 ₽', annualTotal: '63 000 ₽ в год на пользователя · экономия 27 000 ₽', suffix: '/пользователь/мес' }
     }
   };
 
