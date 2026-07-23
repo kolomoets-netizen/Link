@@ -94,6 +94,7 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 - **Название продукта**: iStockLink — логотип в `assets/istocklink-icon.png`
 - **Цены**: отредактируйте в `04-audience-pricing.html`
 - **Форма CTA**: в `05-faq-cta.html` замените `action="#"` на URL формы Tilda или webhook (AmoCRM, Битрикс)
+- **Кейс директора**: фото в `06-director-case-proof.html` — замените `case-director.svg` на реальное фото; полное интервью — `docs/blog/interview-director.html`
 - **Цвет**: основной `#1c50de` — везде через CSS-переменную `--tg-primary`
 
 ## Цветовая палитра
