@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" fill="none" role="img" aria-label="8@5:B>@ B>@3>2>9 :><?0=88">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dce8ff"/>
+      <stop offset="100%" stop-color="#eef3ff"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1c50de"/>
+      <stop offset="100%" stop-color="#153fb8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="480" rx="24" fill="url(#bg)"/>
+  <ellipse cx="200" cy="430" rx="130" ry="28" fill="#c7d7ff" opacity="0.55"/>
+  <path d="M92 430c18-72 62-112 108-112s90 40 108 112H92z" fill="url(#shirt)"/>
+  <path d="M132 418h136l-10 12H142l-10-12z" fill="#fff" opacity="0.18"/>
+  <circle cx="200" cy="168" r="78" fill="#f8fafc"/>
+  <path d="M122 176c8-46 38-74 78-74s70 28 78 74c-18 8-38 12-78 12s-60-4-78-12z" fill="#334155"/>
+  <ellipse cx="200" cy="188" rx="58" ry="64" fill="#f1d0b0"/>
+  <path d="M142 188c6-34 28-52 58-52s52 18 58 52c-12 6-28 10-58 10s-46-4-58-10z" fill="#334155"/>
+  <path d="M152 220c10 18 24 28 48 28s38-10 48-28" stroke="#d4a574" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="176" cy="186" r="5" fill="#1e293b"/>
+  <circle cx="224" cy="186" r="5" fill="#1e293b"/>
+  <path d="M188 206c6 4 18 4 24 0" stroke="#b7791f" stroke-width="3" stroke-linecap="round"/>
+</svg>

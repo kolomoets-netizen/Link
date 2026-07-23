@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="5ec0283">
+<meta name="build" content="e53274e">
 <title>iStockLink</title>
 <link rel="stylesheet" href="https://static.tildacdn.com/css/fonts-tildasans.css">
-<link rel="stylesheet" href="assets/vendor/aos/aos.css?v=5ec0283">
-<link rel="stylesheet" href="assets/enhancements.css?v=5ec0283">
+<link rel="stylesheet" href="assets/vendor/aos/aos.css?v=e53274e">
+<link rel="stylesheet" href="assets/enhancements.css?v=e53274e">
 <style>
   body{margin:0}
   .tg-preview-bar{
@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-<div class="tg-preview-bar">Превью GitHub Pages · Tilda Sans · сборка 2026-07-23 (5ec0283) · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
+<div class="tg-preview-bar">Превью GitHub Pages · Tilda Sans · сборка 2026-07-23 (e53274e) · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
 <!-- Tilda block: Hero -->
 <style>
   .tg-hero-wrap {
@@ -1723,6 +1723,10 @@
 </script>
 
 <!-- Tilda block: Подтверждённый пример -->
+<!--
+  Фото: замените src на реальное фото респондента (рекомендуем 400×480, JPG/WebP).
+  Сейчас — иллюстративный плейсхолдер assets/case-director.svg
+-->
 <style>
   .tg-proof-wrap {
     --tg-primary: #1c50de;
@@ -1769,30 +1773,65 @@
     box-shadow: 0 20px 50px rgba(15,23,42,0.06);
     overflow: hidden;
   }
-  .tg-proof-top {
+
+  .tg-proof-hero {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 28px 32px;
+    border-bottom: 1px solid #eef2ff;
+    background: linear-gradient(135deg, #f8faff 0%, #fff 100%);
+  }
+  .tg-proof-photo {
+    width: 100%;
+    aspect-ratio: 5 / 6;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid rgba(28,80,222,0.1);
+    box-shadow: 0 12px 32px rgba(28,80,222,0.12);
+    display: block;
+  }
+  .tg-proof-hero-body { min-width: 0; }
+  .tg-proof-hero-quote {
+    position: relative;
+    margin: 0 0 18px;
+    padding: 0 0 0 28px;
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.45;
+    font-weight: 700;
+    color: var(--tg-text);
+    letter-spacing: -0.01em;
+  }
+  .tg-proof-hero-quote::before {
+    content: "\201C";
+    position: absolute;
+    left: 0;
+    top: -6px;
+    font-size: 48px;
+    line-height: 1;
+    color: rgba(28,80,222,0.22);
+    font-weight: 800;
+  }
+  .tg-proof-person {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 28px 32px 24px;
-    border-bottom: 1px solid #eef2ff;
+    align-items: baseline;
+    gap: 6px 10px;
+    margin: 0 0 12px;
   }
-  .tg-proof-profile { max-width: 620px; }
-  .tg-proof-role {
-    margin: 0 0 8px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-  }
-  .tg-proof-company {
-    margin: 0 0 10px;
-    font-size: clamp(22px, 2.8vw, 28px);
+  .tg-proof-name {
+    margin: 0;
+    font-size: 18px;
     font-weight: 800;
     color: var(--tg-text);
-    line-height: 1.2;
+  }
+  .tg-proof-position {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--tg-muted);
   }
   .tg-proof-tags {
     display: flex;
@@ -1811,8 +1850,15 @@
     border-radius: 999px;
     padding: 6px 12px;
   }
+
+  .tg-proof-meta-row {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 16px;
+    padding: 0 32px 24px;
+    border-bottom: 1px solid #eef2ff;
+  }
   .tg-proof-trigger {
-    flex: 0 1 260px;
     padding: 16px 18px;
     border-radius: 16px;
     background: #fff;
@@ -1838,9 +1884,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .tg-proof-col {
-    padding: 28px 32px;
-  }
+  .tg-proof-col { padding: 28px 32px; }
   .tg-proof-col.before {
     background: #fff;
     border-right: 1px solid #eef2ff;
@@ -1880,27 +1924,49 @@
     border-radius: 50%;
     background: #cbd5e1;
   }
-  .tg-proof-col.after .tg-proof-list li::before {
-    background: var(--tg-primary);
-  }
+  .tg-proof-col.after .tg-proof-list li::before { background: var(--tg-primary); }
 
-  .tg-proof-quote {
-    margin: 0;
+  .tg-proof-quotes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
     padding: 24px 32px;
     border-top: 1px solid #eef2ff;
-    font-size: clamp(18px, 2.2vw, 22px);
-    line-height: 1.55;
-    font-weight: 600;
-    color: var(--tg-text);
     background: #fff;
   }
-  .tg-proof-quote cite {
-    display: block;
-    margin-top: 10px;
-    font-style: normal;
+  .tg-proof-quote-card {
+    position: relative;
+    margin: 0;
+    padding: 18px 18px 18px 22px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+  }
+  .tg-proof-quote-card::before {
+    content: "\201C";
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-size: 36px;
+    line-height: 1;
+    color: rgba(28,80,222,0.16);
+    font-weight: 800;
+  }
+  .tg-proof-quote-card p {
+    margin: 0 0 10px;
+    padding-top: 18px;
     font-size: 15px;
+    line-height: 1.55;
+    color: #334155;
     font-weight: 600;
-    color: var(--tg-muted);
+  }
+  .tg-proof-quote-card cite {
+    display: block;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--tg-primary);
   }
 
   .tg-proof-cta-row {
@@ -1913,12 +1979,28 @@
     border-top: 1px solid #eef2ff;
     background: #fff;
   }
+  .tg-proof-cta-copy { max-width: 520px; }
   .tg-proof-cta-note {
-    margin: 0;
+    margin: 0 0 10px;
     color: var(--tg-muted);
     font-size: 15px;
     line-height: 1.5;
-    max-width: 520px;
+  }
+  .tg-proof-blog-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--tg-primary);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(28,80,222,0.25);
+  }
+  .tg-proof-blog-link:hover { border-bottom-color: var(--tg-primary); }
+  .tg-proof-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .tg-proof-btn {
     display: inline-flex;
@@ -1943,18 +2025,31 @@
     color: #fff !important;
   }
 
+  @media (max-width: 960px) {
+    .tg-proof-quotes { grid-template-columns: 1fr; }
+    .tg-proof-meta-row { grid-template-columns: 1fr; padding-left: 22px; padding-right: 22px; }
+  }
   @media (max-width: 860px) {
     .tg-proof-wrap { padding: 56px 20px 64px; }
+    .tg-proof-hero {
+      grid-template-columns: 1fr;
+      padding: 22px;
+      text-align: center;
+    }
+    .tg-proof-photo { max-width: 220px; margin: 0 auto; }
+    .tg-proof-hero-quote { padding-left: 0; padding-top: 28px; text-align: left; }
+    .tg-proof-hero-quote::before { left: 0; top: -4px; }
+    .tg-proof-person { justify-content: center; }
+    .tg-proof-tags { justify-content: center; }
     .tg-proof-grid { grid-template-columns: 1fr; }
     .tg-proof-col.before { border-right: none; border-bottom: 1px solid #eef2ff; }
-    .tg-proof-top,
     .tg-proof-col,
-    .tg-proof-quote,
+    .tg-proof-quotes,
     .tg-proof-cta-row { padding-left: 22px; padding-right: 22px; }
-    .tg-proof-trigger { flex-basis: 100%; }
   }
   @media (max-width: 560px) {
     .tg-proof-cta-row { flex-direction: column; align-items: stretch; }
+    .tg-proof-actions { width: 100%; flex-direction: column; }
     .tg-proof-btn { width: 100%; }
     .tg-proof-sub { font-size: 18px; }
   }
@@ -1969,16 +2064,37 @@
     </div>
 
     <article class="tg-proof-card">
-      <div class="tg-proof-top">
-        <div class="tg-proof-profile">
-          <p class="tg-proof-role">Интервью с директором</p>
-          <h3 class="tg-proof-company">Торговая компания, регулярные гос- и коммерческие закупки</h3>
+      <div class="tg-proof-hero">
+        <img
+          class="tg-proof-photo"
+          src="https://kolomoets-netizen.github.io/Link/assets/case-director.svg"
+          width="220"
+          height="264"
+          alt="Директор торговой компании"
+          loading="lazy"
+        >
+        <div class="tg-proof-hero-body">
+          <blockquote class="tg-proof-hero-quote">
+            Моя цель — больше тендеров в работе, больше тендеров — больше денег. Система нужна не только для контроля, а как объективный источник данных.
+          </blockquote>
+          <div class="tg-proof-person">
+            <p class="tg-proof-name">Директор торговой компании</p>
+            <p class="tg-proof-position">4 тендерных специалиста · гос- и коммерческие закупки</p>
+          </div>
           <ul class="tg-proof-tags">
-            <li>4 тендерных специалиста</li>
             <li>Агрегаторы с первых дней</li>
             <li>Был опыт с Битрикс24 и 1С</li>
+            <li>От Google Таблиц к iStockLink</li>
           </ul>
         </div>
+      </div>
+
+      <div class="tg-proof-meta-row">
+        <ul class="tg-proof-tags" style="align-self:center">
+          <li>Торговая компания</li>
+          <li>Регулярные закупки</li>
+          <li>Команда из 4 специалистов</li>
+        </ul>
         <div class="tg-proof-trigger">
           <p class="tg-proof-trigger-label">Когда понадобилась система</p>
           <p class="tg-proof-trigger-text">Когда тендерных специалистов стало несколько — и нужно было управлять процессом, а не собирать сводки.</p>
@@ -2006,14 +2122,29 @@
         </div>
       </div>
 
-      <blockquote class="tg-proof-quote">
-        «Моя цель — больше тендеров в работе, больше тендеров — больше денег. Система нужна не только для контроля, а как объективный источник данных, который помогает управлять процессом».
-        <cite>Директор торговой компании</cite>
-      </blockquote>
+      <div class="tg-proof-quotes">
+        <figure class="tg-proof-quote-card">
+          <p>Я не могу контролировать процесс в таблицах. Мне важно знать, кто сколько тендеров ведёт и на какой стадии.</p>
+          <cite>О контроле команды</cite>
+        </figure>
+        <figure class="tg-proof-quote-card">
+          <p>Я не понимаю, как торговая компания может не пользоваться агрегаторами — это экономия времени.</p>
+          <cite>Об агрегаторах</cite>
+        </figure>
+        <figure class="tg-proof-quote-card">
+          <p>Если бы данные были объективными и не приходилось копипастить — это уже 70% решения. iStockLink дал эту возможность.</p>
+          <cite>О переходе с таблиц</cite>
+        </figure>
+      </div>
 
       <div class="tg-proof-cta-row">
-        <p class="tg-proof-cta-note">Если ваш сценарий похож — расскажем, как перенести работу отдела из таблиц в управляемый процесс.</p>
-        <a href="#popup:demo" class="tg-proof-btn" id="case-consult-cta" data-case-cta="consult">Запросить консультацию эксперта</a>
+        <div class="tg-proof-cta-copy">
+          <p class="tg-proof-cta-note">Если ваш сценарий похож — расскажем, как перенести работу отдела из таблиц в управляемый процесс.</p>
+          <a href="https://kolomoets-netizen.github.io/Link/blog/interview-director.html" class="tg-proof-blog-link">Читать интервью полностью →</a>
+        </div>
+        <div class="tg-proof-actions">
+          <a href="#popup:demo" class="tg-proof-btn" id="case-consult-cta" data-case-cta="consult">Запросить консультацию эксперта</a>
+        </div>
       </div>
     </article>
   </div>
@@ -2118,8 +2249,8 @@
     </div>
   </div>
 </div>
-<script src="assets/vendor/lenis/lenis.min.js?v=5ec0283"></script>
-<script src="assets/vendor/aos/aos.js?v=5ec0283"></script>
-<script src="assets/enhancements.js?v=5ec0283"></script>
+<script src="assets/vendor/lenis/lenis.min.js?v=e53274e"></script>
+<script src="assets/vendor/aos/aos.js?v=e53274e"></script>
+<script src="assets/enhancements.js?v=e53274e"></script>
 </body>
 </html>
