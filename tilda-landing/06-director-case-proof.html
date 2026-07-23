@@ -1,0 +1,159 @@
+<!-- Tilda block: Подтверждённый пример -->
+<style>
+  .tg-proof-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 72px 24px;
+  }
+  .tg-proof-wrap *, .tg-proof-wrap *::before, .tg-proof-wrap *::after { box-sizing: border-box; }
+  .tg-proof-inner { max-width: 1120px; margin: 0 auto; }
+  .tg-proof-card {
+    border: 1px solid #dbe5ff;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
+    box-shadow: 0 14px 40px rgba(28, 80, 222, 0.08);
+    padding: 36px 34px;
+  }
+  .tg-proof-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--tg-primary);
+  }
+  .tg-proof-eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--tg-primary);
+    box-shadow: 0 0 0 6px rgba(28, 80, 222, 0.12);
+  }
+  .tg-proof-title {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 3vw, 36px);
+    line-height: 1.24;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--tg-text);
+  }
+  .tg-proof-sub {
+    margin: 0 0 26px;
+    max-width: 860px;
+    color: #334155;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  .tg-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .tg-proof-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #fff;
+    padding: 16px 18px;
+  }
+  .tg-proof-item h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+    line-height: 1.45;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .tg-proof-item p {
+    margin: 0;
+    color: var(--tg-muted);
+    font-size: 15px;
+    line-height: 1.56;
+  }
+  .tg-proof-cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 18px;
+  }
+  .tg-proof-cta-note {
+    margin: 0;
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .tg-proof-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    min-width: 280px;
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #1c50de, #3b6df0);
+    box-shadow: 0 10px 28px rgba(28, 80, 222, 0.28);
+    transition: transform .2s ease, box-shadow .2s ease;
+    white-space: nowrap;
+  }
+  .tg-proof-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(28, 80, 222, 0.32);
+    color: #fff;
+  }
+  @media (max-width: 860px) {
+    .tg-proof-wrap { padding: 56px 20px; }
+    .tg-proof-card { padding: 28px 20px; border-radius: 20px; }
+    .tg-proof-grid { grid-template-columns: 1fr; gap: 12px; }
+    .tg-proof-sub { font-size: 17px; margin-bottom: 20px; }
+    .tg-proof-btn { width: 100%; min-width: 0; }
+  }
+</style>
+
+<div class="tg-proof-wrap">
+  <div class="tg-proof-inner">
+    <article class="tg-proof-card">
+      <p class="tg-proof-eyebrow">Подтверждённый пример</p>
+      <h2 class="tg-proof-title">Опыт директора торговой компании с командой тендерных специалистов</h2>
+      <p class="tg-proof-sub">Когда специалистов стало несколько, таблицы перестали давать объективную картину: сложно видеть нагрузку по заявкам, сроки согласований и что тормозит поставки по проектам.</p>
+
+      <div class="tg-proof-grid">
+        <section class="tg-proof-item">
+          <h3>Тип компании</h3>
+          <p>Торговая компания с регулярным участием в закупках и распределённой тендерной командой.</p>
+        </section>
+        <section class="tg-proof-item">
+          <h3>Исходная проблема</h3>
+          <p>Нет прозрачности по воронке: кто сколько тендеров ведёт, где просадки в согласованиях и почему часть проектов движется медленнее.</p>
+        </section>
+        <section class="tg-proof-item">
+          <h3>Что не сработало раньше</h3>
+          <p>Bitrix и 1С не закрыли весь контур и потребовали много ручной работы; в Google Таблицах не было надёжного управленческого источника данных.</p>
+        </section>
+        <section class="tg-proof-item">
+          <h3>Что стало прозрачнее</h3>
+          <p>Нагрузка по каждому сотруднику, стадии заявок, узкие места в согласованиях и статус работы с закупками и поставками в едином процессе.</p>
+        </section>
+      </div>
+
+      <div class="tg-proof-cta-row">
+        <p class="tg-proof-cta-note">Цель руководителя: больше тендеров в работе, меньше рутины у команды и предсказуемый рост выручки.</p>
+        <a href="#popup:demo" class="tg-proof-btn">Запросить консультацию эксперта</a>
+      </div>
+    </article>
+  </div>
+</div>
