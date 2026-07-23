@@ -26,6 +26,7 @@ const blocks = [
   '02-how-it-works.html',
   '08-crm-compare.html',
   '04-audience-pricing.html',
+  '10-case-study.html',
   '05-faq-cta.html',
 ];
 

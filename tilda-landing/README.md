@@ -25,7 +25,8 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | 4 | `02-how-it-works.html` | Как это работает |
 | 5 | `08-crm-compare.html` | Сравнение с обычной CRM |
 | 6 | `04-audience-pricing.html` | Стоимость платформы |
-| 7 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
+| 7 | `10-case-study.html` | Кейс: торговая компания, директор |
+| 8 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
 | 0 | `00-enhancements-tilda.html` | *(опционально)* плавный скролл и анимации — **в конце страницы** |
 
 Архив (не в сборке): `archive/03-features.html`, `archive/06-integrations.html`
