@@ -2,12 +2,13 @@
 <style>
   .tg-proof-wrap {
     --tg-primary: #1c50de;
+    --tg-primary-dark: #153fb8;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
     font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
+    background: linear-gradient(180deg, #eef3ff 0%, #f8faff 45%, #fff 100%);
     padding: 80px 24px;
   }
   .tg-proof-wrap *, .tg-proof-wrap *::before, .tg-proof-wrap *::after { box-sizing: border-box; }
@@ -21,8 +22,8 @@
     margin: 0 0 14px;
     padding: 6px 14px;
     border-radius: 999px;
-    background: #fff;
-    border: 1px solid rgba(28,80,222,0.14);
+    background: rgba(28,80,222,0.08);
+    border: 1px solid rgba(28,80,222,0.16);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -35,7 +36,7 @@
     height: 8px;
     border-radius: 50%;
     background: var(--tg-primary);
-    box-shadow: 0 0 0 4px rgba(28,80,222,0.14);
+    box-shadow: 0 0 0 4px rgba(28,80,222,0.16);
   }
   .tg-proof-title {
     margin: 0 0 12px;
@@ -45,6 +46,7 @@
     letter-spacing: -0.02em;
     color: var(--tg-text);
   }
+  .tg-proof-title span { color: var(--tg-primary); }
   .tg-proof-sub {
     margin: 0 auto;
     max-width: 620px;
@@ -54,95 +56,125 @@
   }
 
   .tg-proof-card {
-    border: 1px solid rgba(28,80,222,0.1);
+    position: relative;
+    border: 1px solid rgba(28,80,222,0.14);
     border-radius: 28px;
     background: #fff;
-    box-shadow: 0 24px 60px rgba(15,23,42,0.08);
+    box-shadow: 0 24px 60px rgba(28,80,222,0.1);
     overflow: hidden;
+  }
+  .tg-proof-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #1c50de 0%, #3b6df0 50%, #5b8af5 100%);
   }
 
   .tg-proof-hero {
     display: grid;
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: 32px;
-    align-items: center;
-    padding: 32px;
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+    padding: 32px 32px 28px;
     background:
-      radial-gradient(circle at top right, rgba(28,80,222,0.08) 0%, transparent 42%),
+      radial-gradient(circle at 88% 12%, rgba(28,80,222,0.12) 0%, transparent 34%),
       linear-gradient(180deg, #f8faff 0%, #fff 100%);
-    border-bottom: 1px solid #eef2ff;
+    border-bottom: 1px solid #dbe5ff;
   }
   .tg-proof-photo-col { align-self: start; }
+  .tg-proof-photo-frame {
+    padding: 4px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #1c50de, #5b8af5);
+    box-shadow: 0 12px 28px rgba(28,80,222,0.22);
+  }
   .tg-proof-photo {
     width: 100%;
     aspect-ratio: 4 / 5;
-    border-radius: 22px;
+    border-radius: 14px;
     object-fit: cover;
     object-position: center 18%;
     display: block;
-    border: 3px solid #fff;
-    box-shadow: 0 18px 40px rgba(28,80,222,0.16);
   }
-  .tg-proof-photo-caption {
-    margin-top: 14px;
-    text-align: center;
-  }
+  .tg-proof-photo-caption { margin-top: 12px; text-align: center; }
   .tg-proof-photo-name {
     margin: 0 0 4px;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--tg-text);
     line-height: 1.3;
   }
   .tg-proof-photo-meta {
     margin: 0;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.45;
-    color: var(--tg-muted);
+    color: var(--tg-primary);
+    font-weight: 600;
   }
+
   .tg-proof-hero-quote {
     position: relative;
     margin: 0;
-    padding: 24px 26px 24px 30px;
-    border-radius: 18px;
-    background: #fff;
-    border: 1px solid rgba(28,80,222,0.1);
-    box-shadow: 0 8px 24px rgba(15,23,42,0.04);
-    font-size: clamp(20px, 2.3vw, 25px);
+    padding: 26px 28px 26px 34px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 55%, #3b6df0 100%);
+    box-shadow: 0 16px 40px rgba(28,80,222,0.24);
+    font-size: clamp(21px, 2.4vw, 26px);
     line-height: 1.45;
     font-weight: 700;
-    color: var(--tg-text);
+    color: #fff;
     letter-spacing: -0.01em;
   }
   .tg-proof-hero-quote::before {
     content: "\201C";
     position: absolute;
-    left: 16px;
-    top: 8px;
-    font-size: 42px;
+    left: 14px;
+    top: 2px;
+    font-size: 56px;
     line-height: 1;
-    color: rgba(28,80,222,0.18);
+    color: rgba(255,255,255,0.28);
     font-weight: 800;
+  }
+  .tg-proof-hero-quote strong {
+    color: #fff;
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: rgba(255,255,255,0.35);
+    text-underline-offset: 3px;
   }
 
   .tg-proof-qa {
-    padding: 28px 32px;
-    border-bottom: 1px solid #eef2ff;
-    background: #fff;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px 20px;
+    align-items: start;
+    padding: 22px 32px;
+    border-bottom: 1px solid #dbe5ff;
+    background: linear-gradient(90deg, rgba(28,80,222,0.07) 0%, rgba(28,80,222,0.02) 100%);
+    border-left: 4px solid var(--tg-primary);
   }
   .tg-proof-qa-q {
-    margin: 0 0 8px;
-    font-size: 17px;
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid rgba(28,80,222,0.14);
+    font-size: 14px;
     font-weight: 800;
-    line-height: 1.4;
-    color: var(--tg-text);
+    line-height: 1.3;
+    color: var(--tg-primary);
+    white-space: nowrap;
   }
   .tg-proof-qa-a {
     margin: 0;
+    padding-top: 4px;
     font-size: 17px;
     line-height: 1.58;
-    color: #334155;
-    font-weight: 600;
+    color: #1e293b;
+    font-weight: 700;
   }
 
   .tg-proof-grid {
@@ -152,20 +184,34 @@
   .tg-proof-col { padding: 28px 32px; }
   .tg-proof-col.before {
     background: #fff;
-    border-right: 1px solid #eef2ff;
+    border-right: 1px solid #dbe5ff;
   }
   .tg-proof-col.after {
-    background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
+    background: linear-gradient(180deg, #eef3ff 0%, #f8faff 100%);
   }
   .tg-proof-col-title {
-    margin: 0 0 16px;
-    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 14px;
     font-weight: 800;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .tg-proof-col.before .tg-proof-col-title { color: #1e293b; }
-  .tg-proof-col.after .tg-proof-col-title { color: var(--tg-primary); }
+  .tg-proof-col.before .tg-proof-col-title {
+    color: #9a3412;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+  }
+  .tg-proof-col.after .tg-proof-col-title {
+    color: var(--tg-primary-dark);
+    background: #fff;
+    border: 1px solid rgba(28,80,222,0.16);
+    box-shadow: 0 4px 14px rgba(28,80,222,0.08);
+  }
   .tg-proof-list {
     margin: 0;
     padding: 0;
@@ -173,22 +219,22 @@
   }
   .tg-proof-list li {
     position: relative;
-    padding: 0 0 14px 20px;
+    padding: 0 0 14px 22px;
     font-size: 17px;
     line-height: 1.58;
-    color: #334155;
+    color: #1e293b;
   }
   .tg-proof-list li:last-child { padding-bottom: 0; }
   .tg-proof-list li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.62em;
-    width: 7px;
-    height: 7px;
+    top: 0.58em;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: #94a3b8;
   }
+  .tg-proof-col.before .tg-proof-list li::before { background: #fb923c; }
   .tg-proof-col.after .tg-proof-list li::before { background: var(--tg-primary); }
 
   .tg-proof-cta-row {
@@ -196,7 +242,7 @@
     align-items: center;
     justify-content: center;
     padding: 26px 32px;
-    background: linear-gradient(135deg, #1c50de 0%, #2a5fe8 55%, #3b6df0 100%);
+    background: linear-gradient(135deg, #153fb8 0%, #1c50de 45%, #3b6df0 100%);
   }
   .tg-proof-btn {
     display: inline-flex;
@@ -211,13 +257,13 @@
     font-family: inherit;
     color: var(--tg-primary) !important;
     background: #fff;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
     transition: transform .2s, box-shadow .2s;
     white-space: nowrap;
   }
   .tg-proof-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
     color: var(--tg-primary) !important;
   }
 
@@ -227,17 +273,32 @@
       grid-template-columns: 1fr;
       padding: 24px 22px;
     }
-    .tg-proof-photo-col { max-width: 240px; margin: 0 auto; }
+    .tg-proof-photo-col {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      max-width: none;
+    }
+    .tg-proof-photo-caption { margin-top: 0; text-align: left; }
     .tg-proof-grid { grid-template-columns: 1fr; }
     .tg-proof-col.before {
       border-right: none;
-      border-bottom: 1px solid #eef2ff;
+      border-bottom: 1px solid #dbe5ff;
     }
-    .tg-proof-qa,
+    .tg-proof-qa {
+      grid-template-columns: 1fr;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+    .tg-proof-qa-q { white-space: normal; }
     .tg-proof-col,
     .tg-proof-cta-row { padding-left: 22px; padding-right: 22px; }
   }
   @media (max-width: 560px) {
+    .tg-proof-photo-col { grid-template-columns: 1fr; }
+    .tg-proof-photo-col { max-width: 140px; margin: 0 auto; }
+    .tg-proof-photo-caption { text-align: center; }
     .tg-proof-btn { width: 100%; max-width: 320px; }
     .tg-proof-sub { font-size: 18px; }
   }
@@ -247,28 +308,30 @@
   <div class="tg-proof-inner">
     <div class="tg-proof-header">
       <p class="tg-proof-eyebrow">Подтверждённый пример</p>
-      <h2 class="tg-proof-title">Торговая компания с тендерным отделом</h2>
+      <h2 class="tg-proof-title">Торговая компания с <span>тендерным отделом</span></h2>
       <p class="tg-proof-sub">Когда тендерных специалистов стало несколько, Google Таблицы перестали давать объективную картину — руководитель не видел нагрузку, стадии заявок и узкие места в согласованиях и поставках.</p>
     </div>
 
     <article class="tg-proof-card">
       <div class="tg-proof-hero">
         <div class="tg-proof-photo-col">
-          <img
-            class="tg-proof-photo"
-            src="https://kolomoets-netizen.github.io/Link/assets/case-director.jpg"
-            width="240"
-            height="300"
-            alt="Директор торговой компании"
-            loading="lazy"
-          >
+          <div class="tg-proof-photo-frame">
+            <img
+              class="tg-proof-photo"
+              src="https://kolomoets-netizen.github.io/Link/assets/case-director.jpg"
+              width="160"
+              height="200"
+              alt="Директор торговой компании"
+              loading="lazy"
+            >
+          </div>
           <div class="tg-proof-photo-caption">
             <p class="tg-proof-photo-name">Директор торговой компании</p>
             <p class="tg-proof-photo-meta">Торговая компания · 40 сотрудников<br>20 тендерных специалистов</p>
           </div>
         </div>
         <blockquote class="tg-proof-hero-quote">
-          Моя цель — больше тендеров в работе, больше тендеров — больше денег. Система нужна не только для контроля, а как объективный источник данных.
+          Моя цель — <strong>больше тендеров в работе</strong>, больше тендеров — больше денег. Система нужна не только для контроля, а как объективный источник данных.
         </blockquote>
       </div>
 
