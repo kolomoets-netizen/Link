@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 варианта блока «Стоимость» — iStockLink</title>
+  <link rel="stylesheet" href="https://static.tildacdn.com/css/fonts-tildasans.css">
+  <style>
+    body { margin: 0; background: #e8edf5; font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .pv-nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 12px 20px;
+      background: #0f172a; color: #fff;
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .pv-nav a { color: #93c5fd; font-weight: 600; text-decoration: none; }
+    .pv-nav a:hover { text-decoration: underline; }
+    .pv-label {
+      padding: 48px 24px 16px;
+      max-width: 1120px; margin: 0 auto;
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #1c50de;
+    }
+    .pv-label span {
+      display: block; margin-top: 6px;
+      font-size: 22px; letter-spacing: -0.02em;
+      text-transform: none; color: #0f172a;
+    }
+    .pv-label em { font-style: normal; font-weight: 600; font-size: 15px; color: #64748b; }
+  </style>
+</head>
+<body>
+  <nav class="pv-nav">
+    <span>Выберите вариант:</span>
+    <a href="#variant-1">Вариант 1 · Синяя колонка</a>
+    <a href="#variant-2">Вариант 2 · Акцент и карточки</a>
+    <a href="#variant-3">Вариант 3 · Мягкий фон</a>
+    <a href="https://kolomoets-netizen.github.io/Link/">Лендинг</a>
+    <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">Файлы v1–v3 в репо</a>
+  </nav>
+
+  <p class="pv-label" id="variant-1">Вариант 1<span>Синяя колонка слева</span><em>Обе цены в одной панели, справа контент и CTA</em></p>
+  <div id="inject-v1"></div>
+
+  <p class="pv-label" id="variant-2">Вариант 2<span>Белая колонка с акцентом</span><em>Цены слева, списки в отдельных карточках справа</em></p>
+  <div id="inject-v2"></div>
+
+  <p class="pv-label" id="variant-3">Вариант 3<span>Мягкий голубой блок</span><em>Крупная цена, разделитель, насыщенная типографика справа</em></p>
+  <div id="inject-v3"></div>
+
+  <script>
+    [['inject-v1', '11-pricing-value-v1.html'],
+     ['inject-v2', '11-pricing-value-v2.html'],
+     ['inject-v3', '11-pricing-value-v3.html']].forEach(function (pair) {
+      fetch(pair[1]).then(function (r) { return r.text(); }).then(function (html) {
+        document.getElementById(pair[0]).innerHTML = html;
+      });
+    });
+  </script>
+</body>
+</html>

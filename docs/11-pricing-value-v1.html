@@ -1,0 +1,216 @@
+<!-- Tilda block v1: Синяя колонка слева -->
+<style>
+  .pv1-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 0 24px 80px;
+  }
+  .pv1-wrap *, .pv1-wrap *::before, .pv1-wrap *::after { box-sizing: border-box; }
+  .pv1-inner { max-width: 1120px; margin: 0 auto; }
+  .pv1-header { text-align: center; margin-bottom: 40px; padding-top: 80px; }
+  .pv1-header h2 {
+    margin: 0 0 14px;
+    font-size: clamp(32px, 3.5vw, 44px);
+    font-weight: 800;
+    color: var(--tg-text);
+    line-height: 1.15;
+  }
+  .pv1-header p {
+    margin: 0 auto;
+    max-width: 640px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--tg-muted);
+  }
+  .pv1-card {
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(28, 80, 222, 0.1);
+  }
+  .pv1-left {
+    padding: 36px 32px;
+    background: linear-gradient(165deg, #0f2a8a 0%, #1c50de 52%, #3b6ef0 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+  }
+  .pv1-price-block { position: relative; }
+  .pv1-price-block + .pv1-price-block {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .pv1-label {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .pv1-amount {
+    margin: 0 0 8px;
+    font-size: clamp(36px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .pv1-amount small {
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.85;
+  }
+  .pv1-amount-team {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.15;
+  }
+  .pv1-note {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+  }
+  .pv1-right {
+    padding: 36px 40px 32px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .pv1-section-title {
+    margin: 0 0 14px;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--tg-text);
+  }
+  .pv1-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pv1-list li {
+    position: relative;
+    padding: 0 0 10px 24px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #475569;
+  }
+  .pv1-list li:last-child { padding-bottom: 0; }
+  .pv1-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tg-primary);
+  }
+  .pv1-actions {
+    margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid #eef2ff;
+    padding-top: 24px;
+  }
+  .pv1-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--tg-primary);
+    text-decoration: none;
+  }
+  .pv1-link:hover { text-decoration: underline; }
+  .pv1-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    color: #fff !important;
+    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
+    box-shadow: 0 10px 28px rgba(28, 80, 222, 0.22);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pv1-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(28, 80, 222, 0.28);
+  }
+  @media (max-width: 860px) {
+    .pv1-wrap { padding: 0 20px 56px; }
+    .pv1-header { padding-top: 56px; }
+    .pv1-card { grid-template-columns: 1fr; }
+    .pv1-left, .pv1-right { padding: 28px 24px; }
+    .pv1-actions { flex-direction: column; align-items: stretch; }
+    .pv1-btn { width: 100%; }
+    .pv1-link { text-align: center; }
+  }
+</style>
+<div class="pv1-wrap" id="pricing-value">
+  <div class="pv1-inner">
+    <div class="pv1-header">
+      <h2>Стоимость платформы</h2>
+      <p>Доступно для команды: без затрат на внедрение, доработки CRM и долгое обучение.</p>
+    </div>
+    <article class="pv1-card">
+      <aside class="pv1-left">
+        <div class="pv1-price-block">
+          <p class="pv1-label">За пользователя</p>
+          <p class="pv1-amount">от 1 260 ₽<small>/ мес при годовой подписке</small></p>
+          <p class="pv1-note">Удобно для 1–2 специалистов.</p>
+        </div>
+        <div class="pv1-price-block">
+          <p class="pv1-label">На команду</p>
+          <p class="pv1-amount-team">от 6 000 ₽ / мес</p>
+          <p class="pv1-note">Фиксированный тариф, когда в отделе несколько тендерных специалистов.</p>
+        </div>
+      </aside>
+      <div class="pv1-right">
+        <div>
+          <p class="pv1-section-title">За эти деньги вы получаете</p>
+          <ul class="pv1-list">
+            <li>Единую ленту закупок из агрегаторов и закрытых торгов</li>
+            <li>Воронку торгов: этапы, задачи, ответственные</li>
+            <li>Работу с поставщиками и проведение закупок</li>
+            <li>Оцифровку коммерческих предложений</li>
+            <li>Объективную картину нагрузки по каждому специалисту</li>
+          </ul>
+        </div>
+        <div>
+          <p class="pv1-section-title">Быстрый старт</p>
+          <ul class="pv1-list">
+            <li>Подключение за день: подключили агрегатор и работаете</li>
+            <li>Не нужен проект внедрения, доработки CRM и долгое обучение</li>
+            <li>Интерфейс понятен тендерному отделу без отдельного курса</li>
+            <li>14 дней бесплатно, без привязки карты</li>
+          </ul>
+        </div>
+        <div class="pv1-actions">
+          <a href="https://istock.link/pricing" class="pv1-link" target="_blank" rel="noopener noreferrer">Все тарифы и условия →</a>
+          <a href="#demo" class="pv1-btn">Получить демо</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

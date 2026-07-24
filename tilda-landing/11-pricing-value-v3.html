@@ -1,0 +1,237 @@
+<!-- Tilda block v3: Мягкий голубой блок, насыщенная типографика -->
+<style>
+  .pv3-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 80px 24px;
+  }
+  .pv3-wrap *, .pv3-wrap *::before, .pv3-wrap *::after { box-sizing: border-box; }
+  .pv3-inner { max-width: 1120px; margin: 0 auto; }
+  .pv3-header { margin-bottom: 36px; max-width: 720px; }
+  .pv3-header h2 {
+    margin: 0 0 12px;
+    font-size: clamp(32px, 3.5vw, 44px);
+    font-weight: 800;
+    color: var(--tg-text);
+    line-height: 1.12;
+  }
+  .pv3-header p {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--tg-muted);
+  }
+  .pv3-shell {
+    border-radius: 28px;
+    padding: 8px;
+    background: linear-gradient(135deg, #dbeafe 0%, #eef3ff 50%, #f0f9ff 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  .pv3-body {
+    display: grid;
+    grid-template-columns: 38% minmax(0, 1fr);
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(28, 80, 222, 0.08);
+  }
+  .pv3-left {
+    padding: 40px 32px;
+    background: linear-gradient(180deg, #f0f6ff 0%, #e8f0fe 100%);
+    border-right: 1px solid rgba(28, 80, 222, 0.1);
+  }
+  .pv3-left-title {
+    margin: 0 0 28px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+  }
+  .pv3-row + .pv3-row {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px solid rgba(28, 80, 222, 0.12);
+  }
+  .pv3-row-label {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--tg-muted);
+  }
+  .pv3-row-value {
+    margin: 0 0 10px;
+    font-size: clamp(38px, 4.2vw, 48px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--tg-text);
+  }
+  .pv3-row-value em {
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0;
+  }
+  .pv3-row-value-sm {
+    margin: 0 0 10px;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--tg-primary);
+    letter-spacing: -0.02em;
+  }
+  .pv3-row-desc {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #475569;
+  }
+  .pv3-right {
+    padding: 40px 44px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 40px;
+  }
+  .pv3-block h3 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--tg-text);
+    line-height: 1.25;
+  }
+  .pv3-block h3::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin-top: 10px;
+    border-radius: 999px;
+    background: var(--tg-primary);
+  }
+  .pv3-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pv3-list li {
+    padding: 0 0 12px 0;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .pv3-list li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .pv3-foot {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 28px;
+    margin-top: 4px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .pv3-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--tg-primary);
+    text-decoration: none;
+  }
+  .pv3-link:hover { text-decoration: underline; }
+  .pv3-btn {
+    display: inline-flex;
+    padding: 15px 36px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    text-decoration: none;
+    color: #fff !important;
+    background: var(--tg-primary);
+    box-shadow: 0 8px 24px rgba(28, 80, 222, 0.25);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .pv3-btn:hover {
+    background: #1642c4;
+    transform: translateY(-2px);
+  }
+  @media (max-width: 900px) {
+    .pv3-body { grid-template-columns: 1fr; }
+    .pv3-left {
+      border-right: none;
+      border-bottom: 1px solid rgba(28, 80, 222, 0.1);
+    }
+    .pv3-right {
+      grid-template-columns: 1fr;
+      padding: 32px 24px;
+    }
+  }
+  @media (max-width: 600px) {
+    .pv3-wrap { padding: 56px 20px; }
+    .pv3-left { padding: 28px 22px; }
+    .pv3-foot { flex-direction: column; align-items: stretch; }
+    .pv3-btn { justify-content: center; width: 100%; }
+    .pv3-link { text-align: center; }
+  }
+</style>
+<div class="pv3-wrap" id="pricing-value">
+  <div class="pv3-inner">
+    <div class="pv3-header">
+      <h2>Стоимость платформы</h2>
+      <p>Доступно для команды: без затрат на внедрение, доработки CRM и долгое обучение.</p>
+    </div>
+    <div class="pv3-shell">
+      <article class="pv3-body">
+        <div class="pv3-left">
+          <p class="pv3-left-title">Тарифы</p>
+          <div class="pv3-row">
+            <p class="pv3-row-label">За пользователя</p>
+            <p class="pv3-row-value">1 260 ₽ <em>/ мес</em></p>
+            <p class="pv3-row-desc">От этой суммы при годовой подписке. Подходит для 1–2 специалистов.</p>
+          </div>
+          <div class="pv3-row">
+            <p class="pv3-row-label">На команду</p>
+            <p class="pv3-row-value-sm">от 6 000 ₽ / мес</p>
+            <p class="pv3-row-desc">Фиксированный тариф, когда в отделе несколько тендерных специалистов.</p>
+          </div>
+        </div>
+        <div class="pv3-right">
+          <div class="pv3-block">
+            <h3>За эти деньги вы получаете</h3>
+            <ul class="pv3-list">
+              <li>Единую ленту закупок из агрегаторов и закрытых торгов</li>
+              <li>Воронку торгов: этапы, задачи, ответственные</li>
+              <li>Работу с поставщиками и проведение закупок</li>
+              <li>Оцифровку коммерческих предложений</li>
+              <li>Объективную картину нагрузки по каждому специалисту</li>
+            </ul>
+          </div>
+          <div class="pv3-block">
+            <h3>Быстрый старт</h3>
+            <ul class="pv3-list">
+              <li>Подключение за день: подключили агрегатор и работаете</li>
+              <li>Не нужен проект внедрения, доработки CRM и долгое обучение</li>
+              <li>Интерфейс понятен тендерному отделу без отдельного курса</li>
+              <li>14 дней бесплатно, без привязки карты</li>
+            </ul>
+          </div>
+          <div class="pv3-foot">
+            <a href="https://istock.link/pricing" class="pv3-link" target="_blank" rel="noopener noreferrer">Все тарифы и условия →</a>
+            <a href="#demo" class="pv3-btn">Получить демо</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
