@@ -1869,6 +1869,256 @@
   </div>
 </div>
 
+<!-- Tilda block: Кейс — промышленная компания -->
+<style>
+  .tg-proof2-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    --tg-radius: 16px;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 80px 24px;
+  }
+  .tg-proof2-wrap *, .tg-proof2-wrap *::before, .tg-proof2-wrap *::after { box-sizing: border-box; }
+  .tg-proof2-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-proof2-card {
+    border-radius: 24px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .tg-proof2-hero {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    padding: 24px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .tg-proof2-photo-box {
+    overflow: hidden;
+    border-radius: var(--tg-radius);
+    background: #fff;
+  }
+  .tg-proof2-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--tg-radius);
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
+  }
+  .tg-proof2-quote-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 28px 22px;
+    border-radius: var(--tg-radius);
+    background: #fff;
+  }
+  .tg-proof2-quote-main {
+    display: flex;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .tg-proof2-quote-bar {
+    width: 4px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: var(--tg-primary);
+  }
+  .tg-proof2-quote-text {
+    margin: 0;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.55;
+    font-weight: 600;
+    color: var(--tg-text);
+  }
+  .tg-proof2-quote-sign {
+    margin: 20px 0 0 22px;
+    padding-top: 16px;
+    border-top: 1px solid #eef2f7;
+  }
+  .tg-proof2-quote-name {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--tg-text);
+    line-height: 1.35;
+  }
+  .tg-proof2-quote-meta {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--tg-muted);
+  }
+
+  .tg-proof2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: #fff;
+  }
+  .tg-proof2-col {
+    padding: 28px 32px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tg-proof2-col.before { border-right: 1px solid #e2e8f0; }
+  .tg-proof2-col.after { background: #f8faff; }
+  .tg-proof2-col-title {
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tg-text);
+  }
+  .tg-proof2-col.after .tg-proof2-col-title { color: var(--tg-primary); }
+  .tg-proof2-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tg-proof2-list li {
+    position: relative;
+    padding: 0 0 14px 18px;
+    font-size: 17px;
+    line-height: 1.58;
+    color: #334155;
+  }
+  .tg-proof2-list li:last-child { padding-bottom: 0; }
+  .tg-proof2-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #94a3b8;
+  }
+  .tg-proof2-col.after .tg-proof2-list li::before { background: var(--tg-primary); }
+  .tg-proof2-hl-bad {
+    color: #475569;
+    font-weight: 700;
+  }
+  .tg-proof2-hl-good {
+    color: var(--tg-primary);
+    font-weight: 700;
+  }
+
+  .tg-proof2-cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 32px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tg-proof2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    line-height: 1.2;
+    color: #fff !important;
+    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
+    box-shadow: 0 10px 28px rgba(28,80,222,0.22);
+    transition: transform .2s, box-shadow .2s;
+    white-space: nowrap;
+  }
+  .tg-proof2-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(28,80,222,0.28);
+    color: #fff !important;
+  }
+
+  @media (max-width: 860px) {
+    .tg-proof2-wrap { padding: 56px 20px 64px; }
+    .tg-proof2-hero {
+      grid-template-columns: 1fr;
+      padding: 20px;
+    }
+    .tg-proof2-photo-box { max-width: 180px; }
+    .tg-proof2-grid { grid-template-columns: 1fr; }
+    .tg-proof2-col.before {
+      border-right: none;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .tg-proof2-col,
+    .tg-proof2-cta-row { padding-left: 22px; padding-right: 22px; }
+  }
+  @media (max-width: 560px) {
+    .tg-proof2-btn { width: 100%; max-width: 320px; }
+    .tg-proof2-photo-box { max-width: 160px; margin: 0 auto; }
+  }
+</style>
+
+<div class="tg-proof2-wrap" id="industrial-case">
+  <div class="tg-proof2-inner">
+    <article class="tg-proof2-card">
+      <div class="tg-proof2-hero">
+        <div class="tg-proof2-photo-box">
+          <img
+            class="tg-proof2-photo"
+            src="https://kolomoets-netizen.github.io/Link/assets/case-director-industrial.jpg"
+            width="200"
+            height="250"
+            alt="Директор промышленной компании"
+            loading="lazy"
+          >
+        </div>
+        <div class="tg-proof2-quote-box">
+          <div class="tg-proof2-quote-main">
+            <span class="tg-proof2-quote-bar" aria-hidden="true"></span>
+            <p class="tg-proof2-quote-text">«По нерегламентированным закупкам мы часто не понимаем, по какой цене покупаем — суммы большие. Нужен инструмент, который поможет упорядочить ценообразование и опираться на факты, а не на память отдельных людей».</p>
+          </div>
+          <div class="tg-proof2-quote-sign">
+            <p class="tg-proof2-quote-name">Директор промышленной компании</p>
+            <p class="tg-proof2-quote-meta">Промышленное производство · 100 сотрудников<br>Отдел снабжения · 15 человек</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tg-proof2-grid">
+        <div class="tg-proof2-col before">
+          <p class="tg-proof2-col-title">Было</p>
+          <ul class="tg-proof2-list">
+            <li>Регламентированные позиции по ведомостям понятны, а по <span class="tg-proof2-hl-bad">остальным комплектующим и ТМЦ</span> — не видно, кто у кого и за сколько берёт.</li>
+            <li>Учёт цен в базе есть, но <span class="tg-proof2-hl-bad">неудобный</span>: счёт на 5&nbsp;000 ₽ за деталь, в истории — 8&nbsp;000 ₽; без быстрого сравнения переплачиваем.</li>
+            <li>Накладные (масла, инструмент, расходники) раздувают <span class="tg-proof2-hl-bad">25–26 счета</span> — при индексации цены зарплату некуда растить: 80% себестоимости — ФОТ.</li>
+            <li>После истории с недобросовестными закупками <span class="tg-proof2-hl-bad">нет уверенности</span>, что по инструменту и мелким закупкам нет скрытых переплат.</li>
+          </ul>
+        </div>
+        <div class="tg-proof2-col after">
+          <p class="tg-proof2-col-title">Стало</p>
+          <ul class="tg-proof2-list">
+            <li>Запускаем <span class="tg-proof2-hl-good">контроль цен</span> с экономикой: счета и закупки снабжения в одном процессе, а не в разрозненных таблицах.</li>
+            <li>Новый счёт <span class="tg-proof2-hl-good">сверяем с историей</span> по позиции до согласования — как с «барашками»: нашли прошлую цену, согласовали ~4&nbsp;100 ₽ вместо 5&nbsp;000.</li>
+            <li>Коммерческие предложения и закупки у поставщиков — <span class="tg-proof2-hl-good">в цифровом контуре</span>, проще держать накладные в нормативе и защищать фонд оплаты труда.</li>
+            <li>Отдел из 15 человек работает по <span class="tg-proof2-hl-good">единым правилам</span>: меньше «ручной» договорённости, больше прозрачности для директора.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tg-proof2-cta-row">
+        <a href="#demo" class="tg-proof2-btn">Получить демо</a>
+      </div>
+    </article>
+  </div>
+</div>
+
 <!-- Tilda block: CTA -->
 <!--
   Попап Tilda:

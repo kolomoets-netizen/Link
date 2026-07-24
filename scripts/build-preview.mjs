@@ -27,6 +27,7 @@ const blocks = [
   '08-crm-compare.html',
   '11-pricing-value.html',
   '06-director-case-proof.html',
+  '06-industrial-case-proof.html',
   '05-faq-cta.html',
 ];
 
