@@ -28,6 +28,7 @@ const blocks = [
   '11-pricing-value.html',
   '06-director-case-proof.html',
   '06-industrial-case-proof.html',
+  '10-seldon-email-preview.html',
   '05-faq-cta.html',
 ];
 
