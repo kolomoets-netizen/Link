@@ -74,6 +74,16 @@ const docsAssets = join(docs, 'assets');
 mkdirSync(docsAssets, { recursive: true });
 cpSync(join(base, 'assets'), docsAssets, { recursive: true });
 
+const extraPages = [
+  'pricing-value-variants.html',
+  '11-pricing-value-v1.html',
+  '11-pricing-value-v2.html',
+  '11-pricing-value-v3.html',
+];
+for (const name of extraPages) {
+  cpSync(join(base, name), join(docs, name));
+}
+
 const redirect404 = `<!DOCTYPE html>
 <html lang="ru">
 <head>
