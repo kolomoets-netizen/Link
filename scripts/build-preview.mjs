@@ -27,6 +27,7 @@ const blocks = [
   '08-crm-compare.html',
   '04-audience-pricing.html',
   '06-director-case-proof.html',
+  '10-seldon-email-preview.html',
   '05-faq-cta.html',
 ];
 
