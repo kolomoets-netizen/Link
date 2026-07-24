@@ -25,7 +25,7 @@ const blocks = [
   '07-crm-srm-kp.html',
   '02-how-it-works.html',
   '08-crm-compare.html',
-  '04-audience-pricing.html',
+  '11-pricing-value.html',
   '06-director-case-proof.html',
   '05-faq-cta.html',
 ];

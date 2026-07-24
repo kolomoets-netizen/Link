@@ -1,0 +1,217 @@
+<!-- Tilda block: Стоимость — ценность и быстрый старт -->
+<style>
+  .tg-pval-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
+    padding: 80px 24px;
+  }
+  .tg-pval-wrap *, .tg-pval-wrap *::before, .tg-pval-wrap *::after { box-sizing: border-box; }
+  .tg-pval-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-pval-card {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.95fr) minmax(0, 1.05fr);
+    gap: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(28,80,222,0.12);
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(15,23,42,0.07);
+  }
+  .tg-pval-price {
+    padding: 36px 32px;
+    background: linear-gradient(160deg, #1c50de 0%, #2f63ea 55%, #3b6df0 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tg-pval-label {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+  .tg-pval-amount {
+    margin: 0 0 6px;
+    font-size: clamp(40px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .tg-pval-amount span {
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 700;
+    opacity: 0.92;
+  }
+  .tg-pval-note {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.9);
+  }
+  .tg-pval-team {
+    margin: 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.22);
+    font-size: 15px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.88);
+  }
+  .tg-pval-team strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .tg-pval-body {
+    padding: 36px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .tg-pval-block-title {
+    margin: 0 0 14px;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--tg-text);
+    line-height: 1.3;
+  }
+  .tg-pval-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tg-pval-list li {
+    position: relative;
+    padding: 0 0 10px 22px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #334155;
+  }
+  .tg-pval-list li:last-child { padding-bottom: 0; }
+  .tg-pval-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--tg-primary);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .tg-pval-start {
+    padding: 18px 20px;
+    border-radius: 14px;
+    background: #f8faff;
+    border: 1px solid rgba(28,80,222,0.1);
+  }
+  .tg-pval-start .tg-pval-list li { font-size: 15px; }
+  .tg-pval-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-top: auto;
+  }
+  .tg-pval-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    white-space: nowrap;
+  }
+  .tg-pval-btn-primary {
+    color: #fff !important;
+    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
+    box-shadow: 0 10px 28px rgba(28,80,222,0.22);
+  }
+  .tg-pval-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(28,80,222,0.28);
+    color: #fff !important;
+  }
+  .tg-pval-btn-outline {
+    color: var(--tg-primary) !important;
+    background: #fff;
+    border: 1px solid rgba(28,80,222,0.22);
+  }
+  .tg-pval-btn-outline:hover {
+    transform: translateY(-2px);
+    color: var(--tg-primary) !important;
+  }
+  .tg-pval-footnote {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--tg-muted);
+  }
+
+  @media (max-width: 860px) {
+    .tg-pval-wrap { padding: 56px 20px 64px; }
+    .tg-pval-card { grid-template-columns: 1fr; }
+    .tg-pval-price { padding: 28px 24px; }
+    .tg-pval-body { padding: 28px 24px; }
+    .tg-pval-actions { flex-direction: column; align-items: stretch; }
+    .tg-pval-btn { width: 100%; }
+  }
+</style>
+
+<div class="tg-pval-wrap" id="pricing-value">
+  <div class="tg-pval-inner">
+    <article class="tg-pval-card">
+      <div class="tg-pval-price">
+        <p class="tg-pval-label">Стоимость платформы</p>
+        <p class="tg-pval-amount">от 1 260 ₽ <span>/ пользователь / мес</span></p>
+        <p class="tg-pval-note">При годовой подписке. Без скрытых платежей за внедрение и обучение.</p>
+        <p class="tg-pval-team">
+          <strong>На команду: от 6 000 ₽ / мес</strong>
+          Фиксированный тариф, когда в отделе несколько специалистов
+        </p>
+      </div>
+
+      <div class="tg-pval-body">
+        <div>
+          <p class="tg-pval-block-title">За эти деньги вы получаете</p>
+          <ul class="tg-pval-list">
+            <li>Единую ленту закупок из агрегаторов и закрытых торгов</li>
+            <li>Воронку торгов: этапы, задачи, ответственные</li>
+            <li>Работу с поставщиками и проведение закупок</li>
+            <li>Оцифровку коммерческих предложений</li>
+            <li>Объективную картину нагрузки по каждому специалисту</li>
+          </ul>
+        </div>
+
+        <div class="tg-pval-start">
+          <p class="tg-pval-block-title">Быстрый старт</p>
+          <ul class="tg-pval-list">
+            <li>Подключение за день: подключили агрегатор и работаете</li>
+            <li>Не нужен проект внедрения, доработки CRM и долгое обучение</li>
+            <li>Интерфейс понятен тендерному отделу без отдельного курса</li>
+            <li>14 дней бесплатно, без привязки карты</li>
+          </ul>
+        </div>
+
+        <div class="tg-pval-actions">
+          <a href="https://istock.link/pricing" class="tg-pval-btn tg-pval-btn-primary" target="_blank" rel="noopener noreferrer">Все тарифы и условия</a>
+          <a href="#demo" class="tg-pval-btn tg-pval-btn-outline">Получить демо</a>
+          <p class="tg-pval-footnote">Подробное сравнение тарифов на istock.link/pricing</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

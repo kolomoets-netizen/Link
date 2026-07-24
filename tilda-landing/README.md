@@ -24,9 +24,10 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | 3 | `07-crm-srm-kp.html` | Вся тендерная работа в iStockLink |
 | 4 | `02-how-it-works.html` | Как это работает |
 | 5 | `08-crm-compare.html` | Сравнение с обычной CRM |
-| 6 | `04-audience-pricing.html` | Стоимость платформы |
-| 7 | `06-director-case-proof.html` | Подтверждённый пример директора торговой компании |
-| 8 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
+| 6 | `11-pricing-value.html` | Стоимость: ценность, от 1 260 ₽, ссылка на тарифы |
+| 7 | `04-audience-pricing.html` | *(опционально)* три карточки тарифов с переключателем |
+| 8 | `06-director-case-proof.html` | Подтверждённый пример директора торговой компании |
+| 9 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
 | 0 | `00-enhancements-tilda.html` | *(опционально)* плавный скролл и анимации — **в конце страницы** |
 
 Архив (не в сборке): `archive/03-features.html`, `archive/06-integrations.html`
