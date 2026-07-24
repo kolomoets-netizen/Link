@@ -1461,6 +1461,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px 40px;
+    align-items: start;
   }
   .tg-pval-block h3 {
     margin: 0 0 16px;
@@ -1479,11 +1480,11 @@
     background: var(--tg-primary);
   }
   .tg-pval-block--start {
-    padding: 24px 26px 26px;
+    position: relative;
+    padding: 0 20px 22px;
+    margin: 0 -20px;
     border-radius: 16px;
     background: linear-gradient(180deg, #f8faff 0%, #eef3ff 100%);
-    border: 1px solid rgba(28, 80, 222, 0.1);
-    align-self: start;
   }
   .tg-pval-list {
     margin: 0;
@@ -1554,7 +1555,8 @@
       padding: 32px 24px;
     }
     .tg-pval-block--start {
-      margin-top: 4px;
+      margin: 0;
+      padding: 20px 18px 22px;
     }
   }
   @media (max-width: 600px) {
