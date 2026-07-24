@@ -1478,6 +1478,13 @@
     border-radius: 999px;
     background: var(--tg-primary);
   }
+  .tg-pval-block--start {
+    padding: 24px 26px 26px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #f8faff 0%, #eef3ff 100%);
+    border: 1px solid rgba(28, 80, 222, 0.1);
+    align-self: start;
+  }
   .tg-pval-list {
     margin: 0;
     padding: 0;
@@ -1546,6 +1553,9 @@
       grid-template-columns: 1fr;
       padding: 32px 24px;
     }
+    .tg-pval-block--start {
+      margin-top: 4px;
+    }
   }
   @media (max-width: 600px) {
     .tg-pval-wrap { padding: 56px 20px; }
@@ -1585,7 +1595,7 @@
               <li>Объективную картину нагрузки по каждому специалисту</li>
             </ul>
           </div>
-          <div class="tg-pval-block">
+          <div class="tg-pval-block tg-pval-block--start">
             <h3>Быстрый старт</h3>
             <ul class="tg-pval-list">
               <li>Подключение за день: подключили агрегатор и работаете</li>
