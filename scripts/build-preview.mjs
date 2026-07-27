@@ -59,7 +59,7 @@ const html = `<!DOCTYPE html>
 </style>
 </head>
 <body>
-<div class="tg-preview-bar">Превью GitHub Pages · Tilda Sans · сборка ${buildDate} (${buildId}) · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a></div>
+<div class="tg-preview-bar">Превью GitHub Pages · Tilda Sans · сборка ${buildDate} (${buildId}) · <a href="https://github.com/kolomoets-netizen/Link/tree/main/tilda-landing">блоки для Tilda</a> · <a href="./emails/supplier-tender-module-seldon.html">письмо поставщикам</a></div>
 ${body}
 <script src="assets/vendor/lenis/lenis.min.js?v=${buildId}"></script>
 <script src="assets/vendor/aos/aos.js?v=${buildId}"></script>
@@ -85,6 +85,34 @@ const extraPages = [
 for (const name of extraPages) {
   cpSync(join(base, name), join(docs, name));
 }
+
+const emailsSrc = join(root, 'content', 'emails');
+const emailsDocs = join(docs, 'emails');
+mkdirSync(emailsDocs, { recursive: true });
+const supplierEmail = 'supplier-tender-module-seldon.html';
+let emailHtml = readFileSync(join(emailsSrc, supplierEmail), 'utf-8');
+emailHtml = emailHtml
+  .replaceAll('{{COMPANY_NAME}}', 'iStockLink')
+  .replaceAll('{{CONTACT_NAME}}', '')
+  .replaceAll('{{CTA_URL}}', 'https://kolomoets-netizen.github.io/Link/')
+  .replaceAll('{{SUPPORT_EMAIL}}', 'support@istock.link')
+  .replaceAll('{{UNSUBSCRIBE_URL}}', 'https://kolomoets-netizen.github.io/Link/emails/');
+writeFileSync(join(emailsDocs, supplierEmail), emailHtml, 'utf-8');
+writeFileSync(
+  join(emailsDocs, 'index.html'),
+  `<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Письма iStockLink</title>
+  <meta http-equiv="refresh" content="0;url=supplier-tender-module-seldon.html">
+</head>
+<body><p><a href="supplier-tender-module-seldon.html">Письмо для поставщиков</a></p></body>
+</html>
+`,
+  'utf-8',
+);
 
 const redirect404 = `<!DOCTYPE html>
 <html lang="ru">
