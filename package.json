@@ -4,6 +4,8 @@
   "scripts": {
     "vendor": "node scripts/vendor-sync.mjs",
     "build:preview": "node scripts/build-preview.mjs",
+    "promo:screens": "node scripts/promo/build-screens.mjs",
+    "promo:capture": "node scripts/promo/capture-screens.mjs",
     "promo:record": "node scripts/promo/record.mjs",
     "postinstall": "npm run vendor"
   },
