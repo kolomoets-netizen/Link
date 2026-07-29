@@ -162,6 +162,97 @@ def shimmer_pad(n: int, sr: int = SR, root: float = 261.63) -> np.ndarray:
     return sig
 
 
+def soft_pluck(freq: float, dur: float, sr: int = SR) -> np.ndarray:
+    """Bright soft synth pluck — Apple keynote lead tone."""
+    n = max(2, int(dur * sr))
+    t = np.arange(n) / sr
+    # dual detuned sines + soft square-ish partials
+    det = 1.002
+    tone = (
+        0.72 * np.sin(2 * math.pi * freq * t)
+        + 0.28 * np.sin(2 * math.pi * freq * det * t)
+        + 0.12 * np.sin(2 * math.pi * freq * 2 * t) * np.exp(-t * 6)
+        + 0.05 * np.sin(2 * math.pi * freq * 3 * t) * np.exp(-t * 10)
+    )
+    # gentle bell sparkle
+    tone += 0.08 * np.sin(2 * math.pi * freq * 4.01 * t) * np.exp(-t * 18)
+    e = env_adsr(n, 0.004, 0.08, 0.42, max(0.08, dur * 0.45))
+    # tiny noise attack
+    click_n = min(n, int(0.01 * sr))
+    attack = np.zeros(n)
+    attack[:click_n] = np.random.randn(click_n) * np.linspace(1, 0, click_n) * 0.12
+    out = soft_clip((tone + attack) * e * db(-9), 1.15)
+    return out
+
+
+def melody_phrase() -> list[tuple[float | None, float]]:
+    """
+    Optimistic C-major hook (note Hz or None=rest, duration in beats).
+    8-bar A section + 8-bar lift variation.
+    """
+    # Pitch map
+    C4, D4, E4, F4, G4, A4 = 261.63, 293.66, 329.63, 349.23, 392.00, 440.00
+    C5, D5, E5, F5, G5, A5 = 523.25, 587.33, 659.25, 698.46, 783.99, 880.00
+
+    a = [
+        # bars 1-2 — ascending optimistic motif
+        (E5, 1), (G5, 1), (E5, 1), (D5, 1),
+        (C5, 2), (G4, 1), (A4, 1),
+        # bars 3-4 — answer
+        (E5, 1), (G5, 1), (A5, 1), (G5, 1),
+        (E5, 1.5), (D5, 0.5), (C5, 2),
+        # bars 5-6 — echo with skip
+        (G5, 1), (E5, 1), (C5, 1), (D5, 1),
+        (E5, 2), (None, 1), (G4, 1),
+        # bars 7-8 — resolve
+        (A4, 1), (C5, 1), (E5, 1), (G5, 1),
+        (E5, 1), (D5, 1), (C5, 2),
+    ]
+    b = [
+        # bars 9-12 — lift / brighter
+        (G5, 1), (A5, 1), (G5, 1), (E5, 1),
+        (F5, 1), (E5, 1), (D5, 1), (C5, 1),
+        (E5, 1), (G5, 1), (A5, 1.5), (G5, 0.5),
+        (E5, 2), (None, 0.5), (C5, 1.5),
+        # bars 13-16 — home
+        (E5, 1), (G5, 1), (E5, 1), (D5, 1),
+        (C5, 2), (E5, 1), (G5, 1),
+        (A5, 1), (G5, 1), (E5, 1), (D5, 1),
+        (C5, 3), (None, 1),
+    ]
+    return a + b
+
+
+def render_melody(total_beats: int = BEATS) -> np.ndarray:
+    """Place repeating 16-bar melody across the track, entering after 2 bars."""
+    phrase = melody_phrase()
+    phrase_beats = sum(d for _, d in phrase)  # 32 beats = 8 bars... wait a+b = 16 bars = 64 beats
+    # Actually a is 8 bars = 32 beats, b is 8 bars = 32, total 64 beats = 16 bars
+    n = int(DURATION * SR)
+    track = np.zeros(n)
+    # Start melody at bar 2 so rhythm establishes first
+    start_beat = 8
+    t_beat = float(start_beat)
+    # Cycle phrase until end, leave last bar for pad-only outro
+    end_beat = total_beats - 4
+    while t_beat < end_beat:
+        for note, dur in phrase:
+            if t_beat >= end_beat:
+                break
+            if note is not None:
+                # slight humanization
+                human = (hash((t_beat, note)) % 7 - 3) * 0.002
+                clip = soft_pluck(note, dur * BEAT * 0.92)
+                place(track, clip, t_beat * BEAT + human, gain=1.0)
+                # soft octave sparkle on downbeats of phrase starts
+                if abs((t_beat - start_beat) % 8) < 0.01:
+                    place(track, soft_pluck(note * 2, dur * BEAT * 0.5), t_beat * BEAT, gain=0.28)
+            t_beat += dur
+        # small breath between phrase loops
+        t_beat += 0  # seamless loop
+    return track
+
+
 def place(target: np.ndarray, clip: np.ndarray, at: float, gain: float = 1.0) -> None:
     i = int(at * SR)
     if i >= len(target) or i < 0:
@@ -178,25 +269,28 @@ def render() -> np.ndarray:
 
     snap = finger_snap()
     k = kick()
-    b808 = bass_808(freq=46.25)  # ~F#1-ish round
-    b808_alt = bass_808(freq=41.2)  # E1 variation every other bar
+    # C-major rooted 808 (C2 / G1)
+    b808 = bass_808(freq=65.41)
+    b808_alt = bass_808(freq=49.00)  # G1
+    b808_f = bass_808(freq=43.65)  # F1 passing
 
     for beat in range(BEATS):
         t0 = beat * BEAT
-        # short riser leading into each beat/snap
         r = riser(length=0.16 if beat % 4 == 0 else 0.12)
         place(mix, r, t0 - len(r) / SR + 0.004, gain=1.0 if beat % 4 == 0 else 0.7)
-        # finger snap on every beat (downbeat louder)
         snap_gain = 1.15 if beat % 4 == 0 else 0.92
         place(mix, snap, t0, gain=snap_gain)
-        # soft kick — stronger on 1 and 3
         if beat % 2 == 0:
             place(mix, k, t0, gain=0.85 if beat % 4 == 0 else 0.55)
-        # 808 pulse every beat, slightly longer on downbeats
-        bass = b808 if (beat // 4) % 2 == 0 else b808_alt
+        bar = beat // 4
+        if bar % 4 == 2 and beat % 4 == 0:
+            bass = b808_f
+        elif bar % 2 == 0:
+            bass = b808
+        else:
+            bass = b808_alt
         place(mix, bass, t0, gain=0.95 if beat % 4 == 0 else 0.72)
 
-    # subtle electronic texture ticks (very quiet)
     rng = np.random.default_rng(7)
     for beat in range(0, BEATS, 2):
         t0 = beat * BEAT + BEAT * 0.5
@@ -204,15 +298,16 @@ def render() -> np.ndarray:
         tick = highpass(rng.standard_normal(tick_n), 5000) * np.linspace(1, 0, tick_n) * db(-28)
         place(mix, tick, t0, gain=1.0)
 
-    # soft master bus
-    mix = soft_clip(mix * 0.95, 1.05)
+    # Melodic lead (was missing — prompt originally said no melodies; now added)
+    mix += render_melody() * db(1.5)
+
+    mix = soft_clip(mix * 0.92, 1.05)
     peak = np.max(np.abs(mix)) + 1e-9
     mix = mix / peak * db(-1.5)
 
-    # fade in/out
     fade = int(0.02 * SR)
     mix[:fade] *= np.linspace(0, 1, fade)
-    mix[-fade:] *= np.linspace(1, 0, fade)
+    mix[-int(0.15 * SR) :] *= np.linspace(1, 0, int(0.15 * SR))
     return mix.astype(np.float32)
 
 
