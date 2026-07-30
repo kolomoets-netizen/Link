@@ -7,6 +7,16 @@
 
 ---
 
+## Эскизы слайдов (для оживления)
+
+18 кадров 16:9: фразы + UI-композиции с подсказками motion.
+
+- Папка PNG: [`docs/promo/slides/png/`](./slides/png/)
+- HTML-эскизы: [`docs/promo/slides/`](./slides/)
+- Индекс: [`docs/promo/slides/index.html`](./slides/index.html)
+
+---
+
 ## Принцип
 
 | Тип кадра | Длительность | Что на экране |
