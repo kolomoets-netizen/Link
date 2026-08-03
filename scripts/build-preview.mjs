@@ -92,10 +92,8 @@ mkdirSync(emailsDocs, { recursive: true });
 const supplierEmail = 'supplier-tender-module-seldon.html';
 let emailHtml = readFileSync(join(emailsSrc, supplierEmail), 'utf-8');
 emailHtml = emailHtml
-  .replaceAll('{{COMPANY_NAME}}', 'iStockLink')
   .replaceAll('{{CONTACT_NAME}}', '')
-  .replaceAll('{{CTA_URL}}', 'https://kolomoets-netizen.github.io/Link/')
-  .replaceAll('{{SUPPORT_EMAIL}}', 'support@istock.link')
+  .replaceAll('{{DEMO_URL}}', 'https://kolomoets-netizen.github.io/Link/#demo')
   .replaceAll('{{UNSUBSCRIBE_URL}}', 'https://kolomoets-netizen.github.io/Link/emails/');
 writeFileSync(join(emailsDocs, supplierEmail), emailHtml, 'utf-8');
 writeFileSync(
