@@ -1,0 +1,131 @@
+<!-- Tilda Zero/HTML block: Product tour video -->
+<!--
+  1. Загрузите MP4 в файлы Тильды ИЛИ используйте URL с GitHub Pages:
+     https://kolomoets-netizen.github.io/Link/assets/videos/istocklink-product-tour.mp4
+  2. При необходимости замените src у <video> и poster.
+  3. Локальные исходники: tilda-landing/assets/videos/
+-->
+<style>
+  .tg-tour-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: linear-gradient(180deg, #0b1224 0%, #132044 55%, #0f172a 100%);
+    padding: 80px 24px 88px;
+    color: #fff;
+  }
+  .tg-tour-wrap *, .tg-tour-wrap *::before, .tg-tour-wrap *::after { box-sizing: border-box; }
+  .tg-tour-inner { max-width: 1120px; margin: 0 auto; }
+  .tg-tour-header { text-align: center; margin-bottom: 36px; }
+  .tg-tour-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #93b4ff;
+    margin-bottom: 12px;
+  }
+  .tg-tour-title {
+    margin: 0 0 14px;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .tg-tour-sub {
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(226,232,240,0.78);
+    max-width: 720px;
+  }
+  .tg-tour-frame {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    background: #0b1224;
+  }
+  .tg-tour-frame video {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+    background: #0b1224;
+  }
+  .tg-tour-points {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .tg-tour-point {
+    padding: 16px 16px 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .tg-tour-point strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 750;
+    margin-bottom: 6px;
+  }
+  .tg-tour-point span {
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(226,232,240,0.72);
+  }
+  @media (max-width: 900px) {
+    .tg-tour-points { grid-template-columns: 1fr 1fr; }
+    .tg-tour-wrap { padding: 56px 16px 64px; }
+  }
+  @media (max-width: 560px) {
+    .tg-tour-points { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="tg-tour-wrap" id="product-tour">
+  <div class="tg-tour-inner">
+    <div class="tg-tour-header">
+      <div class="tg-tour-label">Обзор системы</div>
+      <h2 class="tg-tour-title">Как istock.link закрывает цикл закупок</h2>
+      <p class="tg-tour-sub">От потребности и согласования до запросов, склада и тендеров с агрегаторов — в одном рабочем контуре.</p>
+    </div>
+
+    <div class="tg-tour-frame">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="https://kolomoets-netizen.github.io/Link/assets/videos/poster-product-tour.png"
+        src="https://kolomoets-netizen.github.io/Link/assets/videos/istocklink-product-tour.mp4"
+      >
+        Ваш браузер не поддерживает видео.
+      </video>
+    </div>
+
+    <div class="tg-tour-points">
+      <div class="tg-tour-point">
+        <strong>Потребности и заявки</strong>
+        <span>Сбор спроса и маршруты согласования закупок</span>
+      </div>
+      <div class="tg-tour-point">
+        <strong>Запросы и товары</strong>
+        <span>Сравнение откликов и статус каждой позиции</span>
+      </div>
+      <div class="tg-tour-point">
+        <strong>Поставщики и склад</strong>
+        <span>Квалификация, оценка, приёмка и запасы</span>
+      </div>
+      <div class="tg-tour-point">
+        <strong>Тендеры</strong>
+        <span>Лента и воронка закупок с агрегаторов</span>
+      </div>
+    </div>
+  </div>
+</div>
