@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'tilda-landing/**'
+      - 'content/emails/**'
       - 'package.json'
       - 'package-lock.json'
       - 'scripts/**'
@@ -13,9 +14,11 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: pages-build
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -41,3 +44,19 @@ jobs:
           git add docs/
           git diff --staged --quiet || git commit -m "chore: rebuild docs for GitHub Pages"
           git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
