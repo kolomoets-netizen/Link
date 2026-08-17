@@ -101,6 +101,13 @@ emailHtml = emailHtml
     'https://istock.link/konturseldon?utm_source=email&amp;utm_medium=email&amp;utm_campaign=supplier-tender-module&amp;utm_content=connect-service',
   )
   .replaceAll('{{UNSUBSCRIBE_URL}}', 'https://kolomoets-netizen.github.io/Link/emails/');
+const buildStamp = `<!-- preview build: ${buildDate} ${buildId} -->`;
+if (!emailHtml.includes('Cache-Control')) {
+  emailHtml = emailHtml.replace(
+    '<head>',
+    `<head>\n  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">\n  ${buildStamp}`,
+  );
+}
 writeFileSync(join(emailsDocs, supplierEmail), emailHtml, 'utf-8');
 writeFileSync(
   join(emailsDocs, 'index.html'),
