@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-  <div class="bar">Превью блока Контур · сборка 2026-09-10 (3a8df5d) ·
+  <div class="bar">Превью блока Контур · сборка 2026-09-10 (18362d1) ·
     <a href="https://kolomoets-netizen.github.io/Link/preview-kontur-widget.html">смотреть блок</a> ·
     <a href="https://raw.githubusercontent.com/kolomoets-netizen/Link/main/tilda-landing/08-kontur-search-widget.html">код для Tilda</a>
   </div>
@@ -25,7 +25,6 @@
   .tg-kontur-wrap {
     --tg-primary: #1c50de;
     --tg-text: #0f172a;
-    --tg-muted: #64748b;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -35,13 +34,11 @@
   .tg-kontur-wrap *, .tg-kontur-wrap *::before, .tg-kontur-wrap *::after { box-sizing: border-box; }
   .tg-kontur-inner { max-width: 1120px; margin: 0 auto; }
 
-  .tg-kontur-search-head,
-  .tg-kontur-crm-head {
+  .tg-kontur-search-head {
     text-align: center;
     margin-bottom: 28px;
   }
-  .tg-kontur-search-head h2,
-  .tg-kontur-crm-head h2 {
+  .tg-kontur-search-head h2 {
     margin: 0 0 12px;
     font-size: clamp(28px, 3.5vw, 40px);
     font-weight: 800;
@@ -49,8 +46,7 @@
     color: var(--tg-text);
     line-height: 1.15;
   }
-  .tg-kontur-search-head p,
-  .tg-kontur-crm-head p {
+  .tg-kontur-search-head p {
     margin: 0 auto;
     max-width: 680px;
     font-size: clamp(21px, 2.8vw, 30px);
@@ -70,38 +66,10 @@
     height: 116px;
     border: 0;
     background: transparent;
-    margin-bottom: 36px;
-  }
-
-  .tg-kontur-crm {
-    text-align: center;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0;
-    background: none;
-  }
-  .tg-kontur-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 17px 36px;
-    border-radius: 14px;
-    font-size: 17px;
-    font-weight: 600;
-    text-decoration: none;
-    color: #fff;
-    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
-    box-shadow: 0 10px 30px rgba(28, 80, 222, 0.28);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .tg-kontur-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 36px rgba(28, 80, 222, 0.34);
   }
 
   @media (max-width: 640px) {
     .tg-kontur-wrap { padding: 48px 16px 56px; }
-    .tg-kontur-iframe { margin-bottom: 28px; }
   }
 </style>
 
@@ -121,35 +89,8 @@
       loading="lazy"
       allowtransparency="true"
     ></iframe>
-
-    <div class="tg-kontur-crm">
-      <div class="tg-kontur-crm-head">
-        <h2>Нужна система для работы тендерного отдела?</h2>
-        <p>Оставьте заявку и мы покажем, как система поможет <span class="tg-kontur-brand">именно вашей компании</span>.</p>
-      </div>
-      <a
-        href="#popup:demo"
-        class="tg-kontur-btn"
-        id="btn-trading-demo-kontur-block"
-        data-ym-goal="TRADING_BTN_DEMO_KONTUR_BLOCK"
-      >Запросить демо CRM</a>
-    </div>
   </div>
 </div>
-
-<script>
-(function () {
-  var COUNTER_ID = 86511628;
-  document.querySelectorAll('#kontur-search [data-ym-goal]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      var goal = el.getAttribute('data-ym-goal');
-      if (goal && typeof ym === 'function') {
-        ym(COUNTER_ID, 'reachGoal', goal);
-      }
-    });
-  });
-})();
-</script>
 
   <p class="ctx">↓ «Как это работает»</p>
   <div class="fake">…</div>
