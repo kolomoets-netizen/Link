@@ -81,6 +81,7 @@ const extraPages = [
   '11-pricing-value-v1.html',
   '11-pricing-value-v2.html',
   '11-pricing-value-v3.html',
+  'preview-kontur-headline-variants.html',
 ];
 for (const name of extraPages) {
   cpSync(join(base, name), join(docs, name));

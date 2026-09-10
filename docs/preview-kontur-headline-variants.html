@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 вариантов — блок CRM под виджетом Контур</title>
+  <link rel="stylesheet" href="https://static.tildacdn.com/css/fonts-tildasans.css">
+  <style>
+    :root {
+      --primary: #1c50de;
+      --text: #0f172a;
+      --muted: #64748b;
+      --bg: #f4f7ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #e8edf5;
+      color: var(--text);
+    }
+    .page-bar {
+      position: sticky; top: 0; z-index: 10;
+      background: #0f172a; color: #fff;
+      padding: 12px 16px; text-align: center; font-size: 13px;
+    }
+    .page-bar a { color: #93c5fd; }
+    .intro {
+      max-width: 720px; margin: 32px auto; padding: 0 20px;
+      font-size: 15px; line-height: 1.6; color: var(--muted);
+    }
+    .variant {
+      max-width: 1120px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+    .variant-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .variant-name {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .variant-stage {
+      background: #fff;
+      border-radius: 20px;
+      padding: 48px 32px 40px;
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+    }
+    .btn {
+      display: inline-flex;
+      margin-top: 28px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(135deg, #1c50de, #2f63ea);
+      box-shadow: 0 10px 30px rgba(28, 80, 222, 0.28);
+    }
+
+    /* V1 — маркер на ключевой фразе */
+    .v1 { text-align: center; max-width: 680px; margin: 0 auto; }
+    .v1 .headline {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+    .v1 .mark {
+      background: linear-gradient(180deg, transparent 55%, rgba(28, 80, 222, 0.22) 55%);
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    /* V2 — одна строка, два регистра (вес), без подзаголовка */
+    .v2 { text-align: center; max-width: 760px; margin: 0 auto; }
+    .v2 .headline {
+      margin: 0;
+      font-size: clamp(21px, 2.8vw, 30px);
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      color: #334155;
+    }
+    .v2 .headline strong {
+      font-weight: 800;
+      color: var(--text);
+    }
+    .v2 .headline em {
+      font-style: normal;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* V3 — editorial: крупная типографика + тире */
+    .v3 {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-left: 28px;
+      border-left: 4px solid var(--primary);
+    }
+    .v3 .headline {
+      margin: 0;
+      font-size: clamp(24px, 3.2vw, 34px);
+      font-weight: 800;
+      line-height: 1.28;
+      letter-spacing: -0.03em;
+    }
+    .v3 .dash {
+      display: block;
+      margin-top: 0.35em;
+      font-weight: 600;
+      color: #475569;
+      font-size: 0.92em;
+    }
+
+    /* V4 — ступенчатый ритм, один размер */
+    .v4 { text-align: center; max-width: 520px; margin: 0 auto; }
+    .v4 .headline {
+      margin: 0;
+      font-size: clamp(20px, 2.6vw, 26px);
+      font-weight: 700;
+      line-height: 1.38;
+      letter-spacing: -0.01em;
+    }
+    .v4 .line-accent {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* V5 — «бейдж» внутри фразы */
+    .v5 { text-align: center; max-width: 700px; margin: 0 auto; }
+    .v5 .headline {
+      margin: 0;
+      font-size: clamp(21px, 2.8vw, 29px);
+      font-weight: 800;
+      line-height: 1.42;
+      letter-spacing: -0.02em;
+    }
+    .v5 .pill {
+      display: inline-block;
+      vertical-align: baseline;
+      margin: 0 2px;
+      padding: 2px 10px 4px;
+      border-radius: 999px;
+      font-size: 0.88em;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #1c50de, #4d7aef);
+      box-shadow: 0 4px 14px rgba(28, 80, 222, 0.35);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bar">5 вариантов оформления одного заголовка · <a href="preview-kontur-widget.html">текущий блок</a></div>
+  <p class="intro">Один смысл, без пары «заголовок + подзаголовок». Выберите номер — перенесём в <code>08-kontur-search-widget.html</code>.</p>
+
+  <section class="variant">
+    <div class="variant-label">Вариант 1</div>
+    <div class="variant-name">Маркер — акцент только на «именно вашей компании»</div>
+    <div class="variant-stage">
+      <div class="v1">
+        <p class="headline">
+          Нужна система для работы тендерного отдела? Оставьте заявку — покажем, как система поможет
+          <span class="mark">именно вашей компании</span>.
+        </p>
+        <a href="#demo" class="btn">Запросить демо CRM</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="variant">
+    <div class="variant-label">Вариант 2</div>
+    <div class="variant-name">Один абзац, три веса: вопрос жирный → середина спокойная → финал синий</div>
+    <div class="variant-stage">
+      <div class="v2">
+        <p class="headline">
+          <strong>Нужна система для работы тендерного отдела?</strong>
+          Оставьте заявку и мы покажем, как система поможет <em>именно вашей компании</em>.
+        </p>
+        <a href="#demo" class="btn">Запросить демо CRM</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="variant">
+    <div class="variant-label">Вариант 3</div>
+    <div class="variant-name">Manifesto — полоса слева, вопрос и призыв одним блоком через перенос</div>
+    <div class="variant-stage">
+      <div class="v3">
+        <p class="headline">
+          Нужна система для работы тендерного отдела?
+          <span class="dash">Оставьте заявку — покажем, как система поможет именно вашей компании.</span>
+        </p>
+        <a href="#demo" class="btn">Запросить демо CRM</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="variant">
+    <div class="variant-label">Вариант 4</div>
+    <div class="variant-name">Поэтичный перенос строк — один размер шрифта, ритм вместо иерархии</div>
+    <div class="variant-stage">
+      <div class="v4">
+        <p class="headline">
+          Нужна система<br>для работы тендерного отдела?<br>
+          <span class="line-accent">Оставьте заявку</span> — покажем,<br>как система поможет<br>именно вашей компании.
+        </p>
+        <a href="#demo" class="btn">Запросить демо CRM</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="variant">
+    <div class="variant-label">Вариант 5</div>
+    <div class="variant-name">Пill внутри фразы — «вашей компании» как объект, не второй заголовок</div>
+    <div class="variant-stage">
+      <div class="v5">
+        <p class="headline">
+          Нужна система для работы тендерного отдела? Оставьте заявку — покажем, как система поможет
+          <span class="pill">вашей компании</span>.
+        </p>
+        <a href="#demo" class="btn">Запросить демо CRM</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
