@@ -13,11 +13,11 @@
     }
     .bar a { color: #93c5fd; }
     .ctx {
-      max-width: 960px; margin: 0 auto; padding: 24px 16px 8px;
+      max-width: 1120px; margin: 0 auto; padding: 24px 16px 8px;
       font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em;
     }
     .fake {
-      max-width: 960px; margin: 0 auto 8px; padding: 32px 24px;
+      max-width: 1120px; margin: 0 auto 8px; padding: 32px 24px;
       background: #fff; border-radius: 12px; color: #94a3b8; text-align: center;
       border: 1px dashed #cbd5e1;
     }
@@ -25,133 +25,117 @@
 </head>
 <body>
   <div class="bar">
-    Превью блока для Tilda ·
-    <a href="https://raw.githubusercontent.com/kolomoets-netizen/Link/cursor/tilda-landing-blocks-4090/tilda-landing/08-kontur-search-widget.html">скачать код</a>
+    Превью блока (ширина 1120px) ·
+    <a href="https://raw.githubusercontent.com/kolomoets-netizen/Link/cursor/tilda-landing-blocks-4090/tilda-landing/08-kontur-search-widget.html">код для Tilda</a>
   </div>
-  <p class="ctx">↑ выше на странице — «Вся тендерная работа»</p>
+  <p class="ctx">↑ «Вся тендерная работа в iStockLink»</p>
   <div class="fake">… контент лендинга …</div>
 
-  <!-- BLOCK START -->
-<!--#include would go here - inline below -->
-
-<!-- Tilda block: Kontur.Закупки — отсев «только поиск» (iframe, без CTA на форму) -->
+<!-- Tilda block: Kontur.Закупки — отсев «только поиск» (iframe) -->
 <style>
   .tg-kontur-wrap {
     --tg-primary: #1c50de;
     --tg-text: #0f172a;
     --tg-muted: #64748b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: #f8faff;
-    padding: 56px 24px 64px;
-    border-top: 1px solid #eef2ff;
+    background: #fff;
+    padding: 64px 24px 72px;
   }
   .tg-kontur-wrap *, .tg-kontur-wrap *::before, .tg-kontur-wrap *::after { box-sizing: border-box; }
-  .tg-kontur-inner { max-width: 720px; margin: 0 auto; }
-  .tg-kontur-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
+  .tg-kontur-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-kontur-search-head {
+    text-align: center;
+    margin-bottom: 28px;
   }
-  .tg-kontur-card {
-    border-radius: 16px;
-    padding: 20px 20px 18px;
-    border: 1px solid #e8edf5;
-    background: #fff;
-  }
-  .tg-kontur-card.is-search {
-    border-color: rgba(28, 80, 222, 0.28);
-    box-shadow: 0 10px 32px rgba(28, 80, 222, 0.08);
-  }
-  .tg-kontur-card.is-crm {
-    background: #fafbff;
-    border-style: dashed;
-    border-color: #cbd5e1;
-  }
-  .tg-kontur-card h2 {
-    margin: 0 0 8px;
-    font-size: 18px;
+  .tg-kontur-search-head h2 {
+    margin: 0 0 12px;
+    font-size: clamp(28px, 3.5vw, 40px);
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--tg-text);
-    line-height: 1.25;
+    line-height: 1.15;
   }
-  .tg-kontur-card p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
+  .tg-kontur-search-head p {
+    margin: 0 auto;
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 1.6;
     color: var(--tg-muted);
   }
-  .tg-kontur-card.is-crm a {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--tg-primary);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(28, 80, 222, 0.35);
-  }
-  .tg-kontur-card.is-crm a:hover { border-bottom-color: var(--tg-primary); }
-  .tg-kontur-frame {
-    background: #fff;
-    border-radius: 14px;
-    border: 1px solid rgba(28, 80, 222, 0.15);
-    padding: 14px;
-    overflow: hidden;
-  }
-  .tg-kontur-frame-label {
-    margin: 0 0 10px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
+
   .tg-kontur-iframe {
     display: block;
     width: 100%;
     height: 116px;
     border: 0;
     background: transparent;
+    margin-bottom: 48px;
   }
+
+  .tg-kontur-crm {
+    text-align: center;
+  }
+  .tg-kontur-crm h3 {
+    margin: 0 0 20px;
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--tg-text);
+    line-height: 1.2;
+  }
+  .tg-kontur-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
+    box-shadow: 0 10px 30px rgba(28, 80, 222, 0.28);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tg-kontur-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(28, 80, 222, 0.34);
+  }
+
   @media (max-width: 640px) {
-    .tg-kontur-split { grid-template-columns: 1fr; }
-    .tg-kontur-wrap { padding: 44px 16px 52px; }
+    .tg-kontur-wrap { padding: 48px 16px 56px; }
+    .tg-kontur-iframe { margin-bottom: 40px; }
   }
 </style>
 
 <div class="tg-kontur-wrap" id="kontur-search">
   <div class="tg-kontur-inner">
-    <div class="tg-kontur-split">
-      <div class="tg-kontur-card is-search">
-        <h2>Нужен только поиск тендеров?</h2>
-        <p>Ищите закупки в виджете Контур.Закупки ниже — форму iStockLink заполнять не нужно.</p>
-      </div>
-      <div class="tg-kontur-card is-crm">
-        <h2>Нужна система для отдела?</h2>
-        <p>CRM, воронка, контроль нагрузки — для команд от 5 специалистов.</p>
-        <a href="#demo">Запросить демо ↑</a>
-      </div>
+    <div class="tg-kontur-search-head">
+      <h2>Нужен только поиск тендеров?</h2>
+      <p>Ищите закупки у нашего партнера Контур.Закупки.</p>
     </div>
 
-    <div class="tg-kontur-frame">
-      <p class="tg-kontur-frame-label">Контур.Закупки — поиск</p>
-      <iframe
-        class="tg-kontur-iframe"
-        src="https://kontur.ru/widget/search/zakupki?p=w55732"
-        width="100%"
-        height="116"
-        title="Поиск закупок Контур.Закупки"
-        loading="lazy"
-        allowtransparency="true"
-      ></iframe>
+    <iframe
+      class="tg-kontur-iframe"
+      src="https://kontur.ru/widget/search/zakupki?p=w55732"
+      width="100%"
+      height="116"
+      title="Поиск закупок Контур.Закупки"
+      loading="lazy"
+      allowtransparency="true"
+    ></iframe>
+
+    <div class="tg-kontur-crm">
+      <h3>Нужна система для работы тендерного отдела?</h3>
+      <a href="#demo" class="tg-kontur-btn">Запросить демо CRM</a>
     </div>
   </div>
 </div>
 
-  <p class="ctx">↓ ниже — «Как это работает»</p>
+  <p class="ctx">↓ «Как это работает»</p>
   <div class="fake">… контент лендинга …</div>
 </body>
 </html>
