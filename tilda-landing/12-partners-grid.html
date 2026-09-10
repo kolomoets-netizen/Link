@@ -21,10 +21,15 @@
   .tg-partners-inner { max-width: 1120px; margin: 0 auto; }
 
   .tg-partners-divider {
-    height: 1px;
-    margin: 0 auto 48px;
+    display: block;
+    width: 100%;
     max-width: 1120px;
-    background: linear-gradient(90deg, transparent, #dbeafe 18%, #dbeafe 82%, transparent);
+    height: 3px;
+    margin: 0 auto 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: #1c50de;
   }
 
   .tg-partners-header {
@@ -32,16 +37,18 @@
     margin: 0 0 48px;
     padding: 0;
     border: 0;
+    box-sizing: content-box;
   }
   .tg-partners-title {
-    margin: 0;
-    padding: 50px 0 9px;
+    margin: 0 auto 40px;
+    padding: 50px 0 0;
     border: 0;
+    box-sizing: content-box;
     font-family: 'TildaSans', Arial, sans-serif;
-    font-size: 42px;
-    font-weight: 400;
+    font-size: 38px;
+    font-weight: 600;
     letter-spacing: normal;
-    line-height: 1.1;
+    line-height: 1.23;
     color: #000000;
     -webkit-font-smoothing: antialiased;
   }
@@ -91,7 +98,7 @@
   @media (max-width: 960px) {
     .tg-partners-wrap { padding: 0 20px 72px; }
     .tg-partners-grid { grid-template-columns: repeat(2, 1fr); }
-    .tg-partners-title { font-size: clamp(28px, 6vw, 42px); }
+    .tg-partners-title { font-size: clamp(28px, 6vw, 38px); }
     .tg-partners-sub { font-size: clamp(18px, 4vw, 24px); }
   }
   @media (max-width: 560px) {
@@ -129,7 +136,7 @@
         <img src="https://kolomoets-netizen.github.io/Link/assets/partners/proiti.svg" width="140" height="40" alt="ПроАйти">
       </div>
       <div class="tg-partner-tile" role="listitem">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/matrixn.png" width="160" height="40" alt="MatrixN">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/matrixn.png?v=3" width="160" height="40" alt="MatrixN">
       </div>
       <div class="tg-partner-tile" role="listitem">
         <img src="https://kolomoets-netizen.github.io/Link/assets/partners/os24.svg" width="140" height="40" alt="Os24">
