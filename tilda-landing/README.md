@@ -90,7 +90,7 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 
 **Страница:** https://istock.link/partneristocklink — вставьте T123 (например, перед футером или после блока про вознаграждение).
 
-**Сетка:** 10 плиток с логотипами — Контур, Селдон, СБИС, Албато, ПроАйти, Клевер Дистрибьюшен, MatrixN, Os24, A47, Тендертех.
+**Сетка:** 8 плиток — Контур, Селдон, СБИС, Албато, ПроАйти, MatrixN, Os24, Тендертех (файлы в `assets/partners/`).
 
 **Логотипы:** SVG-заглушки в `assets/partners/` (и PNG Контур/Seldon с GitHub Pages). В Tilda лучше заменить `src` каждого `<img>` на файлы из медиабиблиотеки (официальные лого партнёров).
 

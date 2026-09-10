@@ -32,7 +32,7 @@
 
   .tg-partners-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
   .tg-partner-tile {
@@ -46,15 +46,23 @@
     border: 1px solid #e8edf5;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
+  .tg-partner-tile--dark {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    border-color: #334155;
+  }
   .tg-partner-tile:hover {
     border-color: rgba(28, 80, 222, 0.28);
     box-shadow: 0 10px 28px rgba(28, 80, 222, 0.1);
     transform: translateY(-2px);
   }
+  .tg-partner-tile--dark:hover {
+    border-color: rgba(148, 163, 184, 0.45);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
+  }
   .tg-partner-tile img {
     display: block;
-    max-width: min(100%, 152px);
-    max-height: 52px;
+    max-width: min(100%, 168px);
+    max-height: 56px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -62,12 +70,12 @@
 
   @media (max-width: 960px) {
     .tg-partners-wrap { padding: 72px 20px; }
-    .tg-partners-grid { grid-template-columns: repeat(3, 1fr); }
+    .tg-partners-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 560px) {
     .tg-partners-wrap { padding: 56px 16px; }
     .tg-partners-header { margin-bottom: 32px; }
-    .tg-partners-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .tg-partners-grid { gap: 12px; }
     .tg-partner-tile { min-height: 92px; padding: 18px 12px; }
   }
 </style>
@@ -79,7 +87,6 @@
       <p class="tg-partners-sub">Технологические партнёры и интеграции, с которыми мы развиваем экосистему для закупок и тендеров</p>
     </header>
 
-    <!-- Логотипы: замените src на файлы из медиабиблиотеки Tilda при необходимости -->
     <div class="tg-partners-grid" role="list">
       <div class="tg-partner-tile" role="listitem">
         <img src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" width="140" height="40" alt="Контур">
@@ -88,28 +95,22 @@
         <img src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" width="140" height="40" alt="Селдон">
       </div>
       <div class="tg-partner-tile" role="listitem">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/sbis.svg" width="140" height="40" alt="СБИС">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/sbis.png" width="168" height="48" alt="СБИС">
       </div>
       <div class="tg-partner-tile" role="listitem">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/albato.svg" width="140" height="40" alt="Албато">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/albato.png" width="140" height="40" alt="Албато">
       </div>
-      <div class="tg-partner-tile" role="listitem">
+      <div class="tg-partner-tile tg-partner-tile--dark" role="listitem">
         <img src="https://kolomoets-netizen.github.io/Link/assets/partners/proiti.svg" width="140" height="40" alt="ПроАйти">
       </div>
-      <div class="tg-partner-tile" role="listitem">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/clever-distribution.svg" width="152" height="44" alt="Клевер Дистрибьюшен">
-      </div>
-      <div class="tg-partner-tile" role="listitem">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/matrixn.svg" width="140" height="40" alt="MatrixN">
+      <div class="tg-partner-tile tg-partner-tile--dark" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/matrixn.png" width="160" height="40" alt="MatrixN">
       </div>
       <div class="tg-partner-tile" role="listitem">
         <img src="https://kolomoets-netizen.github.io/Link/assets/partners/os24.svg" width="140" height="40" alt="Os24">
       </div>
       <div class="tg-partner-tile" role="listitem">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/a47.svg" width="140" height="40" alt="A47">
-      </div>
-      <div class="tg-partner-tile" role="listitem">
-        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/tendertech.svg" width="140" height="40" alt="Тендертех">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/tendertech.png" width="168" height="44" alt="Тендертех">
       </div>
     </div>
   </div>
