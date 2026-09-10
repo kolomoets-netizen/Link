@@ -87,12 +87,13 @@ for (const name of extraPages) {
   cpSync(join(base, name), join(docs, name));
 }
 
+const konturBlock = readFileSync(join(base, '08-kontur-search-widget.html'), 'utf-8').trim();
+const konturShell = readFileSync(join(base, 'preview-kontur-widget.shell.html'), 'utf-8');
+const konturBuildStamp = `${buildDate} (${buildId})`;
+const konturPreview = konturShell
+  .replace('__KONTUR_BLOCK__', konturBlock)
+  .replace('__BUILD_STAMP__', konturBuildStamp);
 const konturPreviewPath = join(base, 'preview-kontur-widget.html');
-let konturPreview = readFileSync(konturPreviewPath, 'utf-8');
-konturPreview = konturPreview.replace(
-  /сборка [^·]+/,
-  `сборка ${buildDate} (${buildId})`,
-);
 writeFileSync(join(docs, 'preview-kontur-widget.html'), konturPreview, 'utf-8');
 writeFileSync(konturPreviewPath, konturPreview, 'utf-8');
 

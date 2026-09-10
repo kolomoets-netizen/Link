@@ -92,7 +92,7 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 
 **Смысл:** отсев — «только поиск» → виджет Контур; «система для отдела» → кнопка `#demo`.
 
-**Превью только этого блока:** https://kolomoets-netizen.github.io/Link/preview-kontur-widget.html (после деплоя с `main`; обновление **Ctrl+Shift+R**).
+**Превью только этого блока:** https://kolomoets-netizen.github.io/Link/preview-kontur-widget.html (деплой с `main`, может отставать на 5–15 мин; **Ctrl+Shift+R**). Если в шапке старая «сборка» — сразу актуальная версия: https://cdn.jsdelivr.net/gh/kolomoets-netizen/Link@main/docs/preview-kontur-widget.html (сборка из `08-kontur-search-widget.html` при `npm run build:preview`).
 
 ## Как вставить в Tilda
 
