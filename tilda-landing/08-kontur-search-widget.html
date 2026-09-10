@@ -13,12 +13,13 @@
   .tg-kontur-wrap *, .tg-kontur-wrap *::before, .tg-kontur-wrap *::after { box-sizing: border-box; }
   .tg-kontur-inner { max-width: 1120px; margin: 0 auto; }
 
-  .tg-kontur-search-head {
+  .tg-kontur-search-head,
+  .tg-kontur-crm-head {
     text-align: center;
     margin-bottom: 28px;
   }
   .tg-kontur-search-head h2,
-  .tg-kontur-crm h2 {
+  .tg-kontur-crm-head h2 {
     margin: 0 0 12px;
     font-size: clamp(28px, 3.5vw, 40px);
     font-weight: 800;
@@ -26,7 +27,8 @@
     color: var(--tg-text);
     line-height: 1.15;
   }
-  .tg-kontur-search-head p {
+  .tg-kontur-search-head p,
+  .tg-kontur-crm-head p {
     margin: 0 auto;
     max-width: 640px;
     font-size: 17px;
@@ -53,20 +55,6 @@
     margin: 0 auto;
     padding: 0;
     background: none;
-  }
-  .tg-kontur-crm-sub {
-    margin: 0 auto 32px;
-    max-width: 680px;
-    font-size: clamp(21px, 2.8vw, 30px);
-    line-height: 1.45;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    color: #334155;
-  }
-  .tg-kontur-crm-sub em {
-    font-style: normal;
-    color: var(--tg-primary);
-    font-weight: 700;
   }
   .tg-kontur-btn {
     display: inline-flex;
@@ -111,10 +99,10 @@
     ></iframe>
 
     <div class="tg-kontur-crm">
-      <h2>Нужна система для работы тендерного отдела? —</h2>
-      <p class="tg-kontur-crm-sub">
-        Оставьте заявку и мы покажем, как система поможет <em>именно вашей компании</em>.
-      </p>
+      <div class="tg-kontur-crm-head">
+        <h2>Нужна система для работы тендерного отдела?</h2>
+        <p>Оставьте заявку и мы покажем, как система поможет <span class="tg-kontur-brand">именно вашей компании</span>.</p>
+      </div>
       <a
         href="#popup:demo"
         class="tg-kontur-btn"
