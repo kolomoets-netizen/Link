@@ -1,0 +1,217 @@
+<!-- Tilda block: Kontur.Закупки search widget (iframe) -->
+<style>
+  .tg-kontur-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: linear-gradient(180deg, #fff 0%, #f4f7ff 100%);
+    padding: 72px 24px 80px;
+    border-top: 1px solid #eef2ff;
+  }
+  .tg-kontur-wrap *, .tg-kontur-wrap *::before, .tg-kontur-wrap *::after { box-sizing: border-box; }
+  .tg-kontur-inner { max-width: 800px; margin: 0 auto; }
+  .tg-section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tg-primary);
+    margin-bottom: 12px;
+  }
+  .tg-kontur-title {
+    margin: 0 0 14px;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--tg-text);
+    line-height: 1.15;
+  }
+  .tg-kontur-sub {
+    margin: 0 0 28px;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--tg-muted);
+  }
+  .tg-kontur-sub strong { color: #334155; font-weight: 600; }
+  .tg-kontur-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .tg-kontur-step {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid rgba(28, 80, 222, 0.1);
+    font-size: 13px;
+    line-height: 1.45;
+    color: #475569;
+  }
+  .tg-kontur-step span {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--tg-primary);
+    margin-bottom: 6px;
+  }
+  .tg-kontur-step.is-active {
+    border-color: rgba(28, 80, 222, 0.35);
+    box-shadow: 0 8px 24px rgba(28, 80, 222, 0.08);
+  }
+  .tg-kontur-frame {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(28, 80, 222, 0.12);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06);
+    padding: 16px 16px 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .tg-kontur-frame-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eef2ff;
+  }
+  .tg-kontur-frame-head p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+  }
+  .tg-kontur-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--tg-primary);
+    background: rgba(28, 80, 222, 0.08);
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tg-kontur-iframe {
+    display: block;
+    width: 100%;
+    min-height: 116px;
+    border: 0;
+    background: transparent;
+  }
+  .tg-kontur-note {
+    margin: 0 0 24px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #94a3b8;
+  }
+  .tg-kontur-note a {
+    color: var(--tg-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .tg-kontur-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(28, 80, 222, 0.06) 0%, rgba(28, 80, 222, 0.02) 100%);
+    border: 1px solid rgba(28, 80, 222, 0.12);
+  }
+  .tg-kontur-cta p {
+    margin: 0;
+    flex: 1 1 240px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #475569;
+  }
+  .tg-kontur-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #1c50de 0%, #2f63ea 100%);
+    box-shadow: 0 8px 24px rgba(28, 80, 222, 0.25);
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tg-kontur-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(28, 80, 222, 0.3);
+  }
+  @media (max-width: 700px) {
+    .tg-kontur-wrap { padding: 56px 20px 64px; }
+    .tg-kontur-steps { grid-template-columns: 1fr; }
+    .tg-kontur-frame-head { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<div class="tg-kontur-wrap" id="kontur-search">
+  <div class="tg-kontur-inner">
+    <span class="tg-section-label">Поиск закупок</span>
+    <h2 class="tg-kontur-title">Проверьте, как работает поиск тендеров</h2>
+    <p class="tg-kontur-sub">
+      Ниже — виджет <strong>Контур.Закупки</strong>: можно сразу найти интересующую закупку.
+      В <strong>iStockLink</strong> тот же источник подключается по вашему ключу, а найденные торги автоматически попадают
+      в <strong>CRM-воронку</strong> — с этапами, задачами, поставщиками и КП, без ручного переноса из таблиц.
+    </p>
+
+    <div class="tg-kontur-steps" aria-hidden="true">
+      <div class="tg-kontur-step is-active">
+        <span>Шаг 1</span>
+        Поиск закупки в виджете Контур
+      </div>
+      <div class="tg-kontur-step">
+        <span>Шаг 2</span>
+        Подключение агрегатора в iStockLink
+      </div>
+      <div class="tg-kontur-step">
+        <span>Шаг 3</span>
+        Ведение тендера до контракта в одной системе
+      </div>
+    </div>
+
+    <div class="tg-kontur-frame">
+      <div class="tg-kontur-frame-head">
+        <p>Поиск по базе закупок</p>
+        <span class="tg-kontur-badge">Контур.Закупки</span>
+      </div>
+      <iframe
+        class="tg-kontur-iframe"
+        src="https://kontur.ru/widget/search/zakupki?p=w55732"
+        width="100%"
+        height="116"
+        title="Поиск закупок Контур.Закупки"
+        loading="lazy"
+        allowtransparency="true"
+      ></iframe>
+    </div>
+
+    <p class="tg-kontur-note">
+      Виджет открывает поиск на стороне Контур.Закупки. iStockLink не заменяет агрегатор — собирает данные
+      из Контур, Seldon и других источников и помогает <em>вести</em> тендеры в отделе. Нужен только поиск без команды —
+      используйте виджет; нужен процесс для отдела — запросите демо платформы.
+    </p>
+
+    <div class="tg-kontur-cta">
+      <p>
+        <strong>Для торговых компаний с тендерным отделом:</strong> покажем, как закупки из Контур попадают
+        в воронку и как руководитель видит нагрузку специалистов.
+      </p>
+      <a href="#demo" class="tg-kontur-btn">Запросить демо CRM</a>
+    </div>
+  </div>
+</div>
