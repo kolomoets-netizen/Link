@@ -86,6 +86,16 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 
 Файл `preview-standalone.html` — откройте двойным кликом.
 
+## Блок «Партнёры» (`12-partners-grid.html`)
+
+**Страница:** https://istock.link/partneristocklink — вставьте T123 (например, перед футером или после блока про вознаграждение).
+
+**Сетка:** 10 плиток с логотипами — Контур, Селдон, СБИС, Албато, ПроАйти, Клевер Дистрибьюшен, MatrixN, Os24, A47, Тендертех.
+
+**Логотипы:** SVG-заглушки в `assets/partners/` (и PNG Контур/Seldon с GitHub Pages). В Tilda лучше заменить `src` каждого `<img>` на файлы из медиабиблиотеки (официальные лого партнёров).
+
+**Превью:** https://kolomoets-netizen.github.io/Link/preview-partners-grid.html
+
 ## Блок «Поиск Контур» (`08-kontur-search-widget.html`)
 
 **Куда ставить на `/trading`:** после секции «Агрегаторы / Сбор» или сразу после блока «Как это работает» (шаг «Подключите агрегаторы») — так виджет логично продолжает тему источников закупок.

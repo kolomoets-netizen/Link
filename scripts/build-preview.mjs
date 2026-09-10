@@ -97,6 +97,14 @@ const konturPreviewPath = join(base, 'preview-kontur-widget.html');
 writeFileSync(join(docs, 'preview-kontur-widget.html'), konturPreview, 'utf-8');
 writeFileSync(konturPreviewPath, konturPreview, 'utf-8');
 
+const partnersBlock = readFileSync(join(base, '12-partners-grid.html'), 'utf-8').trim();
+const partnersShell = readFileSync(join(base, 'preview-partners-grid.shell.html'), 'utf-8');
+const partnersPreview = partnersShell
+  .replace('__PARTNERS_BLOCK__', partnersBlock)
+  .replace('__BUILD_STAMP__', konturBuildStamp);
+writeFileSync(join(docs, 'preview-partners-grid.html'), partnersPreview, 'utf-8');
+writeFileSync(join(base, 'preview-partners-grid.html'), partnersPreview, 'utf-8');
+
 const emailsSrc = join(root, 'content', 'emails');
 const emailsDocs = join(docs, 'emails');
 mkdirSync(emailsDocs, { recursive: true });
