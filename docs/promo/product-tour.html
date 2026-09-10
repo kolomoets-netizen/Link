@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>istock.link — продуктовый тур</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1c50de;
+      --primary-2: #3b6df0;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --soft: #f4f7ff;
+      --soft-2: #eef3ff;
+      --ok: #16a34a;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --card: #ffffff;
+      --sidebar: #f8faff;
+      --t: 0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0b1224;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      color: var(--ink);
+    }
+
+    #stage {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 15% 20%, rgba(28,80,222,0.22), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 85% 80%, rgba(59,109,240,0.18), transparent 50%),
+        linear-gradient(145deg, #0b1224 0%, #132044 45%, #0f1a36 100%);
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(18px) scale(0.985);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .scene.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+    }
+
+    /* Intro / outro */
+    .brand-hero {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      gap: 22px;
+      padding: 60px;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .scene.active .brand-mark {
+      animation: rise 0.7s ease forwards 0.1s;
+    }
+    .brand-mark svg { width: 56px; height: 58px; }
+    .brand-word {
+      font-size: 54px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+    .brand-word span { color: #7da2ff; }
+    .brand-title {
+      max-width: 920px;
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .scene.active .brand-title {
+      animation: rise 0.7s ease forwards 0.35s;
+    }
+    .brand-sub {
+      max-width: 760px;
+      font-size: 22px;
+      line-height: 1.5;
+      color: rgba(226,232,240,0.82);
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .scene.active .brand-sub {
+      animation: rise 0.7s ease forwards 0.55s;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+      opacity: 0;
+    }
+    .scene.active .pill-row {
+      animation: rise 0.7s ease forwards 0.75s;
+    }
+    .pill {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #e2e8f0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    @keyframes rise {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Feature layout */
+    .feature {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 560px 1fr;
+      gap: 36px;
+      padding: 72px 72px 100px;
+      align-items: center;
+    }
+    .copy {
+      color: #fff;
+      padding-right: 12px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #93b4ff;
+      margin-bottom: 18px;
+    }
+    .eyebrow i {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #5b8af5;
+      box-shadow: 0 0 0 4px rgba(91,138,245,0.25);
+    }
+    .copy h2 {
+      font-size: 40px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .copy p {
+      font-size: 20px;
+      line-height: 1.55;
+      color: rgba(226,232,240,0.82);
+      max-width: 480px;
+    }
+    .benefit {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .benefit li {
+      list-style: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+    .benefit li::before {
+      content: "";
+      width: 18px; height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      background:
+        linear-gradient(135deg, var(--primary), var(--primary-2)) padding-box,
+        linear-gradient(135deg, #7da2ff, #1c50de) border-box;
+      box-shadow: inset 0 0 0 4px #0f1a36;
+      position: relative;
+    }
+
+    /* UI window */
+    .ui-window {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.08);
+      transform: translateY(24px) scale(0.97);
+      opacity: 0;
+      height: 820px;
+      display: flex;
+      flex-direction: column;
+    }
+    .scene.active .ui-window {
+      animation: windowIn 0.75s cubic-bezier(.2,.8,.2,1) forwards 0.2s;
+    }
+    @keyframes windowIn {
+      to { opacity: 1; transform: none; }
+    }
+
+    .ui-chrome {
+      height: 42px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      flex-shrink: 0;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #ff5f57; }
+    .dot.y { background: #febc2e; }
+    .dot.g { background: #28c840; }
+    .url {
+      margin-left: 12px;
+      flex: 1;
+      height: 24px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .app {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 0;
+      background: var(--soft);
+    }
+    .side {
+      background: var(--sidebar);
+      border-right: 1px solid var(--line);
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .side-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px 16px;
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 15px;
+    }
+    .side-logo svg { width: 22px; height: 22px; }
+    .nav-item {
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 560;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-item.active {
+      background: #e8efff;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .nav-item .badge {
+      background: #ef4444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+    }
+    .nav-sec {
+      margin: 12px 8px 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background: #fff;
+    }
+    .topbar {
+      height: 56px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      flex-shrink: 0;
+    }
+    .topbar h3 {
+      font-size: 18px;
+      font-weight: 750;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .top-actions { display: flex; gap: 8px; }
+    .btn {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(28,80,222,0.25);
+    }
+
+    .content { padding: 16px 20px; overflow: hidden; flex: 1; }
+    .status-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      min-width: 72px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+    .chip strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .chip span {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .chip.hot {
+      border-color: #93b4ff;
+      background: #eef3ff;
+      box-shadow: 0 0 0 3px rgba(28,80,222,0.08);
+    }
+    .chip.hot strong { color: var(--primary); }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .search {
+      flex: 1;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #f8faff;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    table.grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    table.grid th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12px;
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      background: #fafbff;
+    }
+    table.grid td {
+      padding: 11px 8px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--ink);
+      font-weight: 550;
+    }
+    table.grid tr.hl td {
+      background: #f4f7ff;
+    }
+    .link { color: var(--primary); font-weight: 650; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 650;
+      font-size: 12px;
+    }
+    .status::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .st-new { color: var(--primary); }
+    .st-ok { color: var(--ok); }
+    .st-bad { color: var(--danger); }
+    .st-muted { color: var(--muted); }
+
+    /* Cards list */
+    .list { display: flex; flex-direction: column; gap: 10px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 16px;
+      align-items: center;
+    }
+    .card.hl {
+      border-color: #93b4ff;
+      background: linear-gradient(180deg, #f7f9ff, #fff);
+      box-shadow: 0 10px 24px rgba(28,80,222,0.08);
+      transform: scale(1.01);
+    }
+    .card .title { font-weight: 750; font-size: 14px; }
+    .card .meta { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .card .right { text-align: right; }
+    .card .price { font-weight: 800; color: var(--ink); }
+    .tag {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: var(--soft-2);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .tag.ok { background: #ecfdf3; color: var(--ok); }
+    .tag.warn { background: #fff7ed; color: #c2410c; }
+
+    /* Workflow */
+    .flow {
+      height: 100%;
+      background: #eef2f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      gap: 18px;
+    }
+    .flow-node {
+      width: 210px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+    }
+    .flow-node .head {
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 750;
+      color: #fff;
+    }
+    .flow-node .head.start { background: #64748b; }
+    .flow-node .head.agree { background: var(--primary); }
+    .flow-node .head.pub { background: var(--ok); }
+    .flow-node .head.end { background: #64748b; }
+    .flow-node .body { padding: 14px; min-height: 90px; }
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #93b4ff, #1c50de);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .person small { display: block; color: var(--muted); font-weight: 550; margin-top: 2px; }
+    .arrow {
+      width: 42px;
+      height: 2px;
+      background: #94a3b8;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: -1px; top: -4px;
+      border: 5px solid transparent;
+      border-left-color: #94a3b8;
+    }
+    .pulse {
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(28,80,222,0.25); }
+      50% { box-shadow: 0 0 0 10px rgba(28,80,222,0); }
+    }
+
+    /* Compare */
+    .compare {
+      display: grid;
+      grid-template-columns: 160px repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      font-size: 12px;
+    }
+    .compare .cell {
+      padding: 12px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      border-right: 1px solid #f1f5f9;
+      background: #fff;
+    }
+    .compare .cell.head {
+      background: #f8faff;
+      font-weight: 750;
+      min-height: 88px;
+    }
+    .compare .cell.label {
+      background: #fafbff;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .compare .best {
+      background: #ecfdf3 !important;
+      box-shadow: inset 0 0 0 2px rgba(22,163,74,0.25);
+    }
+    .dot-s {
+      width: 8px; height: 8px; border-radius: 50%;
+      display: inline-block; margin-right: 6px;
+    }
+    .dot-s.blue { background: #38bdf8; }
+    .dot-s.green { background: #22c55e; }
+
+    /* Kanban */
+    .kanban {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      height: 100%;
+    }
+    .col {
+      background: #f4f7ff;
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid #e8eefc;
+      min-height: 520px;
+    }
+    .col h4 {
+      font-size: 13px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--ink);
+    }
+    .col h4 span { color: var(--muted); font-weight: 650; }
+    .kcard {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+    }
+    .kcard.urgent { border-left: 3px solid #ef4444; }
+    .kcard .id { color: var(--muted); font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+    .kcard .name { font-size: 13px; font-weight: 750; line-height: 1.35; margin-bottom: 8px; }
+    .kcard .nmck { font-weight: 800; color: var(--ink); font-size: 13px; }
+    .kcard .who { color: var(--muted); font-size: 11px; margin-top: 6px; }
+
+    /* Progress / caption */
+    .bottom {
+      position: absolute;
+      left: 72px; right: 72px; bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      z-index: 20;
+    }
+    .progress {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress > i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #5b8af5, #93b4ff);
+      border-radius: inherit;
+    }
+    .step-label {
+      color: rgba(226,232,240,0.7);
+      font-size: 13px;
+      font-weight: 650;
+      white-space: nowrap;
+      min-width: 140px;
+      text-align: right;
+    }
+
+    .cursor {
+      position: absolute;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(28,80,222,0.9);
+      background: rgba(28,80,222,0.15);
+      box-shadow: 0 0 0 6px rgba(28,80,222,0.12);
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+      transition: left .7s cubic-bezier(.2,.8,.2,1), top .7s cubic-bezier(.2,.8,.2,1), opacity .3s;
+    }
+    .cursor.on { opacity: 1; }
+
+    .outro-cta {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1c50de, #3b6df0);
+      color: #fff;
+      font-weight: 750;
+      font-size: 18px;
+      box-shadow: 0 16px 40px rgba(28,80,222,0.35);
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    .scene.active .outro-cta {
+      animation: rise 0.7s ease forwards 0.7s;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      overflow: hidden;
+      width: 120px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .bar > i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #4ade80);
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <div class="grid-bg"></div>
+    <div class="cursor" id="cursor"></div>
+
+    <!-- 0 Intro -->
+    <section class="scene" data-scene="intro">
+      <div class="brand-hero">
+        <div class="brand-mark">
+          <svg viewBox="0 0 31 32" fill="none" aria-hidden="true">
+            <path d="M17.2112 8.91393V21.8341H22.7664C21.3776 23.4867 19.3936 24.6385 17.2112 24.939V31.9499C20.0384 31.6995 22.7168 30.748 25.048 29.0955C27.3296 27.493 29.1152 25.2895 30.3056 22.7856C30.504 22.3349 30.7024 21.8341 30.9008 21.3333C31 21.0829 31 20.7825 31 20.5321V8.91393H17.2112Z" fill="#5B8AF5"/>
+            <path d="M14.5824 0C10.6144 0.350548 6.944 2.15336 4.216 5.10798C1.488 8.0626 0 11.9186 0 15.975C0 20.0313 1.488 23.9374 4.216 26.892C6.944 29.8466 10.6144 31.6495 14.5328 32V0H14.5824Z" fill="#7DA2FF"/>
+          </svg>
+          <div class="brand-word">istock<span>.link</span></div>
+        </div>
+        <h1 class="brand-title">Цифровая платформа закупок<br>от потребности до склада</h1>
+        <p class="brand-sub">Единое рабочее место для потребностей, согласований, запросов, поставщиков, запасов и тендеров</p>
+        <div class="pill-row">
+          <span class="pill">Потребности</span>
+          <span class="pill">Согласование</span>
+          <span class="pill">Запросы</span>
+          <span class="pill">Товары</span>
+          <span class="pill">Поставщики</span>
+          <span class="pill">Склад</span>
+          <span class="pill">Тендеры</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 Needs -->
+    <section class="scene" data-scene="needs">
+      <div class="feature">
+        <div class="copy">
+          <div class="eyebrow"><i></i> Потребности</div>
+          <h2>Собирайте потребности подразделений в одном окне</h2>
+          <p>Статусы, фильтры и приоритеты — чтобы закупки начинались с понятного спроса, а не из переписки.</p>
+          <ul class="benefit">
+            <li>Прозрачный пайплайн: новая → в работе → закупка</li>
+            <li>Быстрое создание потребности и формирование заявки</li>
+          </ul>
+        </div>
+        <div class="ui-window">
+          <div class="ui-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div class="url">app.istock.link / Потребности</div>
+          </div>
+          <div class="app">
+            <aside class="side">
+              <div class="side-logo">
+                <svg viewBox="0 0 31 32"><path d="M17.2 8.9V21.8H22.8C21.4 23.5 19.4 24.6 17.2 24.9V31.9C20 31.7 22.7 30.7 25 29.1C27.3 27.5 29.1 25.3 30.3 22.8V8.9H17.2Z" fill="#1C50DE"/><path d="M14.6 0C10.6.4 6.9 2.2 4.2 5.1C1.5 8.1 0 11.9 0 16s1.5 7.9 4.2 10.9C6.9 29.8 10.6 31.6 14.5 32V0Z" fill="#1C50DE"/></svg>
+                istock.link
+              </div>
+              <div class="nav-item">Заказы</div>
+              <div class="nav-item">Запросы</div>
+              <div class="nav-item">Заявки на закупку <span class="badge">7</span></div>
+              <div class="nav-item">Товары</div>
+              <div class="nav-item active">Потребности</div>
+              <div class="nav-sec">Поставщики</div>
+              <div class="nav-item">Квалификация</div>
+              <div class="nav-item">Контрагенты</div>
+              <div class="nav-sec">Склад</div>
+              <div class="nav-item">Операции</div>
+            </aside>
+            <div class="main">
+              <div class="topbar">
+                <h3>Потребности</h3>
+                <div class="top-actions">
+                  <button class="btn">Сформировать заявку</button>
+                  <button class="btn primary">+ Создать потребность</button>
+                </div>
+              </div>
+              <div class="content">
+                <div class="status-row">
+                  <div class="chip"><strong>13</strong><span>Закупка состоялась</span></div>
+                  <div class="chip"><strong>10</strong><span>На согласовании</span></div>
+                  <div class="chip"><strong>76</strong><span>В работе</span></div>
+                  <div class="chip hot"><strong>160</strong><span>Новая</span></div>
+                  <div class="chip"><strong>29</strong><span>Черновик</span></div>
+                </div>
+                <div class="toolbar"><div class="search">Наименование потребности / Артикул</div></div>
+                <table class="grid">
+                  <thead>
+                    <tr><th>Наименование</th><th>Кол-во</th><th>Статус</th><th>Категория</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="hl"><td class="link">Автошина 300-15 PLT 328 20PR</td><td>2 шт</td><td><span class="status st-new">Новая</span></td><td>—</td></tr>
+                    <tr><td class="link">Автошина 215/60R16 шип.</td><td>8 шт</td><td><span class="status st-new">Новая</span></td><td>—</td></tr>
+                    <tr><td class="link">Автошина 225/75R16</td><td>4 шт</td><td><span class="status st-new">Новая</span></td><td>—</td></tr>
+                    <tr><td class="link">Автошина 235/45R18 шип.</td><td>16 шт</td><td><span class="status st-new">Новая</span></td><td>—</td></tr>
+                    <tr><td class="link">Автошина 255/70R20 шин. Nokian</td><td>5 шт</td><td><span class="status st-new">Новая</span></td><td>—</td></tr>
+                    <tr><td class="link">Автошина 205/50R17 шип.</td><td>19 шт</td><td><span class="status st-new">Новая</span></td><td>—</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 Approval -->
+    <section class="scene" data-scene="approval">
+      <div class="feature">
+        <div class="copy">
+          <div class="eyebrow"><i></i> Согласование</div>
+          <h2>Маршруты согласования заявок на закупку</h2>
+          <p>Настройте цепочку согласования и публикации — без хаоса в почте и мессенджерах.</p>
+          <ul class="benefit">
+            <li>Роли и ответственные на каждом шаге</li>
+            <li>Контроль статуса заявки до запуска закупки</li>
+          </ul>
+        </div>
+        <div class="ui-window">
+          <div class="ui-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div class="url">app.istock.link / Согласование кабеля</div>
+          </div>
+          <div class="flow">
+            <div class="flow-node">
+              <div class="head start">Начало (заявка)</div>
+              <div class="body"><strong>Начало маршрута</strong></div>
+            </div>
+            <div class="arrow"></div>
+            <div class="flow-node pulse">
+              <div class="head agree">Согласование</div>
+              <div class="body">
+                <div class="person">
+                  <div class="avatar">ВИ</div>
+                  <div>Ветрова Ирина<small>МТО</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow"></div>
+            <div class="flow-node">
+              <div class="head pub">Публикация</div>
+              <div class="body">
+                <div class="person">
+                  <div class="avatar">ДА</div>
+                  <div>Духовский Андрей<small>МТО</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow"></div>
+            <div class="flow-node">
+              <div class="head end">Конец (заявка)</div>
+              <div class="body"><strong>Конец маршрута</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Requests -->
+    <section class="scene" data-scene="requests">
+      <div class="feature">
+        <div class="copy">
+          <div class="eyebrow"><i></i> Запросы и отклики</div>
+          <h2>Сравнивайте предложения поставщиков</h2>
+          <p>Запросы, отклики и сравнение цен в одной таблице — решение принимается быстрее и прозрачнее.</p>
+          <ul class="benefit">
+            <li>Статусы откликов и итоговые суммы</li>
+            <li>Сравнение по цене и неценовым критериям</li>
+          </ul>
+        </div>
+        <div class="ui-window">
+          <div class="ui-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div class="url">app.istock.link / Сравнение откликов</div>
+          </div>
+          <div class="main" style="display:flex">
+            <div class="content" style="width:100%">
+              <div class="topbar" style="margin:-16px -20px 16px; border:none; border-bottom:1px solid var(--line)">
+                <h3 style="font-size:16px">Сравнение откликов по запросу №2870</h3>
+                <span class="tag warn">Закупка отменена</span>
+              </div>
+              <div class="compare">
+                <div class="cell label">Компания</div>
+                <div class="cell head"><span class="dot-s blue"></span>КНИТУ-КАИ<br><small style="color:#64748b;font-weight:600">Громов Игорь</small></div>
+                <div class="cell head best"><span class="dot-s green"></span>АО «5-й таксомоторный парк»<br><small style="color:#64748b;font-weight:600">★ 65</small></div>
+                <div class="cell head"><span class="dot-s blue"></span>ООО «ТЕСТ»<br><small style="color:#64748b;font-weight:600">Громов Игорь</small></div>
+                <div class="cell head"><span class="dot-s blue"></span>ООО «ТИТАН»<br><small style="color:#64748b;font-weight:600">Громов Игорь</small></div>
+
+                <div class="cell label">Итоговая сумма</div>
+                <div class="cell">1 518,00 ₽</div>
+                <div class="cell best"><strong>230,00 ₽</strong></div>
+                <div class="cell">4 500,00 ₽</div>
+                <div class="cell">4 500,00 ₽</div>
+
+                <div class="cell label">Компрессор ЭКПВ 15/32</div>
+                <div class="cell">66,00 · 23 шт</div>
+                <div class="cell best">10,00 · 23 шт</div>
+                <div class="cell">45,00 · 100 шт</div>
+                <div class="cell">45,00 · 100 шт</div>
+              </div>
+              <div style="margin-top:18px" class="list">
+                <div class="card hl">
+                  <div>
+                    <div class="title">№00004947 — Работа с заказов №2</div>
+                    <div class="meta">ООО «ОКУЛОВА 4» · ИНН 5902061201</div>
+                  </div>
+                  <div class="right">
+                    <div class="price">180 696,00 ₽</div>
+                    <span class="tag ok">Предложение принято</span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div>
+                    <div class="title">№00004951 — Поставка ремонтного комплекта</div>
+                    <div class="meta">Ответственный: Громов Игорь</div>
+                  </div>
+                  <div class="right"><span class="tag">Черновик</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Products -->
+    <section class="scene" data-scene="products">
+      <div class="feature">
+        <div class="copy">
+          <div class="eyebrow"><i></i> Товарные позиции</div>
+          <h2>Актуальный статус по всем закупкам</h2>
+          <p>Видите, где каждая позиция: идёт закупка, получено предложение или уже едет на склад.</p>
+          <ul class="benefit">
+            <li>Связь позиции с запросом и поставщиком</li>
+            <li>Контроль количества и ответственных</li>
+          </ul>
+        </div>
+        <div class="ui-window">
+          <div class="ui-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div class="url">app.istock.link / Товары</div>
+          </div>
+          <div class="app">
+            <aside class="side">
+              <div class="side-logo">istock.link</div>
+              <div class="nav-item">Заявки на закупку <span class="badge">7</span></div>
+              <div class="nav-item active">Товары</div>
+              <div class="nav-item">Потребности</div>
+              <div class="nav-item">Контрагенты</div>
+            </aside>
+            <div class="main">
+              <div class="topbar"><h3>Товары</h3></div>
+              <div class="content">
+                <div class="status-row">
+                  <div class="chip"><strong>1</strong><span>Идёт закупка</span></div>
+                  <div class="chip"><strong>3</strong><span>Предложение отклонено</span></div>
+                  <div class="chip hot"><strong>112</strong><span>Закупка состоялась</span></div>
+                  <div class="chip"><strong>10</strong><span>Требуется самовывоз</span></div>
+                  <div class="chip"><strong>3</strong><span>Производится доставка</span></div>
+                </div>
+                <table class="grid">
+                  <thead>
+                    <tr><th>Артикул</th><th>Наименование</th><th>Статус</th><th>Кол-во</th><th>Поставщик</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="hl"><td>КСР-10</td><td class="link">Жидкая Гидроизоляция</td><td><span class="status st-ok">Производится доставка</span></td><td>3 шт</td><td>ООО «ОКУЛОВА 4»</td></tr>
+                    <tr><td>ПТ-120</td><td class="link">Противовес</td><td><span class="status st-ok">Закупка состоялась</span></td><td>3 шт</td><td>ООО «ОКУЛОВА 4»</td></tr>
+                    <tr><td>В00А.КБ</td><td class="link">Каркас блока</td><td><span class="status st-new">Получено предложение</span></td><td>4 шт</td><td>—</td></tr>
+                    <tr><td>SB 40 C</td><td class="link">Модель SB 40 C/СС</td><td><span class="status st-new">Получено предложение</span></td><td>35 шт</td><td>—</td></tr>
+                    <tr><td>27751</td><td class="link">Игровая площадка</td><td><span class="status st-ok">Закупка состоялась</span></td><td>4 шт</td><td>ООО «ВЕГА»</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 Suppliers -->
+    <section class="scene" data-scene="suppliers">
+      <div class="feature">
+        <div class="copy">
+          <div class="eyebrow"><i></i> Поставщики</div>
+          <h2>Контрагенты, квалификация и оценка</h2>
+          <p>Ведите реестр, квалифицируйте поставщиков и проводите процедуры оценки в одной системе.</p>
+          <ul class="benefit">
+            <li>Карточки контрагентов с реквизитами и группами</li>
+            <li>Квалификация и прогресс оценочных процедур</li>
+          </ul>
+        </div>
+        <div class="ui-window">
+          <div class="ui-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div class="url">app.istock.link / Квалификация и оценка</div>
+          </div>
+          <div class="main" style="display:flex">
+            <div class="content" style="width:100%">
+              <div class="list">
+                <div class="card hl">
+                  <div>
+                    <div class="title">АО «ОСК»</div>
+                    <div class="meta">ИНН 7838395215 · Санкт-Петербург · Группа: Металл</div>
+                  </div>
+                  <div class="right"><span class="tag">Не зарегистрирована</span></div>
+                </div>
+                <div class="card">
+                  <div>
+                    <div class="title">ОАО «15-й ТАКСОМОТОРНЫЙ ПАРК»</div>
+                    <div class="meta">Заявленные категории: Стеклопластик · На рассмотрении</div>
+                  </div>
+                  <div class="right"><span class="tag">На рассмотрении</span></div>
+                </div>
+                <div class="card">
+                  <div>
+                    <div class="title">ИНТЕРАС</div>
+                    <div class="meta">★ 5.0 · надёжность 24 · Вторсырьё, отходы, лом</div>
+                  </div>
+                  <div class="right"><span class="tag ok">Квалификация пройдена</span></div>
+                </div>
+                <div class="card">
+                  <div>
+                    <div class="title">Проверка поставщика 1</div>
+                    <div class="meta">Открытые вопросы · 06.01.2025–08.02.2025</div>
+                  </div>
+                  <div class="right">
+                    <span class="bar"><i style="width:100%"></i></span>
+                    <span class="tag ok">100%</span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div>
+                    <div class="title">Процедура 45</div>
+                    <div class="meta">Ежемесячная оценка поставщиков</div>
+                  </div>
+                  <div class="right">
+                    <span class="bar"><i style="width:100%"></i></span>
+                    <span class="tag ok">Оценка завершена</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 Warehouse -->
+    <section class="scene" data-scene="warehouse">
+      <div class="feature">
+        <div class="copy">
+          <div class="eyebrow"><i></i> Склад</div>
+          <h2>Приёмка, резервирование и запасы</h2>
+          <p>Фиксируйте фактическое поступление, комментарии и приложения — склад связан с закупкой.</p>
+          <ul class="benefit">
+            <li>Плановое и фактическое количество</li>
+            <li>Приёмка на склад одной операцией</li>
+          </ul>
+        </div>
+        <div class="ui-window">
+          <div class="ui-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div class="url">app.istock.link / Приёмка товара</div>
+          </div>
+          <div class="main" style="display:flex">
+            <div class="content" style="width:100%">
+              <div class="topbar" style="margin:-16px -20px 16px;border:none;border-bottom:1px solid var(--line)">
+                <h3>Приёмка товара</h3>
+                <button class="btn primary">Принять на склад</button>
+              </div>
+              <div class="toolbar">
+                <div class="search">Склад: не выбран</div>
+                <div class="search">Комментарий</div>
+              </div>
+              <table class="grid">
+                <thead>
+                  <tr><th>Наименование</th><th>План</th><th>Факт</th><th>Цена</th><th>Поставщик</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="hl"><td class="link">Жидкая Гидроизоляция</td><td>3 шт</td><td>3 шт</td><td>54 666,00</td><td>ООО «ОКУЛОВА 4»</td></tr>
+                  <tr><td class="link">Противовес</td><td>3 шт</td><td>3 шт</td><td>5 566,00</td><td>ООО «ОКУЛОВА 4»</td></tr>
+                  <tr><td class="link">Каркас блока</td><td>4 шт</td><td>4 шт</td><td>535,00</td><td>ООО «ВЕГА»</td></tr>
+                  <tr><td class="link">Игровая площадка</td><td>4 шт</td><td>4 шт</td><td>5 535,00</td><td>ООО «ВЕГА»</td></tr>
+                  <tr><td class="link">Фланец маховика</td><td>10 шт</td><td>10 шт</td><td>149,00</td><td>ОАО «15-й ТАКСОМОТОРНЫЙ ПАРК»</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 Tenders -->
+    <section class="scene" data-scene="tenders">
+      <div class="feature">
+        <div class="copy">
+          <div class="eyebrow"><i></i> Тендеры</div>
+          <h2>Лента и воронка с агрегаторов</h2>
+          <p>Новые закупки из внешних источников сразу попадают в рабочий контур команды.</p>
+          <ul class="benefit">
+            <li>Канбан: от «Новые» до «Выполнено»</li>
+            <li>Лента тендеров с фильтрами и источниками</li>
+          </ul>
+        </div>
+        <div class="ui-window">
+          <div class="ui-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <div class="url">app.istock.link / Тендеры · Доска</div>
+          </div>
+          <div class="main" style="display:flex">
+            <div class="content" style="width:100%">
+              <div class="kanban">
+                <div class="col">
+                  <h4>Новые <span>30</span></h4>
+                  <div class="kcard">
+                    <div class="id">5015 · ПУБЛИЧ</div>
+                    <div class="name">Акт-ция схемы теплоснабжения</div>
+                    <div class="nmck">7 239 949 ₽</div>
+                    <div class="who">Anton Коломоец</div>
+                  </div>
+                  <div class="kcard">
+                    <div class="id">5008</div>
+                    <div class="name">Приобретение ЗИП для буровой установки SUNWARD</div>
+                    <div class="nmck">НМЦК —</div>
+                    <div class="who">Anton Коломоец</div>
+                  </div>
+                </div>
+                <div class="col">
+                  <h4>Подать предложение <span>1</span></h4>
+                  <div class="kcard urgent">
+                    <div class="id">4953</div>
+                    <div class="name">Оказание услуг по техническому обслуживанию масс спектрометра</div>
+                    <div class="nmck">2 756 783 ₽</div>
+                    <div class="who">Срок истёк</div>
+                  </div>
+                </div>
+                <div class="col">
+                  <h4>Заключение контракта <span>0</span></h4>
+                </div>
+                <div class="col">
+                  <h4>Закупка <span>0</span></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 Outro -->
+    <section class="scene" data-scene="outro">
+      <div class="brand-hero">
+        <div class="brand-mark">
+          <svg viewBox="0 0 31 32" fill="none" aria-hidden="true">
+            <path d="M17.2112 8.91393V21.8341H22.7664C21.3776 23.4867 19.3936 24.6385 17.2112 24.939V31.9499C20.0384 31.6995 22.7168 30.748 25.048 29.0955C27.3296 27.493 29.1152 25.2895 30.3056 22.7856C30.504 22.3349 30.7024 21.8341 30.9008 21.3333C31 21.0829 31 20.7825 31 20.5321V8.91393H17.2112Z" fill="#5B8AF5"/>
+            <path d="M14.5824 0C10.6144 0.350548 6.944 2.15336 4.216 5.10798C1.488 8.0626 0 11.9186 0 15.975C0 20.0313 1.488 23.9374 4.216 26.892C6.944 29.8466 10.6144 31.6495 14.5328 32V0H14.5824Z" fill="#7DA2FF"/>
+          </svg>
+          <div class="brand-word">istock<span>.link</span></div>
+        </div>
+        <h1 class="brand-title">Закупки под контролем —<br>от заявки до приёмки</h1>
+        <p class="brand-sub">Потребности · согласование · запросы · товары · поставщики · склад · тендеры</p>
+        <div class="outro-cta">istock.link — узнать больше</div>
+      </div>
+    </section>
+
+    <div class="bottom">
+      <div class="progress"><i id="progressBar"></i></div>
+      <div class="step-label" id="stepLabel">00 / 08</div>
+    </div>
+  </div>
+
+  <script>
+    const SCENES = [
+      { id: "intro",     label: "Старт",           duration: 4.2 },
+      { id: "needs",     label: "Потребности",     duration: 5.2 },
+      { id: "approval",  label: "Согласование",    duration: 5.0 },
+      { id: "requests",  label: "Запросы",         duration: 5.4 },
+      { id: "products",  label: "Товары",          duration: 5.0 },
+      { id: "suppliers", label: "Поставщики",      duration: 5.2 },
+      { id: "warehouse", label: "Склад",           duration: 5.0 },
+      { id: "tenders",   label: "Тендеры",         duration: 5.2 },
+      { id: "outro",     label: "Итог",            duration: 4.8 },
+    ];
+
+    const TOTAL = SCENES.reduce((s, x) => s + x.duration, 0);
+    window.__PROMO__ = { scenes: SCENES, total: TOTAL, fps: 30 };
+
+    const scenesEls = [...document.querySelectorAll(".scene")];
+    const progressBar = document.getElementById("progressBar");
+    const stepLabel = document.getElementById("stepLabel");
+    const cursor = document.getElementById("cursor");
+
+    function sceneIndexAt(t) {
+      let acc = 0;
+      for (let i = 0; i < SCENES.length; i++) {
+        acc += SCENES[i].duration;
+        if (t < acc) return i;
+      }
+      return SCENES.length - 1;
+    }
+
+    function setTime(t) {
+      const clamped = Math.max(0, Math.min(TOTAL - 0.001, t));
+      const idx = sceneIndexAt(clamped);
+      scenesEls.forEach((el, i) => el.classList.toggle("active", i === idx));
+      progressBar.style.width = ((clamped / TOTAL) * 100).toFixed(2) + "%";
+      stepLabel.textContent = String(idx).padStart(2, "0") + " / " + String(SCENES.length - 1).padStart(2, "0") + "  ·  " + SCENES[idx].label;
+
+      // subtle cursor highlights on UI scenes
+      const uiScenes = new Set(["needs", "approval", "requests", "products", "suppliers", "warehouse", "tenders"]);
+      const id = SCENES[idx].id;
+      if (uiScenes.has(id)) {
+        cursor.classList.add("on");
+        const local = clamped - SCENES.slice(0, idx).reduce((s, x) => s + x.duration, 0);
+        const points = [
+          { x: 1180, y: 260 },
+          { x: 1320, y: 420 },
+          { x: 1500, y: 560 },
+        ];
+        const p = points[Math.min(points.length - 1, Math.floor(local / 1.6))];
+        cursor.style.left = p.x + "px";
+        cursor.style.top = p.y + "px";
+      } else {
+        cursor.classList.remove("on");
+      }
+    }
+
+    window.__setPromoTime = setTime;
+
+    // Preview playback when opened manually
+    const params = new URLSearchParams(location.search);
+    if (params.get("play") === "1") {
+      let start = performance.now();
+      function tick(now) {
+        const t = ((now - start) / 1000) % TOTAL;
+        setTime(t);
+        requestAnimationFrame(tick);
+      }
+      setTime(0);
+      requestAnimationFrame(tick);
+    } else {
+      setTime(0);
+    }
+  </script>
+</body>
+</html>
