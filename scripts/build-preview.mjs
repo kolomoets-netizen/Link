@@ -105,6 +105,14 @@ const partnersPreview = partnersShell
 writeFileSync(join(docs, 'preview-partners-grid.html'), partnersPreview, 'utf-8');
 writeFileSync(join(base, 'preview-partners-grid.html'), partnersPreview, 'utf-8');
 
+const audienceBlock = readFileSync(join(base, '13-partner-audience-cards.html'), 'utf-8').trim();
+const audienceShell = readFileSync(join(base, 'preview-partner-audience.shell.html'), 'utf-8');
+const audiencePreview = audienceShell
+  .replace('__AUDIENCE_BLOCK__', audienceBlock)
+  .replace('__BUILD_STAMP__', konturBuildStamp);
+writeFileSync(join(docs, 'preview-partner-audience.html'), audiencePreview, 'utf-8');
+writeFileSync(join(base, 'preview-partner-audience.html'), audiencePreview, 'utf-8');
+
 const emailsSrc = join(root, 'content', 'emails');
 const emailsDocs = join(docs, 'emails');
 mkdirSync(emailsDocs, { recursive: true });
