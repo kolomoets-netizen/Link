@@ -92,7 +92,7 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 
 **Сетка:** 8 плиток — Контур, Селдон, СБИС, Албато, ПроАйти, MatrixN, Os24, Тендертех (файлы в `assets/partners/`).
 
-**Логотипы:** SVG-заглушки в `assets/partners/` (и PNG Контур/Seldon с GitHub Pages). В Tilda лучше заменить `src` каждого `<img>` на файлы из медиабиблиотеки (официальные лого партнёров).
+**Логотипы:** лежат в `tilda-landing/assets/partners/` (+ `kontur.png` на GitHub Pages в `assets/`). **В Tilda:** можно оставить ссылки на `kolomoets-netizen.github.io/Link/assets/...` — они работают в T123. Для автономности загрузите те же файлы в **Контент сайта → Файлы**, скопируйте URL с `static.tildacdn.com` и замените `src` у каждого `<img>` в блоке.
 
 **Превью:** https://kolomoets-netizen.github.io/Link/preview-partners-grid.html
 
