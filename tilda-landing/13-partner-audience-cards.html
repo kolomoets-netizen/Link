@@ -1,0 +1,243 @@
+<!-- Tilda block: Кто может стать партнером — карточки с фоном (partneristocklink) -->
+<style>
+  .tg-partner-audience-wrap {
+    --tg-primary: #1c50de;
+    font-family: 'TildaSans', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    width: 100%;
+    background: #a7c7fb;
+    padding: 90px 24px;
+  }
+  .tg-partner-audience-wrap *, .tg-partner-audience-wrap *::before, .tg-partner-audience-wrap *::after {
+    box-sizing: border-box;
+  }
+  .tg-partner-audience-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-partner-audience-header {
+    text-align: center;
+    margin-bottom: 56px;
+    box-sizing: content-box;
+  }
+  .tg-partner-audience-title {
+    margin: 0 auto 24px;
+    padding: 0;
+    border: 0;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.23;
+    color: #000000;
+  }
+  .tg-partner-audience-intro {
+    margin: 0 auto;
+    max-width: 820px;
+    padding: 0;
+    border: 0;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.45;
+    color: #000000;
+  }
+
+  .tg-partner-audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .tg-audience-card {
+    position: relative;
+    min-height: 520px;
+    padding: 28px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--tg-primary);
+    background-image: var(--tg-audience-bg);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    color: #ffffff;
+  }
+  .tg-audience-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(28, 80, 222, 0.9);
+    transition: background 0.35s ease;
+    z-index: 0;
+  }
+  .tg-audience-card:hover::before,
+  .tg-audience-card:focus-within::before {
+    background: rgba(28, 80, 222, 0.78);
+  }
+  .tg-audience-card__body {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    transition: margin-top 0.35s ease;
+  }
+  .tg-audience-card:hover .tg-audience-card__body,
+  .tg-audience-card:focus-within .tg-audience-card__body {
+    margin-top: 0;
+  }
+  .tg-audience-card__title {
+    margin: 0;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #ffffff;
+  }
+  .tg-audience-card__rule {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    flex-shrink: 0;
+  }
+  .tg-audience-card__desc {
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: #ffffff;
+    transition: max-height 0.45s ease, opacity 0.35s ease, margin-top 0.35s ease;
+  }
+  .tg-audience-card:hover .tg-audience-card__desc,
+  .tg-audience-card:focus-within .tg-audience-card__desc {
+    margin-top: 18px;
+    max-height: 220px;
+    opacity: 1;
+  }
+  .tg-audience-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 22px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--tg-primary);
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.35s ease, padding 0.35s ease;
+  }
+  .tg-audience-card:hover .tg-audience-card__btn,
+  .tg-audience-card:focus-within .tg-audience-card__btn {
+    margin-top: 24px;
+    max-height: 56px;
+    opacity: 1;
+    padding: 12px 22px;
+  }
+  .tg-audience-card__btn:hover {
+    background: #f4f7ff;
+  }
+
+  @media (max-width: 960px) {
+    .tg-partner-audience-wrap { padding: 72px 20px; }
+    .tg-partner-audience-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .tg-audience-card { min-height: 440px; }
+    .tg-partner-audience-title { font-size: clamp(28px, 6vw, 38px); }
+    .tg-partner-audience-intro { font-size: clamp(18px, 4vw, 24px); }
+  }
+
+  @media (max-width: 960px) and (hover: none) {
+    .tg-audience-card::before { background: rgba(28, 80, 222, 0.82); }
+    .tg-audience-card__body { margin-top: 0; }
+    .tg-audience-card__desc {
+      margin-top: 18px;
+      max-height: none;
+      opacity: 1;
+    }
+    .tg-audience-card__btn {
+      margin-top: 24px;
+      max-height: none;
+      opacity: 1;
+      padding: 12px 22px;
+    }
+  }
+</style>
+
+<div class="tg-partner-audience-wrap" id="partner-audience">
+  <div class="tg-partner-audience-inner">
+    <header class="tg-partner-audience-header">
+      <h2 class="tg-partner-audience-title">Кто может стать партнером</h2>
+      <p class="tg-partner-audience-intro">
+        Вы разбираетесь в бизнесе, закупках или снабжении? У вас большая сеть бизнес-контактов? Хотите увеличить свой пассивный доход? Тогда давайте заноситься и искать взаимовыгодные форматы сотрудничества
+      </p>
+    </header>
+
+    <div class="tg-partner-audience-grid">
+      <article
+        class="tg-audience-card"
+        style="--tg-audience-bg: url('https://kolomoets-netizen.github.io/Link/assets/partner-audience/integrators.jpg');"
+      >
+        <div class="tg-audience-card__body">
+          <h3 class="tg-audience-card__title">Системные интеграторы и диллеры</h3>
+          <span class="tg-audience-card__rule" aria-hidden="true"></span>
+          <p class="tg-audience-card__desc">
+            Давайте усилим ваши проекты ERP и электронных закупок с iStockLink. Мы быстро интегрируемся и поможем вам увеличить ценность решений и доход от подключенных клиентов.
+          </p>
+          <a class="tg-audience-card__btn" href="#PartnerForm">Стать партнером</a>
+        </div>
+      </article>
+
+      <article
+        class="tg-audience-card"
+        style="--tg-audience-bg: url('https://kolomoets-netizen.github.io/Link/assets/partner-audience/consultants.jpg');"
+      >
+        <div class="tg-audience-card__body">
+          <h3 class="tg-audience-card__title">Бизнес консультанты и эксперты в закупках и снабжении</h3>
+          <span class="tg-audience-card__rule" aria-hidden="true"></span>
+          <p class="tg-audience-card__desc">
+            Готовы вместе провести вебинар или встречу, покажем клиентам, как автоматизация улучшает закупки. Поможем встроить iStockLink в ваши предложения, услуги, проекты, чтобы вы зарабатывали больше.
+          </p>
+          <a class="tg-audience-card__btn" href="#PartnerForm">Стать партнером</a>
+        </div>
+      </article>
+
+      <article
+        class="tg-audience-card"
+        style="--tg-audience-bg: url('https://kolomoets-netizen.github.io/Link/assets/partner-audience/bloggers.jpg');"
+      >
+        <div class="tg-audience-card__body">
+          <h3 class="tg-audience-card__title">Блогеры и лидеры мнения</h3>
+          <span class="tg-audience-card__rule" aria-hidden="true"></span>
+          <p class="tg-audience-card__desc">
+            Можем подготовить совместный эфир, экспертный материал или сценарий использования системы. Мы поможем превратить вашу экспертность в доход через партнерские рекомендации.
+          </p>
+          <a class="tg-audience-card__btn" href="#PartnerForm">Стать партнером</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('#partner-audience a[href="#PartnerForm"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.getElementById('PartnerForm');
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (history.replaceState) {
+        history.replaceState(null, '', '#PartnerForm');
+      }
+    });
+  });
+})();
+</script>

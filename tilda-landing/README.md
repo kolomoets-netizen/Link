@@ -86,6 +86,14 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 
 Файл `preview-standalone.html` — откройте двойным кликом.
 
+## Блок «Кто может стать партнером» (`13-partner-audience-cards.html`)
+
+**Страница:** https://istock.link/partneristocklink — заменяет стандартные карточки Tilda (T123).
+
+Три карточки с **фоновым фото** и синим оверлеем; заголовок внизу, при наведении — текст и кнопка **«Стать партнером»** → `#PartnerForm`. Фоны: `assets/partner-audience/*.jpg` (интеграторы, консультанты, блогеры).
+
+**Превью:** https://kolomoets-netizen.github.io/Link/preview-partner-audience.html
+
 ## Блок «Партнёры» (`12-partners-grid.html`)
 
 **Страница:** https://istock.link/partneristocklink — вставьте T123 (например, перед футером или после блока про вознаграждение).
