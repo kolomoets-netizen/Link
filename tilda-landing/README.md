@@ -22,6 +22,7 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | 1 | `01-hero.html` | Hero |
 | 2 | `09-audience-positioning.html` | Позиционирование и ЦА |
 | 3 | `07-crm-srm-kp.html` | Вся тендерная работа в iStockLink |
+| 3a | `08-kontur-search-widget.html` | Виджет Контур.Закупки (iframe) + CTA демо |
 | 4 | `02-how-it-works.html` | Как это работает |
 | 5 | `08-crm-compare.html` | Сравнение с обычной CRM |
 | 6 | `11-pricing-value.html` | Стоимость: ценность, от 1 260 ₽, ссылка на тарифы |
@@ -84,6 +85,14 @@ https://github.com/kolomoets-netizen/Link/raw/main/tilda-landing/preview-standal
 ### Локально на компьютере
 
 Файл `preview-standalone.html` — откройте двойным кликом.
+
+## Блок «Поиск Контур» (`08-kontur-search-widget.html`)
+
+**Куда ставить на `/trading`:** после секции «Агрегаторы / Сбор» или сразу после блока «Как это работает» (шаг «Подключите агрегаторы») — так виджет логично продолжает тему источников закупок.
+
+**Смысл:** отсев — «только поиск» → виджет Контур; «система для отдела» → кнопка `#demo`.
+
+**Превью только этого блока:** https://kolomoets-netizen.github.io/Link/preview-kontur-widget.html (после деплоя с `main`; обновление **Ctrl+Shift+R**).
 
 ## Как вставить в Tilda
 

@@ -86,6 +86,15 @@ for (const name of extraPages) {
   cpSync(join(base, name), join(docs, name));
 }
 
+const konturPreviewPath = join(base, 'preview-kontur-widget.html');
+let konturPreview = readFileSync(konturPreviewPath, 'utf-8');
+konturPreview = konturPreview.replace(
+  /сборка [^·]+/,
+  `сборка ${buildDate} (${buildId})`,
+);
+writeFileSync(join(docs, 'preview-kontur-widget.html'), konturPreview, 'utf-8');
+writeFileSync(konturPreviewPath, konturPreview, 'utf-8');
+
 const emailsSrc = join(root, 'content', 'emails');
 const emailsDocs = join(docs, 'emails');
 mkdirSync(emailsDocs, { recursive: true });
