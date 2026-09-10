@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Превью — блок «Партнёры»</title>
+  <style>
+    body { margin: 0; background: #eef2f8; font-family: system-ui, sans-serif; }
+    .bar { position: sticky; top: 0; z-index: 9; background: #0f172a; color: #fff; padding: 10px 16px; font-size: 13px; text-align: center; line-height: 1.5; }
+    .bar a { color: #93c5fd; }
+    .ctx { max-width: 1120px; margin: 0 auto; padding: 20px 16px 8px; font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; }
+  </style>
+</head>
+<body>
+  <div class="bar">Превью «Партнёры» · сборка 2026-09-10 (be54b91) ·
+    <a href="https://kolomoets-netizen.github.io/Link/preview-partners-grid.html">смотреть блок</a> ·
+    <a href="https://raw.githubusercontent.com/kolomoets-netizen/Link/main/tilda-landing/12-partners-grid.html">код для Tilda</a> ·
+    <a href="https://istock.link/partneristocklink">страница партнёрской программы</a>
+  </div>
+  <p class="ctx">Блок для https://istock.link/partneristocklink — замените src логотипов на загрузки в Tilda</p>
+<!-- Tilda block: Партнёры — partneristocklink и др. -->
+<style>
+  .tg-partners-wrap {
+    --tg-primary: #1c50de;
+    --tg-text: #0f172a;
+    --tg-muted: #64748b;
+    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 90px 24px;
+  }
+  .tg-partners-wrap *, .tg-partners-wrap *::before, .tg-partners-wrap *::after { box-sizing: border-box; }
+  .tg-partners-inner { max-width: 1120px; margin: 0 auto; }
+
+  .tg-partners-header { text-align: center; margin-bottom: 48px; }
+  .tg-partners-title {
+    margin: 0 0 16px;
+    font-size: clamp(32px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    color: var(--tg-text);
+  }
+  .tg-partners-sub {
+    margin: 0 auto;
+    max-width: 640px;
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.45;
+    color: var(--tg-muted);
+  }
+
+  .tg-partners-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .tg-partner-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 108px;
+    padding: 24px 16px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+    border: 1px solid #e8edf5;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .tg-partner-tile:hover {
+    border-color: rgba(28, 80, 222, 0.28);
+    box-shadow: 0 10px 28px rgba(28, 80, 222, 0.1);
+    transform: translateY(-2px);
+  }
+  .tg-partner-tile img {
+    display: block;
+    max-width: min(100%, 152px);
+    max-height: 52px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (max-width: 960px) {
+    .tg-partners-wrap { padding: 72px 20px; }
+    .tg-partners-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .tg-partners-wrap { padding: 56px 16px; }
+    .tg-partners-header { margin-bottom: 32px; }
+    .tg-partners-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .tg-partner-tile { min-height: 92px; padding: 18px 12px; }
+  }
+</style>
+
+<div class="tg-partners-wrap" id="partners">
+  <div class="tg-partners-inner">
+    <header class="tg-partners-header">
+      <h2 class="tg-partners-title">Партнёры</h2>
+      <p class="tg-partners-sub">Технологические партнёры и интеграции, с которыми мы развиваем экосистему для закупок и тендеров</p>
+    </header>
+
+    <!-- Логотипы: замените src на файлы из медиабиблиотеки Tilda при необходимости -->
+    <div class="tg-partners-grid" role="list">
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/kontur.png" width="140" height="40" alt="Контур">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/seldon.png" width="140" height="40" alt="Селдон">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/sbis.svg" width="140" height="40" alt="СБИС">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/albato.svg" width="140" height="40" alt="Албато">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/proiti.svg" width="140" height="40" alt="ПроАйти">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/clever-distribution.svg" width="152" height="44" alt="Клевер Дистрибьюшен">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/matrixn.svg" width="140" height="40" alt="MatrixN">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/os24.svg" width="140" height="40" alt="Os24">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/a47.svg" width="140" height="40" alt="A47">
+      </div>
+      <div class="tg-partner-tile" role="listitem">
+        <img src="https://kolomoets-netizen.github.io/Link/assets/partners/tendertech.svg" width="140" height="40" alt="Тендертех">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
