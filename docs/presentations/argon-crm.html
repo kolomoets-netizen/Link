@@ -3,24 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRM iStockLink для отдела продаж «Аргон» · v5</title>
+  <title>CRM iStockLink · презентация для «Аргон» · v6</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <link rel="preconnect" href="https://api.fontshare.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #0b0b0b;
       --paper: #f5f6f8;
       --card: #ffffff;
       --muted: #667085;
-      --line: #e4e7ec;
       --blue: #1c50de;
       --blue-2: #3b6df0;
       --dark: #0b0b0b;
-      --dark-2: #141414;
       --good: #0f8a5f;
     }
     * { box-sizing: border-box; }
@@ -29,7 +24,7 @@
       height: 100%;
       background: #0b0b0b;
       color: var(--ink);
-      font-family: Satoshi, "Plus Jakarta Sans", system-ui, sans-serif;
+      font-family: Satoshi, system-ui, sans-serif;
       overflow: hidden;
     }
     .viewport {
@@ -38,7 +33,6 @@
       display: grid;
       place-items: center;
       padding: 16px 16px 72px;
-      box-sizing: border-box;
     }
     .frame {
       width: min(100%, calc((100vh - 88px) * 16 / 9));
@@ -80,7 +74,6 @@
       pointer-events: none;
       border-radius: 50%;
     }
-    .blob { filter: blur(0); }
     .ring { border: 1px solid currentColor; opacity: .12; }
 
     .topbar, .foot {
@@ -122,87 +115,45 @@
     .display {
       font-size: 92px;
       line-height: .96;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: -.045em;
     }
     .title {
-      font-size: 68px;
-      line-height: 1.02;
-      font-weight: 800;
+      font-size: 64px;
+      line-height: 1.04;
+      font-weight: 900;
       letter-spacing: -.04em;
     }
     .lead {
-      font-size: 36px;
-      line-height: 1.35;
+      font-size: 32px;
+      line-height: 1.3;
       color: var(--muted);
       font-weight: 500;
-      max-width: 980px;
+      max-width: 920px;
     }
     .slide.dark .lead { color: rgba(255,255,255,.66); }
     .accent { color: var(--blue); }
 
     .grow { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 
-    .card {
+    .fill {
       background: var(--card);
-      border: 1px solid var(--line);
       border-radius: 28px;
       padding: 28px 26px;
-      box-shadow: 0 12px 40px rgba(11, 11, 11, .04);
     }
-    .card h3 { font-size: 30px; letter-spacing: -.03em; margin: 10px 0 12px; }
-    .card p { font-size: 24px; line-height: 1.4; color: var(--muted); font-weight: 500; }
+    .slide.white .fill { background: var(--paper); }
+    .slide.dark .fill { background: #171717; }
+    .fill h3 { font-size: 28px; letter-spacing: -.03em; margin: 10px 0 10px; }
+    .fill p { font-size: 22px; line-height: 1.35; color: var(--muted); font-weight: 500; }
     .idx {
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--blue);
       letter-spacing: .08em;
     }
-    .shot {
-      position: relative;
-      min-height: 420px;
-      height: 100%;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #eef1f6;
-      border: 2px dashed #c5c9d4;
-    }
-    .shot-ph {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-align: center;
-      padding: 28px;
-      color: #667085;
-    }
-    .shot-ph b { font-size: 24px; color: #111; font-weight: 800; }
-    .shot-ph em { font-style: normal; font-size: 24px; font-weight: 600; max-width: 520px; line-height: 1.35; }
-    .shot-ph span {
-      font-size: 16px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      background: #fff;
-      padding: 8px 12px;
-      border-radius: 8px;
-    }
-    .shot img {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      object-fit: contain;
-      background: #0f172a;
-    }
-    .shot img[src=""] { display: none; }
 
     .hud {
       position: fixed;
@@ -241,194 +192,133 @@
       grid-template-columns: 72px 1fr auto;
       gap: 24px;
       align-items: center;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
       text-decoration: none;
       color: inherit;
+      border-bottom: 1px solid #e8eaef;
     }
-    .toc a:first-child { border-top: 1px solid var(--line); }
-    .toc .n { font-size: 24px; font-weight: 800; color: var(--blue); }
-    .toc .t { font-size: 34px; font-weight: 750; letter-spacing: -.03em; }
+    .toc a:first-child { border-top: 1px solid #e8eaef; }
+    .toc .n { font-size: 24px; font-weight: 900; color: var(--blue); }
+    .toc .t { font-size: 32px; font-weight: 700; letter-spacing: -.03em; }
     .toc .d { font-size: 22px; color: var(--muted); font-weight: 500; }
 
-    .pain { display: grid; gap: 18px; }
+    .pain { display: grid; gap: 16px; }
     .pain li {
       list-style: none;
       display: grid;
       grid-template-columns: 56px 1fr;
-      gap: 18px;
-      align-items: start;
+      gap: 16px;
     }
-    .pain b { display: block; font-size: 30px; letter-spacing: -.03em; margin-bottom: 6px; }
-    .pain span { color: rgba(255,255,255,.7); font-size: 24px; line-height: 1.35; font-weight: 500; }
+    .pain b { display: block; font-size: 28px; letter-spacing: -.03em; margin-bottom: 4px; }
+    .pain span { color: rgba(255,255,255,.7); font-size: 22px; line-height: 1.3; font-weight: 500; }
     .dot {
       width: 44px; height: 44px; border-radius: 50%;
       display: grid; place-items: center;
       background: rgba(28,80,222,.18);
       color: #9cb6ff;
-      font-weight: 800;
+      font-weight: 900;
     }
 
-    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
-    .flow-item {
-      background: #fff;
-      border-radius: 24px;
-      padding: 26px 22px;
-      border: 1px solid var(--line);
-      min-height: 210px;
-      box-shadow: 0 12px 40px rgba(11, 11, 11, .04);
-    }
-    .flow-item .n { font-size: 40px; font-weight: 800; color: var(--blue); letter-spacing: -.04em; }
-    .flow-item h3 { font-size: 30px; margin: 18px 0 10px; letter-spacing: -.03em; }
-    .flow-item p { color: var(--muted); font-size: 22px; line-height: 1.35; font-weight: 500; }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
+    .flow-item { min-height: 200px; }
+    .flow-item .n { font-size: 40px; font-weight: 900; color: var(--blue); letter-spacing: -.04em; }
 
-    .kanban { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-    .col {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 14px 12px 16px;
-      min-height: 430px;
-    }
-    .col h4 {
-      font-size: 13px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--line);
-    }
-    .deal {
-      background: #f4f6fb;
-      border-radius: 14px;
-      padding: 12px 12px 13px;
-      margin-bottom: 10px;
-    }
-    .deal.hot { background: linear-gradient(135deg, #1c50de, #3b6df0); color: #fff; }
-    .deal.won { background: #e8f7ef; }
-    .deal strong { display: block; font-size: 15px; letter-spacing: -.02em; margin-bottom: 4px; }
-    .deal em { font-style: normal; font-size: 13px; opacity: .7; font-weight: 600; }
-
-    .client {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 28px;
-    }
-    .avatar {
-      width: 64px; height: 64px; border-radius: 18px;
-      background: var(--blue); color: #fff;
-      display: grid; place-items: center;
-      font-weight: 800; font-size: 22px;
-    }
-    .hist { margin-top: 22px; display: grid; gap: 12px; }
-    .hist div {
+    .rows { display: grid; gap: 14px; }
+    .row {
       display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 12px;
-      font-size: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--line);
+      grid-template-columns: 72px 1fr;
+      gap: 20px;
+      align-items: start;
+      background: var(--paper);
+      border-radius: 22px;
+      padding: 22px 24px;
     }
-    .hist b { color: var(--blue); font-size: 14px; }
+    .slide.paper .row { background: #fff; }
+    .row h3 { font-size: 28px; margin-bottom: 6px; letter-spacing: -.03em; }
+    .row p { font-size: 22px; color: var(--muted); font-weight: 500; }
 
-    .task {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 20px; border-radius: 18px; background: #fff;
-      border: 1px solid var(--line); margin-bottom: 12px;
+    .stack { display: grid; gap: 18px; }
+    .stack article {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 8px 0;
     }
-    .task strong { display: block; font-size: 24px; letter-spacing: -.02em; }
-    .task small { color: var(--muted); font-size: 16px; font-weight: 600; }
-    .tag {
-      font-size: 15px; font-weight: 800; padding: 6px 10px; border-radius: 999px;
-      background: #ecefff; color: var(--blue);
-    }
-    .tag.warn { background: #fff1d6; color: #8a5a00; }
-    .tag.ok { background: #e8f7ef; color: var(--good); }
+    .stack .n { font-size: 56px; font-weight: 900; color: var(--blue); letter-spacing: -.05em; }
+    .stack h3 { font-size: 32px; letter-spacing: -.03em; margin-bottom: 6px; }
+    .stack p { font-size: 22px; color: var(--muted); font-weight: 500; }
 
-    .stat {
-      background: #fff;
-      border-radius: 28px;
-      padding: 32px 28px;
-      border: 1px solid var(--line);
-      min-height: 280px;
-      box-shadow: 0 12px 40px rgba(11, 11, 11, .04);
-    }
+    .stat { min-height: 260px; }
     .stat .big {
-      font-size: 56px;
-      font-weight: 800;
+      font-size: 52px;
+      font-weight: 900;
       letter-spacing: -.05em;
       line-height: 1;
-      margin: 18px 0 14px;
+      margin: 16px 0 12px;
     }
-    .stat h3 { font-size: 26px; letter-spacing: -.03em; }
-    .stat p { margin-top: 10px; color: var(--muted); font-size: 22px; line-height: 1.35; font-weight: 500; }
+    .stat h3 { font-size: 24px; letter-spacing: -.03em; }
+    .stat p { margin-top: 8px; }
 
     .cmp {
       display: grid;
       grid-template-columns: 280px repeat(4, 1fr);
-      border: 1px solid var(--line);
       border-radius: 24px;
       overflow: hidden;
-      background: #fff;
+      background: var(--paper);
     }
-    .cmp div { padding: 16px 14px; font-size: 22px; line-height: 1.3; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 550; }
-    .cmp .h { font-weight: 800; background: #f4f6fb; }
+    .slide.paper .cmp { background: #fff; }
+    .cmp div { padding: 16px 14px; font-size: 20px; line-height: 1.3; font-weight: 550; }
+    .cmp .h { font-weight: 800; background: #eef1f6; }
     .cmp .us { background: #eaf0ff; color: #153fb8; font-weight: 700; }
-    .cmp .row-h { font-weight: 800; background: #f4f6fb; }
+    .cmp .row-h { font-weight: 800; }
 
-    .tl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .tl article {
-      background: #fff;
-      border-radius: 28px;
-      padding: 32px 28px;
-      border: 1px solid var(--line);
-      min-height: 420px;
-    }
-    .tl .when { font-size: 15px; font-weight: 800; color: var(--blue); letter-spacing: .1em; text-transform: uppercase; }
-    .tl h3 { font-size: 32px; margin: 14px 0 16px; letter-spacing: -.03em; }
-    .tl li { margin: 12px 0; font-size: 24px; color: var(--muted); font-weight: 500; line-height: 1.35; }
+    .tl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .tl article { min-height: 280px; }
+    .tl .when { font-size: 15px; font-weight: 900; color: var(--blue); letter-spacing: .1em; text-transform: uppercase; }
+    .tl h3 { font-size: 30px; margin: 12px 0 12px; letter-spacing: -.03em; }
+    .tl p { font-size: 22px; color: var(--muted); font-weight: 500; line-height: 1.35; }
 
-    .price {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 24px;
-    }
-    .price .sum {
-      background: var(--dark);
-      color: #fff;
-      border-radius: 32px;
-      padding: 40px 36px;
-    }
-    .price .sum p { color: rgba(255,255,255,.6); }
-    .price .val { font-size: 64px; font-weight: 800; letter-spacing: -.05em; margin: 8px 0 28px; }
-    .price .val small { font-size: 22px; font-weight: 650; color: rgba(255,255,255,.55); }
-    .checks { display: grid; gap: 14px; }
-    .checks li { font-size: 26px; font-weight: 550; line-height: 1.4; }
+    .chain6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .chain6 article { min-height: 260px; padding: 20px 16px; }
+    .chain6 .n { font-size: 28px; font-weight: 900; color: var(--blue); }
+    .chain6 h3 { font-size: 22px; margin: 12px 0 8px; letter-spacing: -.03em; }
+    .chain6 p { font-size: 18px; color: var(--muted); line-height: 1.35; font-weight: 500; }
 
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .steps article {
-      background: #fff;
-      border-radius: 28px;
-      padding: 32px 28px 28px;
-      border: 1px solid var(--line);
-      min-height: 360px;
-      box-shadow: 0 12px 40px rgba(11, 11, 11, .04);
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--paper);
+      margin-bottom: 12px;
     }
-    .steps .n { font-size: 56px; font-weight: 800; color: var(--blue); letter-spacing: -.05em; }
-    .steps h3 { font-size: 30px; margin: 18px 0 12px; letter-spacing: -.03em; }
-    .steps p { color: var(--muted); font-size: 24px; line-height: 1.4; font-weight: 500; }
+    .slide.paper .task { background: #fff; }
+    .task strong { display: block; font-size: 24px; letter-spacing: -.02em; }
+    .task small { color: var(--muted); font-size: 16px; font-weight: 600; }
+    .tag {
+      font-size: 15px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e8edff;
+      color: var(--blue);
+    }
+    .tag.ok { background: #e8f7ef; color: var(--good); }
+    .tag.warn { background: #fff4d6; color: #8a5a00; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .steps article { min-height: 320px; }
+    .steps .n { font-size: 56px; font-weight: 900; color: var(--blue); letter-spacing: -.05em; }
+    .steps h3 { font-size: 28px; margin: 16px 0 10px; letter-spacing: -.03em; }
 
     .aside {
       display: inline-flex;
-      align-items: center;
-      align-self: flex-start;
       width: max-content;
-      gap: 10px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: #ecefff;
+      background: #e8edff;
       color: var(--blue);
       font-weight: 800;
       font-size: 14px;
@@ -436,43 +326,101 @@
       text-transform: uppercase;
       margin-bottom: 22px;
     }
-    .chain6 {
+    .slide.dark .aside { background: rgba(28,80,222,.22); color: #c5d4ff; }
+
+    .mosaic {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 12px;
+      grid-template-columns: 1.3fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      min-height: 460px;
     }
-    .chain6 article {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 20px 16px;
-      min-height: 280px;
-    }
-    .chain6 .n { font-size: 28px; font-weight: 800; color: var(--blue); letter-spacing: -.04em; }
-    .chain6 h3 { font-size: 22px; margin: 14px 0 8px; letter-spacing: -.03em; }
-    .chain6 p { font-size: 20px; color: var(--muted); line-height: 1.35; font-weight: 500; }
-    .kpt {
+    .mosaic .wide { grid-row: 1 / span 2; }
+
+    .vline { display: grid; gap: 0; }
+    .vline article {
       display: grid;
-      grid-template-columns: 1.4fr repeat(3, 1fr);
+      grid-template-columns: 80px 1fr;
+      gap: 20px;
+      padding: 22px 0;
+    }
+    .vline .n { font-size: 28px; font-weight: 900; color: var(--blue); }
+
+    /* Drawn UI mocks — no photos */
+    .mock {
+      border-radius: 28px;
       background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 24px;
+      padding: 28px 26px 24px;
+      min-height: 520px;
+      height: 100%;
       overflow: hidden;
     }
-    .kpt div { padding: 16px 14px; font-size: 19px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 550; }
-    .kpt .h { font-weight: 800; background: #f4f6fb; }
-    .kpt .best { background: #eaf0ff; color: #153fb8; font-weight: 700; }
-    .sup {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 18px; border-radius: 18px; background: #fff;
-      border: 1px solid var(--line); margin-bottom: 12px;
+    .slide.white .mock { background: var(--paper); }
+    .mk-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
     }
-    .sup strong { display: block; font-size: 20px; letter-spacing: -.02em; }
-    .sup small { color: var(--muted); font-size: 14px; font-weight: 600; }
+    .mk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); display: inline-block; margin-right: 8px; }
+    .kanban { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .col { background: var(--paper); border-radius: 16px; padding: 14px; min-height: 430px; }
+    .slide.white .col { background: #fff; }
+    .col h4 {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+    .deal {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px 14px;
+      margin-bottom: 10px;
+    }
+    .slide.white .deal { background: var(--paper); }
+    .deal.hot { background: linear-gradient(135deg, #1c50de, #3b6df0); color: #fff; }
+    .deal strong { display: block; font-size: 16px; margin-bottom: 6px; letter-spacing: -.02em; }
+    .deal em { font-style: normal; font-size: 13px; opacity: .65; font-weight: 600; }
+
+    .ui-card .head { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+    .ui-card .back {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #eef1f6; color: var(--muted);
+      display: grid; place-items: center; font-size: 16px;
+    }
+    .ui-card .ttl { font-size: 24px; font-weight: 800; letter-spacing: -.03em; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 28px; }
+    .tab { padding: 8px 12px; border-radius: 10px; color: var(--muted); font-weight: 700; font-size: 14px; }
+    .tab.on { background: #fff; color: var(--ink); box-shadow: inset 0 -2px 0 var(--blue); }
+    .slide.white .tab.on { background: var(--paper); }
+    .fields { display: grid; grid-template-columns: 160px 1fr; gap: 16px 18px; font-size: 17px; }
+    .fields .l { color: var(--muted); }
+    .fields .inn { color: var(--blue); font-weight: 700; }
+
+    .ui-list .item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 4px;
+    }
+    .ui-list .name { font-weight: 700; font-size: 16px; }
+    .ui-list .inn { color: var(--blue); font-weight: 700; font-size: 14px; text-align: right; }
+    .ui-list .addr { color: var(--muted); font-size: 12px; font-weight: 500; margin-top: 4px; }
+
+    .ui-table { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); border-radius: 16px; overflow: hidden; }
+    .ui-table div { padding: 12px 10px; font-size: 13px; background: var(--paper); font-weight: 600; }
+    .slide.white .ui-table div { background: #fff; }
+    .ui-table .h { background: #eef1f6; font-weight: 800; }
+    .ui-table .best { background: #eaf0ff; color: #153fb8; }
 
     @media print {
       html, body, .viewport { background: #fff; height: auto; overflow: visible; }
-      .stage { transform: none !important; box-shadow: none; page-break-after: always; height: auto; }
+      .stage { transform: none !important; box-shadow: none; }
       .slide { position: relative; display: flex !important; page-break-after: always; height: 1080px; }
       .hud, .hint { display: none; }
     }
@@ -484,205 +432,225 @@
     <div class="frame" id="frame">
     <div class="stage" id="stage">
 
-      <!-- 01 Cover -->
       <section class="slide dark is-on" data-i="1">
         <div class="blob" style="width:620px;height:620px;right:-160px;top:-180px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.55"></div>
         <div class="ring" style="width:460px;height:460px;right:80px;bottom:-80px"></div>
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="meta">Для отдела продаж · компания «Аргон»</div>
+          <div class="meta">Презентация для «Аргон»</div>
         </div>
         <div class="grow">
-          <p class="kicker">Наша CRM</p>
-          <h1 class="display" style="margin-top:22px;max-width:1480px">CRM iStockLink<br>для отдела продаж</h1>
-          <p class="lead" style="margin-top:28px">Рассказываем про нашу CRM: воронка, задачи, поставщики и КП в одном окне.<br>Старт за день — без внедрения как у Битрикс24.</p>
+          <p class="kicker">CRM iStockLink</p>
+          <h1 class="display" style="margin-top:22px;max-width:1500px">CRM для отдела<br>продаж «Аргон»</h1>
+          <p class="lead" style="margin-top:28px">Воронка. Задачи. Поставщики. КП. Одно окно.</p>
         </div>
         <div class="foot">
-          <div class="meta">Встреча с командой «Аргон» · сборка v5</div>
+          <div class="meta">Сборка v6</div>
           <div class="meta num">01 / 25</div>
         </div>
       </section>
 
-      <!-- 02 Overview -->
-      <section class="slide paper" data-i="2">
+      <section class="slide white" data-i="2">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">Overview</div>
+          <div class="kicker">Содержание</div>
         </div>
         <div class="grow" style="justify-content:flex-end">
-          <h2 class="title" style="margin-bottom:36px">Содержание</h2>
+          <h2 class="title" style="margin-bottom:28px">О чём эта встреча</h2>
           <nav class="toc">
-            <a href="#3"><span class="n">01</span><span class="t">Зачем наша CRM</span><span class="d">Что ломается без iStockLink</span></a>
-            <a href="#5"><span class="n">02</span><span class="t">Что умеет CRM iStockLink</span><span class="d">Воронка, клиенты, задачи, поставщики</span></a>
-            <a href="#9"><span class="n">03</span><span class="t">Наши преимущества</span><span class="d">Как на лендинге: день, цена, из коробки</span></a>
-            <a href="#12"><span class="n">04</span><span class="t">Поставщики в той же CRM</span><span class="d">Запрос, КП, поставка — не вторая система</span></a>
-            <a href="#23"><span class="n">05</span><span class="t">Как подключаем «Аргон»</span><span class="d">Демо на ваших сделках, старт за день</span></a>
+            <a href="#3"><span class="n">01</span><span class="t">Зачем CRM</span><span class="d">Что ломается без системы</span></a>
+            <a href="#5"><span class="n">02</span><span class="t">Что умеет iStockLink</span><span class="d">Воронка. Клиенты. Задачи.</span></a>
+            <a href="#9"><span class="n">03</span><span class="t">Главное преимущество</span><span class="d">Быстрая гибкая настройка</span></a>
+            <a href="#13"><span class="n">04</span><span class="t">Поставщики в том же окне</span><span class="d">Запрос. КП. Поставка.</span></a>
+            <a href="#24"><span class="n">05</span><span class="t">Как подключим «Аргон»</span><span class="d">Демо на ваших сделках</span></a>
           </nav>
         </div>
         <div class="foot"><div class="meta">Ориентир встречи — 25 минут</div><div class="meta num">02 / 25</div></div>
       </section>
 
-      <!-- 03 Problem -->
       <section class="slide dark" data-i="3">
         <div class="blob" style="width:520px;height:520px;left:-180px;bottom:-160px;background:radial-gradient(circle,#1c50de 0%,transparent 70%);opacity:.4"></div>
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · зачем мы</div>
+          <div class="kicker">Зачем мы</div>
         </div>
         <div class="grow grid-2">
           <div>
-            <h2 class="title">Мы сделали CRM, чтобы отдел не жил в чатах</h2>
-            <p class="lead" style="margin-top:24px">CRM iStockLink забирает сделки из Excel, переписок и «головы менеджера» в один управляемый процесс.</p>
+            <h2 class="title">Отдел не должен жить в чатах</h2>
+            <p class="lead" style="margin-top:24px">Сделки уходят из Excel. Из переписок. Из головы менеджера.</p>
           </div>
           <ul class="pain">
-            <li><span class="dot">01</span><div><b>Договорённости в мессенджерах</b><span>Следующий шаг теряется вместе с перепиской.</span></div></li>
-            <li><span class="dot">02</span><div><b>Клиент «принадлежит» одному человеку</b><span>Уход в отпуск или смена менеджера обнуляет контекст.</span></div></li>
-            <li><span class="dot">03</span><div><b>РОП не видит картину</b><span>Нет единой воронки, просрочек и нагрузки по людям.</span></div></li>
-            <li><span class="dot">04</span><div><b>Excel не ведёт сделку</b><span>Таблица хранит строки, но не напоминает и не назначает.</span></div></li>
+            <li><span class="dot">01</span><div><b>Договорённости в мессенджерах</b><span>Следующий шаг пропадает.</span></div></li>
+            <li><span class="dot">02</span><div><b>Клиент «принадлежит» одному</b><span>Отпуск обнуляет контекст.</span></div></li>
+            <li><span class="dot">03</span><div><b>РОП не видит картину</b><span>Нет воронки. Нет просрочек.</span></div></li>
+            <li><span class="dot">04</span><div><b>Excel не ведёт сделку</b><span>Таблица не напоминает.</span></div></li>
           </ul>
         </div>
         <div class="foot"><div class="meta">Отдел продаж «Аргон»</div><div class="meta num">03 / 25</div></div>
       </section>
 
-      <!-- 04 Solution -->
       <section class="slide paper" data-i="4">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · как устроена</div>
+          <div class="kicker">Как устроена</div>
         </div>
         <div class="grow">
-          <h2 class="title" style="max-width:1480px">В нашей CRM сделка живёт<br>в одной карточке</h2>
-          <p class="lead" style="margin-top:20px">Клиент, этап, задача и результат — сразу. Мы не просим внедрять Битрикс и дописывать воронку с нуля.</p>
+          <h2 class="title">Сделка живёт в одной карточке</h2>
+          <p class="lead" style="margin-top:16px">Клиент. Этап. Задача. Результат.</p>
           <div class="flow">
-            <div class="flow-item"><div class="n">01</div><h3>Клиент</h3><p>Контакты, история касаний и документы в одном месте.</p></div>
-            <div class="flow-item"><div class="n">02</div><h3>Сделка</h3><p>Этап воронки, сумма, срок и ответственный.</p></div>
-            <div class="flow-item"><div class="n">03</div><h3>Задачи</h3><p>Звонок, КП, встреча — с дедлайном и напоминанием.</p></div>
-            <div class="flow-item"><div class="n">04</div><h3>Результат</h3><p>Договор, отказ или пауза — видно, почему так вышло.</p></div>
+            <div class="fill flow-item"><div class="n">01</div><h3>Клиент</h3><p>Контакты. История. Документы.</p></div>
+            <div class="fill flow-item"><div class="n">02</div><h3>Сделка</h3><p>Этап. Сумма. Ответственный.</p></div>
+            <div class="fill flow-item"><div class="n">03</div><h3>Задачи</h3><p>Звонок. КП. Встреча.</p></div>
+            <div class="fill flow-item"><div class="n">04</div><h3>Результат</h3><p>Договор. Отказ. Пауза.</p></div>
           </div>
         </div>
-        <div class="foot"><div class="meta">CRM iStockLink · без настройки с нуля</div><div class="meta num">04 / 25</div></div>
+        <div class="foot"><div class="meta">Без настройки с нуля</div><div class="meta num">04 / 25</div></div>
       </section>
 
-      <!-- 05 Services -->
       <section class="slide white" data-i="5">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · возможности</div>
+          <div class="kicker">Возможности</div>
         </div>
-        <div class="grow">
-          <h2 class="title" style="margin-bottom:28px">Что умеет наша CRM</h2>
-          <div class="grid-6">
-            <article class="card"><div class="idx">01</div><h3>Воронка по этапам</h3><p>Из коробки: этапы, задачи, ответственные. Не после месяцев настройки.</p></article>
-            <article class="card"><div class="idx">02</div><h3>База клиентов</h3><p>Компания, лица, история касаний и связанные сделки в одной карточке.</p></article>
-            <article class="card"><div class="idx">03</div><h3>Задачи и контроль</h3><p>Дедлайны, просрочки, нагрузка по каждому специалисту — сразу видно.</p></article>
-            <article class="card"><div class="idx">04</div><h3>Документы и КП</h3><p>Файлы по сделке. Оцифровка коммерческих предложений поставщиков.</p></article>
-            <article class="card"><div class="idx">05</div><h3>SRM в том же окне</h3><p>Поставщики и закупки рядом со сделкой. Не отдельная система.</p></article>
-            <article class="card"><div class="idx">06</div><h3>Лента агрегаторов</h3><p>Контур и Seldon — из коробки, если нужны тендеры. Не через интегратора.</p></article>
+        <div class="grow grid-2" style="align-items:start">
+          <h2 class="title">Что умеет наша CRM</h2>
+          <div class="rows">
+            <div class="row"><div class="idx">01</div><div><h3>Воронка по этапам</h3><p>Этапы. Задачи. Ответственные. С первого дня.</p></div></div>
+            <div class="row"><div class="idx">02</div><div><h3>База клиентов</h3><p>Компания. Лица. История. Сделки.</p></div></div>
+            <div class="row"><div class="idx">03</div><div><h3>Задачи и контроль</h3><p>Дедлайны. Просрочки. Нагрузка.</p></div></div>
+            <div class="row"><div class="idx">04</div><div><h3>Документы и КП</h3><p>Файлы по сделке. Оцифровка предложений.</p></div></div>
+            <div class="row"><div class="idx">05</div><div><h3>Поставщики в том же окне</h3><p>Не вторая система.</p></div></div>
+            <div class="row"><div class="idx">06</div><div><h3>Лента агрегаторов</h3><p>Контур. Seldon. По необходимости.</p></div></div>
           </div>
         </div>
-        <div class="foot"><div class="meta">CRM iStockLink · istock.link/trading</div><div class="meta num">05 / 25</div></div>
+        <div class="foot"><div class="meta">CRM iStockLink</div><div class="meta num">05 / 25</div></div>
       </section>
 
-      <!-- 06 Pipeline -->
       <section class="slide paper" data-i="6">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · воронка</div>
+          <div class="kicker">Воронка</div>
         </div>
         <div class="grow grid-2">
           <div>
-            <h2 class="title">Воронка в нашей CRM — из коробки</h2>
-            <p class="lead" style="margin-top:22px">Этапы, задачи, ответственные. В Битрикс24 это появляется после настройки. У нас — в первый день.</p>
+            <h2 class="title">Воронка из коробки</h2>
+            <p class="lead" style="margin-top:20px">Этапы уже есть. Ответственные уже есть. В первый день.</p>
           </div>
-          <figure class="shot">
-            <img src="shots/crm-funnel.png" alt="Воронка CRM iStockLink" onerror="this.style.display='none'">
-            <div class="shot-ph">
-              <b>Скрин из системы</b>
-              <em>Воронка сделок CRM iStockLink</em>
-              <span>shots/crm-funnel.png</span>
+          <div class="mock">
+            <div class="mk-top"><span><span class="mk-dot"></span>Сделки</span><span>Доска</span></div>
+            <div class="kanban">
+              <div class="col"><h4>Новые</h4><div class="deal hot"><strong>Поставка оборудования</strong><em>Игорь Громов</em></div><div class="deal"><strong>Закупка продовольствия</strong><em>Срок 22.09</em></div><div class="deal"><strong>Сервисный контракт</strong><em>Новая</em></div></div>
+              <div class="col"><h4>Предложение</h4><div class="deal"><strong>Подшипники</strong><em>Срок 18.09</em></div><div class="deal"><strong>Метизы</strong><em>Ждёт КП</em></div></div>
+              <div class="col"><h4>Контракт</h4><div class="deal"><strong>Пошив формы</strong><em>Согласование</em></div></div>
+              <div class="col"><h4>Исполнение</h4><div class="deal"><strong>Сервис</strong><em>В графике</em></div></div>
             </div>
-          </figure>
+          </div>
         </div>
-        <div class="foot"><div class="meta">Положите PNG/JPG в presentations/shots/</div><div class="meta num">06 / 25</div></div>
+        <div class="foot"><div class="meta">Воронка CRM iStockLink</div><div class="meta num">06 / 25</div></div>
       </section>
 
-      <!-- 07 Clients -->
       <section class="slide white" data-i="7">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · клиенты</div>
+          <div class="kicker">Клиенты</div>
         </div>
         <div class="grow grid-2">
           <div>
-            <h2 class="title">Клиент хранится в нашей CRM, не в телефоне</h2>
-            <p class="lead" style="margin-top:22px">Карточка iStockLink держит людей, историю и сделки. Новый сотрудник входит без разбора переписок.</p>
+            <h2 class="title">Клиент хранится в CRM</h2>
+            <p class="lead" style="margin-top:20px">Не в телефоне. Не в чате. Новый сотрудник входит сразу.</p>
           </div>
-          <figure class="shot">
-            <img src="shots/crm-client.png" alt="Карточка клиента CRM iStockLink" onerror="this.style.display='none'">
-            <div class="shot-ph">
-              <b>Скрин из системы</b>
-              <em>Карточка клиента CRM iStockLink</em>
-              <span>shots/crm-client.png</span>
+          <div class="mock ui-card">
+            <div class="head"><div class="back">‹</div><div class="ttl">ООО «КА»</div></div>
+            <div class="tabs"><span class="tab on">Основное</span><span class="tab">Сделки</span><span class="tab">Чат</span></div>
+            <div class="fields">
+              <div class="l">Название</div><div>ООО «КА»</div>
+              <div class="l">ИНН</div><div class="inn">4401163183</div>
+              <div class="l">Телефон</div><div>—</div>
+              <div class="l">Email</div><div>—</div>
+              <div class="l">Адрес</div><div>г. Кострома, ул. Кузнецкая, 18Б</div>
+              <div class="l">Сайт</div><div>—</div>
+              <div class="l">Примечание</div><div>—</div>
             </div>
-          </figure>
+          </div>
         </div>
         <div class="foot"><div class="meta">Контекст остаётся в компании</div><div class="meta num">07 / 25</div></div>
       </section>
 
-      <!-- 08 Tasks -->
       <section class="slide paper" data-i="8">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · задачи</div>
+          <div class="kicker">Задачи</div>
         </div>
-        <div class="grow grid-2">
-          <div>
-            <h2 class="title">В нашей CRM следующий шаг всегда назначен</h2>
-            <p class="lead" style="margin-top:22px">Мы не заменяем менеджера. CRM iStockLink не даёт сделке зависнуть: просрочки и нагрузка видны руководителю из коробки.</p>
-          </div>
-          <figure class="shot">
-            <img src="shots/crm-tasks.png" alt="Задачи CRM iStockLink" onerror="this.style.display='none'">
-            <div class="shot-ph">
-              <b>Скрин из системы</b>
-              <em>Задачи и нагрузка по специалистам</em>
-              <span>shots/crm-tasks.png</span>
-            </div>
-          </figure>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Следующий шаг всегда назначен</h2>
+          <div class="task"><div><strong>Позвонить по КП</strong><small>Сделка 0021 · сегодня 16:00</small></div><span class="tag warn">срок</span></div>
+          <div class="task"><div><strong>Отправить спецификацию</strong><small>Сделка 0018 · Игорь Громов</small></div><span class="tag">в работе</span></div>
+          <div class="task"><div><strong>Согласовать договор</strong><small>Сделка 0014 · завтра</small></div><span class="tag ok">план</span></div>
+          <div class="task"><div><strong>Проверить поставку</strong><small>После выбора подрядчика</small></div><span class="tag">очередь</span></div>
         </div>
-        <div class="foot"><div class="meta">Просрочки видны руководителю сразу</div><div class="meta num">08 / 25</div></div>
+        <div class="foot"><div class="meta">Просрочки видны руководителю</div><div class="meta num">08 / 25</div></div>
       </section>
 
-      <!-- 09 Advantages -->
-      <section class="slide white" data-i="9">
+      <section class="slide dark" data-i="9">
+        <div class="blob" style="width:640px;height:640px;right:-180px;top:-200px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.5"></div>
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · преимущества</div>
+          <div class="kicker">Главное преимущество</div>
+        </div>
+        <div class="grow">
+          <p class="aside">Одно из главных преимуществ системы</p>
+          <h2 class="display" style="max-width:1600px">Быстрая и гибкая настройка</h2>
+          <p class="lead" style="margin-top:28px">Этапы. Поля. Маршруты. Под ваш процесс. Без проекта на месяцы.</p>
+        </div>
+        <div class="foot"><div class="meta">Настройка. Не внедрение.</div><div class="meta num">09 / 25</div></div>
+      </section>
+
+      <section class="slide white" data-i="10">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Настройка</div>
+        </div>
+        <div class="grow grid-2">
+          <h2 class="title">Меняете сами. В тот же день.</h2>
+          <div class="stack">
+            <article><div class="n">01</div><div><h3>Воронка</h3><p>Этапы добавляете и убираете сами.</p></div></article>
+            <article><div class="n">02</div><div><h3>Поля карточки</h3><p>Только то, чем отдел реально пользуется.</p></div></article>
+            <article><div class="n">03</div><div><h3>Маршруты заявок</h3><p>Согласование как у вас. Не «как в коробке».</p></div></article>
+            <article><div class="n">04</div><div><h3>Роли</h3><p>Менеджер. РОП. Закупщик. Свои права.</p></div></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Гибкость без интегратора</div><div class="meta num">10 / 25</div></div>
+      </section>
+
+      <section class="slide paper" data-i="11">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Почему мы</div>
         </div>
         <div class="grow">
           <h2 class="title" style="margin-bottom:22px">Почему выбирают нашу CRM</h2>
           <div class="grid-4">
-            <article class="stat"><div class="idx">01</div><div class="big">1 день</div><h3>Мы запускаем, не внедряем</h3><p>Подключили CRM iStockLink — отдел работает. Битрикс24: недели и месяцы плюс проект внедрения.</p></article>
-            <article class="stat"><div class="idx">02</div><div class="big">1 260 ₽</div><h3>Без 100 000 ₽ на старт</h3><p>Битрикс24 + внедрение — от 100 000 ₽ и подписка. Наша CRM — от 1 260 ₽/мес, на команду от 6 000 ₽.</p></article>
-            <article class="stat"><div class="idx">03</div><div class="big">0</div><h3>Без доработки «с нуля»</h3><p>Воронка, нагрузка по специалистам, поставщики и КП уже в CRM. Не настраиваем полгода.</p></article>
-            <article class="stat"><div class="idx">04</div><div class="big">14 дней</div><h3>Полный доступ бесплатно</h3><p>Без привязки карты. Смотрите нашу CRM на своих сделках — потом решаете.</p></article>
+            <article class="fill stat"><div class="idx">01</div><div class="big">1 день</div><h3>Запуск. Не внедрение.</h3><p>Подключили. Отдел работает.</p></article>
+            <article class="fill stat"><div class="idx">02</div><div class="big">Часы</div><h3>Гибкая настройка</h3><p>Этапы и маршруты под вас.</p></article>
+            <article class="fill stat"><div class="idx">03</div><div class="big">0</div><h3>Без доработки с нуля</h3><p>Воронка. Поставщики. КП. Уже внутри.</p></article>
+            <article class="fill stat"><div class="idx">04</div><div class="big">14 дней</div><h3>Полный доступ</h3><p>На ваших сделках. Потом решаете.</p></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Формулировки с лендинга istock.link/trading</div><div class="meta num">09 / 25</div></div>
+        <div class="foot"><div class="meta">Преимущества CRM iStockLink</div><div class="meta num">11 / 25</div></div>
       </section>
 
-      <!-- 10 Compare -->
-      <section class="slide paper" data-i="10">
+      <section class="slide white" data-i="12">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · сравнение</div>
+          <div class="kicker">Сравнение</div>
         </div>
         <div class="grow">
-          <h2 class="title" style="font-size:48px;margin-bottom:22px">Наша CRM рядом с привычными инструментами</h2>
+          <h2 class="title" style="font-size:48px;margin-bottom:22px">Рядом с привычными инструментами</h2>
           <div class="cmp">
             <div class="h row-h"></div>
             <div class="h">Excel</div>
-            <div class="h">Битрикс24 + внедрение</div>
-            <div class="h">Сервисы поиска тендеров</div>
+            <div class="h">Битрикс24</div>
+            <div class="h">Поиск тендеров</div>
             <div class="h us">CRM iStockLink</div>
 
             <div class="row-h">Запуск</div>
@@ -691,21 +659,15 @@
             <div>сразу</div>
             <div class="us">1 день</div>
 
-            <div class="row-h">Стоимость старта</div>
-            <div>0</div>
-            <div>от 100 000 ₽ + подписка</div>
-            <div>подписка</div>
-            <div class="us">от 1 260 ₽ / мес</div>
-
-            <div class="row-h">Тендеры из агрегаторов</div>
-            <div>вручную</div>
-            <div>через интегратора</div>
-            <div>да</div>
-            <div class="us">Контур, Seldon, из коробки</div>
-
-            <div class="row-h">Воронка по этапам</div>
+            <div class="row-h">Настройка</div>
             <div>нет</div>
-            <div>да, после настройки</div>
+            <div>долгий проект</div>
+            <div>нет</div>
+            <div class="us">быстрая и гибкая</div>
+
+            <div class="row-h">Воронка</div>
+            <div>нет</div>
+            <div>после настройки</div>
             <div>нет</div>
             <div class="us">из коробки</div>
 
@@ -713,342 +675,265 @@
             <div>вручную</div>
             <div>доработка</div>
             <div>нет</div>
-            <div class="us">SRM в том же окне</div>
+            <div class="us">в том же окне</div>
 
-            <div class="row-h">Нагрузка по специалистам</div>
+            <div class="row-h">Нагрузка отдела</div>
             <div>нет</div>
             <div>после настройки</div>
             <div>нет</div>
             <div class="us">из коробки</div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Таблица с лендинга istock.link/trading</div><div class="meta num">10 / 25</div></div>
+        <div class="foot"><div class="meta">Без цифр тарифа. Про процесс.</div><div class="meta num">12 / 25</div></div>
       </section>
 
-      <!-- 11 What you get + Bitrix -->
-      <section class="slide white" data-i="11">
-        <div class="topbar">
-          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · что внутри</div>
-        </div>
-        <div class="grow">
-          <h2 class="title" style="font-size:48px;margin-bottom:22px">Что вы получаете в нашей CRM</h2>
-          <div class="grid-3">
-            <article class="card">
-              <div class="idx">За эти деньги</div>
-              <h3>Весь контур iStockLink</h3>
-              <p>Лента агрегаторов и закрытых торгов. Воронка: этапы, задачи, ответственные. Поставщики и закупки. Оцифровка КП. Нагрузка по каждому специалисту.</p>
-            </article>
-            <article class="card">
-              <div class="idx">Быстрый старт</div>
-              <h3>Мы не делаем проект внедрения</h3>
-              <p>Подключение за день. Не нужен интегратор и курс. Интерфейс понятен с первого дня. 14 дней бесплатно, без карты.</p>
-            </article>
-            <article class="card">
-              <div class="idx">С Битрикс24</div>
-              <h3>Переход на нашу CRM</h3>
-              <p>За 1 день настроим CRM iStockLink под ваш процесс. Скидка 50% на год. 14 дней полного доступа — до оплаты.</p>
-            </article>
-          </div>
-        </div>
-        <div class="foot"><div class="meta">Блоки «Стоимость» и «Переход с Битрикс24» на лендинге</div><div class="meta num">11 / 25</div></div>
-      </section>
-
-      <!-- 12 Linked process divider -->
-      <section class="slide dark" data-i="12">
+      <section class="slide dark" data-i="13">
         <div class="blob" style="width:540px;height:540px;right:-140px;top:-120px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.45"></div>
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · поставщики</div>
+          <div class="kicker">Поставщики</div>
         </div>
         <div class="grow">
-          <div class="aside">Это тоже наша CRM, не второй продукт</div>
-          <h2 class="title" style="max-width:1500px">В CRM iStockLink закупка у поставщиков — в том же окне</h2>
-          <p class="lead" style="margin-top:28px;max-width:980px">Выигранная сделка становится запросом КП и поставкой. SRM у нас не «доработка Битрикса», а часть CRM.</p>
+          <p class="aside">Это тоже наша CRM</p>
+          <h2 class="title" style="max-width:1500px">Закупка у поставщиков. В том же окне.</h2>
+          <p class="lead" style="margin-top:28px">Выигранная сделка становится запросом КП. Затем поставкой.</p>
         </div>
-        <div class="foot"><div class="meta">Наша CRM iStockLink · поставщики в том же окне</div><div class="meta num">12 / 25</div></div>
+        <div class="foot"><div class="meta">Не вторая система</div><div class="meta num">13 / 25</div></div>
       </section>
 
-      <!-- 13 What is SRM -->
-      <section class="slide paper" data-i="13">
+      <section class="slide paper" data-i="14">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · закупки</div>
+          <div class="kicker">Закупки</div>
         </div>
         <div class="grow">
-          <h2 class="title" style="margin-bottom:18px">В нашей CRM полный цикл работы с поставщиками</h2>
-          <p class="lead" style="margin-bottom:32px">Потребности и заявки → запросы → КП и рейтинг → аналитика. Это возможности CRM iStockLink, не отдельный сервис.</p>
-          <div class="grid-6">
-            <article class="card"><div class="idx">01</div><h3>Потребности</h3><p>Сбор из Excel, почты и Telegram. Ручное создание и автозаказы.</p></article>
-            <article class="card"><div class="idx">02</div><h3>Заявки</h3><p>Маршруты согласования по ролям, этапам и правилам компании.</p></article>
-            <article class="card"><div class="idx">03</div><h3>Запросы</h3><p>Публичные и приватные закупки, редукцион, рассылка из системы.</p></article>
-            <article class="card"><div class="idx">04</div><h3>КП и поставщики</h3><p>Сводная таблица сравнения, чат и почта с историей по заявке.</p></article>
-            <article class="card"><div class="idx">05</div><h3>База поставщиков</h3><p>Категории, квалификация, скоринг, проверка через СБИС.</p></article>
-            <article class="card"><div class="idx">06</div><h3>Аналитика</h3><p>Дашборды, экономия, сроки, нагрузка сотрудников.</p></article>
+          <h2 class="title" style="margin-bottom:28px">Полный цикл с поставщиками</h2>
+          <div class="tl">
+            <article class="fill"><div class="when">Сбор</div><h3>Потребности и заявки</h3><p>Из Excel. Из почты. Из Telegram. Согласование по ролям.</p></article>
+            <article class="fill"><div class="when">Выбор</div><h3>Запросы и КП</h3><p>Рассылка. Сводная таблица. Рейтинг. Чат по заявке.</p></article>
+            <article class="fill"><div class="when">Контроль</div><h3>База и аналитика</h3><p>Квалификация. Скоринг. Сроки. Экономия.</p></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Возможности нашей CRM · istock.link</div><div class="meta num">13 / 25</div></div>
+        <div class="foot"><div class="meta">Возможности CRM. Не отдельный сервис.</div><div class="meta num">14 / 25</div></div>
       </section>
 
-      <!-- 14 Chain -->
-      <section class="slide white" data-i="14">
+      <section class="slide white" data-i="15">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · маршрут</div>
+          <div class="kicker">Маршрут</div>
         </div>
         <div class="grow">
-          <h2 class="title" style="font-size:52px;margin-bottom:28px">Один маршрут: от сделки до поставки</h2>
+          <h2 class="title" style="font-size:48px;margin-bottom:24px">От сделки до поставки</h2>
           <div class="chain6">
-            <article><div class="n">01</div><h3>Сделка</h3><p>В CRM закрыли договор. Появилась потребность закрыть поставку.</p></article>
-            <article><div class="n">02</div><h3>Заявка</h3><p>Согласование по вашему маршруту: кто запросил, кто утвердил.</p></article>
-            <article><div class="n">03</div><h3>Запрос</h3><p>Рассылка поставщикам на почту и в ЭТП за минуты.</p></article>
-            <article><div class="n">04</div><h3>КП</h3><p>Отклики собираются в сводную таблицу: цена, срок, условия.</p></article>
-            <article><div class="n">05</div><h3>Выбор</h3><p>Рейтинг, квалификация, согласование выбранного предложения.</p></article>
-            <article><div class="n">06</div><h3>Поставка</h3><p>Сроки, качество, отклонения — в истории поставщика.</p></article>
+            <article class="fill"><div class="n">01</div><h3>Сделка</h3><p>Договор закрыт. Нужна поставка.</p></article>
+            <article class="fill"><div class="n">02</div><h3>Заявка</h3><p>Кто запросил. Кто утвердил.</p></article>
+            <article class="fill"><div class="n">03</div><h3>Запрос</h3><p>Рассылка поставщикам.</p></article>
+            <article class="fill"><div class="n">04</div><h3>КП</h3><p>Цена. Срок. Условия.</p></article>
+            <article class="fill"><div class="n">05</div><h3>Выбор</h3><p>Рейтинг. Согласование.</p></article>
+            <article class="fill"><div class="n">06</div><h3>Поставка</h3><p>Срок. Качество. История.</p></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">CRM и SRM не разъезжаются по разным сервисам</div><div class="meta num">14 / 25</div></div>
+        <div class="foot"><div class="meta">Один контур</div><div class="meta num">15 / 25</div></div>
       </section>
 
-      <!-- 15 Needs -->
-      <section class="slide paper" data-i="15">
+      <section class="slide paper" data-i="16">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · заявки</div>
+          <div class="kicker">Заявки</div>
         </div>
         <div class="grow grid-2">
           <div>
-            <h2 class="title">Потребность не теряется в письме инициатора</h2>
-            <p class="lead" style="margin-top:22px">CRM iStockLink фиксирует, кто запросил, что нужно и где согласование. Маршруты — как у вас в компании.</p>
+            <h2 class="title">Потребность не теряется</h2>
+            <p class="lead" style="margin-top:20px">Кто запросил. Что нужно. Где согласование.</p>
           </div>
           <div>
-            <div class="task"><div><strong>Импорт из Excel</strong><small>Потребности загружаются за пару кликов</small></div><span class="tag">сбор</span></div>
-            <div class="task"><div><strong>Почта и Telegram</strong><small>Автосбор заявок из рабочих каналов</small></div><span class="tag">каналы</span></div>
-            <div class="task"><div><strong>Маршрут согласования</strong><small>Роли, этапы, правила — без бумажных виз</small></div><span class="tag ok">статусы</span></div>
-            <div class="task"><div><strong>Автозаказ по потребности</strong><small>Непрерывность поставок по заданным правилам</small></div><span class="tag">план</span></div>
+            <div class="task"><div><strong>Импорт из Excel</strong><small>Потребности за пару кликов</small></div><span class="tag">сбор</span></div>
+            <div class="task"><div><strong>Почта и Telegram</strong><small>Автосбор из рабочих каналов</small></div><span class="tag">каналы</span></div>
+            <div class="task"><div><strong>Маршрут согласования</strong><small>Роли. Этапы. Правила.</small></div><span class="tag ok">статусы</span></div>
+            <div class="task"><div><strong>Автозаказ</strong><small>По правилам непрерывности</small></div><span class="tag">план</span></div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Заявки в CRM iStockLink</div><div class="meta num">15 / 25</div></div>
+        <div class="foot"><div class="meta">Заявки в CRM iStockLink</div><div class="meta num">16 / 25</div></div>
       </section>
 
-      <!-- 16 RFQ -->
-      <section class="slide white" data-i="16">
+      <section class="slide white" data-i="17">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · запросы</div>
+          <div class="kicker">Запросы</div>
         </div>
         <div class="grow">
-          <h2 class="title" style="margin-bottom:28px">Запрос поставщикам собирается за минуты</h2>
-          <div class="grid-4">
-            <article class="card"><div class="idx">01</div><h3>Публичный или закрытый</h3><p>Открытая закупка или приглашение только аккредитованным.</p></article>
-            <article class="card"><div class="idx">02</div><h3>Рассылка из SRM</h3><p>Запрос уходит на e-mail и в ЭТП напрямую из карточки.</p></article>
-            <article class="card"><div class="idx">03</div><h3>Не только цена</h3><p>Срок, гео, доставка, гарантия — критерии отбора в запросе.</p></article>
-            <article class="card"><div class="idx">04</div><h3>Редукцион</h3><p>Электронные торги и снижение цены за счёт конкуренции.</p></article>
+          <h2 class="title" style="margin-bottom:24px">Запрос собирается за минуты</h2>
+          <div class="mosaic">
+            <article class="fill wide"><div class="idx">01</div><h3>Публичный или закрытый</h3><p>Открытая закупка. Или только свои подрядчики.</p></article>
+            <article class="fill"><div class="idx">02</div><h3>Рассылка из CRM</h3><p>На почту. В ЭТП.</p></article>
+            <article class="fill"><div class="idx">03</div><h3>Не только цена</h3><p>Срок. Гео. Доставка. Гарантия.</p></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Запросы поставщикам в нашей CRM</div><div class="meta num">16 / 25</div></div>
+        <div class="foot"><div class="meta">Запросы поставщикам</div><div class="meta num">17 / 25</div></div>
       </section>
 
-      <!-- 17 Suppliers -->
-      <section class="slide paper" data-i="17">
+      <section class="slide paper" data-i="18">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · база</div>
+          <div class="kicker">База</div>
         </div>
         <div class="grow grid-2">
           <div>
-            <h2 class="title">Своих подрядчиков кладёте в нашу CRM</h2>
-            <p class="lead" style="margin-top:22px">Базу переносите в iStockLink за минуты. Новых ищете в ЭТП по категории, региону и рейтингу.</p>
+            <h2 class="title">Подрядчики в нашей CRM</h2>
+            <p class="lead" style="margin-top:20px">Своих переносите сразу. Новых ищете по категории и региону.</p>
           </div>
-          <figure class="shot">
-            <img src="shots/crm-suppliers.png" alt="База поставщиков CRM iStockLink" onerror="this.style.display='none'">
-            <div class="shot-ph">
-              <b>Скрин из системы</b>
-              <em>База поставщиков CRM iStockLink</em>
-              <span>shots/crm-suppliers.png</span>
+          <div class="mock ui-list">
+            <div class="mk-top"><span><span class="mk-dot"></span>Компании</span><span>7</span></div>
+            <div class="item"><div class="name">ООО «Восхитительный»</div><div class="inn">ИНН 4400019349<div class="addr">Кострома</div></div></div>
+            <div class="item"><div class="name">ООО «Вий»</div><div class="inn">ИНН 3666625760<div class="addr">Воронеж</div></div></div>
+            <div class="item"><div class="name">ООО «Вы»</div><div class="inn">ИНН 7720956811<div class="addr">Москва</div></div></div>
+            <div class="item"><div class="name">ООО «Вы дома»</div><div class="inn">ИНН 7714455368<div class="addr">Москва</div></div></div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">База поставщиков</div><div class="meta num">18 / 25</div></div>
+      </section>
+
+      <section class="slide white" data-i="19">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">КП</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">КП сами собираются в таблицу</h2>
+            <p class="lead" style="margin-top:20px">Рассылка. Оцифровка. Переговоры. История в заявке.</p>
+          </div>
+          <div class="mock">
+            <div class="mk-top"><span><span class="mk-dot"></span>Сравнение КП</span><span>3 предложения</span></div>
+            <div class="ui-table">
+              <div class="h">Критерий</div><div class="h">Альфа</div><div class="h best">Бета</div><div class="h">Гамма</div>
+              <div>Цена</div><div>1,20 млн</div><div class="best">1,08 млн</div><div>1,31 млн</div>
+              <div>Срок</div><div>21 день</div><div class="best">14 дней</div><div>30 дней</div>
+              <div>Гарантия</div><div>12 мес</div><div class="best">24 мес</div><div>12 мес</div>
+              <div>Доставка</div><div>да</div><div class="best">да</div><div>самовывоз</div>
             </div>
-          </figure>
-        </div>
-        <div class="foot"><div class="meta">Поиск и управление поставщиками · istock.link</div><div class="meta num">17 / 25</div></div>
-      </section>
-
-      <!-- 18 KP compare -->
-      <section class="slide white" data-i="18">
-        <div class="topbar">
-          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · КП</div>
-        </div>
-        <div class="grow">
-          <div class="grid-2">
-            <div>
-              <h2 class="title" style="font-size:52px">КП сами собираются в таблицу</h2>
-              <p class="lead" style="margin-top:22px">Рассылка по почте, оцифровка предложений, переговоры в чате. История остаётся в заявке CRM iStockLink.</p>
-            </div>
-            <figure class="shot">
-              <img src="shots/crm-kp.png" alt="Сравнение КП CRM iStockLink" onerror="this.style.display='none'">
-              <div class="shot-ph">
-                <b>Скрин из системы</b>
-                <em>Сводная таблица сравнения КП</em>
-                <span>shots/crm-kp.png</span>
-              </div>
-            </figure>
           </div>
         </div>
-        <div class="foot"><div class="meta">Оцифровка КП в CRM iStockLink</div><div class="meta num">18 / 25</div></div>
+        <div class="foot"><div class="meta">Оцифровка КП</div><div class="meta num">19 / 25</div></div>
       </section>
 
-      <!-- 19 Qualification -->
-      <section class="slide paper" data-i="19">
+      <section class="slide paper" data-i="20">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · проверка</div>
+          <div class="kicker">Проверка</div>
         </div>
-        <div class="grow">
-          <h2 class="title" style="margin-bottom:28px">Поставщик проверяется до оплаты</h2>
-          <div class="grid-4">
-            <article class="stat"><div class="idx">01</div><h3 style="margin-top:18px">Проверка в СБИС</h3><p>Юридическая чистота и благонадёжность — в карточке контрагента.</p></article>
-            <article class="stat"><div class="idx">02</div><h3 style="margin-top:18px">Аккредитация</h3><p>Анкета по правилам компании, рассылка и контроль заполнения.</p></article>
-            <article class="stat"><div class="idx">03</div><h3 style="margin-top:18px">Скоринг</h3><p>Рейтинг по истории, откликам, срокам и срывам поставок.</p></article>
-            <article class="stat"><div class="idx">04</div><h3 style="margin-top:18px">Категории</h3><p>Группировка по товарам, регионам и надёжности — быстрее поиск.</p></article>
+        <div class="grow grid-2">
+          <h2 class="title">Поставщик проверяется до оплаты</h2>
+          <div class="vline">
+            <article><div class="n">01</div><div><h3>Проверка в СБИС</h3><p style="color:var(--muted);font-size:22px;font-weight:500">Юридическая чистота в карточке.</p></div></article>
+            <article><div class="n">02</div><div><h3>Аккредитация</h3><p style="color:var(--muted);font-size:22px;font-weight:500">Анкета по вашим правилам.</p></div></article>
+            <article><div class="n">03</div><div><h3>Скоринг</h3><p style="color:var(--muted);font-size:22px;font-weight:500">История. Сроки. Срывы.</p></div></article>
+            <article><div class="n">04</div><div><h3>Категории</h3><p style="color:var(--muted);font-size:22px;font-weight:500">Товар. Регион. Надёжность.</p></div></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Квалификация поставщиков в нашей CRM</div><div class="meta num">19 / 25</div></div>
+        <div class="foot"><div class="meta">Квалификация поставщиков</div><div class="meta num">20 / 25</div></div>
       </section>
 
-      <!-- 20 Delivery -->
-      <section class="slide white" data-i="20">
+      <section class="slide white" data-i="21">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · поставка</div>
+          <div class="kicker">Поставка</div>
         </div>
         <div class="grow grid-2">
           <div>
-            <h2 class="title">После выбора — контроль поставки и качества</h2>
-            <p class="lead" style="margin-top:22px">Сроки, соответствие условиям, отклонения и отзывы остаются в базе. Следующая закупка опирается на факты, не на память.</p>
+            <h2 class="title">После выбора — контроль поставки</h2>
+            <p class="lead" style="margin-top:20px">Срок. Качество. Отклонения. Факты. Не память.</p>
           </div>
           <div>
             <div class="task"><div><strong>Срок поставки</strong><small>32 дня · в графике</small></div><span class="tag ok">в срок</span></div>
-            <div class="task"><div><strong>Соответствие спецификации</strong><small>47 из 47 позиций</small></div><span class="tag ok">ок</span></div>
-            <div class="task"><div><strong>Отклонение</strong><small>Упаковка — замечание на приёмке</small></div><span class="tag warn">фикс</span></div>
-            <div class="task"><div><strong>Отзыв в карточке</strong><small>Попадёт в рейтинг на следующий запрос</small></div><span class="tag">история</span></div>
+            <div class="task"><div><strong>Спецификация</strong><small>47 из 47 позиций</small></div><span class="tag ok">ок</span></div>
+            <div class="task"><div><strong>Отклонение</strong><small>Упаковка на приёмке</small></div><span class="tag warn">фикс</span></div>
+            <div class="task"><div><strong>Отзыв</strong><small>Попадёт в рейтинг</small></div><span class="tag">история</span></div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Контроль поставок и качества · istock.link</div><div class="meta num">20 / 25</div></div>
+        <div class="foot"><div class="meta">Контроль поставок</div><div class="meta num">21 / 25</div></div>
       </section>
 
-      <!-- 21 Analytics -->
-      <section class="slide paper" data-i="21">
+      <section class="slide paper" data-i="22">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · цифры</div>
+          <div class="kicker">Цифры</div>
         </div>
         <div class="grow">
-          <h2 class="title" style="margin-bottom:12px">Что даёт наша CRM на цифрах</h2>
-          <p class="lead" style="margin-bottom:28px">По проектам заказчиков через 6 месяцев в iStockLink — не обещание «когда-нибудь внедрим».</p>
+          <h2 class="title" style="margin-bottom:24px">Что даёт CRM на цифрах</h2>
           <div class="grid-4">
-            <article class="stat"><div class="idx">01</div><div class="big">100%</div><h3>Точность контура</h3><p>Потребности, заявки и КП не теряются по дороге.</p></article>
-            <article class="stat"><div class="idx">02</div><div class="big">−30%</div><h3>Расходы на закупки</h3><p>Открытая конкуренция и сравнение предложений.</p></article>
-            <article class="stat"><div class="idx">03</div><div class="big">+50%</div><h3>Ресурс отдела</h3><p>Без увеличения штата — меньше ручной рутины.</p></article>
-            <article class="stat"><div class="idx">04</div><div class="big">−40%</div><h3>Цикл закупки</h3><p>Короче маршрут от заявки до выбора поставщика.</p></article>
+            <article class="fill stat"><div class="idx">01</div><div class="big">100%</div><h3>Точность контура</h3><p>Заявки и КП не теряются.</p></article>
+            <article class="fill stat"><div class="idx">02</div><div class="big">−30%</div><h3>Расходы на закупки</h3><p>Открытое сравнение КП.</p></article>
+            <article class="fill stat"><div class="idx">03</div><div class="big">+50%</div><h3>Ресурс отдела</h3><p>Меньше ручной рутины.</p></article>
+            <article class="fill stat"><div class="idx">04</div><div class="big">−40%</div><h3>Цикл закупки</h3><p>Короче путь до выбора.</p></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Цифры заказчиков CRM iStockLink</div><div class="meta num">21 / 25</div></div>
+        <div class="foot"><div class="meta">Через 6 месяцев у заказчиков</div><div class="meta num">22 / 25</div></div>
       </section>
 
-      <!-- 22 Why Argon sales -->
-      <section class="slide dark" data-i="22">
+      <section class="slide dark" data-i="23">
         <div class="blob" style="width:520px;height:520px;left:-180px;bottom:-160px;background:radial-gradient(circle,#1c50de 0%,transparent 70%);opacity:.4"></div>
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · продажи</div>
+          <div class="kicker">Для «Аргон»</div>
         </div>
         <div class="grow grid-2">
           <div>
-            <h2 class="title">Зачем это отделу продаж «Аргон»</h2>
-            <p class="lead" style="margin-top:22px">Если сделку закрыли в одной системе, а закупку ведут в почте — срок и маржа уже не в нашей CRM.</p>
+            <h2 class="title">Зачем это продажам «Аргон»</h2>
+            <p class="lead" style="margin-top:20px">Сделка в одной системе. Закупка не в почте.</p>
           </div>
           <ul class="pain">
-            <li><span class="dot">01</span><div><b>Сделка и закупка в одном окне</b><span>Менеджер видит, чем закрывают поставку клиенту.</span></div></li>
-            <li><span class="dot">02</span><div><b>КП поставщиков рядом со сделкой</b><span>Не собираете цены по чатам, чтобы ответить клиенту.</span></div></li>
-            <li><span class="dot">03</span><div><b>Тендеры — по необходимости</b><span>Лента закупок подключается в том же контуре, не вместо CRM.</span></div></li>
-            <li><span class="dot">04</span><div><b>РОП и снабжение говорят на одном языке</b><span>Статус клиента и статус поставки больше не в разных таблицах.</span></div></li>
+            <li><span class="dot">01</span><div><b>Сделка и закупка вместе</b><span>Чем закрывают поставку клиенту.</span></div></li>
+            <li><span class="dot">02</span><div><b>КП рядом со сделкой</b><span>Не собирать цены по чатам.</span></div></li>
+            <li><span class="dot">03</span><div><b>Тендеры по необходимости</b><span>Лента в том же контуре.</span></div></li>
+            <li><span class="dot">04</span><div><b>РОП и снабжение</b><span>Один язык. Одни статусы.</span></div></li>
           </ul>
         </div>
-        <div class="foot"><div class="meta">Связанный процесс продаж и снабжения</div><div class="meta num">22 / 25</div></div>
+        <div class="foot"><div class="meta">Связанный процесс</div><div class="meta num">23 / 25</div></div>
       </section>
 
-      <!-- 23 Pricing -->
-      <section class="slide paper" data-i="23">
-        <div class="topbar">
-          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · тариф</div>
-        </div>
-        <div class="grow">
-          <h2 class="title" style="margin-bottom:28px">Старт без проекта внедрения</h2>
-          <div class="price">
-            <div class="sum">
-              <p>За пользователя</p>
-              <div class="val">1 260 ₽ <small>/ мес</small></div>
-              <p>На команду</p>
-              <div class="val" style="font-size:48px;margin-bottom:0">от 6 000 ₽ <small>/ мес</small></div>
-            </div>
-            <div class="card" style="padding:36px 34px">
-              <ul class="checks">
-                <li>CRM iStockLink: воронка, поставщики и КП в одном подключении</li>
-                <li>Не нужен интегратор и долгое обучение</li>
-                <li>14 дней бесплатно, без привязки карты</li>
-                <li>Интерфейс понятен менеджеру и закупщику с первого дня</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="foot"><div class="meta">Актуальные тарифы — istock.link/pricing</div><div class="meta num">23 / 25</div></div>
-      </section>
-
-      <!-- 24 Next steps -->
       <section class="slide white" data-i="24">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">CRM iStockLink · запуск</div>
+          <div class="kicker">Запуск</div>
         </div>
         <div class="grow">
-          <h2 class="title" style="margin-bottom:28px">Как подключим нашу CRM в «Аргон»</h2>
+          <h2 class="title" style="margin-bottom:24px">Как подключим CRM в «Аргон»</h2>
           <div class="steps">
-            <article>
+            <article class="fill">
               <div class="n">01</div>
               <h3>Демо на ваших сделках</h3>
-              <p>Разберём 3–5 живых клиентов и одну закупку у поставщика — как они выглядят в одном процессе.</p>
+              <p>3–5 живых клиентов. Одна закупка.</p>
             </article>
-            <article>
+            <article class="fill">
               <div class="n">02</div>
               <h3>Этапы под ваш цикл</h3>
-              <p>Воронка продаж и маршрут заявки SRM — как отдел уже работает, без «учебной» схемы.</p>
+              <p>Воронка и маршрут заявки. Как вы уже работаете.</p>
             </article>
-            <article>
+            <article class="fill">
               <div class="n">03</div>
               <h3>Неделя в бою</h3>
-              <p>Команда ведёт сделки и запросы КП. РОП смотрит ту же доску. Потом решаете по факту.</p>
+              <p>Команда ведёт сделки. РОП смотрит ту же доску.</p>
             </article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Никакого отдельного проекта «внедрение CRM»</div><div class="meta num">24 / 25</div></div>
+        <div class="foot"><div class="meta">Без отдельного проекта внедрения</div><div class="meta num">24 / 25</div></div>
       </section>
 
-      <!-- 25 Ending -->
       <section class="slide dark" data-i="25">
         <div class="blob" style="width:680px;height:680px;right:-200px;bottom:-220px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.5"></div>
         <div class="ring" style="width:380px;height:380px;left:80px;top:120px"></div>
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">Ending</div>
+          <div class="kicker">Дальше</div>
         </div>
         <div class="grow">
-          <h2 class="display">Готовы показать CRM iStockLink на вашем процессе</h2>
-          <p class="lead" style="margin-top:28px">Демо для «Аргон» — на ваших сделках и закупках, не на учебном примере.</p>
+          <h2 class="display">Покажем CRM на процессе «Аргон»</h2>
+          <p class="lead" style="margin-top:28px">На ваших сделках. На вашей закупке.</p>
           <p style="margin-top:40px;font-size:36px;font-weight:800;letter-spacing:-.03em">istock.link</p>
         </div>
         <div class="foot">
-          <div class="meta">Следующий шаг — 30 минут на воронку отдела</div>
+          <div class="meta">Следующий шаг — 30 минут на воронку</div>
           <div class="meta num">25 / 25</div>
         </div>
       </section>
