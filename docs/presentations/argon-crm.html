@@ -373,6 +373,39 @@
       text-transform: uppercase;
       margin-bottom: 22px;
     }
+    .chain6 {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+    .chain6 article {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px 16px;
+      min-height: 280px;
+    }
+    .chain6 .n { font-size: 28px; font-weight: 800; color: var(--blue); letter-spacing: -.04em; }
+    .chain6 h3 { font-size: 20px; margin: 14px 0 8px; letter-spacing: -.03em; }
+    .chain6 p { font-size: 15px; color: var(--muted); line-height: 1.4; font-weight: 500; }
+    .kpt {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .kpt div { padding: 16px 14px; font-size: 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 550; }
+    .kpt .h { font-weight: 800; background: #f7f6f2; }
+    .kpt .best { background: #eaf0ff; color: #153fb8; font-weight: 700; }
+    .sup {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 18px; border-radius: 18px; background: #fff;
+      border: 1px solid var(--line); margin-bottom: 12px;
+    }
+    .sup strong { display: block; font-size: 20px; letter-spacing: -.02em; }
+    .sup small { color: var(--muted); font-size: 14px; font-weight: 600; }
 
     @media print {
       html, body, .viewport { background: #fff; height: auto; overflow: visible; }
@@ -398,11 +431,11 @@
         <div class="grow">
           <p class="kicker">Business presentation</p>
           <h1 class="display" style="margin-top:22px;max-width:1200px">CRM-система<br>для отдела продаж</h1>
-          <p class="lead" style="margin-top:28px">Возможности и преимущества iStockLink —<br>чтобы сделки не терялись в чатах и таблицах.</p>
+          <p class="lead" style="margin-top:28px">CRM продаж и SRM закупок в одном процессе —<br>чтобы сделка и поставка не жили в разных таблицах.</p>
         </div>
         <div class="foot">
           <div class="meta">Встреча с командой «Аргон»</div>
-          <div class="meta num">01 / 15</div>
+          <div class="meta num">01 / 25</div>
         </div>
       </section>
 
@@ -418,10 +451,11 @@
             <a href="#3"><span class="n">01</span><span class="t">Задача отдела</span><span class="d">Где сейчас теряются сделки</span></a>
             <a href="#5"><span class="n">02</span><span class="t">Возможности CRM</span><span class="d">Воронка, клиенты, задачи, отчёты</span></a>
             <a href="#9"><span class="n">03</span><span class="t">Преимущества</span><span class="d">Почему не Excel и не долгий Битрикс</span></a>
-            <a href="#13"><span class="n">04</span><span class="t">Старт в «Аргон»</span><span class="d">Как запускаемся за один день</span></a>
+            <a href="#12"><span class="n">04</span><span class="t">SRM и связанный процесс</span><span class="d">Потребность, поставщики, КП, поставка</span></a>
+            <a href="#23"><span class="n">05</span><span class="t">Старт в «Аргон»</span><span class="d">Как запускаемся за один день</span></a>
           </nav>
         </div>
-        <div class="foot"><div class="meta">Ориентир встречи — 15 минут</div><div class="meta num">02 / 15</div></div>
+        <div class="foot"><div class="meta">Ориентир встречи — 25 минут</div><div class="meta num">02 / 25</div></div>
       </section>
 
       <!-- 03 Problem -->
@@ -443,7 +477,7 @@
             <li><span class="dot">04</span><div><b>Excel не ведёт сделку</b><span>Таблица хранит строки, но не напоминает и не назначает.</span></div></li>
           </ul>
         </div>
-        <div class="foot"><div class="meta">Отдел продаж «Аргон»</div><div class="meta num">03 / 15</div></div>
+        <div class="foot"><div class="meta">Отдел продаж «Аргон»</div><div class="meta num">03 / 25</div></div>
       </section>
 
       <!-- 04 Solution -->
@@ -462,7 +496,7 @@
             <div class="flow-item"><div class="n">04</div><h3>Результат</h3><p>Договор, отказ или пауза — видно, почему так вышло.</p></div>
           </div>
         </div>
-        <div class="foot"><div class="meta">iStockLink как рабочий контур продаж</div><div class="meta num">04 / 15</div></div>
+        <div class="foot"><div class="meta">iStockLink как рабочий контур продаж</div><div class="meta num">04 / 25</div></div>
       </section>
 
       <!-- 05 Services -->
@@ -482,7 +516,7 @@
             <article class="card"><div class="idx">06</div><h3>Командная работа</h3><p>Передача клиента без потери контекста. Общий язык отдела.</p></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Сначала продажи. Тендеры — если понадобятся</div><div class="meta num">05 / 15</div></div>
+        <div class="foot"><div class="meta">CRM продаж. SRM подключается тем же контуром</div><div class="meta num">05 / 25</div></div>
       </section>
 
       <!-- 06 Pipeline -->
@@ -516,7 +550,7 @@
             </div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Этапы настраиваются под цикл «Аргон»</div><div class="meta num">06 / 15</div></div>
+        <div class="foot"><div class="meta">Этапы настраиваются под цикл «Аргон»</div><div class="meta num">06 / 25</div></div>
       </section>
 
       <!-- 07 Clients -->
@@ -545,7 +579,7 @@
             </div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Контекст остаётся в компании</div><div class="meta num">07 / 15</div></div>
+        <div class="foot"><div class="meta">Контекст остаётся в компании</div><div class="meta num">07 / 25</div></div>
       </section>
 
       <!-- 08 Tasks -->
@@ -566,7 +600,7 @@
             <div class="task"><div><strong>Синхронизация отдела</strong><small>РОП · пятница 10:00</small></div><span class="tag">команда</span></div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Просрочки видны руководителю сразу</div><div class="meta num">08 / 15</div></div>
+        <div class="foot"><div class="meta">Просрочки видны руководителю сразу</div><div class="meta num">08 / 25</div></div>
       </section>
 
       <!-- 09 Advantages -->
@@ -584,7 +618,7 @@
             <article class="stat"><div class="idx">04</div><div class="big">14 дней</div><h3>Бесплатный старт</h3><p>Проверяете на своих продажах, без привязки карты.</p></article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Без скрытых работ «настроить как Битрикс»</div><div class="meta num">09 / 15</div></div>
+        <div class="foot"><div class="meta">Без скрытых работ «настроить как Битрикс»</div><div class="meta num">09 / 25</div></div>
       </section>
 
       <!-- 10 Compare -->
@@ -633,7 +667,7 @@
             <div class="us">от 1 260 ₽ / мес</div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Сравнение по модели продаж, не по тендерам</div><div class="meta num">10 / 15</div></div>
+        <div class="foot"><div class="meta">Сравнение по модели продаж, не по тендерам</div><div class="meta num">10 / 25</div></div>
       </section>
 
       <!-- 11 Timeline -->
@@ -674,26 +708,244 @@
             </article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Меньше ритуалов отчётности — больше продаж</div><div class="meta num">11 / 15</div></div>
+        <div class="foot"><div class="meta">Меньше ритуалов отчётности — больше продаж</div><div class="meta num">11 / 25</div></div>
       </section>
 
-      <!-- 12 Tenders briefly -->
+      <!-- 12 Linked process divider -->
       <section class="slide dark" data-i="12">
         <div class="blob" style="width:540px;height:540px;right:-140px;top:-120px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.45"></div>
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
-          <div class="kicker">Дополнительно</div>
+          <div class="kicker">SRM · связанный процесс</div>
         </div>
         <div class="grow">
-          <div class="aside">Не основной сценарий</div>
-          <h2 class="title" style="max-width:1400px">Если отделу понадобятся тендеры — они уже в этой же системе</h2>
-          <p class="lead" style="margin-top:28px;max-width:900px">Лента закупок, воронка участия и работа с поставщиками подключаются в том же окне. Для продаж «Аргон» это запасной контур, а не тема этой встречи.</p>
+          <div class="aside">istock.link/srm</div>
+          <h2 class="title" style="max-width:1500px">Продажа не заканчивается договором. Дальше — закупка у своих поставщиков</h2>
+          <p class="lead" style="margin-top:28px;max-width:980px">В iStockLink CRM и SRM связаны: выигранная сделка сразу становится потребностью, запросом КП и поставкой — в том же окне, без второй системы.</p>
         </div>
-        <div class="foot"><div class="meta">Тендеры — по запросу, не вместо CRM продаж</div><div class="meta num">12 / 15</div></div>
+        <div class="foot"><div class="meta">Материал — istock.link и istock.link/srm</div><div class="meta num">12 / 25</div></div>
       </section>
 
-      <!-- 13 Pricing -->
+      <!-- 13 What is SRM -->
       <section class="slide paper" data-i="13">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · 01</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:18px">SRM наводит порядок в закупках</h2>
+          <p class="lead" style="margin-bottom:32px">Полный цикл: потребности и заявки → запросы → КП и рейтинг поставщиков → аналитика. Когда Excel уже не справляется.</p>
+          <div class="grid-6">
+            <article class="card"><div class="idx">01</div><h3>Потребности</h3><p>Сбор из Excel, почты и Telegram. Ручное создание и автозаказы.</p></article>
+            <article class="card"><div class="idx">02</div><h3>Заявки</h3><p>Маршруты согласования по ролям, этапам и правилам компании.</p></article>
+            <article class="card"><div class="idx">03</div><h3>Запросы</h3><p>Публичные и приватные закупки, редукцион, рассылка из системы.</p></article>
+            <article class="card"><div class="idx">04</div><h3>КП и поставщики</h3><p>Сводная таблица сравнения, чат и почта с историей по заявке.</p></article>
+            <article class="card"><div class="idx">05</div><h3>База поставщиков</h3><p>Категории, квалификация, скоринг, проверка через СБИС.</p></article>
+            <article class="card"><div class="idx">06</div><h3>Аналитика</h3><p>Дашборды, экономия, сроки, нагрузка сотрудников.</p></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Возможности SRM-системы · istock.link/srm</div><div class="meta num">13 / 25</div></div>
+      </section>
+
+      <!-- 14 Chain -->
+      <section class="slide white" data-i="14">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · процесс</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="font-size:52px;margin-bottom:28px">Один маршрут: от сделки до поставки</h2>
+          <div class="chain6">
+            <article><div class="n">01</div><h3>Сделка</h3><p>В CRM закрыли договор. Появилась потребность закрыть поставку.</p></article>
+            <article><div class="n">02</div><h3>Заявка</h3><p>Согласование по вашему маршруту: кто запросил, кто утвердил.</p></article>
+            <article><div class="n">03</div><h3>Запрос</h3><p>Рассылка поставщикам на почту и в ЭТП за минуты.</p></article>
+            <article><div class="n">04</div><h3>КП</h3><p>Отклики собираются в сводную таблицу: цена, срок, условия.</p></article>
+            <article><div class="n">05</div><h3>Выбор</h3><p>Рейтинг, квалификация, согласование выбранного предложения.</p></article>
+            <article><div class="n">06</div><h3>Поставка</h3><p>Сроки, качество, отклонения — в истории поставщика.</p></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">CRM и SRM не разъезжаются по разным сервисам</div><div class="meta num">14 / 25</div></div>
+      </section>
+
+      <!-- 15 Needs -->
+      <section class="slide paper" data-i="15">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · потребности и заявки</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">Потребность не теряется в письме инициатора</h2>
+            <p class="lead" style="margin-top:22px">SRM фиксирует, кто запросил, что нужно и на каком этапе согласование. Планирование закупок — по вашим сценариям.</p>
+          </div>
+          <div>
+            <div class="task"><div><strong>Импорт из Excel</strong><small>Потребности загружаются за пару кликов</small></div><span class="tag">сбор</span></div>
+            <div class="task"><div><strong>Почта и Telegram</strong><small>Автосбор заявок из рабочих каналов</small></div><span class="tag">каналы</span></div>
+            <div class="task"><div><strong>Маршрут согласования</strong><small>Роли, этапы, правила — без бумажных виз</small></div><span class="tag ok">статусы</span></div>
+            <div class="task"><div><strong>Автозаказ по потребности</strong><small>Непрерывность поставок по заданным правилам</small></div><span class="tag">план</span></div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Работа с потребностями и заявками · istock.link/srm</div><div class="meta num">15 / 25</div></div>
+      </section>
+
+      <!-- 16 RFQ -->
+      <section class="slide white" data-i="16">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · закупочные запросы</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Запрос поставщикам собирается за минуты</h2>
+          <div class="grid-4">
+            <article class="card"><div class="idx">01</div><h3>Публичный или закрытый</h3><p>Открытая закупка или приглашение только аккредитованным.</p></article>
+            <article class="card"><div class="idx">02</div><h3>Рассылка из SRM</h3><p>Запрос уходит на e-mail и в ЭТП напрямую из карточки.</p></article>
+            <article class="card"><div class="idx">03</div><h3>Не только цена</h3><p>Срок, гео, доставка, гарантия — критерии отбора в запросе.</p></article>
+            <article class="card"><div class="idx">04</div><h3>Редукцион</h3><p>Электронные торги и снижение цены за счёт конкуренции.</p></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Управление закупочными запросами · istock.link/srm</div><div class="meta num">16 / 25</div></div>
+      </section>
+
+      <!-- 17 Suppliers -->
+      <section class="slide paper" data-i="17">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · поставщики</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">Свои подрядчики подключаются за минуты</h2>
+            <p class="lead" style="margin-top:22px">Текущую базу переносите в iStockLink. Новых ищете в ЭТП по категории, региону, рейтингу и истории участия.</p>
+          </div>
+          <div>
+            <div class="sup"><div><strong>МедТех Снаб</strong><small>12 поставок · Москва · категория «оборудование»</small></div><span class="tag ok">надёжный</span></div>
+            <div class="sup"><div><strong>ПромКомплект</strong><small>Новый · найден в ЭТП · ждёт аккредитации</small></div><span class="tag">в квалификации</span></div>
+            <div class="sup"><div><strong>Север Логистик</strong><small>Рамочный подрядчик · приглашён в запрос</small></div><span class="tag">важный</span></div>
+            <div class="sup"><div><strong>Массовое приглашение</strong><small>Своя база — в закупку одним действием</small></div><span class="tag warn">рассылка</span></div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Поиск и управление поставщиками · istock.link</div><div class="meta num">17 / 25</div></div>
+      </section>
+
+      <!-- 18 KP compare -->
+      <section class="slide white" data-i="18">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · КП</div>
+        </div>
+        <div class="grow">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px">
+            <h2 class="title" style="font-size:52px">КП сами собираются в таблицу сравнения</h2>
+            <p class="lead" style="margin:0;max-width:400px;font-size:18px">Рассылка по почте, оцифровка предложений, переговоры в чате — история остаётся в заявке.</p>
+          </div>
+          <div class="kpt">
+            <div class="h">Критерий</div>
+            <div class="h">МедТех Снаб</div>
+            <div class="h">ПромКомплект</div>
+            <div class="h best">Север Логистик</div>
+            <div>Сумма</div>
+            <div>3 890 000 ₽</div>
+            <div>4 050 000 ₽</div>
+            <div class="best">3 720 000 ₽</div>
+            <div>Срок</div>
+            <div>45 дней</div>
+            <div>40 дней</div>
+            <div class="best">32 дня</div>
+            <div>Позиции</div>
+            <div>47</div>
+            <div>44</div>
+            <div class="best">47</div>
+            <div>Статус</div>
+            <div>КП готово</div>
+            <div>в обработке</div>
+            <div class="best">выбрано к согласованию</div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Работа с КП и поставщиками · istock.link/srm</div><div class="meta num">18 / 25</div></div>
+      </section>
+
+      <!-- 19 Qualification -->
+      <section class="slide paper" data-i="19">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · квалификация</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Поставщик проверяется до оплаты</h2>
+          <div class="grid-4">
+            <article class="stat"><div class="idx">01</div><h3 style="margin-top:18px">Проверка в СБИС</h3><p>Юридическая чистота и благонадёжность — в карточке контрагента.</p></article>
+            <article class="stat"><div class="idx">02</div><h3 style="margin-top:18px">Аккредитация</h3><p>Анкета по правилам компании, рассылка и контроль заполнения.</p></article>
+            <article class="stat"><div class="idx">03</div><h3 style="margin-top:18px">Скоринг</h3><p>Рейтинг по истории, откликам, срокам и срывам поставок.</p></article>
+            <article class="stat"><div class="idx">04</div><h3 style="margin-top:18px">Категории</h3><p>Группировка по товарам, регионам и надёжности — быстрее поиск.</p></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Управление поставщиками · istock.link/srm</div><div class="meta num">19 / 25</div></div>
+      </section>
+
+      <!-- 20 Delivery -->
+      <section class="slide white" data-i="20">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · поставка</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">После выбора — контроль поставки и качества</h2>
+            <p class="lead" style="margin-top:22px">Сроки, соответствие условиям, отклонения и отзывы остаются в базе. Следующая закупка опирается на факты, не на память.</p>
+          </div>
+          <div>
+            <div class="task"><div><strong>Срок поставки</strong><small>32 дня · в графике</small></div><span class="tag ok">в срок</span></div>
+            <div class="task"><div><strong>Соответствие спецификации</strong><small>47 из 47 позиций</small></div><span class="tag ok">ок</span></div>
+            <div class="task"><div><strong>Отклонение</strong><small>Упаковка — замечание на приёмке</small></div><span class="tag warn">фикс</span></div>
+            <div class="task"><div><strong>Отзыв в карточке</strong><small>Попадёт в рейтинг на следующий запрос</small></div><span class="tag">история</span></div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Контроль поставок и качества · istock.link</div><div class="meta num">20 / 25</div></div>
+      </section>
+
+      <!-- 21 Analytics -->
+      <section class="slide paper" data-i="21">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · аналитика</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:12px">Решения по цифрам, не по интуиции</h2>
+          <p class="lead" style="margin-bottom:28px">На основе результатов проектов заказчиков через 6 месяцев работы в iStockLink.</p>
+          <div class="grid-4">
+            <article class="stat"><div class="idx">01</div><div class="big">100%</div><h3>Точность контура</h3><p>Потребности, заявки и КП не теряются по дороге.</p></article>
+            <article class="stat"><div class="idx">02</div><div class="big">−30%</div><h3>Расходы на закупки</h3><p>Открытая конкуренция и сравнение предложений.</p></article>
+            <article class="stat"><div class="idx">03</div><div class="big">+50%</div><h3>Ресурс отдела</h3><p>Без увеличения штата — меньше ручной рутины.</p></article>
+            <article class="stat"><div class="idx">04</div><div class="big">−40%</div><h3>Цикл закупки</h3><p>Короче маршрут от заявки до выбора поставщика.</p></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Аналитика и отчётность · istock.link / istock.link/srm</div><div class="meta num">21 / 25</div></div>
+      </section>
+
+      <!-- 22 Why Argon sales -->
+      <section class="slide dark" data-i="22">
+        <div class="blob" style="width:520px;height:520px;left:-180px;bottom:-160px;background:radial-gradient(circle,#1c50de 0%,transparent 70%);opacity:.4"></div>
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">SRM · для продаж «Аргон»</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">Зачем это отделу продаж</h2>
+            <p class="lead" style="margin-top:22px">Если сделку закрыли, а закупку у субподрядчика ведут в почте — срок и маржа уже не под контролем.</p>
+          </div>
+          <ul class="pain">
+            <li><span class="dot">01</span><div><b>Сделка и закупка в одном окне</b><span>Менеджер видит, чем закрывают поставку клиенту.</span></div></li>
+            <li><span class="dot">02</span><div><b>КП поставщиков рядом со сделкой</b><span>Не собираете цены по чатам, чтобы ответить клиенту.</span></div></li>
+            <li><span class="dot">03</span><div><b>Тендеры — по необходимости</b><span>Лента закупок подключается в том же контуре, не вместо CRM.</span></div></li>
+            <li><span class="dot">04</span><div><b>РОП и снабжение говорят на одном языке</b><span>Статус клиента и статус поставки больше не в разных таблицах.</span></div></li>
+          </ul>
+        </div>
+        <div class="foot"><div class="meta">Связанный процесс продаж и снабжения</div><div class="meta num">22 / 25</div></div>
+      </section>
+
+      <!-- 23 Pricing -->
+      <section class="slide paper" data-i="23">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
           <div class="kicker">Pricing</div>
@@ -709,19 +961,19 @@
             </div>
             <div class="card" style="padding:36px 34px">
               <ul class="checks">
-                <li>Подключение за день: этапы продаж и роли</li>
+                <li>CRM продаж и SRM закупок в одном подключении</li>
                 <li>Не нужен интегратор и долгое обучение</li>
                 <li>14 дней бесплатно, без привязки карты</li>
-                <li>Интерфейс понятен менеджеру с первого дня</li>
+                <li>Интерфейс понятен менеджеру и закупщику с первого дня</li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="foot"><div class="meta">Актуальные тарифы — istock.link/pricing</div><div class="meta num">13 / 15</div></div>
+        <div class="foot"><div class="meta">Актуальные тарифы — istock.link/pricing</div><div class="meta num">23 / 25</div></div>
       </section>
 
-      <!-- 14 Next steps -->
-      <section class="slide white" data-i="14">
+      <!-- 24 Next steps -->
+      <section class="slide white" data-i="24">
         <div class="topbar">
           <div class="brand"><span class="brand-mark"></span>iStockLink</div>
           <div class="kicker">Next steps</div>
@@ -732,25 +984,25 @@
             <article>
               <div class="n">01</div>
               <h3>Демо на ваших сделках</h3>
-              <p>Разберём 3–5 живых клиентов отдела и покажем, как они выглядят в воронке.</p>
+              <p>Разберём 3–5 живых клиентов и одну закупку у поставщика — как они выглядят в одном процессе.</p>
             </article>
             <article>
               <div class="n">02</div>
               <h3>Этапы под ваш цикл</h3>
-              <p>Настроим статусы, поля и роли так, как отдел уже продаёт — без «учебной» воронки.</p>
+              <p>Воронка продаж и маршрут заявки SRM — как отдел уже работает, без «учебной» схемы.</p>
             </article>
             <article>
               <div class="n">03</div>
               <h3>Неделя в бою</h3>
-              <p>Команда ведёт реальные сделки. РОП смотрит ту же доску. Потом решаете по факту.</p>
+              <p>Команда ведёт сделки и запросы КП. РОП смотрит ту же доску. Потом решаете по факту.</p>
             </article>
           </div>
         </div>
-        <div class="foot"><div class="meta">Никакого отдельного проекта «внедрение CRM»</div><div class="meta num">14 / 15</div></div>
+        <div class="foot"><div class="meta">Никакого отдельного проекта «внедрение CRM»</div><div class="meta num">24 / 25</div></div>
       </section>
 
-      <!-- 15 Ending -->
-      <section class="slide dark" data-i="15">
+      <!-- 25 Ending -->
+      <section class="slide dark" data-i="25">
         <div class="blob" style="width:680px;height:680px;right:-200px;bottom:-220px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.5"></div>
         <div class="ring" style="width:380px;height:380px;left:80px;top:120px"></div>
         <div class="topbar">
@@ -758,20 +1010,20 @@
           <div class="kicker">Ending</div>
         </div>
         <div class="grow">
-          <h2 class="display">Готовы показать CRM на ваших продажах</h2>
-          <p class="lead" style="margin-top:28px">Демо для отдела продаж «Аргон» — на ваших сделках, не на учебном примере.</p>
-          <p style="margin-top:40px;font-size:36px;font-weight:800;letter-spacing:-.03em">istock.link</p>
+          <h2 class="display">Готовы показать CRM и SRM на вашем процессе</h2>
+          <p class="lead" style="margin-top:28px">Демо для «Аргон» — на ваших сделках и закупках у поставщиков, не на учебном примере.</p>
+          <p style="margin-top:40px;font-size:36px;font-weight:800;letter-spacing:-.03em">istock.link · istock.link/srm</p>
         </div>
         <div class="foot">
           <div class="meta">Следующий шаг — 30 минут на воронку отдела</div>
-          <div class="meta num">15 / 15</div>
+          <div class="meta num">25 / 25</div>
         </div>
       </section>
     </div>
   </div>
 
   <nav class="hud" aria-label="Навигация по слайдам">
-    <span id="pos">01 / 15</span>
+    <span id="pos">01 / 25</span>
     <button type="button" id="prev" aria-label="Назад">←</button>
     <button type="button" id="next" aria-label="Вперёд">→</button>
   </nav>
