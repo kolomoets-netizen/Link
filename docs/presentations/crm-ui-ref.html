@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM iStockLink · компании</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #111111;
+      --muted: #6b7280;
+      --blue: #1c50de;
+      --line: #e5e7eb;
+      --bg: #f7f8fa;
+      --soft: #f3f4f6;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    button, input { font: inherit; }
+    .app {
+      min-height: 100%;
+      background: #fff;
+    }
+    .nav {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -.02em;
+    }
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav a.on { color: var(--ink); }
+    .nav-right { margin-left: auto; }
+    .btn {
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 0;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn.ghost {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .page { padding: 20px 24px 40px; }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.03em; }
+    .hint { margin: 6px 0 18px; color: var(--muted); font-size: 13px; }
+
+    .list { border-top: 1px solid #f1f5f9; }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 16px 4px;
+      border-bottom: 1px solid #f1f5f9;
+      cursor: pointer;
+    }
+    .row:hover { background: #fafbff; }
+    .name {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+      max-width: 62%;
+    }
+    .meta {
+      text-align: right;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--blue);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .addr {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      white-space: normal;
+      max-width: 320px;
+      margin-left: auto;
+    }
+
+    .card-page { max-width: 920px; }
+    .head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 0 0 16px;
+    }
+    .back {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      background: #fff;
+      color: var(--muted);
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .title { font-size: 20px; font-weight: 700; line-height: 1.3; margin: 0; }
+    .tabs {
+      display: flex;
+      gap: 4px;
+      margin: 0 0 28px;
+      padding: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .tab {
+      padding: 10px 14px 11px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+    .tab.on {
+      color: var(--ink);
+      box-shadow: inset 0 -2px 0 var(--blue);
+    }
+    .grid { display: grid; grid-template-columns: 180px 1fr; gap: 16px 24px; }
+    .label { font-size: 14px; color: var(--muted); }
+    .val { font-size: 15px; line-height: 1.45; }
+    .val .inn { color: var(--blue); font-weight: 600; }
+    .section { font-size: 16px; font-weight: 700; margin: 0 0 18px; }
+
+    .chat {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 560px;
+    }
+    .bubble {
+      background: var(--soft);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .bubble b { display: block; font-size: 12px; color: var(--blue); margin-bottom: 4px; }
+    .composer {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .composer input {
+      flex: 1;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 12px;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .28);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 16px;
+    }
+    .overlay.on { display: flex; }
+    .modal {
+      width: min(560px, 100%);
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 24px 20px;
+      box-shadow: 0 24px 80px rgba(15, 23, 42, .18);
+    }
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .modal h2 { margin: 0; font-size: 18px; }
+    .x {
+      border: 0;
+      background: none;
+      font-size: 22px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .field { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    .req { color: #ef4444; }
+    .input {
+      width: 100%;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 12px;
+    }
+    .suggest {
+      margin-top: 6px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      max-height: 220px;
+      overflow: auto;
+    }
+    .sug {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      cursor: pointer;
+    }
+    .sug:last-child { border-bottom: 0; }
+    .sug:hover { background: #f8fafc; }
+    .sug .n { font-size: 14px; font-weight: 600; max-width: 68%; line-height: 1.35; }
+    .sug .i { color: var(--blue); font-size: 13px; font-weight: 600; text-align: right; white-space: nowrap; }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="nav">
+      <div class="logo">CRM</div>
+      <a href="#list" data-nav="list" class="on">Компании</a>
+      <a href="#card" data-nav="card">Карточка</a>
+      <div class="nav-right">
+        <button class="btn" type="button" id="openCreate">+ Компания</button>
+      </div>
+    </header>
+
+    <main id="listView" class="page">
+      <div class="toolbar">
+        <h1 class="h1">Компании</h1>
+      </div>
+      <div class="list" id="companyList"></div>
+    </main>
+
+    <main id="cardView" class="page card-page hidden">
+      <div class="head">
+        <button class="back" type="button" id="backBtn" aria-label="Назад">‹</button>
+        <p class="title" id="cardTitle">ООО «КА»</p>
+      </div>
+      <div class="tabs">
+        <button class="tab on" type="button" data-tab="main">Основное</button>
+        <button class="tab" type="button" data-tab="deals">Сделки</button>
+        <button class="tab" type="button" data-tab="chat">Чат</button>
+      </div>
+      <div id="tab-main">
+        <p class="section">Реквизиты</p>
+        <div class="grid">
+          <div class="label">Название</div><div class="val" id="cardName">ООО «КА»</div>
+          <div class="label">ИНН</div><div class="val" id="cardInn"><span class="inn">4401163183</span></div>
+          <div class="label">Телефон</div><div class="val">—</div>
+          <div class="label">Email</div><div class="val">—</div>
+          <div class="label">Адрес</div><div class="val" id="cardAddr">г. Кострома, ул. Кузнецкая, д. 18Б, помещ. 15</div>
+          <div class="label">Сайт</div><div class="val">—</div>
+          <div class="label">Примечание</div><div class="val">—</div>
+        </div>
+      </div>
+      <div id="tab-deals" class="hidden">
+        <p class="hint">Сделки компании. Пусто, если ещё не создавали.</p>
+      </div>
+      <div id="tab-chat" class="hidden">
+        <div class="chat">
+          <div class="bubble"><b>Система</b>Чат доступен для любой компании — не только выбранной из DaData.</div>
+          <div class="composer">
+            <input id="chatInput" placeholder="Написать сообщение">
+            <button class="btn" type="button" id="sendChat">Отправить</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal" role="dialog" aria-labelledby="modalTitle">
+      <div class="modal-top">
+        <h2 id="modalTitle">Новая компания</h2>
+        <button class="x" type="button" id="closeCreate">×</button>
+      </div>
+      <div class="field">Название<span class="req">*</span></div>
+      <input class="input" id="nameInput" placeholder="Введите название или ИНН">
+      <div class="suggest hidden" id="suggest"></div>
+      <p class="note">DaData только подсказывает реквизиты. Создать и открыть чат можно с любым названием — кнопка «Создать» не ждёт выбора из списка.</p>
+      <div class="actions">
+        <button class="btn ghost" type="button" id="cancelCreate">Отмена</button>
+        <button class="btn" type="button" id="createBtn">Создать</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const seed = [
+      { name: 'ООО «Восхитительный»', inn: '4400019349', addr: 'г. Кострома, ул. Коммунаров, д. 28' },
+      { name: 'ООО «Вий»', inn: '3666625760', addr: 'г. Воронеж, ул. Никитинская, д. 8А' },
+      { name: 'ООО «Вы»', inn: '7839219336', addr: 'г. Санкт-Петербург, Застава' },
+      { name: 'ООО «Вы»', inn: '7720956811', addr: 'г. Москва, ш. Энтузиастов, д. 34' },
+      { name: 'ООО «Вы правее»', inn: '2634115929', addr: 'г. Ставрополь, ул. Перова, д. 47' },
+      { name: 'ООО «Вы дома»', inn: '7714455368', addr: 'г. Москва, ул. 5-я Магистральная' },
+      { name: 'ООО «Вы + мы»', inn: '7017329075', addr: 'г. Томск, ул. Московский тракт' }
+    ];
+    const dadata = [
+      { name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «КА»', inn: '4401163183', addr: 'г. Кострома, ул. Кузнецкая, д. 18Б, помещ. 15' },
+      { name: 'АКЦИОНЕРНОЕ ОБЩЕСТВО «КОММЕРЧЕСКОЕ АГЕНТСТВО «ГЕПАРД»', inn: '7730000630', addr: 'г. Москва' },
+      { name: 'АКЦИОНЕРНОЕ ОБЩЕСТВО «КАДРОВОЕ АГЕНТСТВО «СИНЕРГИЯ»', inn: '7706687290', addr: 'г. Москва' },
+      { name: 'АКЦИОНЕРНОЕ ОБЩЕСТВО «КОНСАЛТИНГОВОЕ АГЕНТСТВО «ГОРНОПРОМЫШЛЕННАЯ СТРАТЕГИЯ»', inn: '9710152390', addr: 'г. Москва' }
+    ];
+
+    const listEl = document.getElementById('companyList');
+    const listView = document.getElementById('listView');
+    const cardView = document.getElementById('cardView');
+    const overlay = document.getElementById('overlay');
+    const nameInput = document.getElementById('nameInput');
+    const suggest = document.getElementById('suggest');
+    let companies = seed.slice();
+    let picked = null;
+
+    function renderList() {
+      listEl.innerHTML = companies.map((c, i) => `
+        <div class="row" data-i="${i}">
+          <div class="name">${c.name}</div>
+            <div class="meta">ИНН<br>${c.inn || '—'}${c.addr ? `<div class="addr">${c.addr}</div>` : ''}</div>
+        </div>
+      `).join('');
+    }
+
+    function showList() {
+      listView.classList.remove('hidden');
+      cardView.classList.add('hidden');
+      document.querySelectorAll('[data-nav]').forEach((a) => a.classList.toggle('on', a.dataset.nav === 'list'));
+    }
+
+    function openCard(c) {
+      document.getElementById('cardTitle').textContent = c.name;
+      document.getElementById('cardName').textContent = c.name;
+      document.getElementById('cardInn').innerHTML = c.inn ? `<span class="inn">${c.inn}</span>` : '—';
+      document.getElementById('cardAddr').textContent = c.addr || '—';
+      listView.classList.add('hidden');
+      cardView.classList.remove('hidden');
+      document.querySelectorAll('[data-nav]').forEach((a) => a.classList.toggle('on', a.dataset.nav === 'card'));
+      document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('on', t.dataset.tab === 'main'));
+      document.getElementById('tab-main').classList.remove('hidden');
+      document.getElementById('tab-deals').classList.add('hidden');
+      document.getElementById('tab-chat').classList.add('hidden');
+    }
+
+    function openCreate() {
+      picked = null;
+      nameInput.value = '';
+      suggest.classList.add('hidden');
+      overlay.classList.add('on');
+      nameInput.focus();
+    }
+
+    function closeCreate() {
+      overlay.classList.remove('on');
+    }
+
+    function renderSuggest(q) {
+      const items = dadata.filter((x) =>
+        x.name.toLowerCase().includes(q) || x.inn.includes(q)
+      );
+      if (!q || !items.length) {
+        suggest.classList.add('hidden');
+        return;
+      }
+      suggest.innerHTML = items.map((x, i) => `
+        <div class="sug" data-s="${i}">
+          <div class="n">${x.name}</div>
+          <div class="i">ИНН<br>${x.inn}</div>
+        </div>
+      `).join('');
+      suggest.dataset.items = JSON.stringify(items);
+      suggest.classList.remove('hidden');
+    }
+
+    listEl.addEventListener('click', (e) => {
+      const row = e.target.closest('.row');
+      if (!row) return;
+      openCard(companies[Number(row.dataset.i)]);
+      history.replaceState(null, '', '#card');
+    });
+
+    document.getElementById('backBtn').onclick = () => {
+      showList();
+      history.replaceState(null, '', '#list');
+    };
+    document.getElementById('openCreate').onclick = openCreate;
+    document.getElementById('closeCreate').onclick = closeCreate;
+    document.getElementById('cancelCreate').onclick = closeCreate;
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeCreate(); });
+
+    nameInput.addEventListener('input', () => {
+      picked = null;
+      renderSuggest(nameInput.value.trim().toLowerCase());
+    });
+
+    suggest.addEventListener('click', (e) => {
+      const row = e.target.closest('.sug');
+      if (!row) return;
+      const items = JSON.parse(suggest.dataset.items || '[]');
+      picked = items[Number(row.dataset.s)];
+      nameInput.value = picked.name;
+      suggest.classList.add('hidden');
+    });
+
+    document.getElementById('createBtn').onclick = () => {
+      const name = nameInput.value.trim();
+      if (!name) {
+        nameInput.focus();
+        return;
+      }
+      const company = picked || { name, inn: '', addr: '' };
+      companies.unshift(company);
+      renderList();
+      closeCreate();
+      openCard(company);
+      document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('on', t.dataset.tab === 'chat'));
+      document.getElementById('tab-main').classList.add('hidden');
+      document.getElementById('tab-deals').classList.add('hidden');
+      document.getElementById('tab-chat').classList.remove('hidden');
+      history.replaceState(null, '', '#card');
+    };
+
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.onclick = () => {
+        document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('on', t === tab));
+        ['main', 'deals', 'chat'].forEach((id) => {
+          document.getElementById('tab-' + id).classList.toggle('hidden', id !== tab.dataset.tab);
+        });
+      };
+    });
+
+    document.getElementById('sendChat').onclick = () => {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const box = document.createElement('div');
+      box.className = 'bubble';
+      box.innerHTML = '<b>Вы</b>' + text;
+      input.parentElement.before(box);
+      input.value = '';
+    };
+
+    renderList();
+
+    const hash = (location.hash || '#list').slice(1);
+    if (hash === 'card') openCard(dadata[0]);
+    if (hash === 'create') {
+      showList();
+      nameInput.value = 'ка';
+      renderSuggest('ка');
+      overlay.classList.add('on');
+    }
+    if (hash === 'chat') {
+      openCard({ name: 'ООО «КА»', inn: '4401163183', addr: 'г. Кострома, ул. Кузнецкая, д. 18Б, помещ. 15' });
+      document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('on', t.dataset.tab === 'chat'));
+      document.getElementById('tab-main').classList.add('hidden');
+      document.getElementById('tab-chat').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
