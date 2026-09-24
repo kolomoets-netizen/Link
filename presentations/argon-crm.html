@@ -34,16 +34,31 @@
       height: 100vh;
       display: grid;
       place-items: center;
-      padding-bottom: 56px;
+      padding: 16px 16px 72px;
+      box-sizing: border-box;
+    }
+    .frame {
+      width: min(100%, calc((100vh - 88px) * 16 / 9));
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - 88px);
+      position: relative;
+      overflow: hidden;
+      container-type: inline-size;
+      background: #111;
+      box-shadow: 0 24px 80px rgba(0,0,0,.45);
     }
     .stage {
       width: 1920px;
       height: 1080px;
-      position: relative;
-      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: top left;
       overflow: hidden;
       background: var(--paper);
-      box-shadow: 0 24px 80px rgba(0,0,0,.45);
+    }
+    @supports (zoom: 1) {
+      .stage { zoom: calc(100cqw / 1920); }
     }
     .slide {
       position: absolute;
@@ -418,6 +433,7 @@
 <body>
   <p class="hint">← → · пробел · F</p>
   <div class="viewport">
+    <div class="frame" id="frame">
     <div class="stage" id="stage">
 
       <!-- 01 Cover -->
@@ -1020,6 +1036,7 @@
         </div>
       </section>
     </div>
+    </div>
   </div>
 
   <nav class="hud" aria-label="Навигация по слайдам">
@@ -1031,13 +1048,21 @@
   <script>
     const slides = [...document.querySelectorAll(".slide")];
     const stage = document.getElementById("stage");
+    const frame = document.getElementById("frame");
     const pos = document.getElementById("pos");
     const prev = document.getElementById("prev");
     const next = document.getElementById("next");
     let i = 0;
 
     function fit() {
-      const s = Math.min(window.innerWidth / 1920, (window.innerHeight - 56) / 1080);
+      const w = frame ? frame.clientWidth : window.innerWidth;
+      const h = frame ? frame.clientHeight : window.innerHeight;
+      if (w < 80 || h < 80) {
+        requestAnimationFrame(fit);
+        return;
+      }
+      const s = Math.min(w / 1920, h / 1080);
+      stage.style.zoom = "1";
       stage.style.transform = "scale(" + s + ")";
     }
     function go(n) {
@@ -1073,9 +1098,12 @@
       });
     });
     window.addEventListener("resize", fit);
+    window.addEventListener("load", fit);
     window.addEventListener("hashchange", fromHash);
     fit();
     fromHash();
+    setTimeout(fit, 200);
+    setTimeout(fit, 800);
   </script>
 </body>
 </html>
