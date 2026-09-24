@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM для отдела продаж «Аргон» · iStockLink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #111111;
+      --paper: #f3f1ec;
+      --card: #ffffff;
+      --muted: #6f6c64;
+      --line: #e3e0d7;
+      --blue: #1c50de;
+      --blue-2: #3b6df0;
+      --dark: #111111;
+      --dark-2: #1a1a1a;
+      --good: #0f8a5f;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0b0b0b;
+      color: var(--ink);
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      overflow: hidden;
+    }
+    .viewport {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+    .stage {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      transform-origin: center center;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 24px 80px rgba(0,0,0,.45);
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: 72px 96px 64px;
+      overflow: hidden;
+    }
+    .slide.is-on { display: flex; flex-direction: column; }
+    .slide.dark { background: var(--dark); color: #fff; }
+    .slide.paper { background: var(--paper); }
+    .slide.white { background: #fff; }
+
+    .blob, .ring {
+      position: absolute;
+      pointer-events: none;
+      border-radius: 50%;
+    }
+    .blob { filter: blur(0); }
+    .ring { border: 1px solid currentColor; opacity: .12; }
+
+    .topbar, .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(28,80,222,.16);
+    }
+    .slide.dark .brand-mark { box-shadow: 0 0 0 6px rgba(28,80,222,.28); }
+    .kicker {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .slide.dark .kicker { color: #8eafff; }
+    .meta { font-size: 16px; color: var(--muted); font-weight: 500; }
+    .slide.dark .meta { color: rgba(255,255,255,.55); }
+    .num { font-variant-numeric: tabular-nums; }
+
+    h1, h2, h3, p { margin: 0; }
+    .display {
+      font-size: 92px;
+      line-height: .96;
+      font-weight: 800;
+      letter-spacing: -.045em;
+    }
+    .title {
+      font-size: 68px;
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+    .lead {
+      font-size: 26px;
+      line-height: 1.45;
+      color: var(--muted);
+      font-weight: 500;
+      max-width: 820px;
+    }
+    .slide.dark .lead { color: rgba(255,255,255,.66); }
+    .accent { color: var(--blue); }
+
+    .grow { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 26px;
+    }
+    .card h3 { font-size: 24px; letter-spacing: -.03em; margin: 10px 0 8px; }
+    .card p { font-size: 17px; line-height: 1.5; color: var(--muted); font-weight: 500; }
+    .idx {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: .08em;
+    }
+
+    .hud {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 20;
+      background: rgba(17,17,17,.86);
+      color: #fff;
+      border-radius: 999px;
+      padding: 8px 10px 8px 16px;
+      backdrop-filter: blur(12px);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .hud button {
+      border: 0;
+      background: #fff;
+      color: #111;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .hud button:disabled { opacity: .35; cursor: default; }
+    .hint { position: fixed; top: 16px; right: 18px; color: rgba(255,255,255,.45); font-size: 13px; z-index: 20; font-weight: 500; }
+
+    .toc { display: grid; gap: 0; }
+    .toc a {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+    }
+    .toc a:first-child { border-top: 1px solid var(--line); }
+    .toc .n { font-size: 22px; font-weight: 800; color: var(--blue); }
+    .toc .t { font-size: 32px; font-weight: 750; letter-spacing: -.03em; }
+    .toc .d { font-size: 18px; color: var(--muted); font-weight: 500; }
+
+    .pain { display: grid; gap: 18px; }
+    .pain li {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .pain b { display: block; font-size: 26px; letter-spacing: -.03em; margin-bottom: 4px; }
+    .pain span { color: rgba(255,255,255,.62); font-size: 18px; line-height: 1.45; font-weight: 500; }
+    .dot {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: rgba(28,80,222,.18);
+      color: #9cb6ff;
+      font-weight: 800;
+    }
+
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+    .flow-item {
+      background: #fff;
+      border-radius: 24px;
+      padding: 26px 22px;
+      border: 1px solid var(--line);
+      min-height: 210px;
+    }
+    .flow-item .n { font-size: 40px; font-weight: 800; color: var(--blue); letter-spacing: -.04em; }
+    .flow-item h3 { font-size: 26px; margin: 18px 0 8px; letter-spacing: -.03em; }
+    .flow-item p { color: var(--muted); font-size: 16px; line-height: 1.45; font-weight: 500; }
+
+    .kanban { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .col {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 14px 12px 16px;
+      min-height: 430px;
+    }
+    .col h4 {
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .deal {
+      background: #f7f6f2;
+      border-radius: 14px;
+      padding: 12px 12px 13px;
+      margin-bottom: 10px;
+    }
+    .deal.hot { background: linear-gradient(135deg, #1c50de, #3b6df0); color: #fff; }
+    .deal.won { background: #e8f7ef; }
+    .deal strong { display: block; font-size: 15px; letter-spacing: -.02em; margin-bottom: 4px; }
+    .deal em { font-style: normal; font-size: 13px; opacity: .7; font-weight: 600; }
+
+    .client {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+    }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: var(--blue); color: #fff;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 22px;
+    }
+    .hist { margin-top: 22px; display: grid; gap: 12px; }
+    .hist div {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      font-size: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hist b { color: var(--blue); font-size: 14px; }
+
+    .task {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px; border-radius: 18px; background: #fff;
+      border: 1px solid var(--line); margin-bottom: 12px;
+    }
+    .task strong { display: block; font-size: 20px; letter-spacing: -.02em; }
+    .task small { color: var(--muted); font-size: 14px; font-weight: 600; }
+    .tag {
+      font-size: 13px; font-weight: 800; padding: 6px 10px; border-radius: 999px;
+      background: #ecefff; color: var(--blue);
+    }
+    .tag.warn { background: #fff1d6; color: #8a5a00; }
+    .tag.ok { background: #e8f7ef; color: var(--good); }
+
+    .stat {
+      background: #fff;
+      border-radius: 28px;
+      padding: 32px 28px;
+      border: 1px solid var(--line);
+      min-height: 280px;
+    }
+    .stat .big {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -.05em;
+      line-height: 1;
+      margin: 18px 0 14px;
+    }
+    .stat h3 { font-size: 24px; letter-spacing: -.03em; }
+    .stat p { margin-top: 8px; color: var(--muted); font-size: 17px; line-height: 1.45; font-weight: 500; }
+
+    .cmp {
+      display: grid;
+      grid-template-columns: 240px repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .cmp div { padding: 18px 16px; font-size: 17px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 550; }
+    .cmp .h { font-weight: 800; background: #f7f6f2; }
+    .cmp .us { background: #eaf0ff; color: #153fb8; font-weight: 700; }
+    .cmp .row-h { font-weight: 800; background: #f7f6f2; }
+
+    .tl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .tl article {
+      background: #fff;
+      border-radius: 28px;
+      padding: 32px 28px;
+      border: 1px solid var(--line);
+      min-height: 420px;
+    }
+    .tl .when { font-size: 15px; font-weight: 800; color: var(--blue); letter-spacing: .1em; text-transform: uppercase; }
+    .tl h3 { font-size: 32px; margin: 14px 0 16px; letter-spacing: -.03em; }
+    .tl li { margin: 10px 0; font-size: 18px; color: var(--muted); font-weight: 500; line-height: 1.4; }
+
+    .price {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+    }
+    .price .sum {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 32px;
+      padding: 40px 36px;
+    }
+    .price .sum p { color: rgba(255,255,255,.6); }
+    .price .val { font-size: 64px; font-weight: 800; letter-spacing: -.05em; margin: 8px 0 28px; }
+    .price .val small { font-size: 22px; font-weight: 650; color: rgba(255,255,255,.55); }
+    .checks { display: grid; gap: 14px; }
+    .checks li { font-size: 20px; font-weight: 550; line-height: 1.4; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .steps article {
+      background: #fff;
+      border-radius: 28px;
+      padding: 32px 28px 28px;
+      border: 1px solid var(--line);
+      min-height: 360px;
+    }
+    .steps .n { font-size: 56px; font-weight: 800; color: var(--blue); letter-spacing: -.05em; }
+    .steps h3 { font-size: 30px; margin: 18px 0 12px; letter-spacing: -.03em; }
+    .steps p { color: var(--muted); font-size: 18px; line-height: 1.5; font-weight: 500; }
+
+    .aside {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #ecefff;
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    @media print {
+      html, body, .viewport { background: #fff; height: auto; overflow: visible; }
+      .stage { transform: none !important; box-shadow: none; page-break-after: always; height: auto; }
+      .slide { position: relative; display: flex !important; page-break-after: always; height: 1080px; }
+      .hud, .hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <p class="hint">← → · пробел · F</p>
+  <div class="viewport">
+    <div class="stage" id="stage">
+
+      <!-- 01 Cover -->
+      <section class="slide dark is-on" data-i="1">
+        <div class="blob" style="width:620px;height:620px;right:-160px;top:-180px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.55"></div>
+        <div class="ring" style="width:460px;height:460px;right:80px;bottom:-80px"></div>
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="meta">Для отдела продаж · компания «Аргон»</div>
+        </div>
+        <div class="grow">
+          <p class="kicker">Business presentation</p>
+          <h1 class="display" style="margin-top:22px;max-width:1200px">CRM-система<br>для отдела продаж</h1>
+          <p class="lead" style="margin-top:28px">Возможности и преимущества iStockLink —<br>чтобы сделки не терялись в чатах и таблицах.</p>
+        </div>
+        <div class="foot">
+          <div class="meta">Встреча с командой «Аргон»</div>
+          <div class="meta num">01 / 15</div>
+        </div>
+      </section>
+
+      <!-- 02 Overview -->
+      <section class="slide paper" data-i="2">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Overview</div>
+        </div>
+        <div class="grow" style="justify-content:flex-end">
+          <h2 class="title" style="margin-bottom:36px">Содержание</h2>
+          <nav class="toc">
+            <a href="#3"><span class="n">01</span><span class="t">Задача отдела</span><span class="d">Где сейчас теряются сделки</span></a>
+            <a href="#5"><span class="n">02</span><span class="t">Возможности CRM</span><span class="d">Воронка, клиенты, задачи, отчёты</span></a>
+            <a href="#9"><span class="n">03</span><span class="t">Преимущества</span><span class="d">Почему не Excel и не долгий Битрикс</span></a>
+            <a href="#13"><span class="n">04</span><span class="t">Старт в «Аргон»</span><span class="d">Как запускаемся за один день</span></a>
+          </nav>
+        </div>
+        <div class="foot"><div class="meta">Ориентир встречи — 15 минут</div><div class="meta num">02 / 15</div></div>
+      </section>
+
+      <!-- 03 Problem -->
+      <section class="slide dark" data-i="3">
+        <div class="blob" style="width:520px;height:520px;left:-180px;bottom:-160px;background:radial-gradient(circle,#1c50de 0%,transparent 70%);opacity:.4"></div>
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">About · 01</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">Продажи не должны жить в чатах</h2>
+            <p class="lead" style="margin-top:24px">Пока история клиента в голове менеджера, отдел не управляет воронкой — он её догоняет.</p>
+          </div>
+          <ul class="pain">
+            <li><span class="dot">01</span><div><b>Договорённости в мессенджерах</b><span>Следующий шаг теряется вместе с перепиской.</span></div></li>
+            <li><span class="dot">02</span><div><b>Клиент «принадлежит» одному человеку</b><span>Уход в отпуск или смена менеджера обнуляет контекст.</span></div></li>
+            <li><span class="dot">03</span><div><b>РОП не видит картину</b><span>Нет единой воронки, просрочек и нагрузки по людям.</span></div></li>
+            <li><span class="dot">04</span><div><b>Excel не ведёт сделку</b><span>Таблица хранит строки, но не напоминает и не назначает.</span></div></li>
+          </ul>
+        </div>
+        <div class="foot"><div class="meta">Отдел продаж «Аргон»</div><div class="meta num">03 / 15</div></div>
+      </section>
+
+      <!-- 04 Solution -->
+      <section class="slide paper" data-i="4">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">About · 02</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="max-width:1400px">CRM собирает продажи<br>в один процесс</h2>
+          <p class="lead" style="margin-top:20px">Клиент, сделка, задача и результат живут в одной карточке. Менеджер ведёт работу, руководитель видит статус.</p>
+          <div class="flow">
+            <div class="flow-item"><div class="n">01</div><h3>Клиент</h3><p>Контакты, история касаний и документы в одном месте.</p></div>
+            <div class="flow-item"><div class="n">02</div><h3>Сделка</h3><p>Этап воронки, сумма, срок и ответственный.</p></div>
+            <div class="flow-item"><div class="n">03</div><h3>Задачи</h3><p>Звонок, КП, встреча — с дедлайном и напоминанием.</p></div>
+            <div class="flow-item"><div class="n">04</div><h3>Результат</h3><p>Договор, отказ или пауза — видно, почему так вышло.</p></div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">iStockLink как рабочий контур продаж</div><div class="meta num">04 / 15</div></div>
+      </section>
+
+      <!-- 05 Services -->
+      <section class="slide white" data-i="5">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Services</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Возможности CRM</h2>
+          <div class="grid-6">
+            <article class="card"><div class="idx">01</div><h3>Воронка сделок</h3><p>Этапы под ваш цикл: лид, квалификация, КП, переговоры, договор.</p></article>
+            <article class="card"><div class="idx">02</div><h3>База клиентов</h3><p>Компания, лица, роли, история и связанные сделки.</p></article>
+            <article class="card"><div class="idx">03</div><h3>Задачи и контроль</h3><p>Дедлайны, ответственные, просрочки — на доске и в списке.</p></article>
+            <article class="card"><div class="idx">04</div><h3>Документы и КП</h3><p>Файлы по сделке, коммерческие предложения, статусы ответа.</p></article>
+            <article class="card"><div class="idx">05</div><h3>Отчёты для РОПа</h3><p>Нагрузка, движение по этапам, зависшие сделки.</p></article>
+            <article class="card"><div class="idx">06</div><h3>Командная работа</h3><p>Передача клиента без потери контекста. Общий язык отдела.</p></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Главное для отдела продаж — не поиск тендеров</div><div class="meta num">05 / 15</div></div>
+      </section>
+
+      <!-- 06 Pipeline -->
+      <section class="slide paper" data-i="6">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Services · воронка</div>
+        </div>
+        <div class="grow">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px">
+            <h2 class="title" style="font-size:52px">Сделка видна на каждом этапе</h2>
+            <p class="lead" style="margin:0;max-width:420px;font-size:18px">Перетаскиваете карточку, назначаете следующего ответственного, ставите задачу.</p>
+          </div>
+          <div class="kanban">
+            <div class="col"><h4>Лид</h4>
+              <div class="deal"><strong>Поставка комплектующих</strong><em>Новый запрос · 1,8 млн</em></div>
+              <div class="deal"><strong>Сервисный контракт</strong><em>Входящий · 420 тыс</em></div>
+            </div>
+            <div class="col"><h4>Квалификация</h4>
+              <div class="deal hot"><strong>Рамочный договор</strong><em>РОП · 5,1 млн</em></div>
+            </div>
+            <div class="col"><h4>КП</h4>
+              <div class="deal"><strong>Партия под проект</strong><em>КП отправлено · 2,4 млн</em></div>
+            </div>
+            <div class="col"><h4>Переговоры</h4>
+              <div class="deal"><strong>Поставка на склад</strong><em>Встреча 25.09 · 3,2 млн</em></div>
+            </div>
+            <div class="col"><h4>Договор</h4>
+              <div class="deal won"><strong>Годовая поставка</strong><em>Подписан · 6,7 млн</em></div>
+              <div class="deal won"><strong>Доп. соглашение</strong><em>Оплата получена</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Этапы настраиваются под цикл «Аргон»</div><div class="meta num">06 / 15</div></div>
+      </section>
+
+      <!-- 07 Clients -->
+      <section class="slide white" data-i="7">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Services · клиенты</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">Клиент больше не «в телефоне менеджера»</h2>
+            <p class="lead" style="margin-top:22px">Карточка держит людей, историю и сделки. Новый сотрудник входит в работу без разбора переписок.</p>
+          </div>
+          <div class="client">
+            <div style="display:flex;gap:16px;align-items:center">
+              <div class="avatar">АК</div>
+              <div>
+                <h3 style="font-size:26px;letter-spacing:-.03em">Альфа Комплект</h3>
+                <p style="color:var(--muted);font-weight:600">Постоянный клиент · 3 открытые сделки</p>
+              </div>
+            </div>
+            <div class="hist">
+              <div><b>12.09</b><span>Согласовали спецификацию, ждём КП</span></div>
+              <div><b>05.09</b><span>Встреча с закупщиком, запрос на рамку</span></div>
+              <div><b>28.08</b><span>Закрыта поставка на 2,1 млн</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Контекст остаётся в компании</div><div class="meta num">07 / 15</div></div>
+      </section>
+
+      <!-- 08 Tasks -->
+      <section class="slide paper" data-i="8">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Services · задачи</div>
+        </div>
+        <div class="grow grid-2">
+          <div>
+            <h2 class="title">Следующий шаг всегда назначен</h2>
+            <p class="lead" style="margin-top:22px">CRM не заменяет менеджера. Она не даёт сделке зависнуть без звонка, КП или встречи.</p>
+          </div>
+          <div>
+            <div class="task"><div><strong>Перезвонить по спецификации</strong><small>Альфа Комплект · сегодня 16:00</small></div><span class="tag warn">сегодня</span></div>
+            <div class="task"><div><strong>Отправить КП на рамку</strong><small>Рамочный договор · завтра</small></div><span class="tag">в работе</span></div>
+            <div class="task"><div><strong>Подготовить договор</strong><small>Годовая поставка · пт</small></div><span class="tag ok">план</span></div>
+            <div class="task"><div><strong>Синхронизация отдела</strong><small>РОП · пятница 10:00</small></div><span class="tag">команда</span></div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Просрочки видны руководителю сразу</div><div class="meta num">08 / 15</div></div>
+      </section>
+
+      <!-- 09 Advantages -->
+      <section class="slide white" data-i="9">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Advantages</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Преимущества для «Аргон»</h2>
+          <div class="grid-4">
+            <article class="stat"><div class="idx">01</div><div class="big">1 день</div><h3>До рабочего контура</h3><p>Не проект внедрения. Этапы, роли и первые сделки — сразу.</p></article>
+            <article class="stat"><div class="idx">02</div><div class="big">1 окно</div><h3>Вместо чатов и Excel</h3><p>Клиент, сделка и задача больше не разъезжаются по сервисам.</p></article>
+            <article class="stat"><div class="idx">03</div><div class="big">РОП</div><h3>Видит всю воронку</h3><p>Нагрузка, просрочки и зависшие суммы — без ручного сбора.</p></article>
+            <article class="stat"><div class="idx">04</div><div class="big">14 дней</div><h3>Бесплатный старт</h3><p>Проверяете на своих продажах, без привязки карты.</p></article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Без скрытых работ «настроить как Битрикс»</div><div class="meta num">09 / 15</div></div>
+      </section>
+
+      <!-- 10 Compare -->
+      <section class="slide paper" data-i="10">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Compare</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="font-size:52px;margin-bottom:28px">Рядом с привычными инструментами</h2>
+          <div class="cmp">
+            <div class="h row-h"></div>
+            <div class="h">Excel</div>
+            <div class="h">Чаты</div>
+            <div class="h">Битрикс24 + внедрение</div>
+            <div class="h us">iStockLink</div>
+
+            <div class="row-h">Старт</div>
+            <div>сразу</div>
+            <div>сразу</div>
+            <div>недели и месяцы</div>
+            <div class="us">1 день</div>
+
+            <div class="row-h">Воронка сделок</div>
+            <div>нет</div>
+            <div>нет</div>
+            <div>после настройки</div>
+            <div class="us">из коробки</div>
+
+            <div class="row-h">Контроль задач</div>
+            <div>вручную</div>
+            <div>теряется</div>
+            <div>да, после настройки</div>
+            <div class="us">сразу</div>
+
+            <div class="row-h">Прозрачность для РОПа</div>
+            <div>слабая</div>
+            <div>нет</div>
+            <div>после доработок</div>
+            <div class="us">из коробки</div>
+
+            <div class="row-h">Стоимость старта</div>
+            <div>0</div>
+            <div>0</div>
+            <div>от 100 000 ₽ + подписка</div>
+            <div class="us">от 1 260 ₽ / мес</div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Сравнение по модели продаж, не по тендерам</div><div class="meta num">10 / 15</div></div>
+      </section>
+
+      <!-- 11 Timeline -->
+      <section class="slide white" data-i="11">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Timeline</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Как выглядит день менеджера</h2>
+          <div class="tl">
+            <article>
+              <div class="when">Утро</div>
+              <h3>План на день</h3>
+              <ul>
+                <li>Просроченные задачи сверху</li>
+                <li>Сделки, которые «остыли»</li>
+                <li>Приоритеты от РОПа — в той же доске</li>
+              </ul>
+            </article>
+            <article>
+              <div class="when">День</div>
+              <h3>Работа по карточкам</h3>
+              <ul>
+                <li>Звонок и заметка в сделке</li>
+                <li>КП прикрепили к этапу</li>
+                <li>Следующий шаг сразу назначен</li>
+              </ul>
+            </article>
+            <article>
+              <div class="when">Вечер</div>
+              <h3>Статус без отчёта</h3>
+              <ul>
+                <li>Воронка уже актуальная</li>
+                <li>РОП не собирает статусы вручную</li>
+                <li>Передача смены — без голосовых</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Меньше ритуалов отчётности — больше продаж</div><div class="meta num">11 / 15</div></div>
+      </section>
+
+      <!-- 12 Tenders briefly -->
+      <section class="slide dark" data-i="12">
+        <div class="blob" style="width:540px;height:540px;right:-140px;top:-120px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.45"></div>
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Дополнительно</div>
+        </div>
+        <div class="grow">
+          <div class="aside">Не основной сценарий</div>
+          <h2 class="title" style="max-width:1400px">Если отделу понадобятся тендеры — они уже в этой же системе</h2>
+          <p class="lead" style="margin-top:28px;max-width:900px">Лента закупок, воронка участия и работа с поставщиками подключаются в том же окне. Для продаж «Аргон» это запасной контур, а не тема этой встречи.</p>
+        </div>
+        <div class="foot"><div class="meta">Тендеры — по запросу, не вместо CRM продаж</div><div class="meta num">12 / 15</div></div>
+      </section>
+
+      <!-- 13 Pricing -->
+      <section class="slide paper" data-i="13">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Pricing</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Старт без проекта внедрения</h2>
+          <div class="price">
+            <div class="sum">
+              <p>За пользователя</p>
+              <div class="val">1 260 ₽ <small>/ мес</small></div>
+              <p>На команду</p>
+              <div class="val" style="font-size:48px;margin-bottom:0">от 6 000 ₽ <small>/ мес</small></div>
+            </div>
+            <div class="card" style="padding:36px 34px">
+              <ul class="checks">
+                <li>Подключение за день: этапы продаж и роли</li>
+                <li>Не нужен интегратор и долгое обучение</li>
+                <li>14 дней бесплатно, без привязки карты</li>
+                <li>Интерфейс понятен менеджеру с первого дня</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Актуальные тарифы — istock.link/pricing</div><div class="meta num">13 / 15</div></div>
+      </section>
+
+      <!-- 14 Next steps -->
+      <section class="slide white" data-i="14">
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Next steps</div>
+        </div>
+        <div class="grow">
+          <h2 class="title" style="margin-bottom:28px">Как запустим в «Аргон»</h2>
+          <div class="steps">
+            <article>
+              <div class="n">01</div>
+              <h3>Демо на ваших сделках</h3>
+              <p>Разберём 3–5 живых клиентов отдела и покажем, как они выглядят в воронке.</p>
+            </article>
+            <article>
+              <div class="n">02</div>
+              <h3>Этапы под ваш цикл</h3>
+              <p>Настроим статусы, поля и роли так, как отдел уже продаёт — без «учебной» воронки.</p>
+            </article>
+            <article>
+              <div class="n">03</div>
+              <h3>Неделя в бою</h3>
+              <p>Команда ведёт реальные сделки. РОП смотрит ту же доску. Потом решаете по факту.</p>
+            </article>
+          </div>
+        </div>
+        <div class="foot"><div class="meta">Никакого отдельного проекта «внедрение CRM»</div><div class="meta num">14 / 15</div></div>
+      </section>
+
+      <!-- 15 Ending -->
+      <section class="slide dark" data-i="15">
+        <div class="blob" style="width:680px;height:680px;right:-200px;bottom:-220px;background:radial-gradient(circle,#1c50de 0%,transparent 68%);opacity:.5"></div>
+        <div class="ring" style="width:380px;height:380px;left:80px;top:120px"></div>
+        <div class="topbar">
+          <div class="brand"><span class="brand-mark"></span>iStockLink</div>
+          <div class="kicker">Ending</div>
+        </div>
+        <div class="grow">
+          <h2 class="display">Готовы показать CRM на ваших продажах</h2>
+          <p class="lead" style="margin-top:28px">Демо для отдела продаж «Аргон» — на ваших сделках, не на учебном примере.</p>
+          <p style="margin-top:40px;font-size:36px;font-weight:800;letter-spacing:-.03em">istock.link</p>
+        </div>
+        <div class="foot">
+          <div class="meta">Следующий шаг — 30 минут на воронку отдела</div>
+          <div class="meta num">15 / 15</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="hud" aria-label="Навигация по слайдам">
+    <span id="pos">01 / 15</span>
+    <button type="button" id="prev" aria-label="Назад">←</button>
+    <button type="button" id="next" aria-label="Вперёд">→</button>
+  </nav>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const stage = document.getElementById("stage");
+    const pos = document.getElementById("pos");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    let i = 0;
+
+    function fit() {
+      const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      stage.style.transform = "scale(" + s + ")";
+    }
+    function go(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach((el, idx) => el.classList.toggle("is-on", idx === i));
+      const label = String(i + 1).padStart(2, "0") + " / " + String(slides.length).padStart(2, "0");
+      pos.textContent = label;
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
+      history.replaceState(null, "", "#" + (i + 1));
+    }
+    function fromHash() {
+      const n = parseInt(location.hash.replace("#", ""), 10);
+      go(Number.isFinite(n) ? n - 1 : 0);
+    }
+
+    prev.addEventListener("click", () => go(i - 1));
+    next.addEventListener("click", () => go(i + 1));
+    document.addEventListener("keydown", (e) => {
+      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(i + 1); }
+      if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) { e.preventDefault(); go(i - 1); }
+      if (e.key === "Home") go(0);
+      if (e.key === "End") go(slides.length - 1);
+      if (e.key === "f" || e.key === "F") {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+      }
+    });
+    document.querySelectorAll(".toc a").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        go(parseInt(a.getAttribute("href").slice(1), 10) - 1);
+      });
+    });
+    window.addEventListener("resize", fit);
+    window.addEventListener("hashchange", fromHash);
+    fit();
+    fromHash();
+  </script>
+</body>
+</html>

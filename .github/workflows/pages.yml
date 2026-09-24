@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'tilda-landing/**'
+      - 'presentations/**'
       - 'package.json'
       - 'package-lock.json'
       - 'scripts/**'

@@ -246,4 +246,11 @@ const redirect404 = `<!DOCTYPE html>
 `;
 writeFileSync(join(docs, '404.html'), redirect404, 'utf-8');
 
+const presentationsSrc = join(root, 'presentations');
+const presentationsDocs = join(docs, 'presentations');
+mkdirSync(presentationsDocs, { recursive: true });
+for (const name of readdirSync(presentationsSrc).filter((file) => file.endsWith('.html'))) {
+  cpSync(join(presentationsSrc, name), join(presentationsDocs, name));
+}
+
 console.log('built preview-standalone.html, docs/index.html and docs/preview-standalone.html');
