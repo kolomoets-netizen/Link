@@ -164,7 +164,7 @@ def build(out: Path):
     kicker(s, "Go-to-market · Confidential", True)
     textbox(s, MX, Inches(1.8), Inches(10), Inches(0.35), "БИЗНЕС-ПЛАН ПРОДВИЖЕНИЯ", 12, True, RGBColor(0x8E, 0xAF, 0xFF))
     textbox(s, MX, Inches(2.3), Inches(12), Inches(1.8), "Анализ рынка и план\nпродвижения CRM + SRM", 40, True, WHITE)
-    lead(s, "Деньги в каналы → демо → оплаты. Сравнение с Битрикс24. Горизонт 12 месяцев.", True, Inches(4.4))
+    lead(s, "Деньги в каналы → SQL → оплаты. Калибровка на Яндекс Директе, сентябрь 2026.", True, Inches(4.4))
     card(s, MX, Inches(5.3), Inches(7.5), Inches(1.2), RGBColor(0x17, 0x17, 0x17))
     multilines(
         s,
@@ -172,7 +172,7 @@ def build(out: Path):
         Inches(5.45),
         Inches(7),
         Inches(1.0),
-        ["Продукт: iStockLink CRM + SRM", "Рынок: B2B / B2G mid-market · Россия", "Версия 1.1 · октябрь 2025"],
+        ["Продукт: iStockLink CRM + SRM", "Факт: CPL 3 447 ₽ · SQL 5 515 ₽ (сент. 2026)", "Версия 1.2 · октябрь 2026"],
         12,
         RGBColor(0xC5, 0xCB, 0xD3),
     )
@@ -376,19 +376,29 @@ def build(out: Path):
     )
     slides_meta.append(("Цели", "paper"))
 
-    # 11 Money intro
+    # 11 Fact Sept
     s = new("dark")
     brand(s, True)
-    kicker(s, "Бюджет", True)
-    title(s, "Сколько денег в каналы\nи какой результат возможен", True, 36, Inches(2.0))
-    lead(s, "Только продвижение. Не разработка. Цифры модельные — пересчитаем на ваших CPL и win rate.", True, Inches(4.2))
-    slides_meta.append(("Бюджет", "dark"))
+    kicker(s, "Факт · сентябрь 2026", True)
+    title(s, "Яндекс Директ: что уже работает", True, 34, Inches(1.5))
+    facts = [
+        ("27 576 ₽", "расход за месяц"),
+        ("8 лидов", "CPL 3 447 ₽"),
+        ("5 SQL", "5 515 ₽ / SQL"),
+        ("62%", "Lead → SQL"),
+    ]
+    for i, (n, l) in enumerate(facts):
+        left = MX + (i % 4) * Inches(3.05)
+        card(s, left, Inches(3.3), Inches(2.9), Inches(2.4), RGBColor(0x17, 0x17, 0x17))
+        textbox(s, left + Inches(0.2), Inches(3.6), Inches(2.5), Inches(0.7), n, 22, True, BLUE)
+        textbox(s, left + Inches(0.2), Inches(4.5), Inches(2.5), Inches(0.8), l, 14, False, RGBColor(0xA8, 0xB0, 0xBD))
+    slides_meta.append(("Факт Директа", "dark"))
 
     # 12 Assumptions
     s = new("white")
     brand(s)
     kicker(s, "Модель")
-    title(s, "Допущения до калибровки на ваших данных")
+    title(s, "Допущения после калибровки")
     add_table(
         s,
         MX,
@@ -397,11 +407,11 @@ def build(out: Path):
         Inches(4.0),
         [
             ["Параметр", "Значение", "Комментарий"],
-            ["ACV команды", "120 000 ₽ / год", "~8–12 пользователей / пакет"],
-            ["CPL (заявка на демо)", "4 500–9 000 ₽", "B2B mid-market RU"],
-            ["Lead → демо", "45%", "После квалификации"],
-            ["Демо → оплата", "22%", "С пилотом 14 дней"],
-            ["Цикл сделки", "30–60 дней", "Часть сделок уедет в след. период"],
+            ["ACV команды", "120 000 ₽ / год", "Уточнить по факту сделок"],
+            ["Cost / SQL сейчас", "~5 500 ₽", "Факт сентября"],
+            ["Cost / SQL при масштабе", "6–10 тыс. ₽", "Рост аукциона"],
+            ["Lead → SQL", "62%", "5 из 8"],
+            ["SQL → оплата", "15% / 22% / 28%", "Факта закрытий пока нет"],
         ],
         col_widths=[Inches(3.8), Inches(3.5), Inches(4.7)],
     )
@@ -413,22 +423,22 @@ def build(out: Path):
     kicker(s, "Сценарии")
     title(s, "Если столько денег — такой результат")
     scenarios = [
-        ("A · Тест", "150 тыс ₽/мес", "1,8 млн / год", "20–30 оплат", "2,4–3,6 млн ₽", "Низкий шанс масштаба"),
-        ("B · База", "300 тыс ₽/мес", "3,6 млн / год", "45–70 оплат", "5,4–8,4 млн ₽", "Средний / рабочий"),
-        ("C · Рост", "600 тыс ₽/мес", "7,2 млн / год", "90–130 оплат", "10,8–15,6 млн ₽", "Выше при sales capacity"),
+        ("A · Разогрев", "150 тыс ₽/мес", "SQL ~300 / год", "~66 оплат*", "~7,9 млн ₽", "Рекомендуемый следующий шаг"),
+        ("B · База", "300 тыс ₽/мес", "SQL ~480 / год", "~106 оплат*", "~12,7 млн ₽", "После фиксации win rate"),
+        ("C · Рост", "600 тыс ₽/мес", "SQL ~720 / год", "~158 оплат*", "~19 млн ₽", "Нужны сайт + 2+ продавца"),
     ]
-    for i, (name, m, y, deals, rev, chance) in enumerate(scenarios):
+    for i, (name, m, sql, deals, rev, chance) in enumerate(scenarios):
         left = MX + i * Inches(4.05)
         card(s, left, Inches(2.35), Inches(3.85), Inches(4.3), WHITE)
         textbox(s, left + Inches(0.25), Inches(2.55), Inches(3.4), Inches(0.4), name, 18, True, BLUE)
-        textbox(s, left + Inches(0.25), Inches(3.15), Inches(3.4), Inches(0.45), m, 20, True, INK)
+        textbox(s, left + Inches(0.25), Inches(3.15), Inches(3.4), Inches(0.45), m, 18, True, INK)
         multilines(
             s,
             left + Inches(0.25),
             Inches(3.8),
             Inches(3.4),
             Inches(2.5),
-            [y, deals + " / год", "Выручка: " + rev, chance],
+            [sql, deals + " при win 22%", "Выручка: " + rev, chance],
             13,
             MUTED,
         )
@@ -545,11 +555,11 @@ def build(out: Path):
     s = new("dark")
     brand(s, True)
     kicker(s, "Данные", True)
-    title(s, "Что пришлите — пересчитаем сценарии", True, 32, Inches(1.5))
+    title(s, "Директ учтён. Не хватает закрытий", True, 30, Inches(1.5))
     blocks = [
-        ("1", "Сводка рекламы 3–6 мес.", "Кампания → расход → клики → заявки → CPL"),
-        ("2", "Касания / воронка", "Источник, этап, демо, won/lost, тариф"),
-        ("3", "Ваш сводный отчёт", "Если уже есть — одного файла достаточно"),
+        ("1", "CRM: SQL → оплата", "По 5 SQL сентября — статус, тариф, won/lost"),
+        ("2", "Касания 3–6 мес.", "Источник / UTM, этап, сумма — для win rate"),
+        ("3", "Средний чек", "Факт ACV по оплаченным аккаунтам"),
     ]
     for i, (n, h, p) in enumerate(blocks):
         top = Inches(3.0) + i * Inches(1.15)
@@ -562,9 +572,9 @@ def build(out: Path):
     s = new("dark")
     brand(s, True)
     kicker(s, "Дальше", True)
-    title(s, "Базовый сценарий для старта: B", True, 34, Inches(2.2))
-    lead(s, "300 тыс ₽/мес · ~45–70 оплат/год · 5,4–8,4 млн ₽ выручки year-1 (модель).", True, Inches(3.7))
-    textbox(s, MX, Inches(4.8), Inches(12), Inches(0.5), "После ваших выгрузок зафиксируем CPL, win rate и финальный бюджет.", 16, False, RGBColor(0x8E, 0xAF, 0xFF))
+    title(s, "Следующий шаг: сценарий A", True, 34, Inches(2.2))
+    lead(s, "150 тыс ₽/мес · ~300 SQL/год · ~66 оплат при win 22% · ~7,9 млн ₽ (модель).", True, Inches(3.7))
+    textbox(s, MX, Inches(4.8), Inches(12), Inches(0.5), "Сейчас ~28 тыс ₽/мес. Сначала ×5 и замер win rate, потом B/C.", 16, False, RGBColor(0x8E, 0xAF, 0xFF))
     textbox(s, MX, Inches(5.6), Inches(12), Inches(0.4), "istock.link", 20, True, WHITE)
     slides_meta.append(("Рекомендация", "dark"))
 
