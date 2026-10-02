@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>iStockLink · Анализ рынка и план продвижения CRM+SRM</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --blue: #1c50de;
+      --blue-soft: #eef2ff;
+      --paper: #f8fafc;
+      --good: #0f766e;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      background: #fff;
+    }
+    h1, h2, h3, h4, p, ul, ol, table { margin: 0 0 10px; }
+    h1 { font-size: 22pt; letter-spacing: -.03em; line-height: 1.15; }
+    h2 {
+      font-size: 14pt;
+      letter-spacing: -.02em;
+      color: var(--blue);
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 6px;
+      margin: 22px 0 12px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 11.5pt;
+      margin: 14px 0 8px;
+      page-break-after: avoid;
+    }
+    h4 { font-size: 10.5pt; margin: 10px 0 6px; }
+    p, li { color: var(--ink); }
+    .muted { color: var(--muted); }
+    .small { font-size: 9pt; color: var(--muted); }
+    ul, ol { padding-left: 18px; }
+    li { margin-bottom: 4px; }
+    .page-break { page-break-before: always; }
+    .cover {
+      min-height: 250mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8mm 0 4mm;
+    }
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 14pt;
+    }
+    .mark {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(28,80,222,.15);
+    }
+    .badge {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+    .cover-kicker {
+      color: var(--blue);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 9pt;
+      margin-bottom: 14px;
+    }
+    .cover-lead {
+      font-size: 12.5pt;
+      color: var(--muted);
+      max-width: 145mm;
+      margin: 16px 0 28px;
+    }
+    .meta-box {
+      background: var(--paper);
+      padding: 14px 16px;
+      border-left: 4px solid var(--blue);
+      max-width: 150mm;
+    }
+    .meta-box div { margin: 3px 0; font-size: 10pt; }
+    .footer-line {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      margin-top: 28px;
+      font-size: 9pt;
+      color: var(--muted);
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+    .kpi {
+      background: var(--paper);
+      padding: 12px 12px 10px;
+      border-radius: 8px;
+    }
+    .kpi .n {
+      font-size: 16pt;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+    .kpi .l {
+      font-size: 8.5pt;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+      margin: 10px 0 16px;
+      page-break-inside: auto;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 7px 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: #0f172a;
+      color: #fff;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    td.us {
+      background: #eef2ff !important;
+      color: #153fb8;
+      font-weight: 700;
+    }
+    th.us { background: var(--blue); }
+    .note {
+      background: var(--paper);
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 9pt;
+      color: var(--muted);
+      margin: 8px 0 14px;
+    }
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .card {
+      background: var(--paper);
+      padding: 12px 14px;
+      border-radius: 8px;
+    }
+    .card h4 { color: var(--blue); margin-top: 0; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { color: var(--ink); text-decoration: none; }
+    .src { font-size: 8.5pt; color: var(--muted); }
+    .phase {
+      border-left: 3px solid var(--blue);
+      padding: 2px 0 2px 12px;
+      margin: 0 0 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <section class="cover">
+    <div>
+      <div class="brand-row">
+        <div class="brand"><span class="mark"></span>iStockLink</div>
+        <span class="badge">B2B · Confidential</span>
+      </div>
+      <div class="cover-kicker">Go-to-market документ</div>
+      <h1>Анализ рынка и план<br>продвижения продукта<br>CRM + SRM</h1>
+      <p class="cover-lead">
+        Позиционирование iStockLink как связки продаж и закупок в одном окне.
+        Отдельный блок — сравнительная матрица с Битрикс24.
+      </p>
+      <div class="meta-box">
+        <div><strong>Продукт:</strong> iStockLink CRM + SRM</div>
+        <div><strong>Рынок:</strong> Россия, B2B / B2G компании с регулярными закупками и продажами</div>
+        <div><strong>Горизонт плана:</strong> 12 месяцев</div>
+        <div><strong>Дата:</strong> октябрь 2025</div>
+        <div><strong>Версия:</strong> 1.0</div>
+      </div>
+    </div>
+    <div class="footer-line">
+      <span>istock.link</span>
+      <span>Для внутреннего использования и партнёрских презентаций</span>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <section class="page-break">
+    <h2>Содержание</h2>
+    <ol class="toc">
+      <li><strong>Резюме для руководства</strong></li>
+      <li><strong>Анализ рынка</strong> — CRM, SRM, цифровизация закупок, ICP, конкуренты</li>
+      <li><strong>Бизнес-план продвижения CRM+SRM</strong> — цели, позиционирование, каналы, воронка, бюджет, KPI</li>
+      <li><strong>Таблица сравнения с Битрикс24</strong></li>
+      <li><strong>Риски, допущения и источники</strong></li>
+    </ol>
+    <div class="note">
+      Документ опирается на открытые оценки TAdviser, Kept, Data Insight и продуктовую логику iStockLink
+      (CRM-воронка, SRM, оцифровка КП, связка с агрегаторами Контур / Seldon). Цифры рынка — ориентиры
+      для планирования, не аудитная отчётность.
+    </div>
+  </section>
+
+  <!-- 1 EXEC SUMMARY -->
+  <section class="page-break">
+    <h2>1. Резюме для руководства</h2>
+    <p>
+      iStockLink занимает нишу между универсальной CRM (Битрикс24, amoCRM) и тяжёлыми SRM/S2P-платформами.
+      Ценность продукта — <strong>один контур «сделка → запрос КП → поставка»</strong> без отдельного проекта внедрения
+      и без разрыва между продажами и снабжением.
+    </p>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="n">~44 млрд ₽</div><div class="l">рынок CRM РФ, оценка TAdviser на 2025 (+25% г/г)</div></div>
+      <div class="kpi"><div class="n">~3,5 млрд ₽</div><div class="l">рынок SRM РФ, Kept / TAdviser, 2025</div></div>
+      <div class="kpi"><div class="n">1 день</div><div class="l">целевой старт iStockLink vs недели/месяцы у Битрикс24 + внедрение</div></div>
+    </div>
+    <h3>Ключевые выводы</h3>
+    <ul>
+      <li>Спрос на отечественные CRM и закупки растёт на фоне импортозамещения и давления на маржу.</li>
+      <li>Средний бизнес платит за Битрикс24 дважды: лицензия + проект внедрения (часто 150–600 тыс. ₽).</li>
+      <li>SRM растёт быстрее CRM по CAGR, но решения дорогие и сложные для SMB / mid-market.</li>
+      <li>Окно для iStockLink: компании 10–200 сотрудников с B2B-продажами и регулярными закупками / участием в торгах.</li>
+    </ul>
+    <h3>Рекомендуемый фокус продвижения на 12 месяцев</h3>
+    <ol>
+      <li>Позиция «CRM + SRM из коробки» против «Битрикс24 + интегратор».</li>
+      <li>Входящий спрос: демо на реальных сделках, кейсы, сравнение TCO.</li>
+      <li>Партнёрский канал: тендерные специалисты, интеграторы 1С, агентства закупок.</li>
+      <li>Отдельная оферта перехода с Битрикс24 (скидка на год + 14 дней полного доступа).</li>
+    </ol>
+  </section>
+
+  <!-- 2 MARKET -->
+  <section class="page-break">
+    <h2>2. Анализ рынка</h2>
+
+    <h3>2.1. Макроконтекст</h3>
+    <p>
+      Компании среднего бизнеса в РФ одновременно цифровизируют продажи и закупки. Универсальные CRM закрывают
+      воронку продаж, но не дают готовый контур работы с поставщиками. Отдельные SRM и ЭТП закрывают закупки,
+      но живут вне CRM отдела продаж. Разрыв приводит к потере сроков, маржи и прозрачности для РОП / снабжения.
+    </p>
+    <ul>
+      <li>Импортозамещение усиливает спрос на российские SaaS и on-prem альтернативы западным CRM/SRM.</li>
+      <li>Рост B2B/B2G e-commerce и ЭТП повышает объём цифровых закупочных процессов.</li>
+      <li>Дефицит внедрения «под ключ» и дорогие интеграторы делают привлекательным продукт с быстрым стартом.</li>
+    </ul>
+
+    <h3>2.2. Рынок CRM в России</h3>
+    <table>
+      <thead>
+        <tr><th>Показатель</th><th>Оценка</th><th>Источник / комментарий</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Объём рынка CRM, 2024</td><td>~35,3 млрд ₽</td><td>TAdviser, предварительная оценка (+25% г/г)</td></tr>
+        <tr><td>Объём рынка CRM, 2025</td><td>~44,1 млрд ₽</td><td>TAdviser, +25% г/г</td></tr>
+        <tr><td>Комплексные CRM, 2025</td><td>~20,5 млрд ₽</td><td>Kept: сквозные клиентские процессы</td></tr>
+        <tr><td>Прогноз комплексных CRM к 2032</td><td>~46,1 млрд ₽</td><td>Kept, CAGR ~12,2% (2026–2032)</td></tr>
+        <tr><td>Лидеры восприятия</td><td>Битрикс24, amoCRM, 1С, BPMSoft и др.</td><td>Универсальные платформы; тендерный контур — доработка</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      Для iStockLink релевантен не весь рынок CRM, а сегмент B2B mid-market с закупками/торгами:
+      ориентир — единицы процентов от общего CRM-рынка, но с более высоким ARPU и низким churn при правильной посадке.
+    </div>
+
+    <h3>2.3. Рынок SRM и автоматизации закупок</h3>
+    <table>
+      <thead>
+        <tr><th>Показатель</th><th>Оценка</th><th>Источник / комментарий</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Рынок SRM РФ, 2025</td><td>~3,5 млрд ₽</td><td>Kept / TAdviser; vs ~0,9 млрд ₽ в 2020</td></tr>
+        <tr><td>CAGR SRM 2020–2025</td><td>~30,6%</td><td>Kept: уход иностранных вендоров, рост локальных платформ</td></tr>
+        <tr><td>Сервисы автоматизации закупок, 2024</td><td>~11,5 млрд ₽</td><td>Data Insight (рост с ~5,8 млрд в 2019)</td></tr>
+        <tr><td>Прогноз к 2030</td><td>~18,7 млрд ₽</td><td>Data Insight, CAGR ~8–10%</td></tr>
+        <tr><td>Penetration спецПО закупок</td><td>~29% mid/large</td><td>Росстат / Kept: высокий запас роста</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2.4. Целевой сегмент (ICP)</h3>
+    <div class="two">
+      <div class="card">
+        <h4>Primary ICP</h4>
+        <ul>
+          <li>B2B / B2G компании, 15–150 сотрудников</li>
+          <li>Отдел продаж + регулярные закупки / тендеры</li>
+          <li>Сейчас: Excel + мессенджеры или «сырой» Битрикс24</li>
+          <li>Боли: потеря сделок, ручной сбор КП, нет единой картины</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Secondary ICP</h4>
+        <ul>
+          <li>Торговые и производственные компании с поставками под клиента</li>
+          <li>Команды тендерных специалистов (in-house / аутсорс)</li>
+          <li>Переход с Битрикс24 без бюджета на интегратора</li>
+          <li>Нужны Контур / Seldon в том же контуре</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>2.5. Конкурентная карта</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Кластер</th>
+          <th>Примеры</th>
+          <th>Сильные стороны</th>
+          <th>Слабости vs iStockLink</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Универсальные CRM</td>
+          <td>Битрикс24, amoCRM</td>
+          <td>Узнаваемость, экосистема, много модулей</td>
+          <td>SRM/КП/тендеры — доработка; долгое внедрение</td>
+        </tr>
+        <tr>
+          <td>Тяжёлые SRM / S2P</td>
+          <td>Norbit SRM, ELMA365, B2B-платформы</td>
+          <td>Глубокие закупки, enterprise-процессы</td>
+          <td>Дорого, долго, слабая связка с продажами SMB</td>
+        </tr>
+        <tr>
+          <td>Агрегаторы тендеров</td>
+          <td>Контур, Seldon и аналоги</td>
+          <td>Лента закупок, мониторинг</td>
+          <td>Нет полноценной CRM/SRM-операционки</td>
+        </tr>
+        <tr>
+          <td>Excel + почта</td>
+          <td>Статус-кво большинства отделов</td>
+          <td>Привычно, «бесплатно»</td>
+          <td>Нет контроля, нет истории, нет масштаба</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2.6. Возможность для iStockLink</h3>
+    <p>
+      Продукт закрывает «белое пятно»: <strong>готовая CRM для продаж + SRM и оцифровка КП в том же окне</strong>,
+      со стартом за день и гибкой настройкой без интегратора. Это позволяет продавать не «ещё одну CRM»,
+      а <strong>снижение TCO и ускорение цикла «клиент → поставка»</strong>.
+    </p>
+  </section>
+
+  <!-- 3 BUSINESS PLAN -->
+  <section class="page-break">
+    <h2>3. Бизнес-план продвижения CRM + SRM</h2>
+
+    <h3>3.1. Цели на 12 месяцев</h3>
+    <table>
+      <thead>
+        <tr><th>Цель</th><th>Метрика</th><th>Ориентир</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Квалифицированные демо</td><td>SQL / демо в месяц (к M12)</td><td>40–60</td></tr>
+        <tr><td>Конверсия демо → оплата</td><td>Win rate</td><td>20–30%</td></tr>
+        <tr><td>Новые платящие аккаунты</td><td>Paid logos / год</td><td>80–120</td></tr>
+        <tr><td>Доля переходов с Битрикс24</td><td>% новых клиентов</td><td>≥25%</td></tr>
+        <tr><td>Удержание</td><td>Logo retention 12 мес.</td><td>≥85%</td></tr>
+        <tr><td>Партнёрский канал</td><td>Активные партнёры</td><td>15–25</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      Ориентиры заданы для mid-market SaaS с продажей через демо. Фактические цели калибруются после 90 дней
+      измерений (CAC, цикл сделки, ACV).
+    </div>
+
+    <h3>3.2. Позиционирование</h3>
+    <p><strong>Однострочник:</strong> iStockLink — CRM + SRM для компаний, где продажа и закупка должны жить в одном окне.</p>
+    <ul>
+      <li><strong>Для кого:</strong> отделы продаж и снабжения B2B/B2G mid-market.</li>
+      <li><strong>Против чего:</strong> Excel, «пустой» Битрикс24, разрозненные агрегаторы.</li>
+      <li><strong>Почему сейчас:</strong> быстрый старт, гибкая настройка, готовый контур КП и поставщиков.</li>
+      <li><strong>Доказательства:</strong> демо на сделках клиента, сравнение TCO, пилот 14 дней.</li>
+    </ul>
+
+    <h3>3.3. Сообщения (messaging)</h3>
+    <table>
+      <thead>
+        <tr><th>Аудитория</th><th>Главный месседж</th><th>Доказательство</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>РОП / коммерческий директор</td>
+          <td>Воронка и нагрузка видны с первого дня</td>
+          <td>Доска сделок, задачи, просрочки из коробки</td>
+        </tr>
+        <tr>
+          <td>Руководитель закупок</td>
+          <td>КП и поставщики не в почте</td>
+          <td>SRM, сводная таблица КП, скоринг</td>
+        </tr>
+        <tr>
+          <td>Собственник / CFO</td>
+          <td>Меньше TCO, чем Битрикс24 + внедрение</td>
+          <td>Старт за день, без проекта на месяцы</td>
+        </tr>
+        <tr>
+          <td>Тендерный специалист</td>
+          <td>Лента агрегаторов рядом с процессом</td>
+          <td>Контур / Seldon в том же контуре</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3.4. Каналы продвижения</h3>
+    <div class="two">
+      <div class="card">
+        <h4>Inbound</h4>
+        <ul>
+          <li>Лендинг /trading + SEO по запросам «CRM для тендеров», «SRM», «замена Битрикс24»</li>
+          <li>Контент: кейсы, TCO-калькулятор, сравнение с Битрикс</li>
+          <li>Вебинары для РОП и закупщиков</li>
+          <li>Ретаргетинг на посетителей демо-формы</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Outbound + партнёры</h4>
+        <ul>
+          <li>Персональные демо для целевых аккаунтов (ABM)</li>
+          <li>Партнёры: тендерные агентства, интеграторы 1С</li>
+          <li>Оферта миграции с Битрикс24 (−50% на год)</li>
+          <li>Письма поставщикам / участникам закупок (email)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>3.5. Воронка продаж</h3>
+    <table>
+      <thead>
+        <tr><th>Этап</th><th>Действие</th><th>SLA</th><th>Критерий успеха</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Lead</td><td>Заявка / форма / партнёр</td><td>&lt; 1 раб. дня</td><td>Контакт + компания</td></tr>
+        <tr><td>Discovery</td><td>30-мин созвон: боли продаж/закупок</td><td>3 дня</td><td>Есть процесс и ЛПР</td></tr>
+        <tr><td>Demo</td><td>Демо на 3–5 живых сделках клиента</td><td>7 дней</td><td>Интерес к пилоту</td></tr>
+        <tr><td>Pilot</td><td>14 дней полного доступа</td><td>14 дней</td><td>Команда ведёт сделки в системе</td></tr>
+        <tr><td>Close</td><td>Коммерческое предложение / договор</td><td>7–14 дней</td><td>Оплата / акт</td></tr>
+        <tr><td>Onboarding</td><td>Этапы и роли под процесс клиента</td><td>1–3 дня</td><td>Первая живая неделя</td></tr>
+      </tbody>
+    </table>
+
+    <h3>3.6. Дорожная карта продвижения (12 месяцев)</h3>
+    <div class="phase">
+      <h4>Квартал 1 — фундамент</h4>
+      <p class="small">Упаковка оффера, обновление лендинга и презентации, 5 кейсов/мини-кейсов, запуск демо-процесса, пилот ABM на 50 аккаунтов, оферта перехода с Битрикс24.</p>
+    </div>
+    <div class="phase">
+      <h4>Квартал 2 — масштаб входящего</h4>
+      <p class="small">SEO/контент, вебинары 2×/мес, ретаргетинг, партнёрская программа (реф. условия), TCO-калькулятор на сайте.</p>
+    </div>
+    <div class="phase">
+      <h4>Квартал 3 — вертикали</h4>
+      <p class="small">Пакеты под торговые и производственные компании, отраслевые лендинги, совместные кампании с агрегаторами/партнёрами.</p>
+    </div>
+    <div class="phase">
+      <h4>Квартал 4 — удержание и расширение</h4>
+      <p class="small">Customer marketing, upsell SRM-модулей существующим CRM-клиентам, QBR, сбор отзывов и публичных кейсов.</p>
+    </div>
+
+    <h3>3.7. Бюджет продвижения (ориентир, доля от плана)</h3>
+    <table>
+      <thead>
+        <tr><th>Статья</th><th>Доля бюджета</th><th>Назначение</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Performance / ретаргетинг</td><td>30%</td><td>Заявки на демо, прогрев</td></tr>
+        <tr><td>Контент и дизайн</td><td>20%</td><td>Кейсы, презентации, сравнения, PDF</td></tr>
+        <tr><td>Вебинары и события</td><td>15%</td><td>Квалифицированный inbound</td></tr>
+        <tr><td>Партнёрский канал</td><td>15%</td><td>MDF, обучение, совместные материалы</td></tr>
+        <tr><td>ABM / outbound tools</td><td>10%</td><td>Списки, персонализация, tools</td></tr>
+        <tr><td>Резерв / тесты</td><td>10%</td><td>Новые гипотезы каналов</td></tr>
+      </tbody>
+    </table>
+
+    <h3>3.8. KPI управления</h3>
+    <ul>
+      <li><strong>North Star:</strong> число аккаунтов, ведущих и сделки, и запросы КП в одном окне.</li>
+      <li><strong>Экономика:</strong> CAC payback &lt; 6–9 мес.; ACV рост за счёт команды (не разового пользователя).</li>
+      <li><strong>Продуктовый сигнал:</strong> % клиентов с активным SRM через 30 дней после старта.</li>
+      <li><strong>Конкурентный:</strong> доля сделок, где альтернатива — Битрикс24.</li>
+    </ul>
+  </section>
+
+  <!-- 4 BITRIX TABLE -->
+  <section class="page-break">
+    <h2>4. Таблица сравнения с Битрикс24</h2>
+    <p class="muted" style="margin-bottom:12px">
+      Отдельная матрица для коммерческих переговоров и партнёрских презентаций.
+      Сравнение для сценария среднего B2B-отдела с продажами и закупками.
+    </p>
+
+    <h3>4.1. Функциональное и процессное сравнение</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:28%">Критерий</th>
+          <th>Битрикс24</th>
+          <th>Битрикс24 + внедрение</th>
+          <th class="us">iStockLink CRM+SRM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Время до рабочего процесса</td>
+          <td>Быстрый старт «коробки», процесс пустой</td>
+          <td>Недели–месяцы</td>
+          <td class="us">Около 1 дня</td>
+        </tr>
+        <tr>
+          <td>Воронка продаж</td>
+          <td>Есть конструктор</td>
+          <td>Настраивается проектом</td>
+          <td class="us">Из коробки под B2B-процесс</td>
+        </tr>
+        <tr>
+          <td>Задачи и нагрузка специалистов</td>
+          <td>Базово есть</td>
+          <td>После настройки отчётов/роботов</td>
+          <td class="us">Из коробки</td>
+        </tr>
+        <tr>
+          <td>SRM / база поставщиков</td>
+          <td>Нет как готового контура</td>
+          <td>Доработка / внешние решения</td>
+          <td class="us">В том же окне</td>
+        </tr>
+        <tr>
+          <td>Запросы КП и сравнение</td>
+          <td>Вручную / почта / диск</td>
+          <td>Кастом или интеграция</td>
+          <td class="us">Сводная таблица КП</td>
+        </tr>
+        <tr>
+          <td>Связка «сделка → закупка»</td>
+          <td>Разные сущности без готового маршрута</td>
+          <td>Проектируется интегратором</td>
+          <td class="us">Единый маршрут</td>
+        </tr>
+        <tr>
+          <td>Тендерные агрегаторы</td>
+          <td>Через интегратора / внешние сервисы</td>
+          <td>Отдельный бюджет на связку</td>
+          <td class="us">Контур / Seldon из коробки</td>
+        </tr>
+        <tr>
+          <td>Гибкая настройка без интегратора</td>
+          <td>Частично; сложные сценарии — партнёр</td>
+          <td>Зависит от подрядчика</td>
+          <td class="us">Этапы, поля, маршруты — быстро</td>
+        </tr>
+        <tr>
+          <td>Обучение команды</td>
+          <td>Широкий интерфейс, много модулей</td>
+          <td>Обучение заложено в проект</td>
+          <td class="us">Узкий сценарий продаж/закупок</td>
+        </tr>
+        <tr>
+          <td>Модель затрат</td>
+          <td>Подписка</td>
+          <td>Подписка + проект 150–600+ тыс. ₽</td>
+          <td class="us">Подписка; без проекта внедрения</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4.2. Сравнение совокупной стоимости владения (TCO), ориентир</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Статья (год 1, команда ~10–50)</th>
+          <th>Битрикс24 + внедрение</th>
+          <th class="us">iStockLink</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Лицензия / подписка</td>
+          <td>От ~2,5 тыс. ₽/мес (малые тарифы) до десятков тыс. ₽/мес на команду; тарифы «Стандартный/Профессиональный» — основной сценарий mid-market</td>
+          <td class="us">От 1 260 ₽/пользователь в мес.; командные пакеты от ~6 000 ₽/мес</td>
+        </tr>
+        <tr>
+          <td>Внедрение / настройка</td>
+          <td>Типично 150–600 тыс. ₽ для 10–50 сотрудников (оценка интеграторов)</td>
+          <td class="us">Включено в запуск; без отдельного проекта</td>
+        </tr>
+        <tr>
+          <td>Доработки SRM / КП</td>
+          <td>Отдельный бюджет или внешний сервис</td>
+          <td class="us">В продукте</td>
+        </tr>
+        <tr>
+          <td>Срок окупаемости настройки</td>
+          <td>1–3+ месяца до стабильного процесса</td>
+          <td class="us">Первая неделя пилота</td>
+        </tr>
+        <tr>
+          <td>Риск vendor lock на кастом</td>
+          <td>Высокий при сильной кастомизации</td>
+          <td class="us">Ниже: процессный продукт, не «пустой конструктор»</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      Цены Битрикс24 меняются по акциям и тарифам (bitrix24.ru/prices). В переговорах использовать актуальную
+      коммерцию клиента + КП интегратора. Цифры iStockLink — публичные ориентиры лендинга; финальные условия — в договоре.
+    </div>
+
+    <h3>4.3. Когда выбирать что</h3>
+    <div class="two">
+      <div class="card">
+        <h4>Битрикс24 уместен</h4>
+        <ul>
+          <li>Нужен «комбайн»: CRM + портал + задачи + сайты</li>
+          <li>Есть бюджет и время на интегратора</li>
+          <li>Закупки — не ключевой процесс</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>iStockLink уместен</h4>
+        <ul>
+          <li>Продажи и поставщики связаны в одном цикле</li>
+          <li>Нужен быстрый старт без проекта</li>
+          <li>Важны КП, SRM, тендеры в том же окне</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>4.4. Коммерческий ход против Битрикс24</h3>
+    <ol>
+      <li>Показать разрыв «сделка в CRM / закупка в почте» на примере клиента.</li>
+      <li>Сложить TCO: лицензия Битрикс + внедрение + доработки vs подписка iStockLink.</li>
+      <li>Дать 14 дней полного доступа на боевых сделках.</li>
+      <li>Для текущих клиентов Битрикс24 — оферта перехода (−50% на год).</li>
+    </ol>
+  </section>
+
+  <!-- 5 RISKS -->
+  <section class="page-break">
+    <h2>5. Риски, допущения и источники</h2>
+
+    <h3>5.1. Риски</h3>
+    <table>
+      <thead>
+        <tr><th>Риск</th><th>Влияние</th><th>Митигация</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Сравнение «с Битрикс в целом», а не со сценарием закупок</td>
+          <td>Проигрыш по ширине платформы</td>
+          <td>Жёстко фиксировать ICP и сценарий CRM+SRM</td>
+        </tr>
+        <tr>
+          <td>Длинный цикл согласования у mid-market</td>
+          <td>Падение win rate</td>
+          <td>Пилот 14 дней, демо на данных клиента</td>
+        </tr>
+        <tr>
+          <td>Партнёры Битрикс защищают установленную базу</td>
+          <td>Сложный доступ к аккаунтам</td>
+          <td>Прямой ABM + оферта миграции собственнику/CFO</td>
+        </tr>
+        <tr>
+          <td>Недооценка onboarding</td>
+          <td>Churn в первые 60 дней</td>
+          <td>Чек-лист запуска, успех = первая живая неделя</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5.2. Допущения</h3>
+    <ul>
+      <li>Продукт стабильно закрывает воронку, задачи, SRM и сравнение КП без проектной разработки.</li>
+      <li>Команда продаж может проводить демо на данных клиента за 1 встречу.</li>
+      <li>Маркетинг способен генерировать квалифицированный inbound по запросам замены Битрикс / SRM.</li>
+    </ul>
+
+    <h3>5.3. Источники</h3>
+    <ul class="src">
+      <li>TAdviser — «CRM (рынок России)»: объём ~35,3 млрд ₽ (2024), ~44,1 млрд ₽ (2025).</li>
+      <li>Kept — обзор корпоративного ПО: комплексные CRM ~20,5 млрд ₽ (2025); прогноз к 2032.</li>
+      <li>Kept / TAdviser — рынок SRM РФ ~3,5 млрд ₽ (2025), CAGR ~30,6% (2020–2025).</li>
+      <li>Data Insight — B2B/B2G eCommerce 2025: автоматизация закупок ~11,5 млрд ₽ (2024).</li>
+      <li>bitrix24.ru/prices и оценки интеграторов — лицензии и стоимость внедрения Битрикс24.</li>
+      <li>Продуктовые материалы iStockLink — istock.link, лендинг /trading, презентация для отдела продаж.</li>
+    </ul>
+
+    <div class="footer-line">
+      <span>iStockLink · CRM + SRM Go-to-Market</span>
+      <span>Версия 1.0 · октябрь 2025</span>
+    </div>
+  </section>
+
+</body>
+</html>
