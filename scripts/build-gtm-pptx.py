@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build editable GTM / business-plan PPTX for iStockLink CRM+SRM (not Argon sales deck)."""
+"""GTM PPTX in the same visual system as the B2B PDF (white, blue accent, tables)."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -7,37 +7,38 @@ from pathlib import Path
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
-from pptx.enum.text import PP_ALIGN
+from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.oxml.ns import qn
-from pptx.util import Inches, Pt
+from pptx.util import Emu, Inches, Pt
 
+# PDF tokens
+INK = RGBColor(0x0F, 0x17, 0x2A)
+MUTED = RGBColor(0x47, 0x55, 0x69)
+LINE = RGBColor(0xE2, 0xE8, 0xF0)
 BLUE = RGBColor(0x1C, 0x50, 0xDE)
-INK = RGBColor(0x0B, 0x0B, 0x0B)
-MUTED = RGBColor(0x66, 0x70, 0x85)
+BLUE_SOFT = RGBColor(0xEE, 0xF2, 0xFF)
+PAPER = RGBColor(0xF8, 0xFA, 0xFC)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
-PAPER = RGBColor(0xF5, 0xF6, 0xF8)
-DARK = RGBColor(0x0B, 0x0B, 0x0B)
-SOFT = RGBColor(0xEE, 0xF1, 0xF6)
-BLUE_SOFT = RGBColor(0xEA, 0xF0, 0xFF)
+US = RGBColor(0x15, 0x3F, 0xB8)
 
 W = Inches(13.333)
 H = Inches(7.5)
-MX = Inches(0.7)
-MY = Inches(0.45)
+MX = Inches(0.75)
+MY = Inches(0.5)
 
 
-def set_run(run, size=18, bold=False, color=INK, name="Calibri"):
+def font(run, size=14, bold=False, color=INK):
     run.font.size = Pt(size)
     run.font.bold = bold
     run.font.color.rgb = color
-    run.font.name = name
+    run.font.name = "Calibri"
     rPr = run._r.get_or_add_rPr()
     ea = rPr.find(qn("a:ea"))
     if ea is None:
         from lxml import etree
 
         ea = etree.SubElement(rPr, qn("a:ea"))
-    ea.set("typeface", name)
+    ea.set("typeface", "Calibri")
 
 
 def fill(shape, color):
@@ -46,104 +47,132 @@ def fill(shape, color):
     shape.line.fill.background()
 
 
-def bg(slide, kind="white"):
-    shape = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, W, H)
-    fill(shape, DARK if kind == "dark" else (PAPER if kind == "paper" else WHITE))
-    spTree = slide.shapes._spTree
-    sp = shape._element
-    spTree.remove(sp)
-    spTree.insert(2, sp)
+def rect(slide, left, top, width, height, color):
+    sh = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+    fill(sh, color)
+    return sh
 
 
-def textbox(slide, left, top, width, height, text, size=18, bold=False, color=INK, align=PP_ALIGN.LEFT):
+def round_rect(slide, left, top, width, height, color):
+    sh = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
+    fill(sh, color)
+    try:
+        sh.adjustments[0] = 0.08
+    except Exception:
+        pass
+    return sh
+
+
+def txt(slide, left, top, width, height, text, size=14, bold=False, color=INK, align=PP_ALIGN.LEFT, anchor=MSO_ANCHOR.TOP):
     box = slide.shapes.add_textbox(left, top, width, height)
     tf = box.text_frame
     tf.word_wrap = True
+    try:
+        tf.auto_size = None
+    except Exception:
+        pass
     p = tf.paragraphs[0]
     p.alignment = align
     run = p.add_run()
     run.text = text
-    set_run(run, size=size, bold=bold, color=color)
+    font(run, size=size, bold=bold, color=color)
     return box
 
 
-def multilines(slide, left, top, width, height, lines, size=14, color=MUTED, bold=False):
+def lines(slide, left, top, width, height, items, size=13, color=MUTED, bold=False, gap=6):
     box = slide.shapes.add_textbox(left, top, width, height)
     tf = box.text_frame
     tf.word_wrap = True
-    for i, line in enumerate(lines):
+    for i, item in enumerate(items):
         p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
         run = p.add_run()
-        run.text = line
-        set_run(run, size=size, bold=bold, color=color)
-        p.space_after = Pt(4)
+        run.text = item
+        font(run, size=size, bold=bold, color=color)
+        p.space_after = Pt(gap)
     return box
 
 
-def card(slide, left, top, width, height, color=SOFT):
-    shape = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
-    fill(shape, color)
+def brand_row(slide):
+    mark = slide.shapes.add_shape(MSO_SHAPE.OVAL, MX, MY + Inches(0.02), Inches(0.18), Inches(0.18))
+    fill(mark, BLUE)
+    # soft ring via larger pale circle behind
+    ring = slide.shapes.add_shape(MSO_SHAPE.OVAL, MX - Inches(0.05), MY - Inches(0.03), Inches(0.28), Inches(0.28))
+    fill(ring, BLUE_SOFT)
+    spTree = slide.shapes._spTree
+    spTree.remove(ring._element)
+    spTree.insert(2, ring._element)
+    txt(slide, MX + Inches(0.32), MY - Inches(0.02), Inches(3), Inches(0.3), "iStockLink", 16, True, INK)
+    # badge
+    badge = round_rect(slide, W - MX - Inches(2.35), MY - Inches(0.05), Inches(2.35), Inches(0.34), BLUE_SOFT)
     try:
-        shape.adjustments[0] = 0.08
+        badge.adjustments[0] = 0.5
     except Exception:
         pass
+    txt(slide, W - MX - Inches(2.35), MY - Inches(0.02), Inches(2.35), Inches(0.3), "B2B · CONFIDENTIAL", 10, True, BLUE, PP_ALIGN.CENTER)
+
+
+def section_title(slide, text):
+    """Blue underlined H2 like PDF."""
+    txt(slide, MX, Inches(1.05), Inches(12), Inches(0.45), text, 22, True, BLUE)
+    rect(slide, MX, Inches(1.5), Inches(12), Emu(19050), BLUE)  # ~1.5pt line
+
+
+def footer(slide, left_text, num, total):
+    rect(slide, MX, H - Inches(0.55), W - 2 * MX, Emu(12700), LINE)
+    txt(slide, MX, H - Inches(0.45), Inches(7), Inches(0.3), left_text, 11, False, MUTED)
+    txt(slide, W - MX - Inches(1.6), H - Inches(0.45), Inches(1.6), Inches(0.3), f"{num:02d} / {total:02d}", 11, False, MUTED, PP_ALIGN.RIGHT)
+
+
+def table(slide, left, top, width, rows, col_w, font_size=11, highlight_last=False):
+    rows_n, cols_n = len(rows), len(rows[0])
+    # estimate height
+    row_h = Inches(0.38)
+    height = int(row_h * rows_n)
+    shape = slide.shapes.add_table(rows_n, cols_n, left, top, width, height)
+    tbl = shape.table
+    for i, w in enumerate(col_w):
+        tbl.columns[i].width = w
+    for r, row in enumerate(rows):
+        for c, val in enumerate(row):
+            cell = tbl.cell(r, c)
+            cell.text = str(val)
+            cell.vertical_anchor = MSO_ANCHOR.MIDDLE
+            for p in cell.text_frame.paragraphs:
+                for run in p.runs:
+                    is_h = r == 0
+                    color = WHITE if is_h else (US if highlight_last and c == cols_n - 1 and r > 0 else INK)
+                    font(run, size=font_size, bold=is_h or (highlight_last and c == cols_n - 1), color=color)
+            if r == 0:
+                cell.fill.solid()
+                cell.fill.fore_color.rgb = INK
+            elif highlight_last and c == cols_n - 1:
+                cell.fill.solid()
+                cell.fill.fore_color.rgb = BLUE_SOFT
+            elif r % 2 == 0:
+                cell.fill.solid()
+                cell.fill.fore_color.rgb = PAPER
+            else:
+                cell.fill.solid()
+                cell.fill.fore_color.rgb = WHITE
     return shape
 
 
-def brand(slide, dark=False):
-    mark = slide.shapes.add_shape(MSO_SHAPE.OVAL, MX, MY + Inches(0.04), Inches(0.16), Inches(0.16))
-    fill(mark, BLUE)
-    textbox(slide, MX + Inches(0.28), MY, Inches(3), Inches(0.28), "iStockLink", 14, True, WHITE if dark else INK)
+def note_box(slide, left, top, width, height, text):
+    round_rect(slide, left, top, width, height, PAPER)
+    txt(slide, left + Inches(0.2), top + Inches(0.12), width - Inches(0.4), height - Inches(0.2), text, 12, False, MUTED)
 
 
-def kicker(slide, text, dark=False):
-    textbox(
-        slide,
-        W - MX - Inches(6),
-        MY,
-        Inches(6),
-        Inches(0.28),
-        text.upper(),
-        11,
-        True,
-        RGBColor(0x8E, 0xAF, 0xFF) if dark else BLUE,
-        PP_ALIGN.RIGHT,
-    )
+def meta_box(slide, left, top, width, height, items):
+    """Paper box with blue left bar — PDF cover style."""
+    round_rect(slide, left, top, width, height, PAPER)
+    rect(slide, left, top, Inches(0.08), height, BLUE)
+    lines(slide, left + Inches(0.28), top + Inches(0.2), width - Inches(0.45), height - Inches(0.3), items, 13, INK, False, 8)
 
 
-def footer(slide, meta, num, total, dark=False):
-    c = RGBColor(0x99, 0x99, 0x99) if dark else MUTED
-    textbox(slide, MX, H - Inches(0.42), Inches(8), Inches(0.28), meta, 11, False, c)
-    textbox(slide, W - MX - Inches(1.5), H - Inches(0.42), Inches(1.5), Inches(0.28), f"{num:02d} / {total:02d}", 11, False, c, PP_ALIGN.RIGHT)
-
-
-def title(slide, text, dark=False, size=34, top=Inches(1.1)):
-    textbox(slide, MX, top, Inches(12), Inches(1.1), text, size, True, WHITE if dark else INK)
-
-
-def lead(slide, text, dark=False, top=Inches(2.2)):
-    textbox(slide, MX, top, Inches(11.5), Inches(0.8), text, 16, False, RGBColor(0xA8, 0xB0, 0xBD) if dark else MUTED)
-
-
-def add_table(slide, left, top, width, height, rows, col_widths=None, header=True):
-    table_shape = slide.shapes.add_table(len(rows), len(rows[0]), left, top, width, height)
-    table = table_shape.table
-    if col_widths:
-        for i, w in enumerate(col_widths):
-            table.columns[i].width = w
-    for r, row in enumerate(rows):
-        for c, val in enumerate(row):
-            cell = table.cell(r, c)
-            cell.text = str(val)
-            for p in cell.text_frame.paragraphs:
-                for run in p.runs:
-                    is_header = header and r == 0
-                    set_run(run, size=10 if not is_header else 10, bold=is_header or c == 0, color=WHITE if is_header else INK)
-            # fill
-            fill_color = DARK if (header and r == 0) else (SOFT if r % 2 == 0 else WHITE)
-            cell.fill.solid()
-            cell.fill.fore_color.rgb = fill_color
-    return table_shape
+def kpi_card(slide, left, top, width, height, number, label):
+    round_rect(slide, left, top, width, height, PAPER)
+    txt(slide, left + Inches(0.22), top + Inches(0.25), width - Inches(0.4), Inches(0.55), number, 24, True, BLUE)
+    txt(slide, left + Inches(0.22), top + Inches(0.9), width - Inches(0.4), height - Inches(1.1), label, 12, False, MUTED)
 
 
 def build(out: Path):
@@ -151,188 +180,187 @@ def build(out: Path):
     prs.slide_width = W
     prs.slide_height = H
     blank = prs.slide_layouts[6]
-    slides_meta = []
+    slides = []
 
-    def new(kind="white"):
+    def add():
         s = prs.slides.add_slide(blank)
-        bg(s, kind)
+        rect(s, 0, 0, W, H, WHITE)
+        slides.append(s)
         return s
 
-    # 01 Cover
-    s = new("dark")
-    brand(s, True)
-    kicker(s, "Go-to-market · Confidential", True)
-    textbox(s, MX, Inches(1.8), Inches(10), Inches(0.35), "БИЗНЕС-ПЛАН ПРОДВИЖЕНИЯ", 12, True, RGBColor(0x8E, 0xAF, 0xFF))
-    textbox(s, MX, Inches(2.3), Inches(12), Inches(1.8), "Анализ рынка и план\nпродвижения CRM + SRM", 40, True, WHITE)
-    lead(s, "Деньги в каналы → SQL → оплаты. Калибровка на Яндекс Директе, сентябрь 2026.", True, Inches(4.4))
-    card(s, MX, Inches(5.3), Inches(7.5), Inches(1.2), RGBColor(0x17, 0x17, 0x17))
-    multilines(
-        s,
-        MX + Inches(0.25),
-        Inches(5.45),
-        Inches(7),
-        Inches(1.0),
-        ["Продукт: iStockLink CRM + SRM", "Факт: CPL 3 447 ₽ · SQL 5 515 ₽ (сент. 2026)", "Версия 1.2 · октябрь 2026"],
-        12,
-        RGBColor(0xC5, 0xCB, 0xD3),
-    )
-    slides_meta.append(("Сборка GTM", "dark"))
-
-    # 02 Agenda
-    s = new("white")
-    brand(s)
-    kicker(s, "Содержание")
-    title(s, "О чём этот файл")
-    items = [
-        ("01", "Резюме", "Рынок, окно, фокус на 12 месяцев"),
-        ("02", "Анализ рынка", "CRM, SRM, ICP, конкуренты"),
-        ("03", "Деньги → результат", "Сценарии бюджета A / B / C"),
-        ("04", "С Битрикс24", "Функции, TCO, когда что выбирать"),
-        ("05", "Что нужно от вас", "Выгрузки рекламы и касаний"),
-    ]
-    y = Inches(2.5)
-    for n, t, d in items:
-        textbox(s, MX, y, Inches(0.8), Inches(0.4), n, 18, True, BLUE)
-        textbox(s, MX + Inches(1.0), y, Inches(4), Inches(0.4), t, 20, True, INK)
-        textbox(s, MX + Inches(5.5), y, Inches(6.5), Inches(0.4), d, 16, False, MUTED, PP_ALIGN.RIGHT)
-        y += Inches(0.7)
-    slides_meta.append(("Содержание", "white"))
-
-    # 03 Exec
-    s = new("paper")
-    brand(s)
-    kicker(s, "Резюме")
-    title(s, "Ниша между CRM-комбайном и тяжёлым SRM")
-    lead(s, "Один контур: сделка → запрос КП → поставка. Без проекта внедрения.")
-    kpis = [
-        ("~44 млрд ₽", "Рынок CRM РФ, 2025\nTAdviser, +25% г/г"),
-        ("~3,5 млрд ₽", "Рынок SRM РФ, 2025\nKept / TAdviser"),
-        ("1 день", "Старт iStockLink\nvs недели у Битрикс + внедрение"),
-    ]
-    for i, (n, l) in enumerate(kpis):
-        left = MX + i * Inches(4.05)
-        card(s, left, Inches(3.3), Inches(3.85), Inches(2.6), WHITE)
-        textbox(s, left + Inches(0.25), Inches(3.55), Inches(3.4), Inches(0.7), n, 26, True, BLUE)
-        multilines(s, left + Inches(0.25), Inches(4.4), Inches(3.4), Inches(1.2), l.split("\n"), 13, MUTED)
-    slides_meta.append(("Резюме", "paper"))
-
-    # 04 Conclusions
-    s = new("white")
-    brand(s)
-    kicker(s, "Резюме")
-    title(s, "Ключевые выводы")
-    points = [
-        "Спрос на отечественные CRM и закупки растёт.",
-        "Средний бизнес платит за Битрикс дважды: лицензия + внедрение 150–600 тыс. ₽.",
-        "SRM растёт быстрее CRM, но тяжёл для mid-market.",
-        "Окно iStockLink: 15–150 сотрудников, продажи + регулярные закупки/торги.",
-    ]
-    y = Inches(2.5)
-    for i, p in enumerate(points):
-        card(s, MX, y, W - 2 * MX, Inches(0.85), SOFT)
-        textbox(s, MX + Inches(0.25), y + Inches(0.2), Inches(0.6), Inches(0.4), f"{i+1:02d}", 16, True, BLUE)
-        textbox(s, MX + Inches(1.0), y + Inches(0.22), Inches(10.8), Inches(0.5), p, 16, False, INK)
-        y += Inches(1.0)
-    slides_meta.append(("Выводы", "white"))
-
-    # 05 Market CRM
-    s = new("paper")
-    brand(s)
-    kicker(s, "Рынок")
-    title(s, "Рынок CRM в России")
-    add_table(
+    # —— 01 Cover (PDF cover) ——
+    s = add()
+    brand_row(s)
+    txt(s, MX, Inches(1.8), Inches(8), Inches(0.35), "GO-TO-MARKET ДОКУМЕНТ", 12, True, BLUE)
+    txt(s, MX, Inches(2.25), Inches(11.5), Inches(1.6), "Анализ рынка и план\nпродвижения продукта\nCRM + SRM", 34, True, INK)
+    txt(
         s,
         MX,
-        Inches(2.4),
-        W - 2 * MX,
-        Inches(3.8),
+        Inches(4.1),
+        Inches(10),
+        Inches(0.7),
+        "Позиционирование iStockLink как связки продаж и закупок в одном окне.\nОтдельный блок — сравнительная матрица с Битрикс24.",
+        15,
+        False,
+        MUTED,
+    )
+    meta_box(
+        s,
+        MX,
+        Inches(5.0),
+        Inches(8.2),
+        Inches(1.55),
         [
-            ["Показатель", "Оценка", "Источник"],
-            ["Объём CRM, 2024", "~35,3 млрд ₽", "TAdviser"],
-            ["Объём CRM, 2025", "~44,1 млрд ₽ (+25%)", "TAdviser"],
-            ["Комплексные CRM, 2025", "~20,5 млрд ₽", "Kept"],
-            ["Прогноз к 2032", "~46,1 млрд ₽", "Kept, CAGR ~12%"],
-            ["Лидеры восприятия", "Битрикс24, amoCRM, 1С…", "Универсальные платформы"],
+            "Продукт: iStockLink CRM + SRM",
+            "Рынок: Россия, B2B / B2G · горизонт 12 месяцев",
+            "Версия 1.2 · калибровка на Директе сентябрь 2026",
         ],
-        col_widths=[Inches(4.2), Inches(4.0), Inches(3.8)],
     )
-    slides_meta.append(("Рынок CRM", "paper"))
+    footer(s, "istock.link", 1, 0)
 
-    # 06 Market SRM
-    s = new("white")
-    brand(s)
-    kicker(s, "Рынок")
-    title(s, "Рынок SRM и автоматизации закупок")
-    add_table(
+    # —— 02 TOC ——
+    s = add()
+    brand_row(s)
+    section_title(s, "Содержание")
+    toc = [
+        ("01", "Резюме для руководства"),
+        ("02", "Анализ рынка — CRM, SRM, ICP, конкуренты"),
+        ("03", "Факт Директа и деньги → результат"),
+        ("04", "Сценарии бюджета A / B / C"),
+        ("05", "Таблица сравнения с Битрикс24"),
+        ("06", "Риски и что нужно для точного win rate"),
+    ]
+    y = Inches(1.9)
+    for n, t in toc:
+        txt(s, MX, y, Inches(0.7), Inches(0.4), n, 16, True, BLUE)
+        txt(s, MX + Inches(0.9), y, Inches(10), Inches(0.4), t, 16, False, INK)
+        rect(s, MX, y + Inches(0.45), W - 2 * MX, Emu(6350), LINE)
+        y += Inches(0.65)
+    note_box(
         s,
         MX,
-        Inches(2.4),
+        Inches(6.0),
         W - 2 * MX,
-        Inches(3.6),
+        Inches(0.7),
+        "Источники рынка: TAdviser, Kept, Data Insight. Реклама: отчёт Яндекс Директ iStockLink, сентябрь 2026.",
+    )
+    footer(s, "Содержание", 2, 0)
+
+    # —— 03 Exec ——
+    s = add()
+    brand_row(s)
+    section_title(s, "1. Резюме для руководства")
+    txt(
+        s,
+        MX,
+        Inches(1.75),
+        Inches(12),
+        Inches(0.7),
+        "Ниша между универсальной CRM и тяжёлым SRM. Ценность — один контур «сделка → запрос КП → поставка».",
+        15,
+        False,
+        INK,
+    )
+    kpi_card(s, MX, Inches(2.6), Inches(3.85), Inches(1.9), "~44 млрд ₽", "Рынок CRM РФ, 2025\nTAdviser, +25% г/г")
+    kpi_card(s, MX + Inches(4.1), Inches(2.6), Inches(3.85), Inches(1.9), "~3,5 млрд ₽", "Рынок SRM РФ, 2025\nKept / TAdviser")
+    kpi_card(s, MX + Inches(8.2), Inches(2.6), Inches(3.85), Inches(1.9), "5 515 ₽", "Cost / SQL факт\nДирект, сентябрь 2026")
+    txt(s, MX, Inches(4.8), Inches(12), Inches(0.35), "Ключевые выводы", 16, True, INK)
+    lines(
+        s,
+        MX,
+        Inches(5.2),
+        Inches(12),
+        Inches(1.4),
+        [
+            "• Директ уже даёт SQL за ~5,5 тыс. ₽ — канал не «холодный тест».",
+            "• Средний бизнес платит за Битрикс дважды: лицензия + внедрение 150–600 тыс. ₽.",
+            "• Рекомендация: сценарий A (150 тыс ₽/мес), затем B после фиксации win rate.",
+        ],
+        14,
+        MUTED,
+        False,
+        4,
+    )
+    footer(s, "Резюме", 3, 0)
+
+    # —— 04 Market ——
+    s = add()
+    brand_row(s)
+    section_title(s, "2. Анализ рынка")
+    txt(s, MX, Inches(1.7), Inches(12), Inches(0.35), "Рынок CRM и SRM в России", 16, True, INK)
+    table(
+        s,
+        MX,
+        Inches(2.15),
+        W - 2 * MX,
         [
             ["Показатель", "Оценка", "Источник"],
+            ["CRM РФ, 2024", "~35,3 млрд ₽", "TAdviser"],
+            ["CRM РФ, 2025", "~44,1 млрд ₽ (+25%)", "TAdviser"],
+            ["Комплексные CRM, 2025", "~20,5 млрд ₽", "Kept"],
             ["SRM РФ, 2025", "~3,5 млрд ₽", "Kept / TAdviser"],
             ["CAGR SRM 2020–2025", "~30,6%", "Kept"],
             ["Автоматизация закупок, 2024", "~11,5 млрд ₽", "Data Insight"],
-            ["Прогноз к 2030", "~18,7 млрд ₽", "Data Insight"],
-            ["Penetration спецПО закупок", "~29% mid/large", "Росстат / Kept"],
         ],
-        col_widths=[Inches(4.5), Inches(3.8), Inches(3.7)],
+        [Inches(4.4), Inches(4.0), Inches(3.5)],
+        12,
     )
-    slides_meta.append(("Рынок SRM", "white"))
+    footer(s, "Анализ рынка", 4, 0)
 
-    # 07 ICP
-    s = new("paper")
-    brand(s)
-    kicker(s, "ICP")
-    title(s, "Кому продаём")
-    card(s, MX, Inches(2.4), Inches(5.8), Inches(4.0), WHITE)
-    textbox(s, MX + Inches(0.3), Inches(2.6), Inches(5.2), Inches(0.4), "Primary ICP", 16, True, BLUE)
-    multilines(
+    # —— 05 ICP ——
+    s = add()
+    brand_row(s)
+    section_title(s, "2.4. Целевой сегмент (ICP)")
+    round_rect(s, MX, Inches(1.85), Inches(5.85), Inches(4.5), PAPER)
+    txt(s, MX + Inches(0.3), Inches(2.1), Inches(5.2), Inches(0.4), "Primary ICP", 16, True, BLUE)
+    lines(
         s,
         MX + Inches(0.3),
-        Inches(3.2),
+        Inches(2.7),
         Inches(5.2),
-        Inches(3.0),
+        Inches(3.3),
         [
             "• B2B / B2G, 15–150 сотрудников",
-            "• Отдел продаж + регулярные закупки",
-            "• Сейчас: Excel / «сырой» Битрикс24",
-            "• Боли: потеря сделок, ручной сбор КП",
+            "• Отдел продаж + регулярные закупки / тендеры",
+            "• Сейчас: Excel или «сырой» Битрикс24",
+            "• Боли: потеря сделок, ручной сбор КП,",
+            "  нет единой картины для РОП",
         ],
-        15,
+        14,
         INK,
+        False,
+        8,
     )
-    card(s, MX + Inches(6.1), Inches(2.4), Inches(5.8), Inches(4.0), WHITE)
-    textbox(s, MX + Inches(6.4), Inches(2.6), Inches(5.2), Inches(0.4), "Secondary ICP", 16, True, BLUE)
-    multilines(
+    round_rect(s, MX + Inches(6.15), Inches(1.85), Inches(5.85), Inches(4.5), PAPER)
+    txt(s, MX + Inches(6.45), Inches(2.1), Inches(5.2), Inches(0.4), "Secondary ICP", 16, True, BLUE)
+    lines(
         s,
-        MX + Inches(6.4),
-        Inches(3.2),
+        MX + Inches(6.45),
+        Inches(2.7),
         Inches(5.2),
-        Inches(3.0),
+        Inches(3.3),
         [
             "• Торговля / производство под клиента",
             "• Тендерные команды in-house / outsource",
             "• Переход с Битрикс без бюджета на интегратора",
             "• Нужны Контур / Seldon в том же контуре",
         ],
-        15,
+        14,
         INK,
+        False,
+        8,
     )
-    slides_meta.append(("ICP", "paper"))
+    footer(s, "ICP", 5, 0)
 
-    # 08 Competition
-    s = new("white")
-    brand(s)
-    kicker(s, "Конкуренты")
-    title(s, "Конкурентная карта")
-    add_table(
+    # —— 06 Competition ——
+    s = add()
+    brand_row(s)
+    section_title(s, "2.5. Конкурентная карта")
+    table(
         s,
         MX,
-        Inches(2.3),
+        Inches(1.9),
         W - 2 * MX,
-        Inches(4.2),
         [
             ["Кластер", "Примеры", "Слабость vs iStockLink"],
             ["Универсальные CRM", "Битрикс24, amoCRM", "SRM/КП — доработка; долгое внедрение"],
@@ -340,123 +368,122 @@ def build(out: Path):
             ["Агрегаторы тендеров", "Контур, Seldon", "Нет CRM/SRM-операционки"],
             ["Excel + почта", "Статус-кво", "Нет контроля и масштаба"],
         ],
-        col_widths=[Inches(3.5), Inches(3.8), Inches(4.7)],
+        [Inches(3.6), Inches(3.8), Inches(4.5)],
+        12,
     )
-    slides_meta.append(("Конкуренты", "white"))
-
-    # 09 Positioning
-    s = new("dark")
-    brand(s, True)
-    kicker(s, "Позиционирование", True)
-    title(s, "CRM + SRM в одном окне", True, 38, Inches(2.2))
-    lead(s, "Не «ещё одна CRM». Снижение TCO и ускорение цикла «клиент → поставка».", True, Inches(3.6))
-    textbox(s, MX, Inches(4.8), Inches(12), Inches(0.5), "Против: Excel · пустой Битрикс24 · разрозненные агрегаторы", 16, False, RGBColor(0x8E, 0xAF, 0xFF))
-    slides_meta.append(("Позиционирование", "dark"))
-
-    # 10 Goals
-    s = new("paper")
-    brand(s)
-    kicker(s, "Цели 12 мес.")
-    title(s, "Цели продвижения")
-    add_table(
+    note_box(
         s,
         MX,
-        Inches(2.4),
+        Inches(5.3),
         W - 2 * MX,
-        Inches(4.0),
+        Inches(1.1),
+        "Окно iStockLink: готовая CRM + SRM и оцифровка КП в одном окне, старт за день, без интегратора. Продаём снижение TCO и цикл «клиент → поставка», не «ещё одну CRM».",
+    )
+    footer(s, "Конкуренты", 6, 0)
+
+    # —— 07 Direct fact ——
+    s = add()
+    brand_row(s)
+    section_title(s, "3. Факт Яндекс Директа · сентябрь 2026")
+    table(
+        s,
+        MX,
+        Inches(1.85),
+        W - 2 * MX,
         [
-            ["Цель", "Метрика", "Ориентир"],
-            ["Квалифицированные демо", "SQL / мес к M12", "40–60"],
-            ["Конверсия демо → оплата", "Win rate", "20–30%"],
-            ["Новые платящие", "Paid logos / год", "80–120"],
-            ["Переходы с Битрикс24", "% новых клиентов", "≥25%"],
-            ["Удержание", "Logo retention 12 мес.", "≥85%"],
+            ["Показатель", "Значение", "Комментарий"],
+            ["Расход", "27 576 ₽", "Поиск 93% + ретаргет 7%"],
+            ["Показы / клики", "15 337 / 457", "CTR ~3,0%"],
+            ["Конверсии Метрики", "56 · CPA 492 ₽", "Не все = лид в CRM"],
+            ["Реальные лиды", "8 · CPL 3 447 ₽", "База для планирования"],
+            ["SQL", "5 · 5 515 ₽ / SQL", "Lead→SQL = 62,5%"],
         ],
-        col_widths=[Inches(4.5), Inches(4.2), Inches(3.3)],
+        [Inches(3.8), Inches(3.8), Inches(4.3)],
+        12,
     )
-    slides_meta.append(("Цели", "paper"))
-
-    # 11 Fact Sept
-    s = new("dark")
-    brand(s, True)
-    kicker(s, "Факт · сентябрь 2026", True)
-    title(s, "Яндекс Директ: что уже работает", True, 34, Inches(1.5))
-    facts = [
-        ("27 576 ₽", "расход за месяц"),
-        ("8 лидов", "CPL 3 447 ₽"),
-        ("5 SQL", "5 515 ₽ / SQL"),
-        ("62%", "Lead → SQL"),
-    ]
-    for i, (n, l) in enumerate(facts):
-        left = MX + (i % 4) * Inches(3.05)
-        card(s, left, Inches(3.3), Inches(2.9), Inches(2.4), RGBColor(0x17, 0x17, 0x17))
-        textbox(s, left + Inches(0.2), Inches(3.6), Inches(2.5), Inches(0.7), n, 22, True, BLUE)
-        textbox(s, left + Inches(0.2), Inches(4.5), Inches(2.5), Inches(0.8), l, 14, False, RGBColor(0xA8, 0xB0, 0xBD))
-    slides_meta.append(("Факт Директа", "dark"))
-
-    # 12 Assumptions
-    s = new("white")
-    brand(s)
-    kicker(s, "Модель")
-    title(s, "Допущения после калибровки")
-    add_table(
+    note_box(
         s,
         MX,
-        Inches(2.4),
+        Inches(5.5),
         W - 2 * MX,
-        Inches(4.0),
+        Inches(0.9),
+        "CPA 492 ₽ по Метрике завышает картину. Для денег ориентируемся на CPL 3,4 тыс. ₽ и ~5,5 тыс. ₽ за SQL. Win rate (SQL→оплата) в выгрузках пока нет.",
+    )
+    footer(s, "Факт Директа", 7, 0)
+
+    # —— 08 Assumptions ——
+    s = add()
+    brand_row(s)
+    section_title(s, "3.7. Допущения модели после калибровки")
+    table(
+        s,
+        MX,
+        Inches(1.9),
+        W - 2 * MX,
         [
             ["Параметр", "Значение", "Комментарий"],
             ["ACV команды", "120 000 ₽ / год", "Уточнить по факту сделок"],
             ["Cost / SQL сейчас", "~5 500 ₽", "Факт сентября"],
             ["Cost / SQL при масштабе", "6–10 тыс. ₽", "Рост аукциона"],
             ["Lead → SQL", "62%", "5 из 8"],
-            ["SQL → оплата", "15% / 22% / 28%", "Факта закрытий пока нет"],
+            ["SQL → оплата", "15% / 22% / 28%", "Факта закрытий нет — три ветки"],
         ],
-        col_widths=[Inches(3.8), Inches(3.5), Inches(4.7)],
+        [Inches(4.0), Inches(3.6), Inches(4.3)],
+        12,
     )
-    slides_meta.append(("Допущения", "white"))
+    footer(s, "Допущения", 8, 0)
 
-    # 13 Scenarios
-    s = new("paper")
-    brand(s)
-    kicker(s, "Сценарии")
-    title(s, "Если столько денег — такой результат")
-    scenarios = [
-        ("A · Разогрев", "150 тыс ₽/мес", "SQL ~300 / год", "~66 оплат*", "~7,9 млн ₽", "Рекомендуемый следующий шаг"),
-        ("B · База", "300 тыс ₽/мес", "SQL ~480 / год", "~106 оплат*", "~12,7 млн ₽", "После фиксации win rate"),
-        ("C · Рост", "600 тыс ₽/мес", "SQL ~720 / год", "~158 оплат*", "~19 млн ₽", "Нужны сайт + 2+ продавца"),
+    # —— 09 Scenarios ——
+    s = add()
+    brand_row(s)
+    section_title(s, "Сценарии: если столько денег — такой результат")
+    # four cards: 0 A B C
+    cards = [
+        ("0 · Как сейчас", "~28 тыс ₽/мес", "SQL ~60/год", "~13 оплат*", "~1,6 млн ₽", "Факт run-rate"),
+        ("A · Разогрев", "150 тыс ₽/мес", "SQL ~300/год", "~66 оплат*", "~7,9 млн ₽", "Рекомендуемый шаг"),
+        ("B · База", "300 тыс ₽/мес", "SQL ~480/год", "~106 оплат*", "~12,7 млн ₽", "После win rate"),
+        ("C · Рост", "600 тыс ₽/мес", "SQL ~720/год", "~158 оплат*", "~19 млн ₽", "Сайт + 2+ продавца"),
     ]
-    for i, (name, m, sql, deals, rev, chance) in enumerate(scenarios):
-        left = MX + i * Inches(4.05)
-        card(s, left, Inches(2.35), Inches(3.85), Inches(4.3), WHITE)
-        textbox(s, left + Inches(0.25), Inches(2.55), Inches(3.4), Inches(0.4), name, 18, True, BLUE)
-        textbox(s, left + Inches(0.25), Inches(3.15), Inches(3.4), Inches(0.45), m, 18, True, INK)
-        multilines(
+    for i, (name, bud, sql, deals, rev, note) in enumerate(cards):
+        left = MX + i * Inches(3.1)
+        round_rect(s, left, Inches(1.85), Inches(2.95), Inches(4.0), PAPER)
+        if i == 1:
+            rect(s, left, Inches(1.85), Inches(0.08), Inches(4.0), BLUE)
+        txt(s, left + Inches(0.18), Inches(2.05), Inches(2.6), Inches(0.4), name, 13, True, BLUE)
+        txt(s, left + Inches(0.18), Inches(2.55), Inches(2.6), Inches(0.4), bud, 14, True, INK)
+        lines(
             s,
-            left + Inches(0.25),
-            Inches(3.8),
-            Inches(3.4),
-            Inches(2.5),
-            [sql, deals + " при win 22%", "Выручка: " + rev, chance],
-            13,
+            left + Inches(0.18),
+            Inches(3.15),
+            Inches(2.6),
+            Inches(2.4),
+            [sql, deals, "Выручка: " + rev, note],
+            12,
             MUTED,
+            False,
+            8,
         )
-    slides_meta.append(("Сценарии A/B/C", "paper"))
-
-    # 14 Mix
-    s = new("white")
-    brand(s)
-    kicker(s, "Каналы")
-    title(s, "Куда класть деньги внутри бюджета")
-    add_table(
+    note_box(
         s,
         MX,
-        Inches(2.3),
+        Inches(6.05),
         W - 2 * MX,
-        Inches(4.3),
+        Inches(0.55),
+        "* Оплаты при win rate 22%. Диапазон 15–28% см. в PDF. Сначала A на 6–8 недель, затем B.",
+    )
+    footer(s, "Сценарии бюджета", 9, 0)
+
+    # —— 10 Channel mix ——
+    s = add()
+    brand_row(s)
+    section_title(s, "Куда класть деньги внутри бюджета")
+    table(
+        s,
+        MX,
+        Inches(1.85),
+        W - 2 * MX,
         [
-            ["Канал", "A Тест", "B База", "C Рост", "Зачем"],
+            ["Канал", "A", "B", "C", "Зачем"],
             ["Яндекс Директ — поиск", "55%", "45%", "40%", "Заявки на демо"],
             ["Ретаргет", "15%", "15%", "15%", "Догон сайта"],
             ["Контент / кейсы / PDF", "15%", "15%", "12%", "Доверие + sales kit"],
@@ -464,41 +491,20 @@ def build(out: Path):
             ["Партнёры", "5%", "10%", "15%", "Агентства, 1С"],
             ["Тесты каналов", "5%", "5%", "6%", "Telegram / ABM"],
         ],
-        col_widths=[Inches(3.4), Inches(1.5), Inches(1.5), Inches(1.5), Inches(3.9)],
+        [Inches(3.6), Inches(1.3), Inches(1.3), Inches(1.3), Inches(4.3)],
+        11,
     )
-    slides_meta.append(("Микс каналов", "white"))
+    footer(s, "Микс каналов", 10, 0)
 
-    # 15 Unit economics
-    s = new("paper")
-    brand(s)
-    kicker(s, "Unit-экономика")
-    title(s, "Когда можно масштабировать")
-    rules = [
-        ("CAC", "≤ 35–45% ACV year-1", "Иначе резать дорогие связки"),
-        ("Payback", "≤ 6–9 месяцев", "Иначе поднимать ACV / сокращать цикл"),
-        ("CPL стабильность", "4–8 недель", "Не лить search без ≥30 конверсий"),
-        ("Win rate демо", "≥ 20%", "Сначала чинить sales, не бюджет"),
-    ]
-    for i, (h, v, note) in enumerate(rules):
-        left = MX + (i % 2) * Inches(6.15)
-        top = Inches(2.4) + (i // 2) * Inches(2.0)
-        card(s, left, top, Inches(5.9), Inches(1.8), WHITE)
-        textbox(s, left + Inches(0.3), top + Inches(0.25), Inches(5.3), Inches(0.35), h, 14, True, BLUE)
-        textbox(s, left + Inches(0.3), top + Inches(0.7), Inches(5.3), Inches(0.4), v, 18, True, INK)
-        textbox(s, left + Inches(0.3), top + Inches(1.2), Inches(5.3), Inches(0.35), note, 13, False, MUTED)
-    slides_meta.append(("Unit-экономика", "paper"))
-
-    # 16 Bitrix compare
-    s = new("white")
-    brand(s)
-    kicker(s, "Битрикс24")
-    title(s, "Сравнение с Битрикс24")
-    add_table(
+    # —— 11 Bitrix ——
+    s = add()
+    brand_row(s)
+    section_title(s, "4. Таблица сравнения с Битрикс24")
+    table(
         s,
         MX,
-        Inches(2.2),
+        Inches(1.8),
         W - 2 * MX,
-        Inches(4.5),
         [
             ["Критерий", "Битрикс24 + внедрение", "iStockLink CRM+SRM"],
             ["Время до процесса", "Недели–месяцы", "Около 1 дня"],
@@ -508,83 +514,51 @@ def build(out: Path):
             ["Агрегаторы", "Через интегратора", "Контур / Seldon из коробки"],
             ["Модель затрат", "Подписка + 150–600+ тыс.", "Подписка, без проекта"],
         ],
-        col_widths=[Inches(3.5), Inches(4.5), Inches(4.0)],
+        [Inches(3.5), Inches(4.5), Inches(4.0)],
+        12,
+        highlight_last=True,
     )
-    slides_meta.append(("Сравнение Битрикс", "white"))
+    footer(s, "Сравнение с Битрикс24", 11, 0)
 
-    # 17 When choose
-    s = new("paper")
-    brand(s)
-    kicker(s, "Битрикс24")
-    title(s, "Когда что выбирать")
-    card(s, MX, Inches(2.4), Inches(5.8), Inches(4.0), WHITE)
-    textbox(s, MX + Inches(0.3), Inches(2.65), Inches(5.2), Inches(0.4), "Битрикс24", 18, True, MUTED)
-    multilines(
+    # —— 12 Next ——
+    s = add()
+    brand_row(s)
+    section_title(s, "Рекомендация и следующий шаг")
+    kpi_card(s, MX, Inches(1.85), Inches(4.0), Inches(2.2), "Сценарий A", "150 тыс ₽ / мес\n~300 SQL / год\n~7,9 млн ₽ при win 22%")
+    kpi_card(s, MX + Inches(4.2), Inches(1.85), Inches(4.0), Inches(2.2), "×5 к факту", "Сейчас ~28 тыс ₽/мес\nКанал уже даёт SQL\nза 5 515 ₽")
+    kpi_card(s, MX + Inches(8.4), Inches(1.85), Inches(4.0), Inches(2.2), "Потом B", "После 6–8 недель\nи фиксации win rate\nпо CRM")
+    txt(s, MX, Inches(4.4), Inches(12), Inches(0.35), "Чтобы убрать вилку 15–28% по оплатам, пришлите:", 14, True, INK)
+    lines(
         s,
-        MX + Inches(0.3),
-        Inches(3.3),
-        Inches(5.2),
-        Inches(2.8),
+        MX,
+        Inches(4.85),
+        Inches(12),
+        Inches(1.3),
         [
-            "• Нужен «комбайн»: CRM + портал + задачи",
-            "• Есть бюджет и время на интегратора",
-            "• Закупки — не ключевой процесс",
+            "1. По 5 SQL сентября — статус, тариф, won/lost",
+            "2. Касания 3–6 мес. с UTM / источником",
+            "3. Факт ACV по оплаченным аккаунтам",
         ],
-        15,
-        INK,
+        14,
+        MUTED,
+        False,
+        4,
     )
-    card(s, MX + Inches(6.1), Inches(2.4), Inches(5.8), Inches(4.0), BLUE_SOFT)
-    textbox(s, MX + Inches(6.4), Inches(2.65), Inches(5.2), Inches(0.4), "iStockLink", 18, True, BLUE)
-    multilines(
-        s,
-        MX + Inches(6.4),
-        Inches(3.3),
-        Inches(5.2),
-        Inches(2.8),
-        [
-            "• Продажи и поставщики в одном цикле",
-            "• Нужен быстрый старт без проекта",
-            "• Важны КП, SRM, тендеры в том же окне",
-        ],
-        15,
-        INK,
-    )
-    slides_meta.append(("Когда выбирать", "paper"))
+    footer(s, "istock.link · GTM CRM+SRM", 12, 0)
 
-    # 18 Data ask
-    s = new("dark")
-    brand(s, True)
-    kicker(s, "Данные", True)
-    title(s, "Директ учтён. Не хватает закрытий", True, 30, Inches(1.5))
-    blocks = [
-        ("1", "CRM: SQL → оплата", "По 5 SQL сентября — статус, тариф, won/lost"),
-        ("2", "Касания 3–6 мес.", "Источник / UTM, этап, сумма — для win rate"),
-        ("3", "Средний чек", "Факт ACV по оплаченным аккаунтам"),
-    ]
-    for i, (n, h, p) in enumerate(blocks):
-        top = Inches(3.0) + i * Inches(1.15)
-        textbox(s, MX, top, Inches(0.6), Inches(0.4), n, 22, True, BLUE)
-        textbox(s, MX + Inches(0.8), top, Inches(11), Inches(0.4), h, 20, True, WHITE)
-        textbox(s, MX + Inches(0.8), top + Inches(0.4), Inches(11), Inches(0.4), p, 14, False, RGBColor(0xA8, 0xB0, 0xBD))
-    slides_meta.append(("Нужные данные", "dark"))
+    total = len(slides)
+    # rewrite footers with total
+    for i, slide in enumerate(slides):
+        # remove previous footer texts is hard; add overlay numbers only if needed
+        # We already wrote wrong totals (0). Rebuild footers by adding correct ones on top area — cleaner to set total in second pass via regenerating numbers.
+        pass
 
-    # 19 Close
-    s = new("dark")
-    brand(s, True)
-    kicker(s, "Дальше", True)
-    title(s, "Следующий шаг: сценарий A", True, 34, Inches(2.2))
-    lead(s, "150 тыс ₽/мес · ~300 SQL/год · ~66 оплат при win 22% · ~7,9 млн ₽ (модель).", True, Inches(3.7))
-    textbox(s, MX, Inches(4.8), Inches(12), Inches(0.5), "Сейчас ~28 тыс ₽/мес. Сначала ×5 и замер win rate, потом B/C.", 16, False, RGBColor(0x8E, 0xAF, 0xFF))
-    textbox(s, MX, Inches(5.6), Inches(12), Inches(0.4), "istock.link", 20, True, WHITE)
-    slides_meta.append(("Рекомендация", "dark"))
-
-    total = len(prs.slides)
-    # add footers
-    for i, slide in enumerate(prs.slides):
-        meta, kind = slides_meta[i]
-        dark = kind == "dark"
-        # skip if already has lots - just add footer
-        footer(slide, meta if i else "iStockLink · GTM CRM+SRM", i + 1, total, dark)
+    # Fix page numbers: delete last two textboxes approach is fragile.
+    # Instead re-save with correct numbers by rebuilding footer line numbers only — simplest: recreate presentation with total known.
+    # We'll just patch by adding correct number boxes at the end (covering old).
+    for i, slide in enumerate(slides):
+        rect(slide, W - MX - Inches(1.65), H - Inches(0.48), Inches(1.65), Inches(0.32), WHITE)
+        txt(slide, W - MX - Inches(1.6), H - Inches(0.45), Inches(1.6), Inches(0.3), f"{i+1:02d} / {total:02d}", 11, False, MUTED, PP_ALIGN.RIGHT)
 
     out.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(out))
@@ -594,6 +568,5 @@ def build(out: Path):
 if __name__ == "__main__":
     out = Path("/workspace/content/business/istocklink-crm-srm-gtm.pptx")
     build(out)
-    docs = Path("/workspace/docs/business/istocklink-crm-srm-gtm.pptx")
-    docs.write_bytes(out.read_bytes())
+    Path("/workspace/docs/business/istocklink-crm-srm-gtm.pptx").write_bytes(out.read_bytes())
     Path("/opt/cursor/artifacts/istocklink_crm_srm_gtm.pptx").write_bytes(out.read_bytes())
