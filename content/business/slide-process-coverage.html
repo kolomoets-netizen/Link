@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Процесс торговой компании · покрытие iStockLink vs Битрикс24</title>
+  <title>Процесс торговой компании · покрытие iStockLink vs Битрикс24 / amoCRM</title>
   <style>
     :root {
       --ink: #0f172a;
@@ -14,7 +14,7 @@
       --paper: #f8fafc;
       --bx-box: #94a3b8;
       --bx-custom: #38bdf8;
-      --bx-plugin: #0284c7;
+      --amo: #f59e0b;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -38,7 +38,7 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,.35);
-      padding: 36px 48px 28px;
+      padding: 32px 44px 24px;
       display: flex;
       flex-direction: column;
     }
@@ -46,7 +46,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
     .brand {
       display: flex;
@@ -73,20 +73,20 @@
       border-radius: 999px;
     }
     h1 {
-      margin: 0 0 6px;
-      font-size: 26px;
+      margin: 0 0 4px;
+      font-size: 24px;
       letter-spacing: -.03em;
       line-height: 1.15;
       color: var(--blue);
       border-bottom: 2px solid var(--blue);
-      padding-bottom: 8px;
+      padding-bottom: 7px;
     }
     .sub {
-      margin: 8px 0 0;
-      font-size: 13px;
+      margin: 7px 0 0;
+      font-size: 12.5px;
       color: var(--muted);
-      max-width: 980px;
-      line-height: 1.4;
+      max-width: 1000px;
+      line-height: 1.35;
     }
 
     .body {
@@ -94,12 +94,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 14px;
+      gap: 10px;
       min-height: 0;
-      padding-top: 8px;
+      padding-top: 4px;
     }
 
-    /* Shared 8-column grid: label | stages */
     .grid {
       display: grid;
       grid-template-columns: 188px repeat(8, 1fr);
@@ -111,7 +110,7 @@
       margin-left: 188px;
       display: grid;
       grid-template-columns: repeat(8, 1fr);
-      margin-bottom: 2px;
+      margin-bottom: 0;
     }
     .phase {
       font-size: 10px;
@@ -119,7 +118,7 @@
       letter-spacing: .04em;
       text-transform: uppercase;
       text-align: center;
-      padding: 5px 4px;
+      padding: 4px 4px;
       border-radius: 5px;
     }
     .phase.sales {
@@ -135,7 +134,6 @@
       margin-left: 3px;
     }
 
-    /* Timeline row */
     .timeline-label {
       display: flex;
       align-items: center;
@@ -147,13 +145,13 @@
     .timeline-track {
       grid-column: 2 / -1;
       position: relative;
-      padding: 6px 0 4px;
+      padding: 4px 0 2px;
     }
     .rail {
       position: absolute;
-      left: calc(6.25% - 0px);
-      right: calc(6.25% - 0px);
-      top: 18px;
+      left: 6.25%;
+      right: 6.25%;
+      top: 16px;
       height: 3px;
       background: var(--line);
       border-radius: 2px;
@@ -169,12 +167,12 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 8px;
-      min-height: 78px;
+      gap: 6px;
+      min-height: 68px;
     }
     .dot {
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       background: #fff;
       border: 3px solid var(--blue);
@@ -185,7 +183,7 @@
       font-size: 11px;
       font-weight: 700;
       color: var(--ink);
-      line-height: 1.2;
+      line-height: 1.15;
       max-width: 96px;
     }
     .stage-hint {
@@ -193,20 +191,57 @@
       color: var(--muted);
       font-weight: 500;
       max-width: 96px;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
-    /* Coverage lanes */
+    /* Lead capability callout — under first stage, not a new process step */
+    .lead-cap {
+      margin-left: 188px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      margin-top: -2px;
+      margin-bottom: 2px;
+    }
+    .lead-cap-box {
+      grid-column: 1 / 4;
+      background: linear-gradient(90deg, rgba(28,80,222,.08), rgba(28,80,222,.03));
+      border: 1px solid rgba(28,80,222,.22);
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-size: 11px;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-right: 4px;
+    }
+    .lead-cap-box b {
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .lead-cap-box .tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: #fff;
+      border: 1px solid rgba(28,80,222,.25);
+      border-radius: 4px;
+      padding: 1px 6px;
+      margin-right: 6px;
+      vertical-align: 1px;
+    }
+
     .lanes {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-top: 4px;
+      gap: 7px;
+      margin-top: 2px;
     }
     .lane {
       display: grid;
       grid-template-columns: 188px repeat(8, 1fr);
-      min-height: 40px;
+      min-height: 36px;
       align-items: center;
     }
     .lane-label {
@@ -225,14 +260,14 @@
       font-size: 10px;
       color: var(--muted);
       font-weight: 500;
-      line-height: 1.25;
+      line-height: 1.2;
     }
     .cells {
       grid-column: 2 / -1;
       display: grid;
       grid-template-columns: repeat(8, 1fr);
       gap: 3px;
-      height: 34px;
+      height: 32px;
       position: relative;
     }
     .cell {
@@ -245,10 +280,9 @@
       inset: 0;
       border-radius: 5px;
     }
-    .fill.isl { background: linear-gradient(90deg, #1c50de, #3b6df0); }
     .fill.bx-box { background: var(--bx-box); }
     .fill.bx-custom { background: var(--bx-custom); }
-    .fill.bx-plugin { background: var(--bx-plugin); }
+    .fill.amo { background: var(--amo); }
     .fill.gap {
       background: repeating-linear-gradient(
         -45deg,
@@ -259,11 +293,7 @@
       );
       border: 1px dashed #cbd5e1;
     }
-    .fill.weak {
-      opacity: .45;
-    }
 
-    /* Continuous bar overlay for iStockLink / solid ranges */
     .bar-overlay {
       position: absolute;
       top: 0;
@@ -296,6 +326,12 @@
       background: var(--bx-custom);
       color: #0f172a;
     }
+    .bar-overlay.amo {
+      left: 0;
+      width: calc(37.5% - 1px);
+      background: var(--amo);
+      color: #0f172a;
+    }
     .bar-note {
       position: absolute;
       top: 50%;
@@ -310,9 +346,9 @@
     .legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 20px;
-      margin-top: 6px;
-      padding-top: 10px;
+      gap: 10px 18px;
+      margin-top: 2px;
+      padding-top: 8px;
       border-top: 1px solid var(--line);
     }
     .leg {
@@ -343,18 +379,18 @@
       display: flex;
       justify-content: space-between;
       margin-top: auto;
-      padding-top: 10px;
+      padding-top: 8px;
       border-top: 1px solid var(--line);
       font-size: 11px;
       color: var(--muted);
     }
     .takeaway {
       margin: 0;
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--ink);
       font-weight: 600;
       line-height: 1.35;
-      padding: 8px 12px;
+      padding: 7px 11px;
       background: var(--blue-soft);
       border-radius: 8px;
       border-left: 3px solid var(--blue);
@@ -367,11 +403,11 @@
     <section class="slide">
       <div class="top">
         <div class="brand"><span class="mark"></span>iStockLink</div>
-        <span class="badge">Один слайд · черновик v2</span>
+        <span class="badge">Один слайд · черновик v3</span>
       </div>
 
       <h1>Процесс торговой компании: кто что закрывает</h1>
-      <p class="sub">Восемь этапов от лида до отгрузки. Сверху — линия процесса. Ниже — зона покрытия: iStockLink целиком и Битрикс24 в трёх вариантах.</p>
+      <p class="sub">Восемь этапов от лида до отгрузки. Ниже — зона покрытия iStockLink, Битрикс24 и amoCRM. Процесс один; различаются возможности на входе (источник лида) и глубина закрытия контура.</p>
 
       <div class="body">
         <div class="phases">
@@ -387,7 +423,7 @@
               <div class="stage">
                 <div class="dot"></div>
                 <div class="stage-name">Лид</div>
-                <div class="stage-hint">Спрос клиента</div>
+                <div class="stage-hint">Клиент или тендер</div>
               </div>
               <div class="stage">
                 <div class="dot"></div>
@@ -428,21 +464,26 @@
           </div>
         </div>
 
+        <div class="lead-cap">
+          <div class="lead-cap-box">
+            <span class="tag">Возможность iStockLink</span>
+            Источник лида — не только компания-заказчик, но и <b>тендер</b>. В Link есть интеграции с <b>агрегаторами</b> и <b>ЭТП</b>: тендер входит в тот же этап «Лид», процесс дальше не меняется.
+          </div>
+        </div>
+
         <div class="lanes">
-          <!-- iStockLink: continuous full -->
           <div class="lane">
             <div class="lane-label">
               <b>iStockLink</b>
-              <span>CRM + SRM из коробки</span>
+              <span>CRM + SRM + тендеры</span>
             </div>
             <div class="cells">
               <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
               <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-              <div class="bar-overlay isl">Весь контур: продажи → закупка → отгрузка</div>
+              <div class="bar-overlay isl">Весь контур: лид (клиент / тендер) → закупка → отгрузка</div>
             </div>
           </div>
 
-          <!-- Bitrix box: stages 1-3 -->
           <div class="lane">
             <div class="lane-label">
               <b>Битрикс24 из коробки</b>
@@ -458,11 +499,10 @@
               <div class="cell"><div class="fill gap"></div></div>
               <div class="cell"><div class="fill gap"></div></div>
               <div class="bar-overlay bx-box">CRM продаж</div>
-              <span class="bar-note" style="left: calc(37.5% + 8px)">закупка — вручную / почта</span>
+              <span class="bar-note" style="left: calc(37.5% + 8px)">закупка и тендеры — вне контура</span>
             </div>
           </div>
 
-          <!-- Bitrix + custom: stages 1-5 continuous -->
           <div class="lane">
             <div class="lane-label">
               <b>Битрикс24 + доработки</b>
@@ -482,40 +522,39 @@
             </div>
           </div>
 
-          <!-- Bitrix + plugins: sales solid + fragmented SRM -->
           <div class="lane">
             <div class="lane-label">
-              <b>Битрикс24 + плагины</b>
-              <span>Маркетплейс / внешние модули</span>
+              <b>amoCRM</b>
+              <span>CRM продаж</span>
             </div>
             <div class="cells">
-              <div class="cell"><div class="fill bx-plugin"></div></div>
-              <div class="cell"><div class="fill bx-plugin"></div></div>
-              <div class="cell"><div class="fill bx-plugin"></div></div>
-              <div class="cell"><div class="fill bx-plugin weak"></div></div>
-              <div class="cell"><div class="fill gap"></div></div>
-              <div class="cell"><div class="fill bx-plugin weak"></div></div>
+              <div class="cell"><div class="fill amo"></div></div>
+              <div class="cell"><div class="fill amo"></div></div>
+              <div class="cell"><div class="fill amo"></div></div>
               <div class="cell"><div class="fill gap"></div></div>
               <div class="cell"><div class="fill gap"></div></div>
-              <span class="bar-note" style="left: 8px; color: #fff; font-weight: 700;">Продажи + куски SRM</span>
-              <span class="bar-note" style="left: calc(75% + 4px)">сквозной процесс рвётся</span>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="bar-overlay amo">Воронка продаж</div>
+              <span class="bar-note" style="left: calc(37.5% + 8px)">SRM / тендеры / ЭТП — нет</span>
             </div>
           </div>
         </div>
 
-        <p class="takeaway">Вывод: <span>iStockLink</span> закрывает линию целиком. Битрикс силён в продажах; закупка и исполнение — зона пробелов, кастома или рваных плагинов.</p>
+        <p class="takeaway">Вывод: <span>iStockLink</span> закрывает линию целиком и принимает лид как компанию или тендер (агрегаторы, ЭТП). Битрикс и amoCRM сильны в продажах; закупка и тендерный вход — зона пробелов или кастома.</p>
 
         <div class="legend">
-          <div class="leg"><span class="sw" style="background:#1c50de"></span>iStockLink — непрерывная зона</div>
+          <div class="leg"><span class="sw" style="background:#1c50de"></span>iStockLink</div>
           <div class="leg"><span class="sw" style="background:#94a3b8"></span>Битрикс из коробки</div>
           <div class="leg"><span class="sw" style="background:#38bdf8"></span>Битрикс + доработки</div>
-          <div class="leg"><span class="sw" style="background:#0284c7"></span>Битрикс + плагины</div>
+          <div class="leg"><span class="sw" style="background:#f59e0b"></span>amoCRM</div>
           <div class="leg"><span class="sw gap"></span>Не закрыто / вручную</div>
         </div>
       </div>
 
       <div class="foot">
-        <span>Черновик v2 · этапы и зоны можно править</span>
+        <span>Черновик v3 · плагины убраны · добавлены amoCRM и тендеры/ЭТП</span>
         <span>01 / 01</span>
       </div>
     </section>
