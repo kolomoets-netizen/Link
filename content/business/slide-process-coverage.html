@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Процесс торговой компании · покрытие iStockLink vs Битрикс24</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --blue: #1c50de;
+      --blue-soft: #eef2ff;
+      --paper: #f8fafc;
+      --bx-box: #94a3b8;
+      --bx-custom: #38bdf8;
+      --bx-plugin: #0284c7;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0b0b0b;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+    }
+    .viewport {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+    .slide {
+      width: min(100%, calc((100vh - 32px) * 16 / 9));
+      aspect-ratio: 16 / 9;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      padding: 36px 48px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .mark {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(28,80,222,.14);
+    }
+    .badge {
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 26px;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      color: var(--blue);
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 8px;
+    }
+    .sub {
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 980px;
+      line-height: 1.4;
+    }
+
+    .body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      min-height: 0;
+      padding-top: 8px;
+    }
+
+    /* Shared 8-column grid: label | stages */
+    .grid {
+      display: grid;
+      grid-template-columns: 188px repeat(8, 1fr);
+      column-gap: 0;
+      align-items: stretch;
+    }
+
+    .phases {
+      margin-left: 188px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      margin-bottom: 2px;
+    }
+    .phase {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 5px 4px;
+      border-radius: 5px;
+    }
+    .phase.sales {
+      grid-column: 1 / 4;
+      background: #f1f5f9;
+      color: #64748b;
+      margin-right: 3px;
+    }
+    .phase.buy {
+      grid-column: 4 / 9;
+      background: var(--blue-soft);
+      color: var(--blue);
+      margin-left: 3px;
+    }
+
+    /* Timeline row */
+    .timeline-label {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      padding-right: 12px;
+    }
+    .timeline-track {
+      grid-column: 2 / -1;
+      position: relative;
+      padding: 6px 0 4px;
+    }
+    .rail {
+      position: absolute;
+      left: calc(6.25% - 0px);
+      right: calc(6.25% - 0px);
+      top: 18px;
+      height: 3px;
+      background: var(--line);
+      border-radius: 2px;
+    }
+    .stages {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      position: relative;
+      z-index: 1;
+    }
+    .stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      min-height: 78px;
+    }
+    .dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--blue);
+      box-shadow: 0 0 0 3px #fff;
+      flex-shrink: 0;
+    }
+    .stage-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      max-width: 96px;
+    }
+    .stage-hint {
+      font-size: 9px;
+      color: var(--muted);
+      font-weight: 500;
+      max-width: 96px;
+      line-height: 1.2;
+    }
+
+    /* Coverage lanes */
+    .lanes {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .lane {
+      display: grid;
+      grid-template-columns: 188px repeat(8, 1fr);
+      min-height: 40px;
+      align-items: center;
+    }
+    .lane-label {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      padding-right: 12px;
+    }
+    .lane-label b {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .lane-label span {
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.25;
+    }
+    .cells {
+      grid-column: 2 / -1;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 3px;
+      height: 34px;
+      position: relative;
+    }
+    .cell {
+      background: var(--paper);
+      border-radius: 5px;
+      position: relative;
+    }
+    .fill {
+      position: absolute;
+      inset: 0;
+      border-radius: 5px;
+    }
+    .fill.isl { background: linear-gradient(90deg, #1c50de, #3b6df0); }
+    .fill.bx-box { background: var(--bx-box); }
+    .fill.bx-custom { background: var(--bx-custom); }
+    .fill.bx-plugin { background: var(--bx-plugin); }
+    .fill.gap {
+      background: repeating-linear-gradient(
+        -45deg,
+        #f1f5f9,
+        #f1f5f9 4px,
+        #e2e8f0 4px,
+        #e2e8f0 8px
+      );
+      border: 1px dashed #cbd5e1;
+    }
+    .fill.weak {
+      opacity: .45;
+    }
+
+    /* Continuous bar overlay for iStockLink / solid ranges */
+    .bar-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      z-index: 2;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+    }
+    .bar-overlay.isl {
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #1c50de, #3b6df0);
+    }
+    .bar-overlay.bx-box {
+      left: 0;
+      width: calc(37.5% - 1px);
+      background: var(--bx-box);
+    }
+    .bar-overlay.bx-custom {
+      left: 0;
+      width: calc(62.5% - 1px);
+      background: var(--bx-custom);
+      color: #0f172a;
+    }
+    .bar-note {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+    .leg {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .sw {
+      width: 16px;
+      height: 9px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .sw.gap {
+      background: repeating-linear-gradient(
+        -45deg,
+        #f1f5f9,
+        #f1f5f9 3px,
+        #e2e8f0 3px,
+        #e2e8f0 6px
+      );
+      border: 1px dashed #cbd5e1;
+    }
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .takeaway {
+      margin: 0;
+      font-size: 12px;
+      color: var(--ink);
+      font-weight: 600;
+      line-height: 1.35;
+      padding: 8px 12px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      border-left: 3px solid var(--blue);
+    }
+    .takeaway span { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <section class="slide">
+      <div class="top">
+        <div class="brand"><span class="mark"></span>iStockLink</div>
+        <span class="badge">Один слайд · черновик v2</span>
+      </div>
+
+      <h1>Процесс торговой компании: кто что закрывает</h1>
+      <p class="sub">Восемь этапов от лида до отгрузки. Сверху — линия процесса. Ниже — зона покрытия: iStockLink целиком и Битрикс24 в трёх вариантах.</p>
+
+      <div class="body">
+        <div class="phases">
+          <div class="phase sales">Продажи</div>
+          <div class="phase buy">Закупка и исполнение</div>
+        </div>
+
+        <div class="grid">
+          <div class="timeline-label">Этапы</div>
+          <div class="timeline-track">
+            <div class="rail"></div>
+            <div class="stages">
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">Лид</div>
+                <div class="stage-hint">Спрос клиента</div>
+              </div>
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">КП клиенту</div>
+                <div class="stage-hint">Коммерция</div>
+              </div>
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">Сделка</div>
+                <div class="stage-hint">Договор</div>
+              </div>
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">Заявка<br>на закупку</div>
+                <div class="stage-hint">Потребность</div>
+              </div>
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">Запрос<br>поставщикам</div>
+                <div class="stage-hint">RFQ</div>
+              </div>
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">Сравнение<br>КП</div>
+                <div class="stage-hint">Выбор</div>
+              </div>
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">Поставка</div>
+                <div class="stage-hint">От поставщика</div>
+              </div>
+              <div class="stage">
+                <div class="dot"></div>
+                <div class="stage-name">Отгрузка<br>клиенту</div>
+                <div class="stage-hint">Закрытие</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lanes">
+          <!-- iStockLink: continuous full -->
+          <div class="lane">
+            <div class="lane-label">
+              <b>iStockLink</b>
+              <span>CRM + SRM из коробки</span>
+            </div>
+            <div class="cells">
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="bar-overlay isl">Весь контур: продажи → закупка → отгрузка</div>
+            </div>
+          </div>
+
+          <!-- Bitrix box: stages 1-3 -->
+          <div class="lane">
+            <div class="lane-label">
+              <b>Битрикс24 из коробки</b>
+              <span>Без проекта внедрения</span>
+            </div>
+            <div class="cells">
+              <div class="cell"><div class="fill bx-box"></div></div>
+              <div class="cell"><div class="fill bx-box"></div></div>
+              <div class="cell"><div class="fill bx-box"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="bar-overlay bx-box">CRM продаж</div>
+              <span class="bar-note" style="left: calc(37.5% + 8px)">закупка — вручную / почта</span>
+            </div>
+          </div>
+
+          <!-- Bitrix + custom: stages 1-5 continuous -->
+          <div class="lane">
+            <div class="lane-label">
+              <b>Битрикс24 + доработки</b>
+              <span>Проект интегратора</span>
+            </div>
+            <div class="cells">
+              <div class="cell"><div class="fill bx-custom"></div></div>
+              <div class="cell"><div class="fill bx-custom"></div></div>
+              <div class="cell"><div class="fill bx-custom"></div></div>
+              <div class="cell"><div class="fill bx-custom"></div></div>
+              <div class="cell"><div class="fill bx-custom"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="bar-overlay bx-custom">Продажи + часть закупок</div>
+              <span class="bar-note" style="left: calc(62.5% + 8px)">сравнение / поставка — ещё кастом</span>
+            </div>
+          </div>
+
+          <!-- Bitrix + plugins: sales solid + fragmented SRM -->
+          <div class="lane">
+            <div class="lane-label">
+              <b>Битрикс24 + плагины</b>
+              <span>Маркетплейс / внешние модули</span>
+            </div>
+            <div class="cells">
+              <div class="cell"><div class="fill bx-plugin"></div></div>
+              <div class="cell"><div class="fill bx-plugin"></div></div>
+              <div class="cell"><div class="fill bx-plugin"></div></div>
+              <div class="cell"><div class="fill bx-plugin weak"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill bx-plugin weak"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <div class="cell"><div class="fill gap"></div></div>
+              <span class="bar-note" style="left: 8px; color: #fff; font-weight: 700;">Продажи + куски SRM</span>
+              <span class="bar-note" style="left: calc(75% + 4px)">сквозной процесс рвётся</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="takeaway">Вывод: <span>iStockLink</span> закрывает линию целиком. Битрикс силён в продажах; закупка и исполнение — зона пробелов, кастома или рваных плагинов.</p>
+
+        <div class="legend">
+          <div class="leg"><span class="sw" style="background:#1c50de"></span>iStockLink — непрерывная зона</div>
+          <div class="leg"><span class="sw" style="background:#94a3b8"></span>Битрикс из коробки</div>
+          <div class="leg"><span class="sw" style="background:#38bdf8"></span>Битрикс + доработки</div>
+          <div class="leg"><span class="sw" style="background:#0284c7"></span>Битрикс + плагины</div>
+          <div class="leg"><span class="sw gap"></span>Не закрыто / вручную</div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <span>Черновик v2 · этапы и зоны можно править</span>
+        <span>01 / 01</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
