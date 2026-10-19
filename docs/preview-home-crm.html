@@ -26,238 +26,222 @@
 </style>
 </head>
 <body>
-<div class="tg-preview-bar">Превью зонтик главной + /crm · сборка 2026-10-19 (298da0c) · <a href="./tilda-blocks/">файлы для T123</a> · <a href="./">/trading полный</a></div>
+<div class="tg-preview-bar">Превью зонтик главной + /crm · сборка 2026-10-19 (0476b29) · <a href="./tilda-blocks/">файлы для T123</a> · <a href="./">/trading полный</a></div>
 <div class="tg-preview-section">Главная · зонтик (вставить после hero)</div>
 
-<!-- Tilda block: главная · мост CRM+SRM (после hero) -->
+<!-- Tilda block: главная · мост CRM+SRM · стиль istock.link -->
 <style>
-  .tg-home-bridge-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-bridge {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
-    padding: 56px 24px 48px;
+    padding: 90px 20px 70px;
   }
-  .tg-home-bridge-wrap *, .tg-home-bridge-wrap *::before, .tg-home-bridge-wrap *::after { box-sizing: border-box; }
-  .tg-home-bridge-inner {
-    max-width: 820px;
+  .isl-bridge *, .isl-bridge *::before, .isl-bridge *::after { box-sizing: border-box; }
+  .isl-bridge__inner {
+    max-width: 960px;
     margin: 0 auto;
     text-align: center;
   }
-  .tg-home-bridge-label {
-    display: inline-block;
-    margin-bottom: 14px;
-    font-size: 12px;
+  .isl-bridge__title {
+    margin: 0 0 18px;
+    font-size: 36px;
+    line-height: 1.25;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
+    color: var(--isl-text);
   }
-  .tg-home-bridge-lead {
-    margin: 0 0 16px;
-    font-size: clamp(22px, 3vw, 30px);
-    line-height: 1.35;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
+  .isl-bridge__title span { color: var(--isl-blue); }
+  .isl-bridge__text {
+    margin: 0 auto 28px;
+    max-width: 680px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-home-bridge-lead span { color: var(--tg-primary); }
-  .tg-home-bridge-text {
-    margin: 0 0 24px;
-    font-size: clamp(17px, 2.2vw, 20px);
-    line-height: 1.65;
-    color: var(--tg-muted);
-  }
-  .tg-home-bridge-actions {
+  .isl-bridge__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
   }
-  .tg-home-bridge-btn {
+  .isl-bridge__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 22px;
-    border-radius: 12px;
-    font-size: 15px;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
+    font-family: inherit;
   }
-  .tg-home-bridge-btn-primary {
-    background: #1c50de;
+  .isl-bridge__btn--primary {
+    background: var(--isl-blue);
     color: #fff !important;
-    box-shadow: 0 8px 20px rgba(28, 80, 222, 0.22);
+    border: 1px solid var(--isl-blue);
   }
-  .tg-home-bridge-btn-primary:hover { transform: translateY(-1px); }
-  .tg-home-bridge-btn-secondary {
+  .isl-bridge__btn--secondary {
     background: #fff;
-    color: var(--tg-text);
-    border: 1px solid #e2e8f0;
+    color: var(--isl-blue) !important;
+    border: 1px solid var(--isl-blue);
   }
-  @media (max-width: 560px) {
-    .tg-home-bridge-wrap { padding: 44px 20px 36px; }
-    .tg-home-bridge-btn { width: 100%; max-width: 320px; }
+  @media (max-width: 640px) {
+    .isl-bridge { padding: 64px 16px 48px; }
+    .isl-bridge__title { font-size: 28px; }
+    .isl-bridge__btn { width: 100%; max-width: 320px; }
   }
 </style>
 
-<div class="tg-home-bridge-wrap" id="crm">
-  <div class="tg-home-bridge-inner">
-    <span class="tg-home-bridge-label">CRM + SRM</span>
-    <p class="tg-home-bridge-lead">Продажи и закупки в <span>одном контуре</span></p>
-    <p class="tg-home-bridge-text">От тендера или заявки клиента — до КП с маржой и заказа поставщику. Без разрыва между коммерцией и снабжением, без выгрузки в Excel.</p>
-    <div class="tg-home-bridge-actions">
-      <a href="https://istock.link/crm" class="tg-home-bridge-btn tg-home-bridge-btn-primary">Модуль CRM</a>
-      <a href="#popup:demo" class="tg-home-bridge-btn tg-home-bridge-btn-secondary">Запросить демо</a>
+<div class="isl-bridge" id="crm">
+  <div class="isl-bridge__inner">
+    <h2 class="isl-bridge__title">Продажи и закупки в <span>одном контуре</span></h2>
+    <p class="isl-bridge__text">От тендера или заявки клиента — до КП с маржой и заказа поставщику. CRM и SRM без разрыва между коммерцией и снабжением.</p>
+    <div class="isl-bridge__actions">
+      <a href="https://istock.link/crm" class="isl-bridge__btn isl-bridge__btn--primary">Модуль CRM</a>
+      <a href="#popup:demo" class="isl-bridge__btn isl-bridge__btn--secondary">Запросить демо</a>
     </div>
   </div>
 </div>
 
-<!-- Tilda block: главная · три столпа CRM · SRM · интеграции -->
+<!-- Tilda block: главная · CRM · SRM · интеграции · стиль istock.link -->
 <style>
-  .tg-home-pillars-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-pillars {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
-    padding: 72px 24px;
+    background: #f4f7f9;
+    padding: 90px 20px;
   }
-  .tg-home-pillars-wrap *, .tg-home-pillars-wrap *::before, .tg-home-pillars-wrap *::after { box-sizing: border-box; }
-  .tg-home-pillars-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-home-pillars-header { text-align: center; margin-bottom: 40px; }
-  .tg-home-pillars-title {
-    margin: 0 0 12px;
-    font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
+  .isl-pillars *, .isl-pillars *::before, .isl-pillars *::after { box-sizing: border-box; }
+  .isl-pillars__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-pillars__header { text-align: center; margin-bottom: 48px; }
+  .isl-pillars__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-home-pillars-sub {
+  .isl-pillars__sub {
     margin: 0 auto;
     max-width: 640px;
     font-size: 18px;
-    line-height: 1.6;
-    color: var(--tg-muted);
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-home-pillars-grid {
+  .isl-pillars__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 24px;
   }
-  .tg-home-pillar {
-    border-radius: 20px;
-    padding: 28px 24px;
-    border: 1px solid #e8edf5;
+  .isl-pillars__card {
     background: #fff;
-    position: relative;
-    overflow: hidden;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+    padding: 28px 24px;
   }
-  .tg-home-pillar::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #1c50de, #4d7aef);
-  }
-  .tg-home-pillar-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: rgba(28,80,222,0.1);
-    color: var(--tg-primary);
-    margin-bottom: 12px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .tg-home-pillar-title {
+  .isl-pillars__label {
     margin: 0 0 10px;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--tg-text);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--isl-blue);
+    letter-spacing: 0.02em;
   }
-  .tg-home-pillar-text {
+  .isl-pillars__card h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--isl-text);
+    line-height: 1.3;
+  }
+  .isl-pillars__card > p {
     margin: 0 0 16px;
     font-size: 16px;
-    line-height: 1.55;
-    color: var(--tg-muted);
-  }
-  .tg-home-pillar-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .tg-home-pillar-list li {
-    display: flex;
-    gap: 8px;
-    font-size: 15px;
     line-height: 1.5;
-    color: #475569;
-    padding: 5px 0;
+    color: var(--isl-muted);
   }
-  .tg-home-pillar-list li::before {
-    content: "•";
-    color: var(--tg-primary);
-    font-weight: 700;
-    flex-shrink: 0;
+  .isl-pillars__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
-  .tg-home-pillar-link {
+  .isl-pillars__list li {
+    position: relative;
+    padding: 6px 0 6px 16px;
+    font-size: 15px;
+    line-height: 1.45;
+    color: #444;
+  }
+  .isl-pillars__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--isl-blue);
+  }
+  .isl-pillars__link {
     display: inline-block;
-    margin-top: 16px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--tg-primary);
+    margin-top: 18px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--isl-blue);
     text-decoration: none;
   }
-  .tg-home-pillar-link:hover { text-decoration: underline; }
+  .isl-pillars__link:hover { text-decoration: underline; }
   @media (max-width: 900px) {
-    .tg-home-pillars-grid { grid-template-columns: 1fr; }
+    .isl-pillars__grid { grid-template-columns: 1fr; }
   }
-  @media (max-width: 560px) {
-    .tg-home-pillars-wrap { padding: 56px 16px; }
+  @media (max-width: 640px) {
+    .isl-pillars { padding: 64px 16px; }
+    .isl-pillars__title { font-size: 28px; }
   }
 </style>
 
-<div class="tg-home-pillars-wrap">
-  <div class="tg-home-pillars-inner">
-    <div class="tg-home-pillars-header">
-      <h2 class="tg-home-pillars-title">Возможности iStockLink: продажи и снабжение</h2>
-      <p class="tg-home-pillars-sub">Три контура на одной платформе — без отдельного внедрения под каждый процесс.</p>
+<div class="isl-pillars">
+  <div class="isl-pillars__inner">
+    <div class="isl-pillars__header">
+      <h2 class="isl-pillars__title">Возможности iStockLink: продажи и снабжение</h2>
+      <p class="isl-pillars__sub">Три контура на одной платформе — без отдельного внедрения под каждый процесс.</p>
     </div>
-    <div class="tg-home-pillars-grid">
-      <article class="tg-home-pillar">
-        <span class="tg-home-pillar-tag">CRM</span>
-        <h3 class="tg-home-pillar-title">Продажи и тендеры</h3>
-        <p class="tg-home-pillar-text">Лента тендеров и заявок клиентов, канбан сделок, КП с маржой.</p>
-        <ul class="tg-home-pillar-list">
+    <div class="isl-pillars__grid">
+      <article class="isl-pillars__card">
+        <p class="isl-pillars__label">CRM</p>
+        <h3>Продажи и тендеры</h3>
+        <p>Лента тендеров и заявок клиентов, канбан сделок, КП с маржой.</p>
+        <ul class="isl-pillars__list">
           <li>Тендер → сделка одним действием</li>
           <li>Позиции из ТЗ и Excel</li>
           <li>Несколько воронок, роли и поля</li>
         </ul>
-        <a class="tg-home-pillar-link" href="https://istock.link/crm">Подробнее о CRM →</a>
+        <a class="isl-pillars__link" href="https://istock.link/crm">Подробнее о CRM →</a>
       </article>
-      <article class="tg-home-pillar">
-        <span class="tg-home-pillar-tag">SRM</span>
-        <h3 class="tg-home-pillar-title">Закупки у поставщиков</h3>
-        <p class="tg-home-pillar-text">Запрос цен из сделки, сравнение КП и заказ поставщику в том же окне.</p>
-        <ul class="tg-home-pillar-list">
+      <article class="isl-pillars__card">
+        <p class="isl-pillars__label">SRM</p>
+        <h3>Закупки у поставщиков</h3>
+        <p>Запрос цен из сделки, сравнение КП и заказ поставщику в том же окне.</p>
+        <ul class="isl-pillars__list">
           <li>Ответы поставщиков в одной таблице</li>
           <li>Заказ по ссылке без регистрации</li>
           <li>Справочник и поиск поставщиков</li>
         </ul>
       </article>
-      <article class="tg-home-pillar">
-        <span class="tg-home-pillar-tag">Интеграции</span>
-        <h3 class="tg-home-pillar-title">Агрегаторы и переезд</h3>
-        <p class="tg-home-pillar-text">ЭТП и агрегаторы в ленте; быстрый старт с импортом из привычных систем.</p>
-        <ul class="tg-home-pillar-list">
+      <article class="isl-pillars__card">
+        <p class="isl-pillars__label">Интеграции</p>
+        <h3>Агрегаторы и переезд</h3>
+        <p>ЭТП и агрегаторы в ленте; быстрый старт с импортом из привычных систем.</p>
+        <ul class="isl-pillars__list">
           <li>Контур, Seldon и др. в контуре</li>
           <li>Импорт из Excel и Битрикс24</li>
           <li>Шаблоны досок без интегратора</li>
@@ -267,141 +251,134 @@
   </div>
 </div>
 
-<!-- Tilda block: главная · процесс 5 шагов (продукт сейчас) -->
+<!-- Tilda block: главная · 5 шагов · стиль istock.link -->
 <style>
-  .tg-home-proc-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-proc {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
-    padding: 72px 24px;
+    padding: 90px 20px;
   }
-  .tg-home-proc-wrap *, .tg-home-proc-wrap *::before, .tg-home-proc-wrap *::after { box-sizing: border-box; }
-  .tg-home-proc-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-home-proc-header { text-align: center; margin-bottom: 36px; }
-  .tg-home-proc-title {
-    margin: 0 0 12px;
-    font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
+  .isl-proc *, .isl-proc *::before, .isl-proc *::after { box-sizing: border-box; }
+  .isl-proc__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-proc__header { text-align: center; margin-bottom: 40px; }
+  .isl-proc__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-home-proc-sub {
+  .isl-proc__sub {
     margin: 0 auto;
     max-width: 640px;
     font-size: 18px;
-    line-height: 1.6;
-    color: var(--tg-muted);
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-home-proc-scroll {
+  .isl-proc__hint {
+    display: none;
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: #999;
+  }
+  .isl-proc__scroll {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 8px;
   }
-  .tg-home-proc-track {
+  .isl-proc__track {
     display: grid;
     grid-template-columns: repeat(5, minmax(180px, 1fr));
-    gap: 12px;
-    min-width: 960px;
+    gap: 16px;
+    min-width: 940px;
   }
-  .tg-home-proc-step {
-    border-radius: 16px;
-    border: 1px solid #e8edf5;
-    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
-    padding: 20px 16px;
-    min-height: 160px;
+  .isl-proc__step {
+    background: #f4f7f9;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+    padding: 22px 18px;
+    min-height: 168px;
   }
-  .tg-home-proc-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    background: rgba(28,80,222,0.1);
-    color: var(--tg-primary);
-    font-size: 13px;
-    font-weight: 800;
-    margin-bottom: 10px;
-  }
-  .tg-home-proc-zone {
+  .isl-proc__num {
     display: block;
-    font-size: 11px;
+    margin-bottom: 10px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
-    margin-bottom: 6px;
+    color: var(--isl-blue);
   }
-  .tg-home-proc-zone.srm { color: #0f766e; }
-  .tg-home-proc-name {
+  .isl-proc__zone {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--isl-blue);
+  }
+  .isl-proc__zone--srm { color: #0b7a6a; }
+  .isl-proc__name {
     margin: 0 0 8px;
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--tg-text);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--isl-text);
     line-height: 1.3;
   }
-  .tg-home-proc-desc {
+  .isl-proc__desc {
     margin: 0;
     font-size: 14px;
     line-height: 1.45;
-    color: var(--tg-muted);
-  }
-  .tg-home-proc-hint {
-    display: none;
-    margin: 0 0 12px;
-    font-size: 13px;
-    color: #94a3b8;
+    color: var(--isl-muted);
   }
   @media (max-width: 1000px) {
-    .tg-home-proc-hint { display: block; }
+    .isl-proc__hint { display: block; }
   }
-  @media (max-width: 560px) {
-    .tg-home-proc-wrap { padding: 56px 16px; }
+  @media (max-width: 640px) {
+    .isl-proc { padding: 64px 16px; }
+    .isl-proc__title { font-size: 28px; }
   }
 </style>
 
-<div class="tg-home-proc-wrap">
-  <div class="tg-home-proc-inner">
-    <div class="tg-home-proc-header">
-      <h2 class="tg-home-proc-title">От заявки до заказа поставщику</h2>
-      <p class="tg-home-proc-sub">Пять шагов продукта: CRM ведёт продажу, SRM закрывает закупку — в одной карточке сделки.</p>
+<div class="isl-proc">
+  <div class="isl-proc__inner">
+    <div class="isl-proc__header">
+      <h2 class="isl-proc__title">От заявки до заказа поставщику</h2>
+      <p class="isl-proc__sub">Пять шагов продукта: CRM ведёт продажу, SRM закрывает закупку — в одной карточке сделки.</p>
     </div>
-    <p class="tg-home-proc-hint">Листайте этапы вправо →</p>
-    <div class="tg-home-proc-scroll">
-      <div class="tg-home-proc-track">
-        <div class="tg-home-proc-step">
-          <span class="tg-home-proc-num">01</span>
-          <span class="tg-home-proc-zone">CRM</span>
-          <h3 class="tg-home-proc-name">Заявка или тендер</h3>
-          <p class="tg-home-proc-desc">Лента агрегаторов и ЭТП или заказ от клиента.</p>
+    <p class="isl-proc__hint">Листайте этапы вправо →</p>
+    <div class="isl-proc__scroll">
+      <div class="isl-proc__track">
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">01</span>
+          <span class="isl-proc__zone">CRM</span>
+          <h3 class="isl-proc__name">Заявка или тендер</h3>
+          <p class="isl-proc__desc">Лента агрегаторов и ЭТП или заказ от клиента.</p>
         </div>
-        <div class="tg-home-proc-step">
-          <span class="tg-home-proc-num">02</span>
-          <span class="tg-home-proc-zone">CRM</span>
-          <h3 class="tg-home-proc-name">Сделка с товарами</h3>
-          <p class="tg-home-proc-desc">Канбан, позиции из ТЗ и Excel, задачи, почта.</p>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">02</span>
+          <span class="isl-proc__zone">CRM</span>
+          <h3 class="isl-proc__name">Сделка с товарами</h3>
+          <p class="isl-proc__desc">Канбан, позиции из ТЗ и Excel, задачи, почта.</p>
         </div>
-        <div class="tg-home-proc-step">
-          <span class="tg-home-proc-num">03</span>
-          <span class="tg-home-proc-zone srm">SRM</span>
-          <h3 class="tg-home-proc-name">Цены поставщиков</h3>
-          <p class="tg-home-proc-desc">Запрос из сделки, ответы в одной таблице.</p>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">03</span>
+          <span class="isl-proc__zone isl-proc__zone--srm">SRM</span>
+          <h3 class="isl-proc__name">Цены поставщиков</h3>
+          <p class="isl-proc__desc">Запрос из сделки, ответы в одной таблице.</p>
         </div>
-        <div class="tg-home-proc-step">
-          <span class="tg-home-proc-num">04</span>
-          <span class="tg-home-proc-zone">CRM</span>
-          <h3 class="tg-home-proc-name">КП с маржой</h3>
-          <p class="tg-home-proc-desc">Расчёт и фиксация предложения клиенту.</p>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">04</span>
+          <span class="isl-proc__zone">CRM</span>
+          <h3 class="isl-proc__name">КП с маржой</h3>
+          <p class="isl-proc__desc">Расчёт и фиксация предложения клиенту.</p>
         </div>
-        <div class="tg-home-proc-step">
-          <span class="tg-home-proc-num">05</span>
-          <span class="tg-home-proc-zone srm">SRM</span>
-          <h3 class="tg-home-proc-name">Заказ поставщику</h3>
-          <p class="tg-home-proc-desc">Ссылка без регистрации, подтверждение и счёт.</p>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">05</span>
+          <span class="isl-proc__zone isl-proc__zone--srm">SRM</span>
+          <h3 class="isl-proc__name">Заказ поставщику</h3>
+          <p class="isl-proc__desc">Ссылка без регистрации, подтверждение и счёт.</p>
         </div>
       </div>
     </div>
@@ -410,206 +387,198 @@
 
 <div class="tg-preview-section">Страница /crm (порядок сверху вниз)</div>
 
-<!-- Tilda block: /crm · hero модуля -->
+<!-- Tilda block: /crm · hero · стиль istock.link -->
 <style>
-  .tg-crm-hero-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-crm-hero {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7fb 0%, #fff 70%);
-    padding: 72px 24px 56px;
+    background: #d1e4ff;
+    padding: 100px 20px 80px;
   }
-  .tg-crm-hero-wrap *, .tg-crm-hero-wrap *::before, .tg-crm-hero-wrap *::after { box-sizing: border-box; }
-  .tg-crm-hero-inner {
-    max-width: 920px;
+  .isl-crm-hero *, .isl-crm-hero *::before, .isl-crm-hero *::after { box-sizing: border-box; }
+  .isl-crm-hero__inner {
+    max-width: 860px;
     margin: 0 auto;
     text-align: center;
   }
-  .tg-crm-hero-label {
-    display: inline-block;
-    margin-bottom: 16px;
-    font-size: 12px;
+  .isl-crm-hero__kicker {
+    margin: 0 0 14px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
+    color: var(--isl-blue);
   }
-  .tg-crm-hero-title {
+  .isl-crm-hero__title {
     margin: 0 0 18px;
-    font-size: clamp(32px, 4.2vw, 48px);
-    line-height: 1.1;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--tg-text);
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-hero-sub {
+  .isl-crm-hero__sub {
     margin: 0 auto 28px;
-    max-width: 640px;
-    font-size: clamp(17px, 2.2vw, 20px);
-    line-height: 1.6;
-    color: #475569;
+    max-width: 620px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-crm-hero-actions {
+  .isl-crm-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
     margin-bottom: 28px;
   }
-  .tg-crm-hero-btn {
+  .isl-crm-hero__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-size: 15px;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
+    font-family: inherit;
   }
-  .tg-crm-hero-btn-primary {
-    background: #1c50de;
+  .isl-crm-hero__btn--primary {
+    background: var(--isl-blue);
     color: #fff !important;
-    box-shadow: 0 10px 24px rgba(28, 80, 222, 0.28);
+    border: 1px solid var(--isl-blue);
   }
-  .tg-crm-hero-btn-primary:hover { transform: translateY(-1px); }
-  .tg-crm-hero-btn-secondary {
+  .isl-crm-hero__btn--secondary {
     background: #fff;
-    color: var(--tg-text);
-    border: 1px solid #e2e8f0;
+    color: var(--isl-blue) !important;
+    border: 1px solid var(--isl-blue);
   }
-  .tg-crm-hero-checks {
+  .isl-crm-hero__list {
     list-style: none;
-    padding: 0;
     margin: 0 auto;
+    padding: 0;
     max-width: 560px;
     text-align: left;
   }
-  .tg-crm-hero-checks li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 15px;
-    color: #334155;
-    margin-bottom: 8px;
+  .isl-crm-hero__list li {
+    position: relative;
+    padding: 8px 0 8px 22px;
+    font-size: 16px;
     line-height: 1.45;
+    color: #444;
   }
-  .tg-crm-hero-checks li::before {
-    content: "✓";
-    width: 22px; height: 22px;
+  .isl-crm-hero__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: #dcfce7;
-    color: #16a34a;
-    font-size: 12px;
-    font-weight: 800;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
+    background: var(--isl-blue);
   }
-  @media (max-width: 560px) {
-    .tg-crm-hero-wrap { padding: 56px 16px 44px; }
-    .tg-crm-hero-btn { width: 100%; max-width: 320px; }
+  @media (max-width: 640px) {
+    .isl-crm-hero { padding: 72px 16px 56px; }
+    .isl-crm-hero__title { font-size: 30px; }
+    .isl-crm-hero__btn { width: 100%; max-width: 320px; }
   }
 </style>
 
-<div class="tg-crm-hero-wrap">
-  <div class="tg-crm-hero-inner">
-    <span class="tg-crm-hero-label">Модуль CRM</span>
-    <h1 class="tg-crm-hero-title">От лида и тендера — до передачи в закупку</h1>
-    <p class="tg-crm-hero-sub">Воронка, товары из ТЗ и Excel, КП с маржой. Дальше в том же контуре — цены поставщиков и заказ без второй системы.</p>
-    <div class="tg-crm-hero-actions">
-      <a href="#popup:demo" class="tg-crm-hero-btn tg-crm-hero-btn-primary">Запросить демо</a>
-      <a href="https://istock.link/#crm" class="tg-crm-hero-btn tg-crm-hero-btn-secondary">Смотреть платформу</a>
+<div class="isl-crm-hero">
+  <div class="isl-crm-hero__inner">
+    <p class="isl-crm-hero__kicker">Модуль CRM</p>
+    <h1 class="isl-crm-hero__title">От лида и тендера — до передачи в закупку</h1>
+    <p class="isl-crm-hero__sub">Воронка, товары из ТЗ и Excel, КП с маржой. Дальше в том же контуре — цены поставщиков и заказ без второй системы.</p>
+    <div class="isl-crm-hero__actions">
+      <a href="#popup:demo" class="isl-crm-hero__btn isl-crm-hero__btn--primary">Запросить демо</a>
+      <a href="https://istock.link/" class="isl-crm-hero__btn isl-crm-hero__btn--secondary">На главную</a>
     </div>
-    <ul class="tg-crm-hero-checks">
+    <ul class="isl-crm-hero__list">
       <li>Тендер из ленты или заявка клиента → сделка одним действием</li>
-      <li>Не замена Битрикс-портала: фокус на продажах + закупках у поставщиков</li>
+      <li>Не замена Битрикс-портала: фокус на продажах и закупках у поставщиков</li>
       <li>Импорт из Excel и выгрузки Битрикс24</li>
     </ul>
   </div>
 </div>
 
-<!-- Tilda block: /crm · для кого -->
+<!-- Tilda block: /crm · для кого · стиль istock.link -->
 <style>
-  .tg-crm-whom-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-whom {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
-    padding: 72px 24px;
+    padding: 90px 20px;
   }
-  .tg-crm-whom-wrap *, .tg-crm-whom-wrap *::before, .tg-crm-whom-wrap *::after { box-sizing: border-box; }
-  .tg-crm-whom-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-crm-whom-header { text-align: center; margin-bottom: 36px; }
-  .tg-crm-whom-title {
-    margin: 0 0 12px;
-    font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
+  .isl-whom *, .isl-whom *::before, .isl-whom *::after { box-sizing: border-box; }
+  .isl-whom__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-whom__header { text-align: center; margin-bottom: 40px; }
+  .isl-whom__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-whom-sub {
+  .isl-whom__sub {
     margin: 0 auto;
     max-width: 600px;
     font-size: 18px;
-    line-height: 1.6;
-    color: var(--tg-muted);
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-crm-whom-grid {
+  .isl-whom__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 24px;
   }
-  .tg-crm-whom-card {
-    border-radius: 20px;
-    border: 1px solid #e8edf5;
-    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+  .isl-whom__card {
+    background: #dbe9fe;
+    border-radius: 10px;
     padding: 28px 24px;
   }
-  .tg-crm-whom-card h3 {
+  .isl-whom__card h3 {
     margin: 0 0 10px;
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--tg-text);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-whom-card p {
+  .isl-whom__card p {
     margin: 0;
     font-size: 16px;
-    line-height: 1.55;
-    color: var(--tg-muted);
+    line-height: 1.5;
+    color: var(--isl-muted);
   }
   @media (max-width: 900px) {
-    .tg-crm-whom-grid { grid-template-columns: 1fr; }
+    .isl-whom__grid { grid-template-columns: 1fr; }
   }
-  @media (max-width: 560px) {
-    .tg-crm-whom-wrap { padding: 56px 16px; }
+  @media (max-width: 640px) {
+    .isl-whom { padding: 64px 16px; }
+    .isl-whom__title { font-size: 28px; }
   }
 </style>
 
-<div class="tg-crm-whom-wrap">
-  <div class="tg-crm-whom-inner">
-    <div class="tg-crm-whom-header">
-      <h2 class="tg-crm-whom-title">Для кого модуль CRM</h2>
-      <p class="tg-crm-whom-sub">Команды 5–30 человек, где продажа и закупка связаны в одном цикле.</p>
+<div class="isl-whom">
+  <div class="isl-whom__inner">
+    <div class="isl-whom__header">
+      <h2 class="isl-whom__title">Для кого модуль CRM</h2>
+      <p class="isl-whom__sub">Команды 5–30 человек, где продажа и закупка связаны в одном цикле.</p>
     </div>
-    <div class="tg-crm-whom-grid">
-      <article class="tg-crm-whom-card">
+    <div class="isl-whom__grid">
+      <article class="isl-whom__card">
         <h3>Тендерный отдел</h3>
         <p>Регулярное участие в торгах: лента агрегаторов, воронка, ответственные, передача в запрос поставщикам.</p>
       </article>
-      <article class="tg-crm-whom-card">
+      <article class="isl-whom__card">
         <h3>Дистрибьютор / опт под заказ</h3>
         <p>Электротехника, стройматериалы, промооборудование: заявка клиента → КП → заказ поставщику.</p>
       </article>
-      <article class="tg-crm-whom-card">
+      <article class="isl-whom__card">
         <h3>Подрядчик</h3>
         <p>Смешанные продажи и закупки под клиента — одна карточка сделки вместо почты и Excel.</p>
       </article>
@@ -617,94 +586,96 @@
   </div>
 </div>
 
-<!-- Tilda block: /crm · возможности (канон PDF слайд 2) -->
+<!-- Tilda block: /crm · возможности · стиль istock.link -->
 <style>
-  .tg-crm-cap-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-cap {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7ff 0%, #fff 100%);
-    padding: 72px 24px;
+    background: #f4f7f9;
+    padding: 90px 20px;
   }
-  .tg-crm-cap-wrap *, .tg-crm-cap-wrap *::before, .tg-crm-cap-wrap *::after { box-sizing: border-box; }
-  .tg-crm-cap-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-crm-cap-header { text-align: center; margin-bottom: 40px; }
-  .tg-crm-cap-title {
-    margin: 0 0 12px;
-    font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
+  .isl-cap *, .isl-cap *::before, .isl-cap *::after { box-sizing: border-box; }
+  .isl-cap__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-cap__header { text-align: center; margin-bottom: 40px; }
+  .isl-cap__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-cap-sub {
+  .isl-cap__sub {
     margin: 0 auto;
     max-width: 640px;
     font-size: 18px;
-    line-height: 1.6;
-    color: var(--tg-muted);
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-crm-cap-grid {
+  .isl-cap__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 20px;
   }
-  .tg-crm-cap-item {
-    border-radius: 18px;
-    border: 1px solid #e8edf5;
+  .isl-cap__item {
     background: #fff;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
     padding: 24px 22px;
   }
-  .tg-crm-cap-item h3 {
+  .isl-cap__item h3 {
     margin: 0 0 8px;
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--tg-text);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-cap-item p {
+  .isl-cap__item p {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--tg-muted);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--isl-muted);
   }
   @media (max-width: 720px) {
-    .tg-crm-cap-grid { grid-template-columns: 1fr; }
+    .isl-cap__grid { grid-template-columns: 1fr; }
   }
-  @media (max-width: 560px) {
-    .tg-crm-cap-wrap { padding: 56px 16px; }
+  @media (max-width: 640px) {
+    .isl-cap { padding: 64px 16px; }
+    .isl-cap__title { font-size: 28px; }
   }
 </style>
 
-<div class="tg-crm-cap-wrap">
-  <div class="tg-crm-cap-inner">
-    <div class="tg-crm-cap-header">
-      <h2 class="tg-crm-cap-title">Возможности CRM</h2>
-      <p class="tg-crm-cap-sub">То, что есть в продукте сейчас — без обещаний телефонии и корпоративного портала.</p>
+<div class="isl-cap">
+  <div class="isl-cap__inner">
+    <div class="isl-cap__header">
+      <h2 class="isl-cap__title">Возможности CRM</h2>
+      <p class="isl-cap__sub">То, что есть в продукте сейчас — без обещаний телефонии и корпоративного портала.</p>
     </div>
-    <div class="tg-crm-cap-grid">
-      <article class="tg-crm-cap-item">
+    <div class="isl-cap__grid">
+      <article class="isl-cap__item">
         <h3>Вход: заявка или тендер</h3>
         <p>Лента из агрегаторов и ЭТП либо заказ от клиента. Тендер превращается в сделку одним действием.</p>
       </article>
-      <article class="tg-crm-cap-item">
+      <article class="isl-cap__item">
         <h3>Сделка с товарами</h3>
         <p>Канбан, позиции из ТЗ и Excel, задачи и почта в карточке.</p>
       </article>
-      <article class="tg-crm-cap-item">
+      <article class="isl-cap__item">
         <h3>Воронки и роли</h3>
         <p>Несколько досок и воронок, настраиваемые поля по этапам, права доступа.</p>
       </article>
-      <article class="tg-crm-cap-item">
+      <article class="isl-cap__item">
         <h3>КП с маржой</h3>
         <p>Расчёт и фиксация предложения клиенту в той же сделке.</p>
       </article>
-      <article class="tg-crm-cap-item">
+      <article class="isl-cap__item">
         <h3>Переезд с Битрикс / Excel</h3>
         <p>Импорт сделок из Excel и выгрузки Битрикс24 для быстрого старта.</p>
       </article>
-      <article class="tg-crm-cap-item">
+      <article class="isl-cap__item">
         <h3>ИИ-ассистент Лина</h3>
         <p>Помощь по продукту внутри интерфейса — без отдельного внедрения «с нуля».</p>
       </article>
@@ -712,97 +683,95 @@
   </div>
 </div>
 
-<!-- Tilda block: /crm · мост в SRM -->
+<!-- Tilda block: /crm · мост в SRM · стиль istock.link -->
 <style>
-  .tg-crm-srm-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-srm {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
-    padding: 72px 24px;
+    padding: 90px 20px;
   }
-  .tg-crm-srm-wrap *, .tg-crm-srm-wrap *::before, .tg-crm-srm-wrap *::after { box-sizing: border-box; }
-  .tg-crm-srm-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-crm-srm-box {
-    border-radius: 24px;
-    border: 1px solid rgba(28, 80, 222, 0.14);
-    background: linear-gradient(135deg, #eef3ff 0%, #f8faff 50%, #f0fdf9 100%);
-    padding: 40px 36px;
+  .isl-srm *, .isl-srm *::before, .isl-srm *::after { box-sizing: border-box; }
+  .isl-srm__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-srm__box {
+    background: #d1e4ff;
+    border-radius: 10px;
+    padding: 48px 40px;
   }
-  .tg-crm-srm-label {
-    display: inline-block;
-    margin-bottom: 12px;
-    font-size: 12px;
+  .isl-srm__kicker {
+    margin: 0 0 10px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
+    color: var(--isl-blue);
   }
-  .tg-crm-srm-title {
+  .isl-srm__title {
     margin: 0 0 12px;
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-srm-text {
+  .isl-srm__text {
     margin: 0 0 28px;
     max-width: 640px;
     font-size: 18px;
-    line-height: 1.6;
-    color: var(--tg-muted);
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-crm-srm-steps {
+  .isl-srm__steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 16px;
   }
-  .tg-crm-srm-step {
+  .isl-srm__step {
     background: #fff;
-    border-radius: 16px;
-    border: 1px solid #e8edf5;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
     padding: 20px 18px;
   }
-  .tg-crm-srm-step strong {
+  .isl-srm__step strong {
     display: block;
     margin-bottom: 6px;
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--tg-text);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-srm-step span {
-    font-size: 14px;
+  .isl-srm__step span {
+    font-size: 15px;
     line-height: 1.45;
-    color: var(--tg-muted);
+    color: var(--isl-muted);
   }
   @media (max-width: 800px) {
-    .tg-crm-srm-steps { grid-template-columns: 1fr; }
-    .tg-crm-srm-box { padding: 28px 20px; }
+    .isl-srm__steps { grid-template-columns: 1fr; }
+    .isl-srm__box { padding: 32px 20px; }
   }
-  @media (max-width: 560px) {
-    .tg-crm-srm-wrap { padding: 56px 16px; }
+  @media (max-width: 640px) {
+    .isl-srm { padding: 64px 16px; }
+    .isl-srm__title { font-size: 26px; }
   }
 </style>
 
-<div class="tg-crm-srm-wrap">
-  <div class="tg-crm-srm-inner">
-    <div class="tg-crm-srm-box">
-      <span class="tg-crm-srm-label">Связка с SRM</span>
-      <h2 class="tg-crm-srm-title">После сделки закупка не уходит в Excel</h2>
-      <p class="tg-crm-srm-text">Запрос цен и заказ поставщику живут в той же карточке — это отличие от универсальной CRM, где SRM собирают доработкой.</p>
-      <div class="tg-crm-srm-steps">
-        <div class="tg-crm-srm-step">
+<div class="isl-srm">
+  <div class="isl-srm__inner">
+    <div class="isl-srm__box">
+      <p class="isl-srm__kicker">Связка с SRM</p>
+      <h2 class="isl-srm__title">После сделки закупка не уходит в Excel</h2>
+      <p class="isl-srm__text">Запрос цен и заказ поставщику живут в той же карточке — отличие от универсальной CRM, где SRM собирают доработкой.</p>
+      <div class="isl-srm__steps">
+        <div class="isl-srm__step">
           <strong>1. Запрос цен</strong>
           <span>Из сделки — поставщикам из справочника.</span>
         </div>
-        <div class="tg-crm-srm-step">
+        <div class="isl-srm__step">
           <strong>2. Сравнение</strong>
           <span>Ответы собираются в одной таблице по сделке.</span>
         </div>
-        <div class="tg-crm-srm-step">
+        <div class="isl-srm__step">
           <strong>3. Заказ</strong>
           <span>Ссылка без регистрации, подтверждение, файлы и счёт.</span>
         </div>
@@ -811,103 +780,103 @@
   </div>
 </div>
 
-<!-- Tilda block: /crm · сравнение (спокойный тон, без −50%) -->
+<!-- Tilda block: /crm · сравнение · стиль istock.link -->
 <style>
-  .tg-crm-cmp-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-cmp {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #fff 0%, #f4f7ff 100%);
-    padding: 72px 24px;
+    background: #f4f7f9;
+    padding: 90px 20px;
   }
-  .tg-crm-cmp-wrap *, .tg-crm-cmp-wrap *::before, .tg-crm-cmp-wrap *::after { box-sizing: border-box; }
-  .tg-crm-cmp-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-crm-cmp-header { text-align: center; margin-bottom: 32px; }
-  .tg-crm-cmp-title {
-    margin: 0 0 12px;
-    font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--tg-text);
+  .isl-cmp *, .isl-cmp *::before, .isl-cmp *::after { box-sizing: border-box; }
+  .isl-cmp__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-cmp__header { text-align: center; margin-bottom: 32px; }
+  .isl-cmp__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-cmp-sub {
+  .isl-cmp__sub {
     margin: 0 auto;
     max-width: 680px;
     font-size: 18px;
-    line-height: 1.6;
-    color: var(--tg-muted);
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-crm-cmp-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 20px; }
-  .tg-crm-cmp-table {
+  .isl-cmp__scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+  }
+  .isl-cmp__table {
     width: 100%;
     min-width: 720px;
     border-collapse: collapse;
-    background: #fff;
-    border: 1px solid rgba(28, 80, 222, 0.12);
-    border-radius: 20px;
-    overflow: hidden;
   }
-  .tg-crm-cmp-table th,
-  .tg-crm-cmp-table td {
+  .isl-cmp__table th,
+  .isl-cmp__table td {
     padding: 16px 14px;
     text-align: left;
     font-size: 15px;
     line-height: 1.4;
-    border-bottom: 1px solid #eef2ff;
-    border-right: 1px solid #eef2ff;
+    border-bottom: 1px solid var(--isl-border);
     vertical-align: top;
   }
-  .tg-crm-cmp-table th:last-child,
-  .tg-crm-cmp-table td:last-child { border-right: none; }
-  .tg-crm-cmp-table tr:last-child td { border-bottom: none; }
-  .tg-crm-cmp-table thead th {
-    background: #f8fafc;
-    font-weight: 800;
-    color: var(--tg-text);
-    font-size: 14px;
-  }
-  .tg-crm-cmp-table thead th.col-us {
-    background: #dce8ff;
-    color: #153fb8;
-  }
-  .tg-crm-cmp-table td.col-us {
-    background: linear-gradient(180deg, #e8efff 0%, #f0f5ff 100%);
-    font-weight: 600;
-    color: #0f172a;
-  }
-  .tg-crm-cmp-table td:first-child {
+  .isl-cmp__table tr:last-child td { border-bottom: none; }
+  .isl-cmp__table thead th {
+    background: #fff;
     font-weight: 700;
-    color: var(--tg-text);
-    background: #f8fafc;
+    color: var(--isl-text);
+    border-bottom: 2px solid var(--isl-border);
+  }
+  .isl-cmp__table thead th.isl-cmp__us {
+    color: var(--isl-blue);
+    background: #dbe9fe;
+  }
+  .isl-cmp__table td.isl-cmp__us {
+    background: #dbe9fe;
+    font-weight: 600;
+    color: var(--isl-text);
+  }
+  .isl-cmp__table td:first-child {
+    font-weight: 700;
+    color: var(--isl-text);
     width: 22%;
   }
-  .tg-crm-cmp-note {
+  .isl-cmp__note {
     margin: 16px 0 0;
     font-size: 14px;
     line-height: 1.5;
-    color: #94a3b8;
+    color: #888;
     text-align: center;
   }
-  @media (max-width: 560px) {
-    .tg-crm-cmp-wrap { padding: 56px 16px; }
+  @media (max-width: 640px) {
+    .isl-cmp { padding: 64px 16px; }
+    .isl-cmp__title { font-size: 28px; }
   }
 </style>
 
-<div class="tg-crm-cmp-wrap">
-  <div class="tg-crm-cmp-inner">
-    <div class="tg-crm-cmp-header">
-      <h2 class="tg-crm-cmp-title">Чем отличаемся от Битрикс24 и amoCRM</h2>
-      <p class="tg-crm-cmp-sub">Узкая ниша: тендеры и закупки у поставщиков. Не комбайн с порталом и телефонией.</p>
+<div class="isl-cmp">
+  <div class="isl-cmp__inner">
+    <div class="isl-cmp__header">
+      <h2 class="isl-cmp__title">Чем отличаемся от Битрикс24 и amoCRM</h2>
+      <p class="isl-cmp__sub">Узкая ниша: тендеры и закупки у поставщиков. Не комбайн с порталом и телефонией.</p>
     </div>
-    <div class="tg-crm-cmp-scroll">
-      <table class="tg-crm-cmp-table">
+    <div class="isl-cmp__scroll">
+      <table class="isl-cmp__table">
         <thead>
           <tr>
             <th></th>
-            <th class="col-us">iStockLink</th>
+            <th class="isl-cmp__us">iStockLink</th>
             <th>Битрикс24</th>
             <th>amoCRM</th>
           </tr>
@@ -915,162 +884,166 @@
         <tbody>
           <tr>
             <td>Фокус</td>
-            <td class="col-us">Тендеры + закупки у поставщиков</td>
+            <td class="isl-cmp__us">Тендеры + закупки у поставщиков</td>
             <td>Универсальная CRM + портал</td>
             <td>Отдел продаж</td>
           </tr>
           <tr>
             <td>Лента тендеров</td>
-            <td class="col-us">Из коробки</td>
+            <td class="isl-cmp__us">Из коробки</td>
             <td>Приложение / интегратор</td>
             <td>Виджеты, платно</td>
           </tr>
           <tr>
             <td>Тендер → сделка</td>
-            <td class="col-us">Одним действием</td>
+            <td class="isl-cmp__us">Одним действием</td>
             <td>Настройка полей и роботов</td>
             <td>—</td>
           </tr>
           <tr>
             <td>SRM: цены и заказ</td>
-            <td class="col-us">В том же окне</td>
+            <td class="isl-cmp__us">В том же окне</td>
             <td>Только доработкой</td>
             <td>Только доработкой</td>
           </tr>
           <tr>
             <td>Телефония / портал</td>
-            <td class="col-us">Нет (почта в сделке)</td>
+            <td class="isl-cmp__us">Нет (почта в сделке)</td>
             <td>Сильная сторона</td>
             <td>Мессенджеры, телефония</td>
           </tr>
           <tr>
             <td>Внедрение</td>
-            <td class="col-us">Шаблоны, импорт, дни</td>
+            <td class="isl-cmp__us">Шаблоны, импорт, дни</td>
             <td>Интегратор, недели</td>
             <td>Быстро для продаж</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="tg-crm-cmp-note">По подписке мы не всегда дешевле «голого» Битрикс. Выигрыш — дни вместо недель и SRM без отдельного проекта. Оффер перехода с Битрикс — на странице для тендерных отделов.</p>
+    <p class="isl-cmp__note">По подписке мы не всегда дешевле «голого» Битрикс. Выигрыш — дни вместо недель и SRM без отдельного проекта. Оффер перехода с Битрикс — на странице для тендерных отделов.</p>
   </div>
 </div>
 
-<!-- Tilda block: /crm · кому не подходит + CTA -->
+<!-- Tilda block: /crm · границы + CTA · стиль istock.link -->
 <style>
-  .tg-crm-bound-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-bound {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
-    padding: 72px 24px 80px;
+    padding: 90px 20px 100px;
   }
-  .tg-crm-bound-wrap *, .tg-crm-bound-wrap *::before, .tg-crm-bound-wrap *::after { box-sizing: border-box; }
-  .tg-crm-bound-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-crm-bound-grid {
+  .isl-bound *, .isl-bound *::before, .isl-bound *::after { box-sizing: border-box; }
+  .isl-bound__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-bound__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     margin-bottom: 40px;
   }
-  .tg-crm-bound-card {
-    border-radius: 20px;
-    border: 1px solid #e8edf5;
+  .isl-bound__card {
+    background: #f4f7f9;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
     padding: 28px 24px;
-    background: #f8fafc;
   }
-  .tg-crm-bound-card h2 {
+  .isl-bound__card h2 {
     margin: 0 0 14px;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--tg-text);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-bound-card ul {
+  .isl-bound__card ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
-  .tg-crm-bound-card li {
+  .isl-bound__card li {
     position: relative;
-    padding: 8px 0 8px 18px;
+    padding: 8px 0 8px 16px;
     font-size: 16px;
     line-height: 1.5;
-    color: var(--tg-muted);
+    color: var(--isl-muted);
   }
-  .tg-crm-bound-card li::before {
+  .isl-bound__card li::before {
     content: "–";
     position: absolute;
     left: 0;
-    color: #94a3b8;
-    font-weight: 700;
+    color: #999;
   }
-  .tg-crm-bound-cta {
-    background: linear-gradient(135deg, #1c50de 0%, #2a5fe8 40%, #3b6df0 100%);
-    border-radius: 24px;
+  .isl-bound__cta {
+    background: var(--isl-blue);
+    border-radius: 10px;
     padding: 48px 40px;
     text-align: center;
     color: #fff;
   }
-  .tg-crm-bound-cta h2 {
+  .isl-bound__cta h2 {
     margin: 0 0 12px;
-    font-size: clamp(24px, 3vw, 34px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
   }
-  .tg-crm-bound-cta p {
+  .isl-bound__cta > p {
     margin: 0 auto 24px;
-    max-width: 480px;
+    max-width: 520px;
     font-size: 17px;
-    line-height: 1.55;
-    opacity: 0.9;
+    line-height: 1.5;
+    opacity: 0.95;
   }
-  .tg-crm-bound-actions {
+  .isl-bound__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
   }
-  .tg-crm-bound-btn {
+  .isl-bound__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 700;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
+    font-family: inherit;
   }
-  .tg-crm-bound-btn-light {
+  .isl-bound__btn--light {
     background: #fff;
-    color: #1c50de !important;
+    color: var(--isl-blue) !important;
+    border: 1px solid #fff;
   }
-  .tg-crm-bound-btn-ghost {
+  .isl-bound__btn--ghost {
     background: transparent;
     color: #fff !important;
-    border: 1px solid rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.7);
   }
-  .tg-crm-bound-note {
+  .isl-bound__note {
     margin: 16px 0 0;
     font-size: 14px;
-    opacity: 0.75;
+    opacity: 0.85;
   }
   @media (max-width: 800px) {
-    .tg-crm-bound-grid { grid-template-columns: 1fr; }
-    .tg-crm-bound-cta { padding: 36px 20px; }
+    .isl-bound__grid { grid-template-columns: 1fr; }
+    .isl-bound__cta { padding: 36px 20px; }
   }
-  @media (max-width: 560px) {
-    .tg-crm-bound-wrap { padding: 56px 16px 64px; }
-    .tg-crm-bound-btn { width: 100%; max-width: 320px; }
+  @media (max-width: 640px) {
+    .isl-bound { padding: 64px 16px 72px; }
+    .isl-bound__cta h2 { font-size: 26px; }
+    .isl-bound__btn { width: 100%; max-width: 320px; }
   }
 </style>
 
-<div class="tg-crm-bound-wrap">
-  <div class="tg-crm-bound-inner">
-    <div class="tg-crm-bound-grid">
-      <article class="tg-crm-bound-card">
+<div class="isl-bound">
+  <div class="isl-bound__inner">
+    <div class="isl-bound__grid">
+      <article class="isl-bound__card">
         <h2>Кому не подходит</h2>
         <ul>
           <li>Нужны телефония, открытые линии, портал и HR «как в Битрикс»</li>
@@ -1078,7 +1051,7 @@
           <li>Enterprise S2P-проект от миллиона рублей</li>
         </ul>
       </article>
-      <article class="tg-crm-bound-card">
+      <article class="isl-bound__card">
         <h2>Что сделать дальше</h2>
         <ul>
           <li>Демо на ваших сделках или торгах</li>
@@ -1087,14 +1060,14 @@
         </ul>
       </article>
     </div>
-    <div class="tg-crm-bound-cta">
+    <div class="isl-bound__cta">
       <h2>Покажем CRM на вашем процессе</h2>
       <p>Оставьте заявку — разберём 1–2 реальные карточки: тендер или заявка клиента до заказа поставщику.</p>
-      <div class="tg-crm-bound-actions">
-        <a href="#popup:demo" class="tg-crm-bound-btn tg-crm-bound-btn-light">Запросить демо</a>
-        <a href="https://istock.link/trading" class="tg-crm-bound-btn tg-crm-bound-btn-ghost">CRM для тендерного отдела</a>
+      <div class="isl-bound__actions">
+        <a href="#popup:demo" class="isl-bound__btn isl-bound__btn--light">Запросить демо</a>
+        <a href="https://istock.link/trading" class="isl-bound__btn isl-bound__btn--ghost">CRM для тендерного отдела</a>
       </div>
-      <p class="tg-crm-bound-note">Тарифы: от 1 260 ₽/пользователь · командные пакеты от 6 000 ₽/мес</p>
+      <p class="isl-bound__note">Тарифы: от 1 260 ₽/пользователь · командные пакеты от 6 000 ₽/мес</p>
     </div>
   </div>
 </div>

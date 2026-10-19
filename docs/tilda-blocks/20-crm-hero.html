@@ -1,123 +1,114 @@
-<!-- iStockLink T123 · 20-crm-hero.html · build 298da0c · 2026-10-19 -->
-<!-- Tilda block: /crm · hero модуля -->
+<!-- iStockLink T123 · 20-crm-hero.html · build 0476b29 · 2026-10-19 -->
+<!-- Tilda block: /crm · hero · стиль istock.link -->
 <style>
-  .tg-crm-hero-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-crm-hero {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(180deg, #f4f7fb 0%, #fff 70%);
-    padding: 72px 24px 56px;
+    background: #d1e4ff;
+    padding: 100px 20px 80px;
   }
-  .tg-crm-hero-wrap *, .tg-crm-hero-wrap *::before, .tg-crm-hero-wrap *::after { box-sizing: border-box; }
-  .tg-crm-hero-inner {
-    max-width: 920px;
+  .isl-crm-hero *, .isl-crm-hero *::before, .isl-crm-hero *::after { box-sizing: border-box; }
+  .isl-crm-hero__inner {
+    max-width: 860px;
     margin: 0 auto;
     text-align: center;
   }
-  .tg-crm-hero-label {
-    display: inline-block;
-    margin-bottom: 16px;
-    font-size: 12px;
+  .isl-crm-hero__kicker {
+    margin: 0 0 14px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tg-primary);
+    color: var(--isl-blue);
   }
-  .tg-crm-hero-title {
+  .isl-crm-hero__title {
     margin: 0 0 18px;
-    font-size: clamp(32px, 4.2vw, 48px);
-    line-height: 1.1;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--tg-text);
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-hero-sub {
+  .isl-crm-hero__sub {
     margin: 0 auto 28px;
-    max-width: 640px;
-    font-size: clamp(17px, 2.2vw, 20px);
-    line-height: 1.6;
-    color: #475569;
+    max-width: 620px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
   }
-  .tg-crm-hero-actions {
+  .isl-crm-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
     margin-bottom: 28px;
   }
-  .tg-crm-hero-btn {
+  .isl-crm-hero__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-size: 15px;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
+    font-family: inherit;
   }
-  .tg-crm-hero-btn-primary {
-    background: #1c50de;
+  .isl-crm-hero__btn--primary {
+    background: var(--isl-blue);
     color: #fff !important;
-    box-shadow: 0 10px 24px rgba(28, 80, 222, 0.28);
+    border: 1px solid var(--isl-blue);
   }
-  .tg-crm-hero-btn-primary:hover { transform: translateY(-1px); }
-  .tg-crm-hero-btn-secondary {
+  .isl-crm-hero__btn--secondary {
     background: #fff;
-    color: var(--tg-text);
-    border: 1px solid #e2e8f0;
+    color: var(--isl-blue) !important;
+    border: 1px solid var(--isl-blue);
   }
-  .tg-crm-hero-checks {
+  .isl-crm-hero__list {
     list-style: none;
-    padding: 0;
     margin: 0 auto;
+    padding: 0;
     max-width: 560px;
     text-align: left;
   }
-  .tg-crm-hero-checks li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 15px;
-    color: #334155;
-    margin-bottom: 8px;
+  .isl-crm-hero__list li {
+    position: relative;
+    padding: 8px 0 8px 22px;
+    font-size: 16px;
     line-height: 1.45;
+    color: #444;
   }
-  .tg-crm-hero-checks li::before {
-    content: "✓";
-    width: 22px; height: 22px;
+  .isl-crm-hero__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: #dcfce7;
-    color: #16a34a;
-    font-size: 12px;
-    font-weight: 800;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
+    background: var(--isl-blue);
   }
-  @media (max-width: 560px) {
-    .tg-crm-hero-wrap { padding: 56px 16px 44px; }
-    .tg-crm-hero-btn { width: 100%; max-width: 320px; }
+  @media (max-width: 640px) {
+    .isl-crm-hero { padding: 72px 16px 56px; }
+    .isl-crm-hero__title { font-size: 30px; }
+    .isl-crm-hero__btn { width: 100%; max-width: 320px; }
   }
 </style>
 
-<div class="tg-crm-hero-wrap">
-  <div class="tg-crm-hero-inner">
-    <span class="tg-crm-hero-label">Модуль CRM</span>
-    <h1 class="tg-crm-hero-title">От лида и тендера — до передачи в закупку</h1>
-    <p class="tg-crm-hero-sub">Воронка, товары из ТЗ и Excel, КП с маржой. Дальше в том же контуре — цены поставщиков и заказ без второй системы.</p>
-    <div class="tg-crm-hero-actions">
-      <a href="#popup:demo" class="tg-crm-hero-btn tg-crm-hero-btn-primary">Запросить демо</a>
-      <a href="https://istock.link/#crm" class="tg-crm-hero-btn tg-crm-hero-btn-secondary">Смотреть платформу</a>
+<div class="isl-crm-hero">
+  <div class="isl-crm-hero__inner">
+    <p class="isl-crm-hero__kicker">Модуль CRM</p>
+    <h1 class="isl-crm-hero__title">От лида и тендера — до передачи в закупку</h1>
+    <p class="isl-crm-hero__sub">Воронка, товары из ТЗ и Excel, КП с маржой. Дальше в том же контуре — цены поставщиков и заказ без второй системы.</p>
+    <div class="isl-crm-hero__actions">
+      <a href="#popup:demo" class="isl-crm-hero__btn isl-crm-hero__btn--primary">Запросить демо</a>
+      <a href="https://istock.link/" class="isl-crm-hero__btn isl-crm-hero__btn--secondary">На главную</a>
     </div>
-    <ul class="tg-crm-hero-checks">
+    <ul class="isl-crm-hero__list">
       <li>Тендер из ленты или заявка клиента → сделка одним действием</li>
-      <li>Не замена Битрикс-портала: фокус на продажах + закупках у поставщиков</li>
+      <li>Не замена Битрикс-портала: фокус на продажах и закупках у поставщиков</li>
       <li>Импорт из Excel и выгрузки Битрикс24</li>
     </ul>
   </div>

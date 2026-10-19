@@ -1,119 +1,123 @@
-<!-- iStockLink T123 · 25-crm-boundaries-cta.html · build 298da0c · 2026-10-19 -->
-<!-- Tilda block: /crm · кому не подходит + CTA -->
+<!-- iStockLink T123 · 25-crm-boundaries-cta.html · build 0476b29 · 2026-10-19 -->
+<!-- Tilda block: /crm · границы + CTA · стиль istock.link -->
 <style>
-  .tg-crm-bound-wrap {
-    --tg-primary: #1c50de;
-    --tg-text: #0f172a;
-    --tg-muted: #64748b;
-    font-family: 'TildaSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  .isl-bound {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
     background: #fff;
-    padding: 72px 24px 80px;
+    padding: 90px 20px 100px;
   }
-  .tg-crm-bound-wrap *, .tg-crm-bound-wrap *::before, .tg-crm-bound-wrap *::after { box-sizing: border-box; }
-  .tg-crm-bound-inner { max-width: 1120px; margin: 0 auto; }
-  .tg-crm-bound-grid {
+  .isl-bound *, .isl-bound *::before, .isl-bound *::after { box-sizing: border-box; }
+  .isl-bound__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-bound__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     margin-bottom: 40px;
   }
-  .tg-crm-bound-card {
-    border-radius: 20px;
-    border: 1px solid #e8edf5;
+  .isl-bound__card {
+    background: #f4f7f9;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
     padding: 28px 24px;
-    background: #f8fafc;
   }
-  .tg-crm-bound-card h2 {
+  .isl-bound__card h2 {
     margin: 0 0 14px;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--tg-text);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--isl-text);
   }
-  .tg-crm-bound-card ul {
+  .isl-bound__card ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
-  .tg-crm-bound-card li {
+  .isl-bound__card li {
     position: relative;
-    padding: 8px 0 8px 18px;
+    padding: 8px 0 8px 16px;
     font-size: 16px;
     line-height: 1.5;
-    color: var(--tg-muted);
+    color: var(--isl-muted);
   }
-  .tg-crm-bound-card li::before {
+  .isl-bound__card li::before {
     content: "–";
     position: absolute;
     left: 0;
-    color: #94a3b8;
-    font-weight: 700;
+    color: #999;
   }
-  .tg-crm-bound-cta {
-    background: linear-gradient(135deg, #1c50de 0%, #2a5fe8 40%, #3b6df0 100%);
-    border-radius: 24px;
+  .isl-bound__cta {
+    background: var(--isl-blue);
+    border-radius: 10px;
     padding: 48px 40px;
     text-align: center;
     color: #fff;
   }
-  .tg-crm-bound-cta h2 {
+  .isl-bound__cta h2 {
     margin: 0 0 12px;
-    font-size: clamp(24px, 3vw, 34px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
   }
-  .tg-crm-bound-cta p {
+  .isl-bound__cta > p {
     margin: 0 auto 24px;
-    max-width: 480px;
+    max-width: 520px;
     font-size: 17px;
-    line-height: 1.55;
-    opacity: 0.9;
+    line-height: 1.5;
+    opacity: 0.95;
   }
-  .tg-crm-bound-actions {
+  .isl-bound__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
   }
-  .tg-crm-bound-btn {
+  .isl-bound__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 700;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
+    font-family: inherit;
   }
-  .tg-crm-bound-btn-light {
+  .isl-bound__btn--light {
     background: #fff;
-    color: #1c50de !important;
+    color: var(--isl-blue) !important;
+    border: 1px solid #fff;
   }
-  .tg-crm-bound-btn-ghost {
+  .isl-bound__btn--ghost {
     background: transparent;
     color: #fff !important;
-    border: 1px solid rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.7);
   }
-  .tg-crm-bound-note {
+  .isl-bound__note {
     margin: 16px 0 0;
     font-size: 14px;
-    opacity: 0.75;
+    opacity: 0.85;
   }
   @media (max-width: 800px) {
-    .tg-crm-bound-grid { grid-template-columns: 1fr; }
-    .tg-crm-bound-cta { padding: 36px 20px; }
+    .isl-bound__grid { grid-template-columns: 1fr; }
+    .isl-bound__cta { padding: 36px 20px; }
   }
-  @media (max-width: 560px) {
-    .tg-crm-bound-wrap { padding: 56px 16px 64px; }
-    .tg-crm-bound-btn { width: 100%; max-width: 320px; }
+  @media (max-width: 640px) {
+    .isl-bound { padding: 64px 16px 72px; }
+    .isl-bound__cta h2 { font-size: 26px; }
+    .isl-bound__btn { width: 100%; max-width: 320px; }
   }
 </style>
 
-<div class="tg-crm-bound-wrap">
-  <div class="tg-crm-bound-inner">
-    <div class="tg-crm-bound-grid">
-      <article class="tg-crm-bound-card">
+<div class="isl-bound">
+  <div class="isl-bound__inner">
+    <div class="isl-bound__grid">
+      <article class="isl-bound__card">
         <h2>Кому не подходит</h2>
         <ul>
           <li>Нужны телефония, открытые линии, портал и HR «как в Битрикс»</li>
@@ -121,7 +125,7 @@
           <li>Enterprise S2P-проект от миллиона рублей</li>
         </ul>
       </article>
-      <article class="tg-crm-bound-card">
+      <article class="isl-bound__card">
         <h2>Что сделать дальше</h2>
         <ul>
           <li>Демо на ваших сделках или торгах</li>
@@ -130,14 +134,14 @@
         </ul>
       </article>
     </div>
-    <div class="tg-crm-bound-cta">
+    <div class="isl-bound__cta">
       <h2>Покажем CRM на вашем процессе</h2>
       <p>Оставьте заявку — разберём 1–2 реальные карточки: тендер или заявка клиента до заказа поставщику.</p>
-      <div class="tg-crm-bound-actions">
-        <a href="#popup:demo" class="tg-crm-bound-btn tg-crm-bound-btn-light">Запросить демо</a>
-        <a href="https://istock.link/trading" class="tg-crm-bound-btn tg-crm-bound-btn-ghost">CRM для тендерного отдела</a>
+      <div class="isl-bound__actions">
+        <a href="#popup:demo" class="isl-bound__btn isl-bound__btn--light">Запросить демо</a>
+        <a href="https://istock.link/trading" class="isl-bound__btn isl-bound__btn--ghost">CRM для тендерного отдела</a>
       </div>
-      <p class="tg-crm-bound-note">Тарифы: от 1 260 ₽/пользователь · командные пакеты от 6 000 ₽/мес</p>
+      <p class="isl-bound__note">Тарифы: от 1 260 ₽/пользователь · командные пакеты от 6 000 ₽/мес</p>
     </div>
   </div>
 </div>
