@@ -124,7 +124,9 @@ URL модуля (предложение): `/crm` или `/vozmozhnosti/crm` —
 Возможности «продукт сейчас» (слайд 2) и сравнение с Битрикс/amo (слайды 9–12) перенесены в бриф как **канон** для `/crm` и зонтика главной.
 
 **Rev. 3:** решения заказчика — URL `/crm`, главную правит он в Tilda **без смены оформления**, −50% только на `/trading`, тарифы сверить.  
-Практика: `docs/positioning/tilda-homepage-edit-guide.md` (MVP: меню + hero + карточка CRM).
+Практика: `docs/positioning/tilda-homepage-edit-guide.md`.
+
+**Rev. 4:** HTML-блоки T123 в стиле `/trading`: `tilda-landing/15–17` (главная), `20–25` (`/crm`); превью `preview-home-crm.html`.
 
 ---
 

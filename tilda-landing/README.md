@@ -15,9 +15,11 @@ HTML-блоки для встраивания в Tilda через блок **T12
 
 **Только последние правки `/trading`:** [preview-trading-changes.html](https://kolomoets-netizen.github.io/Link/preview-trading-changes.html) — блоки «Как работает», сравнение CRM и переход с Битрикса.
 
+**Зонтик главной + страница `/crm`:** [preview-home-crm.html](https://kolomoets-netizen.github.io/Link/preview-home-crm.html) — блоки `15–17` (главная) и `20–25` (`/crm`). Инструкция: `docs/positioning/tilda-homepage-edit-guide.md`.
+
 **Жёсткое обновление:** Ctrl+Shift+R (Win) / Cmd+Shift+R (Mac).
 
-## Порядок блоков на странице
+## Порядок блоков на `/trading`
 
 | № | Файл | Секция |
 |---|------|--------|
@@ -35,6 +37,27 @@ HTML-блоки для встраивания в Tilda через блок **T12
 | 8 | `10-seldon-email-preview.html` | Превью письма для поставщиков (Seldon) |
 | 9 | `05-faq-cta.html` | CTA «Подключите iStockLink за 2 минуты» |
 | 0 | `00-enhancements-tilda.html` | *(опционально)* плавный скролл и анимации — **в конце страницы** |
+
+## Главная (зонтик) — вставка T123
+
+| № | Файл | Куда |
+|---|------|------|
+| 1 | `15-home-umbrella-bridge.html` | После hero |
+| 2 | `16-home-pillars.html` | Ниже |
+| 3 | `17-home-process.html` | Ниже |
+
+Плюс в меню Tilda: пункт **CRM** → `/crm`.
+
+## Страница `/crm` — порядок T123
+
+| № | Файл | Секция |
+|---|------|--------|
+| 1 | `20-crm-hero.html` | Hero модуля |
+| 2 | `21-crm-for-whom.html` | Для кого |
+| 3 | `22-crm-capabilities.html` | Возможности CRM |
+| 4 | `23-crm-srm-bridge.html` | Мост в SRM |
+| 5 | `24-crm-compare.html` | Сравнение (без −50%) |
+| 6 | `25-crm-boundaries-cta.html` | Кому не подходит + CTA |
 
 Архив (не в сборке): `archive/03-features.html`, `archive/06-integrations.html`
 
