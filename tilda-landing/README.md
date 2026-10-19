@@ -15,7 +15,7 @@ HTML-блоки для встраивания в Tilda через блок **T12
 
 **Только последние правки `/trading`:** [preview-trading-changes.html](https://kolomoets-netizen.github.io/Link/preview-trading-changes.html) — блоки «Как работает», сравнение CRM и переход с Битрикса.
 
-**Зонтик главной + страница `/crm`:** [preview-home-crm.html](https://kolomoets-netizen.github.io/Link/preview-home-crm.html) — блоки `15–17` (главная) и `20–25` (`/crm`). Инструкция: `docs/positioning/tilda-homepage-edit-guide.md`.
+**Зонтик главной + страница `/crm`:** [preview-home-crm.html](https://kolomoets-netizen.github.io/Link/preview-home-crm.html) — блоки `15–17` и `20–25` в **стиле главной** istock.link (не `/trading`). Инструкция: `docs/positioning/tilda-homepage-edit-guide.md`.
 
 **Жёсткое обновление:** Ctrl+Shift+R (Win) / Cmd+Shift+R (Mac).
 

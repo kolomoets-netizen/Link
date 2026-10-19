@@ -130,10 +130,12 @@ const tradingChangesPreview = tradingChangesShell
 writeFileSync(join(docs, 'preview-trading-changes.html'), tradingChangesPreview, 'utf-8');
 writeFileSync(join(base, 'preview-trading-changes.html'), tradingChangesPreview, 'utf-8');
 
-const homeCrmBlocks = [
+const homeOnlyBlocks = [
   '15-home-umbrella-bridge.html',
   '16-home-pillars.html',
   '17-home-process.html',
+];
+const crmPageBlocks = [
   '20-crm-hero.html',
   '21-crm-for-whom.html',
   '22-crm-capabilities.html',
@@ -141,20 +143,40 @@ const homeCrmBlocks = [
   '24-crm-compare.html',
   '25-crm-boundaries-cta.html',
 ];
+const wrapHomeBlock = (name, id) =>
+  `<div id="${id}"></div>\n<!-- file: ${name} -->\n` +
+  readFileSync(join(base, name), 'utf-8').trim();
+
+const homeChangesBody = [
+  wrapHomeBlock('15-home-umbrella-bridge.html', 'block-15'),
+  wrapHomeBlock('16-home-pillars.html', 'block-16'),
+  wrapHomeBlock('17-home-process.html', 'block-17'),
+].join('\n\n');
+const homeChangesShell = readFileSync(join(base, 'preview-home-changes.shell.html'), 'utf-8');
+const homeChangesPreview = homeChangesShell
+  .replace('__BLOCKS__', homeChangesBody)
+  .replaceAll('__BUILD_STAMP__', konturBuildStamp);
+writeFileSync(join(docs, 'preview-home-changes.html'), homeChangesPreview, 'utf-8');
+writeFileSync(join(base, 'preview-home-changes.html'), homeChangesPreview, 'utf-8');
+
+const crmPageBody = crmPageBlocks
+  .map((name) => readFileSync(join(base, name), 'utf-8').trim())
+  .join('\n\n');
+const crmPageShell = readFileSync(join(base, 'preview-crm-page.shell.html'), 'utf-8');
+const crmPagePreview = crmPageShell
+  .replace('__BLOCKS__', crmPageBody)
+  .replaceAll('__BUILD_STAMP__', konturBuildStamp);
+writeFileSync(join(docs, 'preview-crm-page.html'), crmPagePreview, 'utf-8');
+writeFileSync(join(base, 'preview-crm-page.html'), crmPagePreview, 'utf-8');
+
+// Combined index kept for convenience, with clear nav
 const homeCrmBody = [
-  '<div class="tg-preview-section">Главная · зонтик (вставить после hero)</div>',
-  ...['15-home-umbrella-bridge.html', '16-home-pillars.html', '17-home-process.html'].map(
-    (name) => readFileSync(join(base, name), 'utf-8').trim(),
-  ),
-  '<div class="tg-preview-section">Страница /crm (порядок сверху вниз)</div>',
-  ...[
-    '20-crm-hero.html',
-    '21-crm-for-whom.html',
-    '22-crm-capabilities.html',
-    '23-crm-srm-bridge.html',
-    '24-crm-compare.html',
-    '25-crm-boundaries-cta.html',
-  ].map((name) => readFileSync(join(base, name), 'utf-8').trim()),
+  `<div class="tg-preview-section" style="background:#fff3cd;color:#7a5b00;border-color:#f0d78c">
+    Главная — только 3 блока ниже · <a href="./preview-home-changes.html" style="color:#1c50de">открыть отдельное превью правок главной</a>
+  </div>`,
+  ...homeOnlyBlocks.map((name) => readFileSync(join(base, name), 'utf-8').trim()),
+  `<div class="tg-preview-section">Страница /crm · <a href="./preview-crm-page.html" style="color:#1c50de">открыть отдельно</a></div>`,
+  ...crmPageBlocks.map((name) => readFileSync(join(base, name), 'utf-8').trim()),
 ].join('\n\n');
 const homeCrmShell = readFileSync(join(base, 'preview-home-crm.shell.html'), 'utf-8');
 const homeCrmPreview = homeCrmShell
@@ -162,6 +184,8 @@ const homeCrmPreview = homeCrmShell
   .replaceAll('__BUILD_STAMP__', konturBuildStamp);
 writeFileSync(join(docs, 'preview-home-crm.html'), homeCrmPreview, 'utf-8');
 writeFileSync(join(base, 'preview-home-crm.html'), homeCrmPreview, 'utf-8');
+
+const homeCrmBlocks = [...homeOnlyBlocks, ...crmPageBlocks];
 
 const tildaBlocksDir = join(docs, 'tilda-blocks');
 mkdirSync(tildaBlocksDir, { recursive: true });
@@ -208,9 +232,12 @@ writeFileSync(
   <h1>HTML-блоки для Tilda (T123)</h1>
   <p class="meta">Сборка ${buildDate} · <code>${buildId}</code> · те же файлы, что в превью на GitHub Pages</p>
   <div class="recent">
-    <strong>Новое: зонтик главной + /crm</strong>
-    ${homeCrmRecent.map((n) => `<div><a href="./${n}">${n}</a></div>`).join('')}
-    <p style="margin:12px 0 0;font-size:14px"><a href="../preview-home-crm.html">Превью всех новых блоков</a></p>
+    <strong>Правки главной (3 блока):</strong>
+    ${['15-home-umbrella-bridge.html', '16-home-pillars.html', '17-home-process.html'].map((n) => `<div><a href="./${n}">${n}</a></div>`).join('')}
+    <p style="margin:12px 0 8px;font-size:14px"><a href="../preview-home-changes.html"><strong>→ Превью только главной</strong></a></p>
+    <strong>Страница /crm:</strong>
+    ${['20-crm-hero.html', '21-crm-for-whom.html', '22-crm-capabilities.html', '23-crm-srm-bridge.html', '24-crm-compare.html', '25-crm-boundaries-cta.html'].map((n) => `<div><a href="./${n}">${n}</a></div>`).join('')}
+    <p style="margin:12px 0 0;font-size:14px"><a href="../preview-crm-page.html">Превью /crm</a></p>
   </div>
   <p>Откройте файл → <strong>Ctrl+A</strong> → скопируйте весь код (включая <code>&lt;style&gt;</code>) → вставьте в блок T123.</p>
   <p>В первой строке файла — комментарий с номером сборки; если там старый <code>build</code>, обновите страницу (Ctrl+Shift+R).</p>

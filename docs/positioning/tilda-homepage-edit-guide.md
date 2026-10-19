@@ -3,9 +3,19 @@
 **Стиль:** как **главная** istock.link (не `/trading`): TildaSans, синий `#1c50de`, фоны `#fff` / `#f4f7f9` / `#d1e4ff`, карточки radius ~10px, кнопки 8px (не pills), без тяжёлых градиентов и теней trading-лендинга.  
 **Редактирование:** правим файлы в git → превью → копируете в Tilda T123.
 
-Исходники: `tilda-landing/15-*.html` … `25-*.html`  
-Превью (после мержа в `main`): https://kolomoets-netizen.github.io/Link/preview-home-crm.html  
-Каталог файлов: https://kolomoets-netizen.github.io/Link/tilda-blocks/
+Исходники: `tilda-landing/15-*.html` … `25-*.html`
+
+**Превью правок главной (только 3 блока):**  
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/kolomoets-netizen/Link/cursor/crm-positioning-site-ebec/docs/preview-home-changes.html
+
+**Превью страницы /crm:**  
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/kolomoets-netizen/Link/cursor/crm-positioning-site-ebec/docs/preview-crm-page.html
+
+После merge в `main`:  
+- https://kolomoets-netizen.github.io/Link/preview-home-changes.html  
+- https://kolomoets-netizen.github.io/Link/preview-crm-page.html  
+
+Каталог T123: `docs/tilda-blocks/`
 
 ---
 
