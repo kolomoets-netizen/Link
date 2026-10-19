@@ -1,0 +1,147 @@
+<!-- iStockLink T123 · 25-crm-boundaries-cta.html · build 0476b29 · 2026-10-19 -->
+<!-- Tilda block: /crm · границы + CTA · стиль istock.link -->
+<style>
+  .isl-bound {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 90px 20px 100px;
+  }
+  .isl-bound *, .isl-bound *::before, .isl-bound *::after { box-sizing: border-box; }
+  .isl-bound__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-bound__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .isl-bound__card {
+    background: #f4f7f9;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+    padding: 28px 24px;
+  }
+  .isl-bound__card h2 {
+    margin: 0 0 14px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-bound__card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .isl-bound__card li {
+    position: relative;
+    padding: 8px 0 8px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--isl-muted);
+  }
+  .isl-bound__card li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #999;
+  }
+  .isl-bound__cta {
+    background: var(--isl-blue);
+    border-radius: 10px;
+    padding: 48px 40px;
+    text-align: center;
+    color: #fff;
+  }
+  .isl-bound__cta h2 {
+    margin: 0 0 12px;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+  .isl-bound__cta > p {
+    margin: 0 auto 24px;
+    max-width: 520px;
+    font-size: 17px;
+    line-height: 1.5;
+    opacity: 0.95;
+  }
+  .isl-bound__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .isl-bound__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .isl-bound__btn--light {
+    background: #fff;
+    color: var(--isl-blue) !important;
+    border: 1px solid #fff;
+  }
+  .isl-bound__btn--ghost {
+    background: transparent;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.7);
+  }
+  .isl-bound__note {
+    margin: 16px 0 0;
+    font-size: 14px;
+    opacity: 0.85;
+  }
+  @media (max-width: 800px) {
+    .isl-bound__grid { grid-template-columns: 1fr; }
+    .isl-bound__cta { padding: 36px 20px; }
+  }
+  @media (max-width: 640px) {
+    .isl-bound { padding: 64px 16px 72px; }
+    .isl-bound__cta h2 { font-size: 26px; }
+    .isl-bound__btn { width: 100%; max-width: 320px; }
+  }
+</style>
+
+<div class="isl-bound">
+  <div class="isl-bound__inner">
+    <div class="isl-bound__grid">
+      <article class="isl-bound__card">
+        <h2>Кому не подходит</h2>
+        <ul>
+          <li>Нужны телефония, открытые линии, портал и HR «как в Битрикс»</li>
+          <li>Нет регулярных тендеров и закупок у поставщиков под сделку</li>
+          <li>Enterprise S2P-проект от миллиона рублей</li>
+        </ul>
+      </article>
+      <article class="isl-bound__card">
+        <h2>Что сделать дальше</h2>
+        <ul>
+          <li>Демо на ваших сделках или торгах</li>
+          <li>Пилот 14 дней без привязки карты</li>
+          <li>Если смотрите замену Битрикс с оффером — страница для тендерного отдела</li>
+        </ul>
+      </article>
+    </div>
+    <div class="isl-bound__cta">
+      <h2>Покажем CRM на вашем процессе</h2>
+      <p>Оставьте заявку — разберём 1–2 реальные карточки: тендер или заявка клиента до заказа поставщику.</p>
+      <div class="isl-bound__actions">
+        <a href="#popup:demo" class="isl-bound__btn isl-bound__btn--light">Запросить демо</a>
+        <a href="https://istock.link/trading" class="isl-bound__btn isl-bound__btn--ghost">CRM для тендерного отдела</a>
+      </div>
+      <p class="isl-bound__note">Тарифы: от 1 260 ₽/пользователь · командные пакеты от 6 000 ₽/мес</p>
+    </div>
+  </div>
+</div>

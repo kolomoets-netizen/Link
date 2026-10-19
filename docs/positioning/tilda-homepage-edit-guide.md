@@ -1,0 +1,98 @@
+# Как собрать зонтик и /crm в Tilda через HTML-блоки
+
+**Стиль:** как **главная** istock.link (не `/trading`): TildaSans, синий `#1c50de`, фоны `#fff` / `#f4f7f9` / `#d1e4ff`, карточки radius ~10px, кнопки 8px (не pills), без тяжёлых градиентов и теней trading-лендинга.  
+**Редактирование:** правим файлы в git → превью → копируете в Tilda T123.
+
+Исходники: `tilda-landing/15-*.html` … `25-*.html`
+
+**Превью правок главной (только 3 блока):**  
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/kolomoets-netizen/Link/cursor/crm-positioning-site-ebec/docs/preview-home-changes.html
+
+**Превью страницы /crm:**  
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/kolomoets-netizen/Link/cursor/crm-positioning-site-ebec/docs/preview-crm-page.html
+
+После merge в `main`:  
+- https://kolomoets-netizen.github.io/Link/preview-home-changes.html  
+- https://kolomoets-netizen.github.io/Link/preview-crm-page.html  
+
+Каталог T123: `docs/tilda-blocks/`
+
+---
+
+## Решения
+
+| Вопрос | Решение |
+|--------|---------|
+| URL модуля | `/crm` |
+| −50% с Битрикс | Только `/trading` |
+| Оформление | Не переделываем весь сайт — **вставляем HTML-блоки** T123 |
+| Меню | В штатном меню Tilda добавить пункт **CRM** → `/crm` |
+
+---
+
+## Главная istock.link — 3 блока
+
+Вставить **после hero** (существующий hero Tilda можно оставить или позже подменить тексты).
+
+| Порядок | Файл | Что делает |
+|---------|------|------------|
+| 1 | `15-home-umbrella-bridge.html` | Мост «продажи + закупки», CTA на `/crm` и демо |
+| 2 | `16-home-pillars.html` | Три столпа CRM · SRM · интеграции |
+| 3 | `17-home-process.html` | 5 шагов продукта |
+
+Старые карточки «только снабжение» ниже по странице **не обязательно удалять** в первый проход — зонтик уже сверху. Когда будет ок — можно сократить дубли.
+
+**Меню:** Settings / меню сайта → пункт CRM → `https://istock.link/crm`.
+
+---
+
+## Страница /crm — 6 блоков
+
+1. Создать страницу Tilda с адресом **`/crm`**.  
+2. Поставить блоки T123 сверху вниз:
+
+| № | Файл |
+|---|------|
+| 1 | `20-crm-hero.html` |
+| 2 | `21-crm-for-whom.html` |
+| 3 | `22-crm-capabilities.html` |
+| 4 | `23-crm-srm-bridge.html` |
+| 5 | `24-crm-compare.html` |
+| 6 | `25-crm-boundaries-cta.html` |
+
+3. Попап демо: как на `/trading` — `#popup:demo` (те же кнопки в блоках).  
+4. Опубликовать.
+
+На `/crm` **нет** оффера −50% — ссылка на `/trading` только в CTA «CRM для тендерного отдела».
+
+---
+
+## Как вставить блок в Tilda
+
+1. Откройте файл в репо или на GitHub Pages (`tilda-blocks/…`).  
+2. **Ctrl+A** → копировать (включая `<style>`).  
+3. На странице Tilda: **T123 «HTML-код»** → вставить.  
+4. Сохранить → Опубликовать.  
+5. Если правки в git — снова скопировать обновлённый файл в тот же T123.
+
+---
+
+## Цикл правок через git
+
+```
+правка в tilda-landing/NN-….html
+  → push в ветку / PR
+  → после merge в main: npm run build:preview (CI)
+  → смотрите preview-home-crm.html
+  → копируете в Tilda
+```
+
+Пока ветка не в `main`, превью смотрите локально: `npm run build:preview` и откройте `docs/preview-home-crm.html`.
+
+---
+
+## Тарифы (сверка)
+
+> от 1 260 ₽/пользователь · командные от 6 000 ₽/мес (пакеты 6 / 15 / 30 тыс.)
+
+Уже в футере CTA блока `25-crm-boundaries-cta.html`.

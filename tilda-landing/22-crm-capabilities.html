@@ -1,0 +1,96 @@
+<!-- Tilda block: /crm · возможности · стиль istock.link -->
+<style>
+  .isl-cap {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #f4f7f9;
+    padding: 90px 20px;
+  }
+  .isl-cap *, .isl-cap *::before, .isl-cap *::after { box-sizing: border-box; }
+  .isl-cap__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-cap__header { text-align: center; margin-bottom: 40px; }
+  .isl-cap__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-cap__sub {
+    margin: 0 auto;
+    max-width: 640px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
+  }
+  .isl-cap__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .isl-cap__item {
+    background: #fff;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+    padding: 24px 22px;
+  }
+  .isl-cap__item h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-cap__item p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--isl-muted);
+  }
+  @media (max-width: 720px) {
+    .isl-cap__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .isl-cap { padding: 64px 16px; }
+    .isl-cap__title { font-size: 28px; }
+  }
+</style>
+
+<div class="isl-cap">
+  <div class="isl-cap__inner">
+    <div class="isl-cap__header">
+      <h2 class="isl-cap__title">Возможности CRM</h2>
+      <p class="isl-cap__sub">То, что есть в продукте сейчас — без обещаний телефонии и корпоративного портала.</p>
+    </div>
+    <div class="isl-cap__grid">
+      <article class="isl-cap__item">
+        <h3>Вход: заявка или тендер</h3>
+        <p>Лента из агрегаторов и ЭТП либо заказ от клиента. Тендер превращается в сделку одним действием.</p>
+      </article>
+      <article class="isl-cap__item">
+        <h3>Сделка с товарами</h3>
+        <p>Канбан, позиции из ТЗ и Excel, задачи и почта в карточке.</p>
+      </article>
+      <article class="isl-cap__item">
+        <h3>Воронки и роли</h3>
+        <p>Несколько досок и воронок, настраиваемые поля по этапам, права доступа.</p>
+      </article>
+      <article class="isl-cap__item">
+        <h3>КП с маржой</h3>
+        <p>Расчёт и фиксация предложения клиенту в той же сделке.</p>
+      </article>
+      <article class="isl-cap__item">
+        <h3>Переезд с Битрикс / Excel</h3>
+        <p>Импорт сделок из Excel и выгрузки Битрикс24 для быстрого старта.</p>
+      </article>
+      <article class="isl-cap__item">
+        <h3>ИИ-ассистент Лина</h3>
+        <p>Помощь по продукту внутри интерфейса — без отдельного внедрения «с нуля».</p>
+      </article>
+    </div>
+  </div>
+</div>

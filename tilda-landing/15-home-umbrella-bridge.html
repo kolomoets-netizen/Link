@@ -1,0 +1,78 @@
+<!-- Tilda block: главная · мост CRM+SRM · стиль istock.link -->
+<style>
+  .isl-bridge {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 90px 20px 70px;
+  }
+  .isl-bridge *, .isl-bridge *::before, .isl-bridge *::after { box-sizing: border-box; }
+  .isl-bridge__inner {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .isl-bridge__title {
+    margin: 0 0 18px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-bridge__title span { color: var(--isl-blue); }
+  .isl-bridge__text {
+    margin: 0 auto 28px;
+    max-width: 680px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
+  }
+  .isl-bridge__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .isl-bridge__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .isl-bridge__btn--primary {
+    background: var(--isl-blue);
+    color: #fff !important;
+    border: 1px solid var(--isl-blue);
+  }
+  .isl-bridge__btn--secondary {
+    background: #fff;
+    color: var(--isl-blue) !important;
+    border: 1px solid var(--isl-blue);
+  }
+  @media (max-width: 640px) {
+    .isl-bridge { padding: 64px 16px 48px; }
+    .isl-bridge__title { font-size: 28px; }
+    .isl-bridge__btn { width: 100%; max-width: 320px; }
+  }
+</style>
+
+<div class="isl-bridge" id="crm">
+  <div class="isl-bridge__inner">
+    <h2 class="isl-bridge__title">Сделка и закупка <span>без Excel между ними</span></h2>
+    <p class="isl-bridge__text">Битрикс и amo закрывают продажи; запросы поставщикам остаются в почте. iStockLink ведёт тендер или заявку клиента до КП с маржой и заказа поставщику — в одном контуре.</p>
+    <div class="isl-bridge__actions">
+      <a href="https://istock.link/crm" class="isl-bridge__btn isl-bridge__btn--primary">Модуль CRM</a>
+      <a href="#popup:demo" class="isl-bridge__btn isl-bridge__btn--secondary">Запросить демо</a>
+    </div>
+  </div>
+</div>

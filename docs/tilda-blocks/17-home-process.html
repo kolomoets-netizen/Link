@@ -1,0 +1,134 @@
+<!-- iStockLink T123 · 17-home-process.html · build 0476b29 · 2026-10-19 -->
+<!-- Tilda block: главная · 5 шагов · стиль istock.link -->
+<style>
+  .isl-proc {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 90px 20px;
+  }
+  .isl-proc *, .isl-proc *::before, .isl-proc *::after { box-sizing: border-box; }
+  .isl-proc__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-proc__header { text-align: center; margin-bottom: 40px; }
+  .isl-proc__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-proc__sub {
+    margin: 0 auto;
+    max-width: 640px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
+  }
+  .isl-proc__hint {
+    display: none;
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: #999;
+  }
+  .isl-proc__scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .isl-proc__track {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(180px, 1fr));
+    gap: 16px;
+    min-width: 940px;
+  }
+  .isl-proc__step {
+    background: #f4f7f9;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+    padding: 22px 18px;
+    min-height: 168px;
+  }
+  .isl-proc__num {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--isl-blue);
+  }
+  .isl-proc__zone {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--isl-blue);
+  }
+  .isl-proc__zone--srm { color: #0b7a6a; }
+  .isl-proc__name {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--isl-text);
+    line-height: 1.3;
+  }
+  .isl-proc__desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--isl-muted);
+  }
+  @media (max-width: 1000px) {
+    .isl-proc__hint { display: block; }
+  }
+  @media (max-width: 640px) {
+    .isl-proc { padding: 64px 16px; }
+    .isl-proc__title { font-size: 28px; }
+  }
+</style>
+
+<div class="isl-proc">
+  <div class="isl-proc__inner">
+    <div class="isl-proc__header">
+      <h2 class="isl-proc__title">От заявки до заказа поставщику</h2>
+      <p class="isl-proc__sub">Пять шагов продукта: CRM ведёт продажу, SRM закрывает закупку — в одной карточке сделки.</p>
+    </div>
+    <p class="isl-proc__hint">Листайте этапы вправо →</p>
+    <div class="isl-proc__scroll">
+      <div class="isl-proc__track">
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">01</span>
+          <span class="isl-proc__zone">CRM</span>
+          <h3 class="isl-proc__name">Заявка или тендер</h3>
+          <p class="isl-proc__desc">Лента агрегаторов и ЭТП или заказ от клиента.</p>
+        </div>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">02</span>
+          <span class="isl-proc__zone">CRM</span>
+          <h3 class="isl-proc__name">Сделка с товарами</h3>
+          <p class="isl-proc__desc">Канбан, позиции из ТЗ и Excel, задачи, почта.</p>
+        </div>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">03</span>
+          <span class="isl-proc__zone isl-proc__zone--srm">SRM</span>
+          <h3 class="isl-proc__name">Цены поставщиков</h3>
+          <p class="isl-proc__desc">Запрос из сделки, ответы в одной таблице.</p>
+        </div>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">04</span>
+          <span class="isl-proc__zone">CRM</span>
+          <h3 class="isl-proc__name">КП с маржой</h3>
+          <p class="isl-proc__desc">Расчёт и фиксация предложения клиенту.</p>
+        </div>
+        <div class="isl-proc__step">
+          <span class="isl-proc__num">05</span>
+          <span class="isl-proc__zone isl-proc__zone--srm">SRM</span>
+          <h3 class="isl-proc__name">Заказ поставщику</h3>
+          <p class="isl-proc__desc">Ссылка без регистрации, подтверждение и счёт.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

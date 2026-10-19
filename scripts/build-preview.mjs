@@ -130,11 +130,68 @@ const tradingChangesPreview = tradingChangesShell
 writeFileSync(join(docs, 'preview-trading-changes.html'), tradingChangesPreview, 'utf-8');
 writeFileSync(join(base, 'preview-trading-changes.html'), tradingChangesPreview, 'utf-8');
 
+const homeOnlyBlocks = [
+  '15-home-umbrella-bridge.html',
+  '16-home-pillars.html',
+  '17-home-process.html',
+];
+const crmPageBlocks = [
+  '20-crm-hero.html',
+  '21-crm-for-whom.html',
+  '22-crm-capabilities.html',
+  '23-crm-srm-bridge.html',
+  '24-crm-compare.html',
+  '25-crm-boundaries-cta.html',
+];
+const wrapHomeBlock = (name, id) =>
+  `<div id="${id}"></div>\n<!-- file: ${name} -->\n` +
+  readFileSync(join(base, name), 'utf-8').trim();
+
+const homeChangesBody = [
+  wrapHomeBlock('15-home-umbrella-bridge.html', 'block-15'),
+  wrapHomeBlock('16-home-pillars.html', 'block-16'),
+  wrapHomeBlock('17-home-process.html', 'block-17'),
+].join('\n\n');
+const homeChangesShell = readFileSync(join(base, 'preview-home-changes.shell.html'), 'utf-8');
+const homeChangesPreview = homeChangesShell
+  .replace('__BLOCKS__', homeChangesBody)
+  .replaceAll('__BUILD_STAMP__', konturBuildStamp);
+writeFileSync(join(docs, 'preview-home-changes.html'), homeChangesPreview, 'utf-8');
+writeFileSync(join(base, 'preview-home-changes.html'), homeChangesPreview, 'utf-8');
+
+const crmPageBody = crmPageBlocks
+  .map((name) => readFileSync(join(base, name), 'utf-8').trim())
+  .join('\n\n');
+const crmPageShell = readFileSync(join(base, 'preview-crm-page.shell.html'), 'utf-8');
+const crmPagePreview = crmPageShell
+  .replace('__BLOCKS__', crmPageBody)
+  .replaceAll('__BUILD_STAMP__', konturBuildStamp);
+writeFileSync(join(docs, 'preview-crm-page.html'), crmPagePreview, 'utf-8');
+writeFileSync(join(base, 'preview-crm-page.html'), crmPagePreview, 'utf-8');
+
+// Combined index kept for convenience, with clear nav
+const homeCrmBody = [
+  `<div class="tg-preview-section" style="background:#fff3cd;color:#7a5b00;border-color:#f0d78c">
+    Главная — только 3 блока ниже · <a href="./preview-home-changes.html" style="color:#1c50de">открыть отдельное превью правок главной</a>
+  </div>`,
+  ...homeOnlyBlocks.map((name) => readFileSync(join(base, name), 'utf-8').trim()),
+  `<div class="tg-preview-section">Страница /crm · <a href="./preview-crm-page.html" style="color:#1c50de">открыть отдельно</a></div>`,
+  ...crmPageBlocks.map((name) => readFileSync(join(base, name), 'utf-8').trim()),
+].join('\n\n');
+const homeCrmShell = readFileSync(join(base, 'preview-home-crm.shell.html'), 'utf-8');
+const homeCrmPreview = homeCrmShell
+  .replace('__BLOCKS__', homeCrmBody)
+  .replaceAll('__BUILD_STAMP__', konturBuildStamp);
+writeFileSync(join(docs, 'preview-home-crm.html'), homeCrmPreview, 'utf-8');
+writeFileSync(join(base, 'preview-home-crm.html'), homeCrmPreview, 'utf-8');
+
+const homeCrmBlocks = [...homeOnlyBlocks, ...crmPageBlocks];
+
 const tildaBlocksDir = join(docs, 'tilda-blocks');
 mkdirSync(tildaBlocksDir, { recursive: true });
 const tildaBlockFiles = readdirSync(base)
-  .filter((name) => /^(0?\d{1,2}-|14-).+\.html$/.test(name))
-  .sort();
+  .filter((name) => /^\d{1,2}-.+\.html$/.test(name))
+  .sort((a, b) => parseInt(a, 10) - parseInt(b, 10) || a.localeCompare(b));
 const tildaBlockLinks = [];
 for (const name of tildaBlockFiles) {
   const body = readFileSync(join(base, name), 'utf-8').trimStart();
@@ -143,11 +200,12 @@ for (const name of tildaBlockFiles) {
   writeFileSync(join(tildaBlocksDir, name), stamped, 'utf-8');
   tildaBlockLinks.push({ name, href: `./${name}` });
 }
-const tradingRecent = [
-  '02-how-it-works.html',
-  '08-crm-compare.html',
-  '14-bitrix-switch-promo.html',
-];
+const homeCrmRecent = homeCrmBlocks;
+const listItems = (names) =>
+  names
+    .filter((n) => tildaBlockLinks.some((l) => l.name === n))
+    .map((n) => `<li><a href="./${n}">${n}</a></li>`)
+    .join('\n    ');
 writeFileSync(
   join(tildaBlocksDir, 'index.html'),
   `<!DOCTYPE html>
@@ -160,6 +218,7 @@ writeFileSync(
   <style>
     body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 20px 48px; color: #0f172a; line-height: 1.5; }
     h1 { font-size: 1.35rem; }
+    h2 { font-size: 1.05rem; margin: 28px 0 10px; }
     .meta { color: #64748b; font-size: 14px; margin-bottom: 24px; }
     .recent { background: #eef3ff; border-radius: 12px; padding: 16px 18px; margin-bottom: 28px; }
     .recent a { font-weight: 600; }
@@ -173,15 +232,35 @@ writeFileSync(
   <h1>HTML-блоки для Tilda (T123)</h1>
   <p class="meta">Сборка ${buildDate} · <code>${buildId}</code> · те же файлы, что в превью на GitHub Pages</p>
   <div class="recent">
-    <strong>Недавние правки /trading:</strong>
-    ${tradingRecent.map((n) => `<div><a href="./${n}">${n}</a></div>`).join('')}
+    <strong>Правки главной (3 блока):</strong>
+    ${['15-home-umbrella-bridge.html', '16-home-pillars.html', '17-home-process.html'].map((n) => `<div><a href="./${n}">${n}</a></div>`).join('')}
+    <p style="margin:12px 0 8px;font-size:14px"><a href="../preview-home-changes.html"><strong>→ Превью только главной</strong></a></p>
+    <strong>Страница /crm:</strong>
+    ${['20-crm-hero.html', '21-crm-for-whom.html', '22-crm-capabilities.html', '23-crm-srm-bridge.html', '24-crm-compare.html', '25-crm-boundaries-cta.html'].map((n) => `<div><a href="./${n}">${n}</a></div>`).join('')}
+    <p style="margin:12px 0 0;font-size:14px"><a href="../preview-crm-page.html">Превью /crm</a></p>
   </div>
   <p>Откройте файл → <strong>Ctrl+A</strong> → скопируйте весь код (включая <code>&lt;style&gt;</code>) → вставьте в блок T123.</p>
   <p>В первой строке файла — комментарий с номером сборки; если там старый <code>build</code>, обновите страницу (Ctrl+Shift+R).</p>
+  <h2>Главная (зонтик)</h2>
+  <ul>
+    ${listItems(['15-home-umbrella-bridge.html', '16-home-pillars.html', '17-home-process.html'])}
+  </ul>
+  <h2>Страница /crm</h2>
+  <ul>
+    ${listItems([
+      '20-crm-hero.html',
+      '21-crm-for-whom.html',
+      '22-crm-capabilities.html',
+      '23-crm-srm-bridge.html',
+      '24-crm-compare.html',
+      '25-crm-boundaries-cta.html',
+    ])}
+  </ul>
+  <h2>Все блоки (вкл. /trading)</h2>
   <ul>
     ${tildaBlockLinks.map(({ name, href }) => `<li><a href="${href}">${name}</a></li>`).join('\n    ')}
   </ul>
-  <p><a href="../preview-trading-changes.html">Превью изменённых блоков</a> · <a href="../">полный лендинг</a></p>
+  <p><a href="../preview-home-crm.html">Превью главная+/crm</a> · <a href="../preview-trading-changes.html">Превью /trading</a> · <a href="../">полный /trading</a></p>
 </body>
 </html>
 `,

@@ -1,0 +1,114 @@
+<!-- Tilda block: /crm · hero · стиль istock.link -->
+<style>
+  .isl-crm-hero {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #d1e4ff;
+    padding: 100px 20px 80px;
+  }
+  .isl-crm-hero *, .isl-crm-hero *::before, .isl-crm-hero *::after { box-sizing: border-box; }
+  .isl-crm-hero__inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .isl-crm-hero__kicker {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--isl-blue);
+  }
+  .isl-crm-hero__title {
+    margin: 0 0 18px;
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-crm-hero__sub {
+    margin: 0 auto 28px;
+    max-width: 620px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
+  }
+  .isl-crm-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .isl-crm-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .isl-crm-hero__btn--primary {
+    background: var(--isl-blue);
+    color: #fff !important;
+    border: 1px solid var(--isl-blue);
+  }
+  .isl-crm-hero__btn--secondary {
+    background: #fff;
+    color: var(--isl-blue) !important;
+    border: 1px solid var(--isl-blue);
+  }
+  .isl-crm-hero__list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 560px;
+    text-align: left;
+  }
+  .isl-crm-hero__list li {
+    position: relative;
+    padding: 8px 0 8px 22px;
+    font-size: 16px;
+    line-height: 1.45;
+    color: #444;
+  }
+  .isl-crm-hero__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--isl-blue);
+  }
+  @media (max-width: 640px) {
+    .isl-crm-hero { padding: 72px 16px 56px; }
+    .isl-crm-hero__title { font-size: 30px; }
+    .isl-crm-hero__btn { width: 100%; max-width: 320px; }
+  }
+</style>
+
+<div class="isl-crm-hero">
+  <div class="isl-crm-hero__inner">
+    <p class="isl-crm-hero__kicker">Модуль CRM · для тендерных и оптовых команд</p>
+    <h1 class="isl-crm-hero__title">От тендера или заявки — до КП и заказа поставщику</h1>
+    <p class="isl-crm-hero__sub">Чтобы не терять сроки и маржу на стыке продажи и закупки: воронка, товары из ТЗ, КП с маржой — и сразу запрос цен поставщикам в той же карточке. Без портала и телефонии «как в Битрикс».</p>
+    <div class="isl-crm-hero__actions">
+      <a href="#popup:demo" class="isl-crm-hero__btn isl-crm-hero__btn--primary">Запросить демо</a>
+      <a href="https://istock.link/" class="isl-crm-hero__btn isl-crm-hero__btn--secondary">На главную</a>
+    </div>
+    <ul class="isl-crm-hero__list">
+      <li>Тендер из ленты или заявка клиента → сделка одним действием</li>
+      <li>Не замена Битрикс-портала: фокус на продажах и закупках у поставщиков</li>
+      <li>Импорт из Excel и выгрузки Битрикс24</li>
+    </ul>
+  </div>
+</div>

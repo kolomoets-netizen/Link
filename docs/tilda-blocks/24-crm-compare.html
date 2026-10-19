@@ -1,0 +1,145 @@
+<!-- iStockLink T123 · 24-crm-compare.html · build 0476b29 · 2026-10-19 -->
+<!-- Tilda block: /crm · сравнение · стиль istock.link -->
+<style>
+  .isl-cmp {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #f4f7f9;
+    padding: 90px 20px;
+  }
+  .isl-cmp *, .isl-cmp *::before, .isl-cmp *::after { box-sizing: border-box; }
+  .isl-cmp__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-cmp__header { text-align: center; margin-bottom: 32px; }
+  .isl-cmp__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-cmp__sub {
+    margin: 0 auto;
+    max-width: 680px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
+  }
+  .isl-cmp__scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+  }
+  .isl-cmp__table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+  }
+  .isl-cmp__table th,
+  .isl-cmp__table td {
+    padding: 16px 14px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.4;
+    border-bottom: 1px solid var(--isl-border);
+    vertical-align: top;
+  }
+  .isl-cmp__table tr:last-child td { border-bottom: none; }
+  .isl-cmp__table thead th {
+    background: #fff;
+    font-weight: 700;
+    color: var(--isl-text);
+    border-bottom: 2px solid var(--isl-border);
+  }
+  .isl-cmp__table thead th.isl-cmp__us {
+    color: var(--isl-blue);
+    background: #dbe9fe;
+  }
+  .isl-cmp__table td.isl-cmp__us {
+    background: #dbe9fe;
+    font-weight: 600;
+    color: var(--isl-text);
+  }
+  .isl-cmp__table td:first-child {
+    font-weight: 700;
+    color: var(--isl-text);
+    width: 22%;
+  }
+  .isl-cmp__note {
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #888;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .isl-cmp { padding: 64px 16px; }
+    .isl-cmp__title { font-size: 28px; }
+  }
+</style>
+
+<div class="isl-cmp">
+  <div class="isl-cmp__inner">
+    <div class="isl-cmp__header">
+      <h2 class="isl-cmp__title">Чем отличаемся от Битрикс24 и amoCRM</h2>
+      <p class="isl-cmp__sub">Узкая ниша: тендеры и закупки у поставщиков. Не комбайн с порталом и телефонией.</p>
+    </div>
+    <div class="isl-cmp__scroll">
+      <table class="isl-cmp__table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="isl-cmp__us">iStockLink</th>
+            <th>Битрикс24</th>
+            <th>amoCRM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Фокус</td>
+            <td class="isl-cmp__us">Тендеры + закупки у поставщиков</td>
+            <td>Универсальная CRM + портал</td>
+            <td>Отдел продаж</td>
+          </tr>
+          <tr>
+            <td>Лента тендеров</td>
+            <td class="isl-cmp__us">Из коробки</td>
+            <td>Приложение / интегратор</td>
+            <td>Виджеты, платно</td>
+          </tr>
+          <tr>
+            <td>Тендер → сделка</td>
+            <td class="isl-cmp__us">Одним действием</td>
+            <td>Настройка полей и роботов</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>SRM: цены и заказ</td>
+            <td class="isl-cmp__us">В том же окне</td>
+            <td>Только доработкой</td>
+            <td>Только доработкой</td>
+          </tr>
+          <tr>
+            <td>Телефония / портал</td>
+            <td class="isl-cmp__us">Нет (почта в сделке)</td>
+            <td>Сильная сторона</td>
+            <td>Мессенджеры, телефония</td>
+          </tr>
+          <tr>
+            <td>Внедрение</td>
+            <td class="isl-cmp__us">Шаблоны, импорт, дни</td>
+            <td>Интегратор, недели</td>
+            <td>Быстро для продаж</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="isl-cmp__note">По подписке мы не всегда дешевле «голого» Битрикс. Выигрыш — дни вместо недель и SRM без отдельного проекта. Оффер перехода с Битрикс — на странице для тендерных отделов.</p>
+  </div>
+</div>

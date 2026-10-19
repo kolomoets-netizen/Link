@@ -1,0 +1,83 @@
+<!-- Tilda block: /crm · для кого · стиль istock.link -->
+<style>
+  .isl-whom {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 90px 20px;
+  }
+  .isl-whom *, .isl-whom *::before, .isl-whom *::after { box-sizing: border-box; }
+  .isl-whom__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-whom__header { text-align: center; margin-bottom: 40px; }
+  .isl-whom__title {
+    margin: 0 0 14px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-whom__sub {
+    margin: 0 auto;
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
+  }
+  .isl-whom__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .isl-whom__card {
+    background: #dbe9fe;
+    border-radius: 10px;
+    padding: 28px 24px;
+  }
+  .isl-whom__card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-whom__card p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--isl-muted);
+  }
+  @media (max-width: 900px) {
+    .isl-whom__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .isl-whom { padding: 64px 16px; }
+    .isl-whom__title { font-size: 28px; }
+  }
+</style>
+
+<div class="isl-whom">
+  <div class="isl-whom__inner">
+    <div class="isl-whom__header">
+      <h2 class="isl-whom__title">Для кого модуль CRM</h2>
+      <p class="isl-whom__sub">Команды 5–30 человек, где продажа и закупка связаны в одном цикле.</p>
+    </div>
+    <div class="isl-whom__grid">
+      <article class="isl-whom__card">
+        <h3>Тендерный отдел</h3>
+        <p>Регулярное участие в торгах: лента агрегаторов, воронка, ответственные, передача в запрос поставщикам.</p>
+      </article>
+      <article class="isl-whom__card">
+        <h3>Дистрибьютор / опт под заказ</h3>
+        <p>Электротехника, стройматериалы, промооборудование: заявка клиента → КП → заказ поставщику.</p>
+      </article>
+      <article class="isl-whom__card">
+        <h3>Подрядчик</h3>
+        <p>Смешанные продажи и закупки под клиента — одна карточка сделки вместо почты и Excel.</p>
+      </article>
+    </div>
+  </div>
+</div>

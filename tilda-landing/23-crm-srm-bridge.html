@@ -1,0 +1,96 @@
+<!-- Tilda block: /crm · мост в SRM · стиль istock.link -->
+<style>
+  .isl-srm {
+    --isl-blue: #1c50de;
+    --isl-text: #222;
+    --isl-muted: #666;
+    --isl-border: #e5e7eb;
+    font-family: 'TildaSans', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 90px 20px;
+  }
+  .isl-srm *, .isl-srm *::before, .isl-srm *::after { box-sizing: border-box; }
+  .isl-srm__inner { max-width: 1160px; margin: 0 auto; }
+  .isl-srm__box {
+    background: #d1e4ff;
+    border-radius: 10px;
+    padding: 48px 40px;
+  }
+  .isl-srm__kicker {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--isl-blue);
+  }
+  .isl-srm__title {
+    margin: 0 0 12px;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-srm__text {
+    margin: 0 0 28px;
+    max-width: 640px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--isl-muted);
+  }
+  .isl-srm__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .isl-srm__step {
+    background: #fff;
+    border: 1px solid var(--isl-border);
+    border-radius: 10px;
+    padding: 20px 18px;
+  }
+  .isl-srm__step strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--isl-text);
+  }
+  .isl-srm__step span {
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--isl-muted);
+  }
+  @media (max-width: 800px) {
+    .isl-srm__steps { grid-template-columns: 1fr; }
+    .isl-srm__box { padding: 32px 20px; }
+  }
+  @media (max-width: 640px) {
+    .isl-srm { padding: 64px 16px; }
+    .isl-srm__title { font-size: 26px; }
+  }
+</style>
+
+<div class="isl-srm">
+  <div class="isl-srm__inner">
+    <div class="isl-srm__box">
+      <p class="isl-srm__kicker">Связка с SRM</p>
+      <h2 class="isl-srm__title">После сделки закупка не уходит в Excel</h2>
+      <p class="isl-srm__text">Запрос цен и заказ поставщику живут в той же карточке — отличие от универсальной CRM, где SRM собирают доработкой.</p>
+      <div class="isl-srm__steps">
+        <div class="isl-srm__step">
+          <strong>1. Запрос цен</strong>
+          <span>Из сделки — поставщикам из справочника.</span>
+        </div>
+        <div class="isl-srm__step">
+          <strong>2. Сравнение</strong>
+          <span>Ответы собираются в одной таблице по сделке.</span>
+        </div>
+        <div class="isl-srm__step">
+          <strong>3. Заказ</strong>
+          <span>Ссылка без регистрации, подтверждение, файлы и счёт.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
