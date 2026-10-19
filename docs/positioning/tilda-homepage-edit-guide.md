@@ -1,7 +1,7 @@
 # Как собрать зонтик и /crm в Tilda через HTML-блоки
 
-**Стиль:** те же T123-блоки, что на `/trading` (`#1c50de`, TildaSans).  
-**Редактирование:** правим файлы в git → превью на GitHub Pages → копируете в Tilda.
+**Стиль:** как **главная** istock.link (не `/trading`): TildaSans, синий `#1c50de`, фоны `#fff` / `#f4f7f9` / `#d1e4ff`, карточки radius ~10px, кнопки 8px (не pills), без тяжёлых градиентов и теней trading-лендинга.  
+**Редактирование:** правим файлы в git → превью → копируете в Tilda T123.
 
 Исходники: `tilda-landing/15-*.html` … `25-*.html`  
 Превью (после мержа в `main`): https://kolomoets-netizen.github.io/Link/preview-home-crm.html  
